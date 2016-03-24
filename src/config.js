@@ -36,7 +36,6 @@ const Dir = {
   config: path.resolve(__dirname, 'config'),
   components: path.resolve(__dirname, 'components'),
   containers: path.resolve(__dirname, 'containers'),
-  pages: path.resolve(__dirname, 'pages'),
   stores: path.resolve(__dirname, 'stores'),
   server: path.resolve(__dirname, 'server'),
   models: path.resolve(__dirname, 'server', 'models'),

@@ -47,7 +47,7 @@
 
 `npm run build:all`
 
-`npm run start:prod`
+`npm run server:prod`
 
 ## TODO
 
