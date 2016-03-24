@@ -14,10 +14,6 @@ export function dehydrate(store) {
   Rehydrate (on client)
 */
 export function rehydrate() {
-  // get window state
-  const initialState = window.__STATE;
-  // update the store
-  const store = initStore(initialState);
-  // define and return the context
-  return { store };
+  // inject initial state into stores
+  return { store: initStore(window.__STATE) };
 }
