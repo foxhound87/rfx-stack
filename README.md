@@ -37,7 +37,7 @@ The main
 
 `npm install`
 
-`npm run start:dev`
+`npm run server:dev`
 
 `npm run seed:dev`
 
