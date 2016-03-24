@@ -1,0 +1,27 @@
+@import 'animate.css';
+@import 'normalize.css';
+@import 'basscss';
+@import 'basscss-hide';
+@import 'basscss-align';
+@import 'basscss-padding';
+@import 'basscss-margin';
+@import 'basscss-border';
+@import 'basscss-flexbox';
+@import 'basscss-layout';
+@import 'basscss-grid';
+@import 'basscss-btn';
+@import 'basscss-positions';
+@import 'basscss-typography';
+@import 'basscss-type-scale';
+@import 'basscss-responsive-states';
+@import 'basscss-ui-utility-groups';
+
+:global body {
+  font-weight: 100;
+  color: #333;
+}
+
+/* global example, remove it */
+:global .the-border {
+  border: 1px solid red;
+}

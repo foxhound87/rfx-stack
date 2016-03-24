@@ -1,0 +1,15 @@
+/* app.nav.mdl.css / AppNav */
+
+@import 'basscss';
+@import 'basscss-btn';
+@import 'basscss-layout';
+
+.nav a {
+  @extend .btn;
+  @extend .block;
+  padding: 15px;
+}
+
+.nav a:hover {
+  background: #f0f0f0;
+}
