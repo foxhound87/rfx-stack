@@ -4,8 +4,6 @@
 ### React + Feathers + MobX
 ---
 
-The main
-
 ## Main Features
 
 - React Transform HMR
