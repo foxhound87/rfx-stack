@@ -31,7 +31,7 @@
 ---
 ## Setup
 
-### ENV: Development
+#### ENV: Development
 
 `npm install`
 
@@ -39,8 +39,9 @@
 
 `npm run seed:dev`
 
+> Run the seeder in another terminal window while the api server is running.
 
-### ENV: Production
+#### ENV: Production
 
 `npm install`
 
