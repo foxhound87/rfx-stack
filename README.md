@@ -17,7 +17,7 @@
 
 - View Layer: [React](https://www.npmjs.com/package/react)
 - Routing: [React Router](https://www.npmjs.com/package/react-router)
-- State Management: [Mobx](https://www.npmjs.com/package/mobx)
+- State Management: [MobX](https://www.npmjs.com/package/mobx)
 - Server, CRUD & Data Transport: [Feathers](https://www.npmjs.com/package/feathers)
 - Styling: [PostCSS](https://www.npmjs.com/package/postcss) & [React CSS Modules](https://www.npmjs.com/package/react-css-modules)
 
