@@ -58,6 +58,7 @@
     "react-tap-event-plugin": "~0.2.2",
     "rss-watcher": "~1.3.0",
     "sails-mongo": "~0.12.0",
+    "serve-static": "~1.10.2",
     "socket.io-client": "~1.4.5",
     "waterline": "~0.11.1",
     "whatwg-fetch": "~0.11.0"
@@ -72,6 +73,7 @@
     "babel-eslint": "~5.0.0",
     "babel-loader": "~6.2.3",
     "babel-plugin-transform-class-properties": "~6.6.0",
+    "babel-plugin-transform-decorators": "~6.6.5",
     "babel-plugin-transform-decorators-legacy": "~1.3.4",
     "babel-plugin-transform-runtime": "~6.6.0",
     "babel-polyfill": "~6.5.0",
