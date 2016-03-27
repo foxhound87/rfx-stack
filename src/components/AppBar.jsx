@@ -29,16 +29,16 @@ export default class AppNav extends Component {
     return (
       <div className={cx(styles.bar, 'clearfix')}>
         <div className="left">
-          <a onClick={this.handleNavToggle} className={styles.btn}>Toggle Nav</a>
-          <Link to="/" className={styles.btn}>Home</Link>
-          <Link to="/test" className="btn" className={styles.btn}>Test</Link>
+          <a onClick={this.handleNavToggle} className={styles.bt}>Toggle Nav</a>
+          <Link to="/" className={styles.bt}>Home</Link>
+          <Link to="/test" className="btn" className={styles.bt}>Test</Link>
         </div>
         <div className={cx('right')}>
           <div className={cx('inline-block')}>
             <div className={cx('relative')}>
               <a
                 onClick={this.handleMenuAccountToggle}
-                className={styles.btn}
+                className={styles.bt}
               >
                 My Account &#9662;
               </a>
@@ -48,9 +48,9 @@ export default class AppNav extends Component {
                 })}
               >
                 <ul>
-                  <li><a className={styles.btn}>Profile</a></li>
-                  <li><a className={styles.btn}>Settings</a></li>
-                  <li><a className={styles.btn}>Sign Out</a></li>
+                  <li><a className={styles.bt}>Profile</a></li>
+                  <li><a className={styles.bt}>Settings</a></li>
+                  <li><a className={styles.bt}>Sign Out</a></li>
                 </ul>
               </div>
             </div>

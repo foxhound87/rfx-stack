@@ -12,7 +12,7 @@
   background: #f0f0f0;
 }
 
-.btn {
+.bt {
   @extend .btn;
   @extend .py2;
   @extend .m0;
@@ -30,6 +30,6 @@
 }
 
 .menuAccount ul li a {
-  @extend .bnt;
+  @extend .btn;
   @extend .block;
 }
