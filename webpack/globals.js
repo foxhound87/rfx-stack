@@ -3,6 +3,7 @@ import { Dir } from '~/src/config';
 
 // css
 import postcssImport from 'postcss-import';
+import postcssExtend from 'postcss-extend';
 // import basscss from 'postcss-basscss';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
@@ -19,6 +20,7 @@ export default {
   },
   postcss: ($webpack) => [
     postcssImport({ addDependencyTo: $webpack }),
+    postcssExtend,
     // basscss,
     autoprefixer,
     precss,
