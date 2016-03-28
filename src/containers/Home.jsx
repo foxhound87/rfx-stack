@@ -25,7 +25,7 @@ export default class Home extends Component {
         <hr />
 
         <div className="md-flex flex-center">
-          <div className="p1"><PostSearch /></div>
+          <div className="p1 py2"><PostSearch /></div>
           <div className="flex-auto p1 py2 center"><PostInfo items={items} /></div>
           <div className="p1 py2"><PostFilter filter={filter} /></div>
         </div>
