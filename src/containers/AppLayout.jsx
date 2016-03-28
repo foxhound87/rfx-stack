@@ -29,6 +29,7 @@ export default class AppLayout extends Component {
     const appNavIsOpen = this.context.store.ui.appNavIsOpen;
     return (
       <StickyContainer className={cx('animated', 'fadeIn')}>
+        { isDev ? <DevTools /> : null }
         <AppNav open={appNavIsOpen}>
           <a className={navBtn}>Link A</a>
           <a className={navBtn}>Link B</a>
@@ -36,7 +37,6 @@ export default class AppLayout extends Component {
           <a className={navBtn}>Link D</a>
           <a className={navBtn}>Link E</a>
         </AppNav>
-        { isDev ? <DevTools /> : null }
         <div className={styles.layout}>
           <Sticky className={cx('animated', 'slideInDown')}>
             <AppBar />

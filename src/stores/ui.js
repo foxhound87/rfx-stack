@@ -15,9 +15,9 @@ export default class UIStore {
   }
 
   getMui() {
-    const theme = { userAgent: navigator.userAgent };
-    Object.assign(theme, lightBaseTheme);
-    return getMuiTheme(this.mui, theme);
+    const mui = global.CLIENT ? { userAgent: navigator.userAgent } : {};
+    Object.assign(mui, lightBaseTheme);
+    return getMuiTheme(this.mui, mui);
   }
 
   injectTapEv() {
