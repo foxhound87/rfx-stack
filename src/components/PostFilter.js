@@ -10,7 +10,7 @@ const button = cx(['btn', 'left', 'x-group-item']);
 export default class PostFilter extends Component {
 
   static propTypes = {
-    filter: React.PropTypes.object,
+    filter: React.PropTypes.string,
   };
 
   handleSelect = (e) => {
