@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
+
+
+// module style
 import styles from '../styles/app.bar.mdl.css';
+const button = cx('btn', 'py2', 'm0');
+const ul = cx('h5', 'list-reset', 'mb0');
+const ulBtn = cx('btn', 'block');
 
 // components
 import { Link } from 'react-router';
@@ -29,16 +35,16 @@ export default class AppNav extends Component {
     return (
       <div className={cx(styles.bar, 'clearfix')}>
         <div className="left">
-          <a onClick={this.handleNavToggle} className={styles.bt}>Toggle Nav</a>
-          <Link to="/" className={styles.bt}>Home</Link>
-          <Link to="/test" className="btn" className={styles.bt}>Test</Link>
+          <a onClick={this.handleNavToggle} className={button}>Toggle Nav</a>
+          <Link to="/" className={button}>Home</Link>
+          <Link to="/test" className="btn" className={button}>Test</Link>
         </div>
         <div className={cx('right')}>
           <div className={cx('inline-block')}>
             <div className={cx('relative')}>
               <a
                 onClick={this.handleMenuAccountToggle}
-                className={styles.bt}
+                className={button}
               >
                 My Account &#9662;
               </a>
@@ -47,10 +53,10 @@ export default class AppNav extends Component {
                   hide: !menuAccountIsOpen,
                 })}
               >
-                <ul>
-                  <li><a className={styles.bt}>Profile</a></li>
-                  <li><a className={styles.bt}>Settings</a></li>
-                  <li><a className={styles.bt}>Sign Out</a></li>
+                <ul className={ul}>
+                  <li><a className={ulBtn}>Profile</a></li>
+                  <li><a className={ulBtn}>Settings</a></li>
+                  <li><a className={ulBtn}>Sign Out</a></li>
                 </ul>
               </div>
             </div>

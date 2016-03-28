@@ -16,6 +16,7 @@ import '../styles/_global.css';
 
 // module styles
 import styles from '../styles/app.layout.mdl.css';
+const navBtn = cx('btn', 'block');
 
 @connect
 export default class AppLayout extends Component {
@@ -29,11 +30,11 @@ export default class AppLayout extends Component {
     return (
       <StickyContainer className={cx('animated', 'fadeIn')}>
         <AppNav open={appNavIsOpen}>
-          <a>Link A</a>
-          <a>Link B</a>
-          <a>Link C</a>
-          <a>Link D</a>
-          <a>Link E</a>
+          <a className={navBtn}>Link A</a>
+          <a className={navBtn}>Link B</a>
+          <a className={navBtn}>Link C</a>
+          <a className={navBtn}>Link D</a>
+          <a className={navBtn}>Link E</a>
         </AppNav>
         { isDev ? <DevTools /> : null }
         <div className={styles.layout}>

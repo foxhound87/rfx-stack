@@ -1,6 +1,12 @@
 @import 'animate.css';
 @import 'normalize.css';
 @import 'basscss';
+@import 'basscss-colors';
+@import 'basscss-base-forms';
+@import 'basscss-color-forms';
+@import 'basscss-btn';
+@import 'basscss-btn-outline';
+@import 'basscss-btn-primary';
 @import 'basscss-hide';
 @import 'basscss-align';
 @import 'basscss-padding';
@@ -9,7 +15,6 @@
 @import 'basscss-flexbox';
 @import 'basscss-layout';
 @import 'basscss-grid';
-@import 'basscss-btn';
 @import 'basscss-positions';
 @import 'basscss-typography';
 @import 'basscss-type-scale';

@@ -1,35 +1,10 @@
 /* app.bar.mdl.cs / AppBar */
 
-@import 'basscss';
-@import 'basscss-btn';
-@import 'basscss-positions';
-@import 'basscss-padding';
-@import 'basscss-margin';
-@import 'basscss-layout';
-@import 'basscss-typography';
-
 .bar {
   background: #f0f0f0;
-}
-
-.bt {
-  @extend .btn;
-  @extend .py2;
-  @extend .m0;
 }
 
 .menuAccount {
   min-width:128px;
   background: #f0f0f0;
-}
-
-.menuAccount ul {
-  @extend .h5;
-  @extend .list-reset;
-  @extend .mb0;
-}
-
-.menuAccount ul li a {
-  @extend .btn;
-  @extend .block;
 }

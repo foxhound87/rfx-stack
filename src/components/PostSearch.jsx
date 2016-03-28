@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
+// import cx from 'classnames';
 
 // module style
 // import styles from '../styles/post.search.mdl.css';
@@ -10,19 +11,19 @@ export default class PostSearch extends Component {
   handleSearch = (e) => {
     e.preventDefault();
     const val = e.target.value;
-    const query = val ? { query: { title: `%${val}%` } } : {};
-    this.context.store.post.find(query);
+    this.context.store.post.search(val);
   };
 
   render() {
     return (
-      <div>
+      <form>
         <input
+          className="field"
           type="text"
           placeholder="Search..."
           onChange={this.handleSearch}
         />
-      </div>
+      </form>
     );
   }
 }
