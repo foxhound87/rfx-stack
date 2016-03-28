@@ -14,10 +14,6 @@ export default class PostStore {
     Object.assign(this, post);
   }
 
-  mergeQuery(query) {
-    _.merge(this.query, query);
-  }
-
   filterBy(filter) {
     this.filter = filter;
     let completed;
@@ -38,8 +34,7 @@ export default class PostStore {
   }
 
   find(query = {}) {
-    this.mergeQuery(query);
-    console.log('this.query', this.query);
+    _.merge(this.query, query);
 
     return service('post')
       .find(this.query)
