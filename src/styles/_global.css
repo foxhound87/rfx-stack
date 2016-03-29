@@ -1,7 +1,7 @@
-@import 'animate.css';
+/* @import 'animate.css';
 @import 'normalize.css';
-@import 'basscss';
-@import 'basscss-base-reset';
+@import 'basscss'; */
+/* @import 'basscss-base-reset';
 @import 'basscss-base-forms';
 @import 'basscss-base-typography';
 @import 'basscss-color-forms';
@@ -21,7 +21,7 @@
 @import 'basscss-hide';
 @import 'basscss-padding';
 @import 'basscss-margin';
-@import 'basscss-ui-utility-groups';
+@import 'basscss-ui-utility-groups'; */
 
 :global body {
   font-weight: 300;

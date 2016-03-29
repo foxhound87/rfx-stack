@@ -11,6 +11,10 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';
 
+import 'animate.css';
+import 'normalize.css';
+import 'basscss';
+
 // global styles
 import '../styles/_global.css';
 
