@@ -1,14 +1,8 @@
-import isDev from 'isdev';
-
 import feathers from 'feathers';
 import feathersRest from 'feathers-rest';
 import feathersSocketIO from 'feathers-socketio';
 
-import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
-import compression from 'compression';
-import morgan from 'morgan';
-import cors from 'cors';
 
 import services from './services';
 
@@ -24,13 +18,12 @@ export default class Server {
       this.initServer();
       this.initTemplates();
       this.initServeStaticMiddlewares();
-      this.initExtraMiddlewares();
+      this.initMiddlewares();
     }
 
     if (this.type === 'API') {
       this.initApiServer();
-      this.initExtraMiddlewares();
-      this.initApiMiddlewares();
+      this.initMiddlewares();
       this.initServices();
     }
   }
@@ -55,24 +48,13 @@ export default class Server {
     this.app.set('view engine', 'ejs');
   }
 
-  initApiMiddlewares() {
-    this.app
-      .use(cors({ origin: true }))
-      .use(bodyParser.json())
-      .use(bodyParser.urlencoded({ extended: true }));
-  }
-
   initServeStaticMiddlewares() {
     this.app
       .use('/build', serveStatic(Dir.build))
       .use('/static', serveStatic(Dir.static));
   }
 
-  initExtraMiddlewares() {
-    this.app
-      .use(compression())
-      .use(morgan(isDev ? 'dev' : 'combined'));
-
+  initMiddlewares() {
     if (this.use) this.use.map((middleware) => this.app.use(middleware));
   }
 
