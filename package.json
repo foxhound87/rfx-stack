@@ -1,8 +1,7 @@
 {
-  "name": "react-kickstart",
+  "name": "RFX Stack (alpha)",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Universal App featuring: React + Feathers + MobX",
   "scripts": {
     "lint": "eslint src --ext .jsx,.js",
     "clean:client": "rimraf ./public/build",
