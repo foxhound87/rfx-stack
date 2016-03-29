@@ -61,6 +61,7 @@
     "json-stringify-safe": "~5.0.1",
     "lodash": "~4.4.0",
     "match-media": "~0.2.0",
+    "match-media-mock": "^0.1.0",
     "material-ui": "~0.15.0-alpha.2",
     "mobx": "~2.0.2",
     "mobx-react": "~3.0.1",

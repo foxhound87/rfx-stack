@@ -5,7 +5,6 @@ import { Dir } from '~/src/config';
 import postcssImport from 'postcss-import';
 import postcssExtend from 'postcss-extend';
 import postcssFocus from 'postcss-focus';
-// import basscss from 'postcss-basscss';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
 import cssnano from 'cssnano';
@@ -23,7 +22,6 @@ export default {
     postcssImport({ addDependencyTo: $webpack }),
     postcssExtend,
     postcssFocus,
-    // basscss,
     autoprefixer,
     precss,
     cssnano,

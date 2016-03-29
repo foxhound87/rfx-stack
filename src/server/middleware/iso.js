@@ -6,9 +6,10 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import { fetchData } from '~/src/utils/fetch';
+import { setMatchMediaConfig } from '~/src/utils/matchMedia';
 import { ContextProvider } from '~/src/state/context';
 import { dehydrate } from '~/src/state/hydrate';
-import { fetchData } from '~/src/utils/fetch';
 import { log } from '../logger';
 import initStore from '~/src/state';
 
@@ -22,6 +23,7 @@ function handleRouter(req, res, props) {
   });
 
   fetchData(store, props.components, props.params, props.location.query)
+    .then(() => setMatchMediaConfig(req))
     .then(() => renderToString(
       <MuiThemeProvider muiTheme={store.ui.getMui()}>
         <ContextProvider context={{ store }}>
