@@ -14,10 +14,12 @@ export default class Server {
   constructor(props) {
     Object.assign(this, props);
 
+    this.fixUA();
+
     if (this.type !== 'API') {
       this.initServer();
       this.initTemplates();
-      this.initServeStaticMiddlewares();
+      this.initServeStatic();
       this.initMiddlewares();
     }
 
@@ -48,7 +50,7 @@ export default class Server {
     this.app.set('view engine', 'ejs');
   }
 
-  initServeStaticMiddlewares() {
+  initServeStatic() {
     this.app
       .use('/build', serveStatic(Dir.build))
       .use('/static', serveStatic(Dir.static));
@@ -64,5 +66,12 @@ export default class Server {
         this.type === 'API' ? Config.api.port : Config.web.port,
         this.type === 'API' ? Config.api.host : Config.web.host,
       (err) => logServerConfig(err, this.type));
+  }
+
+  fixUA() {
+    // Tell any CSS tooling (such as Material UI) to use
+    // "all" vendor prefixes if the user agent is not known.
+    global.navigator = global.navigator || {};
+    global.navigator.userAgent = global.navigator.userAgent || 'all';
   }
 }
