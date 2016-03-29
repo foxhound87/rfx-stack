@@ -23,11 +23,11 @@ export function getLoaders() {
       loader: 'json-loader',
     },
     cssGlobal: {
-      test: /^((?!\.mdl).)*css$/,
+      test: /\.global\.css$/,
       loader: 'style-loader!css-loader!postcss-loader',
     },
     cssModules: {
-      test: /\.mdl.css$/,
+      test: /^((?!\.global).)*\.css$/,
       /* loader: based on target script */
     },
   };

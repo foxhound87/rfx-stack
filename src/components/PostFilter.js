@@ -3,7 +3,7 @@ import { connect } from '../state/context';
 import cx from 'classnames';
 
 // module style
-// import styles from '../styles/post.filter.mdl.css';
+// import styles from '../styles/post.filter.css';
 const button = cx(['btn', 'left', 'x-group-item']);
 
 @connect

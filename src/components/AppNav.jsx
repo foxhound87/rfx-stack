@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
-import styles from '../styles/app.nav.mdl.css';
+import styles from '../styles/app.nav.css';
 
 // components
 import LeftNav from 'material-ui/lib/left-nav';

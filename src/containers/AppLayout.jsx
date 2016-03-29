@@ -12,10 +12,10 @@ import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';
 
 // global styles
-import '../styles/_global.css';
+import '../styles/_.global.css';
 
 // module styles
-import styles from '../styles/app.layout.mdl.css';
+import styles from '../styles/app.layout.css';
 const navBtn = cx('btn', 'block');
 
 @connect

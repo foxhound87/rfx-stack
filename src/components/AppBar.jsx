@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 
 // module style
-import styles from '../styles/app.bar.mdl.css';
+import styles from '../styles/app.bar.css';
 const button = cx('btn', 'py2', 'm0');
 const ul = cx('h5', 'list-reset', 'mb0');
 const ulBtn = cx('btn', 'block');

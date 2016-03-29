@@ -3,7 +3,7 @@ import { connect } from '../state/context';
 // import cx from 'classnames';
 
 // module style
-// import styles from '../styles/post.search.mdl.css';
+// import styles from '../styles/post.search.css';
 
 @connect
 export default class PostSearch extends Component {

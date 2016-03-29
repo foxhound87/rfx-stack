@@ -1,5 +1,5 @@
 {
-  "name": "RFX Stack (alpha)",
+  "name": "rfx-stack",
   "version": "1.0.0",
   "description": "Universal App featuring: React + Feathers + MobX",
   "scripts": {

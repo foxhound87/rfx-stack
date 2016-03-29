@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from '../state/context';
 
 // module style
-import styles from '../styles/post.list.mdl.css';
+import styles from '../styles/post.list.css';
 
 @connect
 export default class PostList extends Component {
