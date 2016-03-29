@@ -1,4 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
 
 export function loader() {
@@ -23,6 +24,7 @@ export function config() {
     devtool: 'source-map',
     output: { publicPath: '/build/' },
     plugins: [
+      new ProgressBarPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,

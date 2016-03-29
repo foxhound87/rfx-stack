@@ -1,6 +1,5 @@
 import path from 'path';
 import { Dir } from '~/src/config';
-import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 // css
 import postcssImport from 'postcss-import';
@@ -20,9 +19,6 @@ export default {
       react: path.join(Dir.modules, 'react'),
     },
   },
-  plugins: [
-    new ProgressBarPlugin(),
-  ],
   postcss: ($webpack) => [
     postcssImport({ addDependencyTo: $webpack }),
     postcssExtend,

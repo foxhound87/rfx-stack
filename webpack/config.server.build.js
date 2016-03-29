@@ -1,4 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 export function loader() {
   return {
@@ -20,6 +21,7 @@ export function loader() {
 export function config() {
   return {
     plugins: [
+      new ProgressBarPlugin(),
       new ExtractTextPlugin('style.css', { disable: true }),
     ],
   };
