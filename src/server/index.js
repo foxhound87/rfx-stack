@@ -79,8 +79,8 @@ export default class Server {
   init() {
     this.app
       .listen(
-        this.type === 'API' ? Config.api.port : Config.server.port,
-        this.type === 'API' ? Config.api.host : Config.server.host,
+        this.type === 'API' ? Config.api.port : Config.web.port,
+        this.type === 'API' ? Config.api.host : Config.web.host,
       (err) => logServerConfig(err, this.type));
   }
 }

@@ -20,6 +20,7 @@
 - State Management: [MobX](https://www.npmjs.com/package/mobx)
 - Server, CRUD & Data Transport: [Feathers](https://www.npmjs.com/package/feathers)
 - Styling: [PostCSS](https://www.npmjs.com/package/postcss) & [React CSS Modules](https://www.npmjs.com/package/react-css-modules)
+- Live Browser Syncing: [BrowserSync](https://www.npmjs.com/package/browser-sync)
 
 ## Bundler & Styleguide
 

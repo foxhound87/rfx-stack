@@ -7,9 +7,13 @@ dotenv.config();
 
 const Config = getenv.multi({
   env: 'NODE_ENV',
-  server: {
-    host: 'SERVER_HOST',
-    port: 'SERVER_PORT',
+  browsersync: {
+    host: 'BROWSERSYNC_HOST',
+    port: 'BROWSERSYNC_PORT',
+  },
+  web: {
+    host: 'WEB_HOST',
+    port: 'WEB_PORT',
   },
   api: {
     host: 'API_HOST',
