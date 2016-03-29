@@ -13,7 +13,7 @@ const ulBtn = cx('btn', 'block');
 import { Link } from 'react-router';
 
 @connect
-export default class AppNav extends Component {
+export default class AppBar extends Component {
 
   static propTypes = {
     open: React.PropTypes.bool,
