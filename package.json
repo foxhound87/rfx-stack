@@ -15,8 +15,8 @@
     "seed:dev": "NODE_ENV=development node ./seeder.js",
     "seed:prod": "NODE_ENV=production node ./seeder.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Claudio Savino",
+  "license": "MIT",
   "dependencies": {
     "animate.css": "~3.5.1",
     "basscss": "~8.0.1",
