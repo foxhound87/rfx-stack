@@ -51,7 +51,6 @@
     "exports-loader": "~0.6.3",
     "feathers": "~2.0.0",
     "feathers-hooks": "~1.5.0",
-    "feathers-query-filters": "~1.5.1",
     "feathers-rest": "~1.2.4",
     "feathers-socketio": "~1.3.3",
     "feathers-waterline": "~1.1.0",
