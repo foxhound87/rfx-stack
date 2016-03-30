@@ -15,12 +15,12 @@ export function fetchData(store, components, params, query) {
   It also prevent the first page to re-fetch data already fetched from the server.
   Used on the client-side.
  */
-export function fetchDataOnLocationMatch(history, routes, match, context) {
-  let ssrLocation = context.store.app.ssrLocation;
+export function fetchDataOnLocationMatch(history, routes, match, store) {
+  let ssrLocation = store.app.ssrLocation;
   history.listen((e) => {
     if (e.pathname !== ssrLocation) {
       match({ routes, location: e.pathname }, (error, redirect, props) => {
-        if (props) fetchData(context.store, props.components, props.params, props.location.query);
+        if (props) fetchData(store, props.components, props.params, props.location.query);
       });
     }
     // enable subsequent fetches

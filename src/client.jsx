@@ -8,15 +8,15 @@ import { rehydrate } from './state/hydrate';
 import routes from './routes';
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
 
-const context = rehydrate();
+const store = rehydrate();
 
-context.store.ui.injectTapEv(); // material-ui fix
+store.ui.injectTapEv(); // material-ui fix
 setMatchMediaConfig();
-fetchDataOnLocationMatch(browserHistory, routes, match, context);
+fetchDataOnLocationMatch(browserHistory, routes, match, store);
 
 render(
-  <MuiThemeProvider muiTheme={context.store.ui.getMui()}>
-    <ContextProvider context={context}>
+  <MuiThemeProvider muiTheme={store.ui.getMui()}>
+    <ContextProvider context={{ store }}>
       <Router routes={routes} history={browserHistory} />
     </ContextProvider>
   </MuiThemeProvider>,

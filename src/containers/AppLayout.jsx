@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
-// import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 // dev tools
 import isDev from 'isdev';
@@ -50,5 +49,3 @@ export default class AppLayout extends Component {
     );
   }
 }
-
-// export default withStyles(AppLayout, styles);
