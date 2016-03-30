@@ -32,8 +32,8 @@ class Request {
       base = [wl.protocol, '/', wl.hostname].join('/');
       port = wl.port;
     } else {
-      base = ['http:/', getenv('SERVER_HOST')].join('/');
-      port = getenv('SERVER_PORT');
+      base = ['http:/', getenv('API_HOST')].join('/');
+      port = getenv('API_PORT');
     }
 
     if (_.startsWith(path, 'http')) return path;

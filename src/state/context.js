@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 
 const contextTypes = {
+  location: React.PropTypes.object,
   router: React.PropTypes.object,
   store: React.PropTypes.object,
   muiTheme: React.PropTypes.object,
@@ -11,7 +12,7 @@ export class ContextProvider extends Component {
 
   static propTypes = {
     children: React.PropTypes.object,
-    context: React.PropTypes.object,
+    context: React.PropTypes.shape(contextTypes),
   };
 
   static childContextTypes = contextTypes;

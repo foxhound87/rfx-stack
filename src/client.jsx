@@ -8,15 +8,7 @@ import { rehydrate } from './state/hydrate';
 import routes from './routes';
 import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
 
-// const context = rehydrate();
-
-const context = {
-  store: rehydrate(),
-  insertCss: (styles) => styles._insertCss(),
-};
-
-// console.log(context);
-// console.log(rehydrate());
+const context = rehydrate();
 
 context.store.ui.injectTapEv(); // material-ui fix
 setMatchMediaConfig();
