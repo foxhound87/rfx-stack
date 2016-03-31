@@ -4,6 +4,9 @@
 ### React + Feathers + MobX
 ---
 
+[![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
+[![npm](https://img.shields.io/badge/npm-3.3.6-blue.svg)]()
+
 ## Main Features
 
 - React Transform HMR
