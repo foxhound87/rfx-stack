@@ -4,8 +4,8 @@ import feathersSocketClient from 'feathers-socketio/client';
 import socketClient from 'socket.io-client';
 
 let instance = false;
-
-const uri = 'http://localhost:9090';
+const config = global.CONFIG;
+const uri = ['http://', config.io.host, ':', config.io.port].join('');
 
 export function app() {
   if (instance) return instance;

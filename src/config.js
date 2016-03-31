@@ -46,4 +46,14 @@ const Dir = {
   services: path.resolve(__dirname, 'server', 'services'),
 };
 
-export { Config, Dir };
+/**
+  Expose Config on client-side
+  WARNING: Do not expose passwords!
+*/
+const ExposeConfigToClient = {
+  web: Config.web,
+  api: Config.api,
+  io: Config.io,
+};
+
+export { Dir, Config, ExposeConfigToClient };

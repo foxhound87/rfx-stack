@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
-import { Dir } from '~/src/config';
+import { Dir, ExposeConfigToClient } from '~/src/config';
 
 export function load() {
   return {
@@ -17,9 +17,9 @@ export function load() {
       // new webpack.optimize.OccurenceOrderPlugin(), // Webpack 1.0
       new webpack.optimize.OccurrenceOrderPlugin(),  // Webpack 2.0 fixed this mispelling
       new webpack.DefinePlugin({
-        'global.CLIENT': true,
+        'global.CONFIG': JSON.stringify(ExposeConfigToClient),
+        'global.CLIENT': JSON.stringify(true),
         'process.env': {
-          CLIENT: JSON.stringify(true),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
       }),

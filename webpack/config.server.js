@@ -34,9 +34,8 @@ export function load() {
     plugins: [
       new webpack.ProvidePlugin({ Promise: 'bluebird' }),
       new webpack.DefinePlugin({
-        'global.CLIENT': false,
+        'global.CLIENT': JSON.stringify(false),
         'process.env': {
-          CLIENT: JSON.stringify(false),
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
       }),
