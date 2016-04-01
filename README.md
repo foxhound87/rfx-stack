@@ -4,8 +4,9 @@
 ### React + Feathers + MobX
 ---
 
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
-[![npm](https://img.shields.io/badge/npm-3.3.6-blue.svg)]()
+[![npm](https://img.shields.io/badge/npm-3.3.6%2B-blue.svg)]()
 
 ## Main Features
 
