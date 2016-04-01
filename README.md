@@ -36,7 +36,9 @@
 ---
 ## Setup
 
-#### ENV: Development
+> Run a local mongodb instance before start the server (port 27017).
+
+##### ENV: Development
 
 `npm install`
 
@@ -46,7 +48,7 @@
 
 > Run the seeder in another terminal window while the api server is running.
 
-#### ENV: Production
+##### ENV: Production
 
 `npm install`
 
@@ -56,8 +58,12 @@
 
 ## TODO
 
-- Implement Auth
+- Documentation
+- Implement:
+ - JWT / Auth
+ - ACL / Roles
 
 ## Contributing
 
-If you like this stack and want to contribute to the development, do not hesitate to contact me.
+If you like this stack, don't forget to star the repo!
+If you want to contribute to the development, do not hesitate to contact me.
