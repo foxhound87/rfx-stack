@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
 
-// module style
+// components
+import TimeAgo from 'react-timeago';
+
+// styles
 import styles from '../styles/post.list.css';
 
 @connect
@@ -22,6 +25,8 @@ export default class PostList extends Component {
               <li key={item.id}>
                 <h3>{item.title}</h3>
                 <h4>Completed: {item.completed ? 'YES' : 'NO'}</h4>
+                <p>Created at: <TimeAgo date={item.createdAt} /></p>
+                <p>Updated at: <TimeAgo date={item.updatedAt} /></p>
                 <p>ID: {item.id}</p>
                 <hr />
               </li>

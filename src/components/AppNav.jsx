@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
-import styles from '../styles/app.nav.css';
 
 // components
 import LeftNav from 'material-ui/lib/left-nav';
+
+// styles
+import styles from '../styles/app.nav.css';
 
 @connect
 export default class AppNav extends Component {

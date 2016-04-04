@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
+// components
+import { Link } from 'react-router';
 
-// module style
+// styles
 import styles from '../styles/app.bar.css';
 const button = cx('btn', 'py2', 'm0');
 const ul = cx('h5', 'list-reset', 'mb0');
 const ulBtn = cx('btn', 'block');
-
-// components
-import { Link } from 'react-router';
 
 @connect
 export default class AppBar extends Component {

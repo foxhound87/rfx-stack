@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from '../state/context';
 // import cx from 'classnames';
 
-// module style
+// styles
 // import styles from '../styles/post.search.css';
 
 @connect
