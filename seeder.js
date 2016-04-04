@@ -3,4 +3,4 @@ require('isomorphic-fetch');
 
 global.CONFIG = require('./src/config').Config;
 
-require('./src/server/seeds/_runner.js');
+require('./src/seeds/_runner.js');

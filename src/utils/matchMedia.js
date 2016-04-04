@@ -13,7 +13,7 @@ export function setMatchMediaConfig(req = null) {
     };
   }
 
-  if (global.CLIENT) {
+  if (global.CLIENT && !req) {
     config = {
       type: 'screen',
       width: window.innerWidth,

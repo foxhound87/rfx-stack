@@ -1,7 +1,7 @@
-import { log } from '../logger';
+import { log } from '../server/logger';
 import { Config } from '~/src/config';
 
-const handlerFile = ['./', '_handler.', Config.env].join('');
+const handlerFile = ['./_handler.', Config.env].join('');
 
 const handler = require(handlerFile).handle();
 

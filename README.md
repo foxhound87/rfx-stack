@@ -59,6 +59,7 @@
 ## TODO
 
 - Documentation
+- Reduce Dependencies
 - Implement:
  - JWT / Auth
  - ACL / Roles

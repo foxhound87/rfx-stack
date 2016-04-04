@@ -1,5 +1,6 @@
 import { observable } from 'mobx';
 import { service } from '../app';
+import { factory } from '../seeds/post'; // just for test
 import _ from 'lodash';
 
 export default class PostStore {
@@ -12,6 +13,15 @@ export default class PostStore {
 
   constructor(post) {
     Object.assign(this, post);
+    // run events on client side-only
+    if (global.CLIENT) this.initEvents();
+  }
+
+  initEvents() {
+    service('post').on('created', this.onCreated);   // onCreated = (data, params) => {}
+    // service('post').on('updated', this.onUpdated);   // onUpdated = (id, data) => {}
+    // service('post').on('patched', this.onPatched);   // onPatched = (id, data) => {}
+    // service('post').on('removed', this.onRemoved);   // onRemoved = (id, params) => {}
   }
 
   filterBy(filter) {
@@ -39,5 +49,15 @@ export default class PostStore {
     return service('post')
       .find(this.query)
       .then((json) => this.list = json.data);
+  }
+
+  create() {
+    // we use factory() just for test
+    return service('post').create(factory());
+  }
+
+  onCreated = (item) => {
+    this.list.pop();
+    this.list.unshift(item);
   }
 }

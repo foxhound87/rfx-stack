@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import getenv from 'getenv';
+
+const config = global.CONFIG;
 
 class Request {
 
@@ -25,19 +26,9 @@ class Request {
    */
   url(path) {
     let base;
-    let port;
-
-    if (global.CLIENT) {
-      const wl = window.location;
-      base = [wl.protocol, '/', wl.hostname].join('/');
-      port = wl.port;
-    } else {
-      base = ['http:/', getenv('API_HOST')].join('/');
-      port = getenv('API_PORT');
-    }
-
+    base = ['http:/', config.api.host].join('/');
     if (_.startsWith(path, 'http')) return path;
-    base = [base, port].join(':');
+    base = [base, config.api.port].join(':');
     return [base, _.trimStart(path, '/')].join('/');
   }
 
