@@ -1,0 +1,12 @@
+/* app.layout.css / AppLayout */
+
+.layout {
+  min-height: 400px;
+  margin-left: 256px;
+}
+
+.content {
+  padding-top: 65px;
+  padding: 30px;
+  display: block;
+}

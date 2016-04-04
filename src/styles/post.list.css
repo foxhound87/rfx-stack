@@ -1,0 +1,27 @@
+/* post.list.css / PostList */
+
+.postList ul {
+  list-style: none;
+  padding: 0;
+}
+
+.postList ul li {
+  border-bottom: 1px solid #ccc;
+}
+
+.postList hr {
+  display: none;
+}
+
+.postList h3 {
+  font-weight: 500;
+}
+
+.postList h4 {
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  background: #f0f0f0;
+  color: #555;
+  padding: 4px 10px;
+}

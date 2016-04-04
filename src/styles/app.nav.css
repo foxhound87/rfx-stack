@@ -1,0 +1,9 @@
+/* app.nav.css / AppNav */
+
+.nav a {
+  padding: 15px;
+}
+
+.nav a:hover {
+  background: #f0f0f0;
+}

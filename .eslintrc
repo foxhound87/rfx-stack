@@ -1,0 +1,10 @@
+{
+	"parser": "babel-eslint",
+	"extends": ["airbnb"],
+	"plugins": ["jsx-control-statements"],
+	"globals": {
+		"If": true,
+		"Else": true,
+		"For": true
+	}
+}
