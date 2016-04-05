@@ -24,6 +24,7 @@
     "basscss-background-colors": "~2.1.0",
     "basscss-base-forms": "~2.0.2",
     "basscss-base-reset": "~2.0.3",
+    "basscss-base-tables": "^1.0.2",
     "basscss-base-typography": "~2.0.3",
     "basscss-border": "~4.0.2",
     "basscss-btn": "~1.1.1",

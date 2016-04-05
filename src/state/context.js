@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import { MatchMediaProvider } from '../utils/matchMedia';
 
 const contextTypes = {
   location: React.PropTypes.object,
@@ -22,7 +23,11 @@ export class ContextProvider extends Component {
   }
 
   render() {
-    return this.props && this.props.children;
+    return (
+      <MatchMediaProvider context={this.props.context}>
+        { this.props && this.props.children }
+      </MatchMediaProvider>
+    );
   }
 }
 

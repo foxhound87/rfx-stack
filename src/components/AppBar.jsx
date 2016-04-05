@@ -36,6 +36,7 @@ export default class AppBar extends Component {
         <div className="left">
           <a onClick={this.handleNavToggle} className={button}>Toggle Nav</a>
           <Link to="/" className={button}>Home</Link>
+          <Link to="/matchmedia" className="btn" className={button}>MatchMedia</Link>
           <Link to="/test" className="btn" className={button}>Test</Link>
         </div>
         <div className={cx('right')}>
