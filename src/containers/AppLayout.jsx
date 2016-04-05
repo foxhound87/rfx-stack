@@ -28,7 +28,6 @@ export default class AppLayout extends Component {
   };
 
   render() {
-    const breakpoints = this.context.store.ui.breakpoints;
     const appNavIsOpen = this.context.store.ui.appNavIsOpen;
 
     return (
@@ -41,7 +40,7 @@ export default class AppLayout extends Component {
           <a className={navBtn}>Link D</a>
           <a className={navBtn}>Link E</a>
         </AppNav>
-        <div className={cx({ [styles.su]: breakpoints.su })}>
+        <div className={cx({ [styles.su]: appNavIsOpen })}>
           <Sticky className={cx('animated', 'slideInDown')}>
             <AppBar />
           </Sticky>
