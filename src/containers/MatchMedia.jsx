@@ -13,8 +13,8 @@ export default class MatchMedia extends Component {
         <br />
         <br />
         <h1>MatchMedia + MobX</h1>
-        <h5>Resize your browser window to see the breakpoints changing automatically.</h5>
-        <p>The breakpoints are customizables in /src/config/breakpoints.js</p>
+        <h4>Resize your browser window to see the breakpoints changing automatically.</h4>
+        <p>The breakpoints are customizables in /src/stores/ui.js</p>
         <hr />
         <table>
           <tbody>
