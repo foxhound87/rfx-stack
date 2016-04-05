@@ -14,11 +14,18 @@ export default class AppNav extends Component {
   static propTypes = {
     children: React.PropTypes.array,
     open: React.PropTypes.bool,
+    docked: React.PropTypes.bool,
+    onRequestChange: React.PropTypes.func,
   };
 
   render() {
     return (
-      <LeftNav open={this.props.open} className={cx(styles.nav)}>
+      <LeftNav
+        className={cx(styles.nav)}
+        open={this.props.open}
+        docked={this.props.docked}
+        onRequestChange={this.props.onRequestChange}
+      >
         {this.props.children}
       </LeftNav>
     );

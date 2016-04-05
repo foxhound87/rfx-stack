@@ -27,20 +27,31 @@ export default class AppLayout extends Component {
     children: React.PropTypes.object,
   };
 
+  handleAppNavRequestChange = (open) => {
+    this.context.store.ui.appNavIsOpen = open;
+  };
+
   render() {
-    const appNavIsOpen = this.context.store.ui.appNavIsOpen;
+    const ui = this.context.store.ui;
+    const layoutIsShifted = ui.layoutIsShifted;
+    const appNavIsOpen = ui.appNavIsOpen;
+    const appNavIsDocked = ui.appNavIsDocked;
 
     return (
       <StickyContainer className={cx('animated', 'fadeIn')}>
         { isDev ? <DevTools /> : null }
-        <AppNav open={appNavIsOpen}>
+        <AppNav
+          open={appNavIsOpen}
+          docked={appNavIsDocked}
+          onRequestChange={this.handleAppNavRequestChange}
+        >
           <a className={navBtn}>Link A</a>
           <a className={navBtn}>Link B</a>
           <a className={navBtn}>Link C</a>
           <a className={navBtn}>Link D</a>
           <a className={navBtn}>Link E</a>
         </AppNav>
-        <div className={cx({ [styles.su]: appNavIsOpen })}>
+        <div className={cx({ [styles.su]: layoutIsShifted })}>
           <Sticky className={cx('animated', 'slideInDown')}>
             <AppBar />
           </Sticky>

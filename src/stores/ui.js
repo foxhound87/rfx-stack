@@ -8,7 +8,9 @@ export default class UIStore {
   mui = {};
 
   @observable appNavIsOpen = true;
+  @observable appNavIsDocked = false;
   @observable appBarMenuAccountIsOpen = false;
+  @observable layoutIsShifted = true;
 
   @observable breakpoints = {
     xs: '(max-width: 767px)',
@@ -28,6 +30,19 @@ export default class UIStore {
       ? this.toggleAppNav('close')
       : this.toggleAppNav('open')
     );
+
+    // dock/undock the nav automatically
+    // when the "su" breakpoint changes
+    autorun(() => this.breakpoints.su
+      ? this.dockAppNav('on')
+      : this.dockAppNav('off')
+    );
+
+    // shift the layout on "su" breakpoint
+    autorun(() => this.breakpoints.su
+      ? this.shiftLayout('yes')
+      : this.shiftLayout('no')
+    );
   }
 
   getMui() {
@@ -46,6 +61,16 @@ export default class UIStore {
     if (flag === 'open') this.appNavIsOpen = true;
     if (flag === 'close') this.appNavIsOpen = false;
     if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
+  }
+
+  dockAppNav(flag = null) {
+    if (flag === 'on') this.appNavIsDocked = true;
+    if (flag === 'off') this.appNavIsDocked = false;
+  }
+
+  shiftLayout(flag = null) {
+    if (flag === 'yes') this.layoutIsShifted = true;
+    if (flag === 'no') this.layoutIsShifted = false;
   }
 
   toggleAppBarMenuAccount(flag = null) {
