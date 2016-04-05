@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/lib/styles/baseThemes/lightBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -21,6 +21,13 @@ export default class UIStore {
 
   constructor(ui) {
     Object.assign(this, ui);
+
+    // open and close the nav automatically
+    // when the "xs" breakpoint changes
+    autorun(() => this.breakpoints.xs
+      ? this.toggleAppNav('close')
+      : this.toggleAppNav('open')
+    );
   }
 
   getMui() {
@@ -35,11 +42,15 @@ export default class UIStore {
     injectTapEventPlugin();
   }
 
-  toggleAppNav() {
-    this.appNavIsOpen = !this.appNavIsOpen;
+  toggleAppNav(flag = null) {
+    if (flag === 'open') this.appNavIsOpen = true;
+    if (flag === 'close') this.appNavIsOpen = false;
+    if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
   }
 
-  toggleAppBarMenuAccount() {
-    this.appBarMenuAccountIsOpen = !this.appBarMenuAccountIsOpen;
+  toggleAppBarMenuAccount(flag = null) {
+    if (flag === 'open') this.appBarMenuAccountIsOpen = true;
+    if (flag === 'close') this.appBarMenuAccountIsOpen = false;
+    if (!flag) this.appBarMenuAccountIsOpen = !this.appBarMenuAccountIsOpen;
   }
 }

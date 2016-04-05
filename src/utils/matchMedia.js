@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import matchMediaMock from 'match-media-mock';
-import { toJSON, extendObservable } from 'mobx';
+import { toJSON } from 'mobx';
 import jsonStringifySafe from 'json-stringify-safe';
 
 const matchMedia = matchMediaMock.create();
@@ -62,8 +62,7 @@ export default class MatchMediaProvider extends Component {
 
   updateBreakpoints = (val, key) => {
     const match = matchMedia(val).matches;
-    const obj = { [key]: match };
-    extendObservable(this.breakpoints, obj);
+    this.breakpoints[key] = match;
   }
 
   render() {

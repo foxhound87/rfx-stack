@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from '../state/context';
+
 import cx from 'classnames';
 
 // dev tools
@@ -16,6 +17,7 @@ import '../styles/_.global.css';
 
 // module styles
 import styles from '../styles/app.layout.css';
+
 const navBtn = cx('btn', 'block');
 
 @connect
@@ -26,7 +28,9 @@ export default class AppLayout extends Component {
   };
 
   render() {
+    const breakpoints = this.context.store.ui.breakpoints;
     const appNavIsOpen = this.context.store.ui.appNavIsOpen;
+
     return (
       <StickyContainer className={cx('animated', 'fadeIn')}>
         { isDev ? <DevTools /> : null }
@@ -37,7 +41,7 @@ export default class AppLayout extends Component {
           <a className={navBtn}>Link D</a>
           <a className={navBtn}>Link E</a>
         </AppNav>
-        <div className={styles.layout}>
+        <div className={cx({ [styles.su]: breakpoints.su })}>
           <Sticky className={cx('animated', 'slideInDown')}>
             <AppBar />
           </Sticky>

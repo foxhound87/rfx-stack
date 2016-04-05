@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { MatchMediaProvider } from '../utils/matchMedia';
-
-const contextTypes = {
-  location: React.PropTypes.object,
-  router: React.PropTypes.object,
-  store: React.PropTypes.object,
-  muiTheme: React.PropTypes.object,
-};
+import contextTypes from './contextTypes';
 
 export class ContextProvider extends Component {
 
