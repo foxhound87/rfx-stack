@@ -8,10 +8,11 @@
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
 [![npm](https://img.shields.io/badge/npm-3.3.6%2B-blue.svg)]()
 
-## Main Features
 
-- React Transform HMR
+## Main Features
 - Server Side Rendering
+- Reactive Media Queries
+- React Transform HMR
 - Isomorphic Fetch/Socket
 - Real Time Ready
 - Microservices Ready

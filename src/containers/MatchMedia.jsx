@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
-// const tc = cx('table-cell');
-
 @connect
 export default class MatchMedia extends Component {
 
