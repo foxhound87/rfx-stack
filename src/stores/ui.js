@@ -38,7 +38,7 @@ export default class UIStore {
       : this.dockAppNav('off')
     );
 
-    // shift the layout on "su" breakpoint when appbar is open
+    // shift the layout on "su" breakpoint when appnav is open
     autorun(() => this.breakpoints.su && this.appNavIsOpen
       ? this.shiftLayout('yes')
       : this.shiftLayout('no')

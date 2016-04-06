@@ -1,61 +1,61 @@
 import path from 'path';
 import globule from 'globule';
-import Waterline from 'waterline';
-import WaterlineConfig from '~/src/config/waterline';
+import mongoose from 'mongoose';
+import adapter from 'feathers-mongoose';
 
-import { Dir } from '../config';
+import { Dir, Config } from '../config';
 import { log } from './logger';
 
-export default class Services {
+class Services {
 
   init(app) {
     this.app = app;
     this.initDatabase();
+    this.loadServices();
   }
 
   initDatabase() {
-    this.orm = new Waterline();
-    // Load Models
-    this.loadModels();
-    // return this if ther's no feather server
-    if (!this.app) return this;
-    // Init Waterline ORM
-    this.initModels((error, data) => this.loadServices(error, data));
+    const { host, port, name } = Config.db;
+    const uri = ['mongodb://', host, ':', port, '/', name].join('');
+    this.orm = mongoose.connect(uri);
+    mongoose.Promise = global.Promise;
   }
 
-  initModels(callback) {
-    this.orm.initialize(WaterlineConfig, callback);
-  }
-
-  loadModels() {
+  loadServices() {
+    log.info('------------------------------------------');
+    log.info('Loading services...');
     globule
-      .find(path.join(Dir.models, '*.js'))
-      .map((model) => this.orm // require the model (".replace()": build fix)
-        .loadCollection(require(model.replace(Dir.server, '.')).default));
+      .find(path.join(Dir.services, '*'))
+      .map(($service) => this.attachService($service));
+    log.info('------------------------------------------');
   }
 
-  loadServices(error, data) {
-    if (error) log.error(error);
-
-    // Setup services
-    globule
-      .find(path.join(Dir.services, '*.js'))
-      .map(($service) => this.attachService($service, data));
-  }
-
-  attachService($service, data) {
+  attachService($service) {
     // require the service (".replace()": build fix)
-    const Service = require($service.replace(Dir.server, '.')).default;
+    const dir = $service.replace(Dir.server, '.');
+    const ServiceConfig = require([dir, 'config.js'].join('/')).default;
+    const ServiceModel = require([dir, 'model.js'].join('/')).default;
+
+    // extend the service object with related model
+    Object.assign(ServiceConfig.options, { Model: ServiceModel });
+
     // Create an instance of the Feather service
-    const service = new Service({ paginate: {} });
-    // extend the service object with the model
-    Object.assign(service, {
-      Model: data.collections[service.namespace],
-    });
+    const serviceInstance = adapter(ServiceConfig.options);
+
     // Attach the service to the app server
-    log.info('Mapping Service', service.namespace);
-    this.app.use(service.namespace, service);
+    log.info('Service', ServiceConfig.namespace);
+    this.app.use(ServiceConfig.namespace, serviceInstance);
+
+    // get the service
+    const service = this.app.service(ServiceConfig.namespace);
+
+    // Set up our before hooks
+    service.before(require([dir, 'hooks.before.js'].join('/')).default);
+    // Set up our after hooks
+    service.after(require([dir, 'hooks.after.js'].join('/')).default);
   }
 }
 
-export default new Services;
+export default function () {
+  new Services().init(this);
+}

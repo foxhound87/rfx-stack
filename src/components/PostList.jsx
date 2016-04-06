@@ -22,12 +22,12 @@ export default class PostList extends Component {
         <ul>
           <If condition={items.length}>
             <For each="item" of={items}>
-              <li key={item.id}>
+              <li key={item.uuid}>
                 <h3>{item.title}</h3>
                 <h4>Completed: {item.completed ? 'YES' : 'NO'}</h4>
                 <p>Created at: <TimeAgo date={item.createdAt} /></p>
                 <p>Updated at: <TimeAgo date={item.updatedAt} /></p>
-                <p>ID: {item.id}</p>
+                <p>ID: {item.uuid}</p>
                 <hr />
               </li>
             </For>

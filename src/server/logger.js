@@ -1,21 +1,17 @@
 import log from 'winston';
-import PrettyError from 'pretty-error';
 import { Config } from '../config';
-
-const prettyError = new PrettyError();
 
 // set log as cli mode
 log.cli();
 
-function logServerConfig(err, type) {
-  if (err) log.error(prettyError.render(err));
-
+function logServerConfig(type = null) {
   const port = type === 'API' ? Config.api.port : Config.web.port;
   const host = type === 'API' ? Config.api.host : Config.web.host;
 
   const url = ['http://', host, ':', port].join('');
 
   if (type === 'API') {
+    log.info('------------------------------------------');
     log.info('API Listening at:', url);
     log.info('------------------------------------------');
     log.info('Database Host:', Config.db.host);
@@ -25,9 +21,11 @@ function logServerConfig(err, type) {
   }
 
   if (type !== 'API') {
-    log.info('Rendering:', type);
+    log.info('WEB Listening at:', url);
     log.info('Environment:', Config.env);
-    log.info('Listening at:', url);
+    log.info('------------------------------------------');
+    log.info('IO Host:', Config.io.host);
+    log.info('IO Port:', Config.io.port);
     log.info('------------------------------------------');
   }
 }
