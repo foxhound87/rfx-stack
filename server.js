@@ -6,7 +6,7 @@ require('css-modules-require-hook')({
   generateScopedName: '[name]__[local]___[hash:base64:5]',
 });
 
-global.CONFIG = require('./src/config').Config;
+global.CONFIG = require('./config').Config;
 
 require('./src/server/server.api');
 

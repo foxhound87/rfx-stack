@@ -3,7 +3,7 @@ import globule from 'globule';
 import mongoose from 'mongoose';
 import adapter from 'feathers-mongoose';
 
-import { Dir, Config } from '../config';
+import { Dir, Config } from '~/config';
 import { log } from './logger';
 
 class Services {

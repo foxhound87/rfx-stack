@@ -1,4 +1,4 @@
-import { Dir } from '~/src/config';
+import { Dir } from '~/config';
 import serveStatic from 'serve-static';
 
 export function serveStaticMiddleware() {

@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
-import { Dir, ExposeConfigToClient } from '~/src/config';
+import { Dir, ExposeConfigToClient } from '~/config';
 
 export function load() {
   return {
