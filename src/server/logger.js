@@ -1,5 +1,5 @@
 import log from 'winston';
-import { Config } from '../config';
+import { Config } from '~/config';
 
 // set log as cli mode
 log.cli();

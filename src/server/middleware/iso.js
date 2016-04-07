@@ -1,7 +1,7 @@
 import isDev from 'isdev';
 import path from 'path';
 import routes from '~/src/routes';
-import { Dir } from '~/src/config';
+import { Dir } from '~/config';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';

@@ -31,19 +31,20 @@ const Config = getenv.multi({
 });
 
 const Dir = {
-  src: path.resolve(__dirname),
+  config: path.resolve(__dirname),
   root: path.resolve(__dirname, '..'),
+  src: path.resolve(__dirname, '..', 'src'),
   modules: path.resolve(__dirname, '..', 'node_modules'),
   public: path.resolve(__dirname, '..', 'public'),
   build: path.resolve(__dirname, '..', 'public', 'build'),
   static: path.resolve(__dirname, '..', 'public', 'static'),
-  config: path.resolve(__dirname, 'config'),
-  components: path.resolve(__dirname, 'components'),
-  containers: path.resolve(__dirname, 'containers'),
-  stores: path.resolve(__dirname, 'stores'),
-  server: path.resolve(__dirname, 'server'),
-  models: path.resolve(__dirname, 'server', 'models'),
-  services: path.resolve(__dirname, 'server', 'services'),
+  components: path.resolve(__dirname, '..', 'src', 'components'),
+  containers: path.resolve(__dirname, '..', 'src', 'containers'),
+  stores: path.resolve(__dirname, '..', 'src', 'stores'),
+  server: path.resolve(__dirname, '..', 'src', 'server'),
+  services: path.resolve(__dirname, '..', 'src', 'server', 'services'),
+  hooks: path.resolve(__dirname, '..', 'src', 'server', 'hooks'),
+  middleware: path.resolve(__dirname, '..', 'src', 'server', 'middleware'),
 };
 
 /**

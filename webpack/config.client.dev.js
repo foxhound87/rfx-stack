@@ -1,7 +1,7 @@
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import NpmInstallWebpackPlugin from 'npm-install-webpack-plugin';
 import webpack from 'webpack';
-import { Config } from '~/src/config';
+import { Config } from '~/config';
 
 export function loader() {
   return {

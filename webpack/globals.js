@@ -1,5 +1,5 @@
 import path from 'path';
-import { Dir } from '~/src/config';
+import { Dir } from '~/config';
 
 // css
 import postcssImport from 'postcss-import';

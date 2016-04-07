@@ -1,4 +1,4 @@
-import { Dir } from '../config';
+import { Dir } from '~/config';
 
 import compression from 'compression';
 import cors from 'cors';

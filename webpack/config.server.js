@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import fs from 'fs';
 
-import { Dir } from '~/src/config';
+import { Dir } from '~/config';
 
 // keep node_module paths out of the bundle
 function removeNodeModules() {
