@@ -11,7 +11,7 @@
 
 ## Main Features
 - Server Side Rendering
-- Reactive Media Queries
+- Reactive UI & Media Queries
 - React Transform HMR
 - Isomorphic Fetch/Socket
 - Real Time Ready

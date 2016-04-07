@@ -10,7 +10,7 @@ function removeNodeModules() {
     .readdirSync(Dir.modules)
     .concat(['react-dom/server'])
     .reduce((ext, mod) => {
-      ext[mod] = ['commonjs', mod].join(' ');
+      ext[mod] = ['commonjs', mod].join(' '); // eslint-disable-line no-param-reassign
       return ext;
     }, {});
 }
