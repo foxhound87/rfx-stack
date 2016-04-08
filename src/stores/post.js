@@ -40,12 +40,11 @@ export default class PostStore {
   }
 
   search(title) {
-    return this.find({ query: { title: `%${title}%` } });
+    return this.find({ query: { title: { $regex: `.*${title}.*`, $options: 'i' } } });
   }
 
   find(query = {}) {
     _.merge(this.query, query);
-
     return service('post')
       .find(this.query)
       .then((json) => this.list = json.data);
