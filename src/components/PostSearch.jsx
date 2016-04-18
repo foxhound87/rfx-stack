@@ -1,46 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { dispatch } from '../state/dispatcher';
 import { connect } from '../state/context';
 // import cx from 'classnames';
 
 // styles
 // import styles from '../styles/post.search.css';
 
-@connect
-export default class PostSearch extends Component {
+const handleSearch = (e) => {
+  e.preventDefault();
+  const val = e.target.value;
+  dispatch('post.search', val);
+};
 
-  constructor(props) {
-    super(props);
-    this.state = { search: '' };
-  }
+const resetSearch = (e) => {
+  e.preventDefault();
+  e.target.value = ''; // eslint-disable-line no-param-reassign
+  dispatch('post.search', null);
+};
 
-  handleSearch = (e) => {
-    e.preventDefault();
-    const val = e.target.value;
-    this.setState({ search: val });
-    this.context.store.post.search(val);
-  };
+const PostSearch = ({ search }) => (
+  <form>
+    <input
+      className="field rounded-left"
+      type="text"
+      placeholder="Search..."
+      value={search}
+      onChange={handleSearch}
+    />
+    <button
+      onClick={resetSearch}
+      className="btn rounded-right border black bg-silver"
+    >X</button>
+  </form>
+);
 
-  resetSearch = (e) => {
-    e.preventDefault();
-    this.setState({ search: '' });
-    this.context.store.post.search('');
-  };
+PostSearch.propTypes = {
+  search: React.PropTypes.string,
+};
 
-  render() {
-    return (
-      <form>
-        <input
-          className="field rounded-left"
-          type="text"
-          placeholder="Search..."
-          value={this.state.search}
-          onChange={this.handleSearch}
-        />
-        <button
-          onClick={this.resetSearch}
-          className="btn rounded-right border black bg-silver"
-        >X</button>
-      </form>
-    );
-  }
-}
+export default connect(PostSearch);

@@ -9,6 +9,7 @@ import DevTools from 'mobx-react-devtools';
 
 // components
 import { StickyContainer, Sticky } from 'react-sticky';
+import { MatchMediaProvider } from '../utils/matchMedia';
 import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';
 
@@ -36,30 +37,33 @@ export default class AppLayout extends Component {
     const layoutIsShifted = ui.layoutIsShifted;
     const appNavIsOpen = ui.appNavIsOpen;
     const appNavIsDocked = ui.appNavIsDocked;
+    const menuAccountIsOpen = ui.appBarMenuAccountIsOpen;
 
     return (
-      <StickyContainer className={cx('animated', 'fadeIn')}>
-        { isDev ? <DevTools /> : null }
-        <AppNav
-          open={appNavIsOpen}
-          docked={appNavIsDocked}
-          onRequestChange={this.handleAppNavRequestChange}
-        >
-          <a className={navBtn}>Link A</a>
-          <a className={navBtn}>Link B</a>
-          <a className={navBtn}>Link C</a>
-          <a className={navBtn}>Link D</a>
-          <a className={navBtn}>Link E</a>
-        </AppNav>
-        <div className={cx({ [styles.su]: layoutIsShifted })}>
-          <Sticky className={cx('animated', 'slideInDown')}>
-            <AppBar />
-          </Sticky>
-          <div className={styles.content}>
-            {this.props.children}
+      <MatchMediaProvider context={this.context}>
+        <StickyContainer className={cx('animated', 'fadeIn')}>
+          { isDev ? <DevTools /> : null }
+          <AppNav
+            open={appNavIsOpen}
+            docked={appNavIsDocked}
+            onRequestChange={this.handleAppNavRequestChange}
+          >
+            <a className={navBtn}>Link A</a>
+            <a className={navBtn}>Link B</a>
+            <a className={navBtn}>Link C</a>
+            <a className={navBtn}>Link D</a>
+            <a className={navBtn}>Link E</a>
+          </AppNav>
+          <div className={cx({ [styles.su]: layoutIsShifted })}>
+            <Sticky className={cx('animated', 'slideInDown')}>
+              <AppBar open={menuAccountIsOpen} />
+            </Sticky>
+            <div className={styles.content}>
+              {this.props.children}
+            </div>
           </div>
-        </div>
-      </StickyContainer>
+        </StickyContainer>
+      </MatchMediaProvider>
     );
   }
 }

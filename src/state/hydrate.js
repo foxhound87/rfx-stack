@@ -1,6 +1,6 @@
 import jsonStringifySafe from 'json-stringify-safe';
 import { toJSON } from 'mobx';
-import initStore from './index';
+import initStore from './store';
 
 /**
  Dehydrate (on server)

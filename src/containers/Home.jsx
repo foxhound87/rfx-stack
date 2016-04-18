@@ -24,12 +24,14 @@ export default class Home extends Component {
   };
 
   render() {
-    const items = this.context.store.post.list;
-    const filter = this.context.store.post.filter;
+    const post = this.context.store.post;
+    const search = post.searchValue;
+    const items = post.list;
+    const filter = post.filter;
 
     return (
       <div>
-        <img width="20" src="/static/img/check.png" />
+        <img width="20" src="/static/img/check.png" role="presentation" />
         <a href="/static/img/check.png">Check Static</a>
         <hr />
 
@@ -43,7 +45,7 @@ export default class Home extends Component {
 
         <hr />
         <div className="md-flex flex-center">
-          <div className="p1 py2"><PostSearch /></div>
+          <div className="p1 py2"><PostSearch search={search} /></div>
           <div className="flex-auto p1 py2 center"><PostInfo items={items} /></div>
           <div className="p1 py2"><PostFilter filter={filter} /></div>
         </div>

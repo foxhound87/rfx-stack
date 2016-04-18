@@ -1,6 +1,7 @@
 import { observable, autorun } from 'mobx';
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/lib/styles/baseThemes/lightBaseTheme';
+import { action } from '../state/actions';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 export default class UIStore {
@@ -57,12 +58,6 @@ export default class UIStore {
     injectTapEventPlugin();
   }
 
-  toggleAppNav(flag = null) {
-    if (flag === 'open') this.appNavIsOpen = true;
-    if (flag === 'close') this.appNavIsOpen = false;
-    if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
-  }
-
   dockAppNav(flag = null) {
     if (flag === 'on') this.appNavIsDocked = true;
     if (flag === 'off') this.appNavIsDocked = false;
@@ -73,6 +68,14 @@ export default class UIStore {
     if (flag === 'no') this.layoutIsShifted = false;
   }
 
+  @action
+  toggleAppNav(flag = null) {
+    if (flag === 'open') this.appNavIsOpen = true;
+    if (flag === 'close') this.appNavIsOpen = false;
+    if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
+  }
+
+  @action
   toggleAppBarMenuAccount(flag = null) {
     if (flag === 'open') this.appBarMenuAccountIsOpen = true;
     if (flag === 'close') this.appBarMenuAccountIsOpen = false;

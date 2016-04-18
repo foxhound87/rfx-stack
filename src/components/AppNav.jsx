@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
 // components
-import LeftNav from 'material-ui/lib/left-nav';
+import Drawer from 'material-ui/Drawer';
 
 // styles
 import styles from '../styles/app.nav.css';
 
-@connect
-export default class AppNav extends Component {
+const AppNav = ({ children, open, docked, onRequestChange }) => (
+  <Drawer
+    className={cx(styles.nav)}
+    open={open}
+    docked={docked}
+    onRequestChange={onRequestChange}
+  >
+    {children}
+  </Drawer>
+);
 
-  static propTypes = {
-    children: React.PropTypes.array,
-    open: React.PropTypes.bool,
-    docked: React.PropTypes.bool,
-    onRequestChange: React.PropTypes.func,
-  };
+AppNav.propTypes = {
+  children: React.PropTypes.array,
+  open: React.PropTypes.bool,
+  docked: React.PropTypes.bool,
+  onRequestChange: React.PropTypes.func,
+};
 
-  render() {
-    return (
-      <LeftNav
-        className={cx(styles.nav)}
-        open={this.props.open}
-        docked={this.props.docked}
-        onRequestChange={this.props.onRequestChange}
-      >
-        {this.props.children}
-      </LeftNav>
-    );
-  }
-}
+export default connect(AppNav);

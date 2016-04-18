@@ -1,11 +1,14 @@
 import { observable } from 'mobx';
 import { service } from '../app';
 import { factory } from '../seeds/post'; // just for test
+import { action } from '../state/actions';
 import _ from 'lodash';
 
 export default class PostStore {
 
   query = {};
+
+  @observable searchValue = '';
 
   @observable filter = 'all';
 
@@ -24,30 +27,17 @@ export default class PostStore {
     // service('post').on('removed', this.onRemoved);   // onRemoved = (id, params) => {}
   }
 
-  filterBy(filter) {
-    this.filter = filter;
-    let completed;
-
-    switch (this.filter) {
-      case 'all': this.query.query.completed = undefined; break;
-      case 'todo': completed = true; break;
-      case 'done': completed = false; break;
-      default: completed = 'all';
-    }
-
-    if (filter === 'all') return this.find();
-    return this.find({ query: { completed } });
+  updateList(list) {
+    this.list = list;
   }
 
-  search(title) {
-    return this.find({ query: { title: { $regex: `.*${title}.*`, $options: 'i' } } });
+  emptyList() {
+    this.list = [];
   }
 
-  find(query = {}) {
-    _.merge(this.query, query);
-    return service('post')
-      .find(this.query)
-      .then((json) => this.list = json.data);
+  addItem(item) {
+    this.list.pop();
+    this.list.unshift(item);
   }
 
   create() {
@@ -55,8 +45,36 @@ export default class PostStore {
     return service('post').create(factory());
   }
 
+  find(query = {}) {
+    _.merge(this.query, query);
+    return service('post')
+      .find(this.query)
+      .then((json) => this.updateList(json.data));
+  }
+
   onCreated = (item) => {
-    this.list.pop();
-    this.list.unshift(item);
+    this.addItem(item);
+  }
+
+  @action
+  search(title = null) {
+    this.searchValue = title || '';
+    return this.find({ query: { title: { $regex: `.*${this.searchValue}.*`, $options: 'i' } } });
+  }
+
+  @action
+  filterBy(filter) {
+    this.filter = filter;
+    let completed;
+
+    switch (this.filter) {
+      case 'all': this.query.query.completed = undefined; break;
+      case 'todo': completed = false; break;
+      case 'done': completed = true; break;
+      default: completed = 'all';
+    }
+
+    if (filter === 'all') return this.find();
+    return this.find({ query: { completed } });
   }
 }

@@ -5,6 +5,8 @@ import cx from 'classnames';
 @connect
 export default class MatchMedia extends Component {
 
+  static fetchData() {}
+
   render() {
     const bp = this.context.store.ui.breakpoints;
     return (

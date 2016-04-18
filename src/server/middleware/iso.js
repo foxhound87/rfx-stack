@@ -5,13 +5,13 @@ import { Dir } from '~/config';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { fetchData } from '~/src/utils/fetch';
 import { setMatchMediaConfig } from '~/src/utils/matchMedia';
 import { ContextProvider } from '~/src/state/context';
 import { dehydrate } from '~/src/state/hydrate';
 import { log } from '../logger';
-import initStore from '~/src/state';
+import initStore from '~/src/state/store';
 
 function handleRouter(req, res, props) {
   log.info('handleRouter');

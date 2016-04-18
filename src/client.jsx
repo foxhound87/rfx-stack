@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { rehydrate } from './state/hydrate';
 import { Router, browserHistory, match } from 'react-router';
 import { ContextProvider } from './state/context';
 import { fetchDataOnLocationMatch } from './utils/fetch';
-import { rehydrate } from './state/hydrate';
 import routes from './routes';
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const store = rehydrate();
 

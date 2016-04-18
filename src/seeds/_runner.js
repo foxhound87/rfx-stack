@@ -3,7 +3,9 @@ import { Config } from '~/config';
 
 const handlerFile = ['./_handler.', Config.env].join('');
 
-const handler = require(handlerFile).handle();
+let handler = require(handlerFile).handle();
+
+if (Array.isArray(handler)) handler = Promise.all(handler);
 
 log.info('========================');
 log.info('Seeding...');

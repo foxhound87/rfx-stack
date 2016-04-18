@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 export default class Test extends Component {
 
+  static fetchData() {}
+
   render() {
     return (
       <div>

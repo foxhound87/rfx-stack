@@ -1,4 +1,4 @@
-# RFX Stack (alpha)
+# RFX Stack
 
 #### Universal App featuring:
 ### React + Feathers + MobX
@@ -8,11 +8,15 @@
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
 [![npm](https://img.shields.io/badge/npm-3.3.6%2B-blue.svg)]()
 
+## Updates
+See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELOG.md) for all the details.
 
 ## Main Features
+- Action / Dispatcher for Stateless Components
 - Server Side Rendering
 - Reactive UI & Media Queries
 - React Transform HMR
+- React Stateless Components
 - Isomorphic Fetch/Socket
 - Real Time Ready
 - Microservices Ready
@@ -61,11 +65,9 @@
 
 - Documentation
 - Reduce Dependencies
-- Implement:
- - JWT / Auth
- - ACL / Roles
 
 ## Contributing
 
 If you like this stack, don't forget to star the repo!
+
 If you want to contribute to the development, do not hesitate to contact me.

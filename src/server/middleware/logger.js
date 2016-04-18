@@ -8,7 +8,7 @@ export default function (app) {
     if (err) {
       const { url } = req;
       const { code, message } = err;
-      const msg = `${code ? `(${code}) ` : '' }Route: ${url} - ${message}`;
+      const msg = `${code ? `(${code})` : ''} Route: ${url} - ${message}`;
 
       if (err.code === 404) {
         log.info(msg);
