@@ -14,7 +14,6 @@ const handleSearch = (e) => {
 
 const resetSearch = (e) => {
   e.preventDefault();
-  e.target.value = ''; // eslint-disable-line no-param-reassign
   dispatch('post.search', null);
 };
 
