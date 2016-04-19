@@ -1,15 +1,15 @@
 {
-	"parser": "babel-eslint",
-	"extends": ["airbnb"],
-	"plugins": [
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "plugins": [
     "jsx-a11y",
     "jsx-control-statements"
   ],
-	"globals": {
-		"If": true,
-		"Else": true,
-		"For": true
-	},
+  "globals": {
+    "If": true,
+    "Else": true,
+    "For": true
+  },
   "rules": {
     "no-confusing-arrow": 0
   }
