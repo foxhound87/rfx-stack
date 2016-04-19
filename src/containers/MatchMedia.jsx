@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
@@ -11,6 +12,7 @@ export default class MatchMedia extends Component {
     const bp = this.context.store.ui.breakpoints;
     return (
       <div>
+        <Helmet title="MatchMedia + MobX" />
         <br />
         <br />
         <br />

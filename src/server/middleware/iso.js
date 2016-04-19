@@ -1,8 +1,9 @@
-import isDev from 'isdev';
 import path from 'path';
+import isDev from 'isdev';
 import routes from '~/src/routes';
 import { Dir } from '~/config';
 import React from 'react';
+import Helmet from 'react-helmet';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -34,10 +35,10 @@ function handleRouter(req, res, props) {
     .then((html) => res
       .status(200)
       .render(index, {
-        title: 'Title',
         build: isDev ? null : '/build',
-        root: html,
+        head: Helmet.rewind(),
         state: dehydrate(store),
+        root: html,
       }));
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
@@ -31,6 +32,18 @@ export default class Home extends Component {
 
     return (
       <div>
+        <Helmet
+          htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
+          title="My Title"
+          titleTemplate="MySite.com - %s"
+          defaultTitle="My Default Title"
+          meta={[
+              { name: 'description', content: 'Application description' },
+              { property: 'og:type', content: 'article' },
+          ]}
+          onChangeClientState={(newState) => console.log(newState)}
+        />
+
         <img width="20" src="/static/img/check.png" role="presentation" />
         <a href="/static/img/check.png">Check Static</a>
         <hr />

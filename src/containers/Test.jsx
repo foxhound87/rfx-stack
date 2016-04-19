@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 
 export default class Test extends Component {
 
@@ -7,6 +8,7 @@ export default class Test extends Component {
   render() {
     return (
       <div>
+        <Helmet title="Test Page" />
         <h1>Test Page</h1>
         <h3>Just the UI</h3>
         <p>

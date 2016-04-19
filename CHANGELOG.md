@@ -2,6 +2,7 @@
 
 * React Stateless Components implementation
 * Action/Dispatcher for Stateless React Components
+* Helmet w/ server side rendering
 * Updated NPM Dependencies
 
 # 0.2.0 (alpha.2)
