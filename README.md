@@ -41,7 +41,8 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 ---
 ## Setup
 
-> Run a local mongodb instance before start the server (port 27017).
+> Run a local MongoDB instance (port 27017) before start the server.
+[Install MongoDB](https://docs.mongodb.org/manual/administration/install-community/)
 
 ##### ENV: Development
 
