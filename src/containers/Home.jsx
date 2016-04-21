@@ -26,9 +26,6 @@ export default class Home extends Component {
 
   render() {
     const post = this.context.store.post;
-    const search = post.searchValue;
-    const items = post.list;
-    const filter = post.filter;
 
     return (
       <div>
@@ -58,13 +55,13 @@ export default class Home extends Component {
 
         <hr />
         <div className="md-flex flex-center">
-          <div className="p1 py2"><PostSearch search={search} /></div>
-          <div className="flex-auto p1 py2 center"><PostInfo items={items} /></div>
-          <div className="p1 py2"><PostFilter filter={filter} /></div>
+          <div className="p1 py2"><PostSearch search={post.searchValue} /></div>
+          <div className="flex-auto p1 py2 center"><PostInfo items={post.list} /></div>
+          <div className="p1 py2"><PostFilter filter={post.filter} /></div>
         </div>
 
         <hr />
-        <PostList items={items} filter={filter} />
+        <PostList items={post.list} filter={post.filter} />
       </div>
     );
   }
