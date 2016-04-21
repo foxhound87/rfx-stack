@@ -34,19 +34,14 @@ export default class AppLayout extends Component {
 
   render() {
     const ui = this.context.store.ui;
-    const breakpoints = ui.breakpoints;
-    const layoutIsShifted = ui.layoutIsShifted;
-    const appNavIsOpen = ui.appNavIsOpen;
-    const appNavIsDocked = ui.appNavIsDocked;
-    const menuAccountIsOpen = ui.appBarMenuAccountIsOpen;
 
     return (
-      <MatchMediaProvider breakpoints={breakpoints}>
+      <MatchMediaProvider breakpoints={ui.breakpoints}>
         <StickyContainer className={cx('animated', 'fadeIn')}>
           { isDev ? <DevTools /> : null }
           <AppNav
-            open={appNavIsOpen}
-            docked={appNavIsDocked}
+            open={ui.appNavIsOpen}
+            docked={ui.appNavIsDocked}
             onRequestChange={this.handleAppNavRequestChange}
           >
             <a className={navBtn}>Link A</a>
@@ -55,9 +50,9 @@ export default class AppLayout extends Component {
             <a className={navBtn}>Link D</a>
             <a className={navBtn}>Link E</a>
           </AppNav>
-          <div className={cx({ [styles.su]: layoutIsShifted })}>
+          <div className={cx({ [styles.su]: ui.layoutIsShifted })}>
             <Sticky className={cx('animated', 'slideInDown')}>
-              <AppBar open={menuAccountIsOpen} />
+              <AppBar open={ui.appBarMenuAccountIsOpen} />
             </Sticky>
             <div className={styles.content}>
               {this.props.children}
