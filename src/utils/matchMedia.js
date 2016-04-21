@@ -31,13 +31,13 @@ export function setMatchMediaConfig(req = null) {
 export default class MatchMediaProvider extends Component {
 
   static propTypes = {
-    context: React.PropTypes.object,
+    breakpoints: React.PropTypes.object,
     children: React.PropTypes.object,
   };
 
   constructor(props) {
     super(props);
-    this.breakpoints = this.props.context.store.ui.breakpoints;
+    this.breakpoints = this.props.breakpoints;
     this.templates = JSON.parse(jsonStringifySafe(toJSON(this.breakpoints, true)));
   }
 
