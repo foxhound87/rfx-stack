@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 import { action } from '~/src/state/actions';
 
-export default class UIStore {
+export default class AppBar {
 
   @observable accountMenuIsOpen = false;
 
