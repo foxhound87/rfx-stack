@@ -17,7 +17,7 @@ function getMethodName(str) {
   return str.substring(lastIndex + 1, str.length);
 }
 
-export function dispatch(namespace, opt) {
+export function dispatch(namespace, ...opt) {
   const store = getStore();
   const className = getClassName(namespace, store);
   const methodName = getMethodName(namespace);
@@ -26,7 +26,7 @@ export function dispatch(namespace, opt) {
   if (isAction) {
     const fn = access(store, namespace);
     if (typeof fn === 'function') {
-      const args = opt ? [opt] : null;
+      const args = _.isArray(opt) ? opt : [opt];
       return access(store, [namespace, '()'].join(''), args);
     }
     throw new Error(`The provided action ${methodName} does not exist in ${className}`);

@@ -4,13 +4,16 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+// ui classes
+import AuthModal from './ui/AuthModal.js';
+import AppBar from './ui/AppBar.js';
+
 export default class UIStore {
 
   mui = {};
 
   @observable appNavIsOpen = true;
   @observable appNavIsDocked = false;
-  @observable appBarMenuAccountIsOpen = false;
   @observable layoutIsShifted = true;
 
   @observable breakpoints = {
@@ -24,6 +27,10 @@ export default class UIStore {
 
   constructor(ui) {
     Object.assign(this, ui);
+
+    // Init nested UI instances
+    this.authModal = new AuthModal(ui.authModal);
+    this.appBar = new AppBar(ui.appBar);
 
     // open and close the nav automatically
     // when the "xs" breakpoint changes
@@ -73,12 +80,5 @@ export default class UIStore {
     if (flag === 'open') this.appNavIsOpen = true;
     if (flag === 'close') this.appNavIsOpen = false;
     if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
-  }
-
-  @action
-  toggleAppBarMenuAccount(flag = null) {
-    if (flag === 'open') this.appBarMenuAccountIsOpen = true;
-    if (flag === 'close') this.appBarMenuAccountIsOpen = false;
-    if (!flag) this.appBarMenuAccountIsOpen = !this.appBarMenuAccountIsOpen;
   }
 }

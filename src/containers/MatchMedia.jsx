@@ -4,7 +4,8 @@ import { connect } from '../state/context';
 import cx from 'classnames';
 
 @connect
-export default class MatchMedia extends Component {
+export default
+class MatchMedia extends Component {
 
   static fetchData() {}
 

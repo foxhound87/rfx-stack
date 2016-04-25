@@ -1,4 +1,5 @@
 import { hooks as auth } from 'feathers-authentication';
+import { setUUID } from '~/src/server/hooks/setUUID';
 
 /**
   Hook: before
@@ -18,6 +19,7 @@ export default {
     auth.restrictToOwner({ ownerField: '_id' }),
   ],
   create: [
+    setUUID(),
     auth.hashPassword(),
   ],
   update: [

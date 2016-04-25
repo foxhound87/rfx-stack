@@ -13,13 +13,14 @@ import PostList from '../components/PostList';
 const button = cx(['btn', 'rounded', 'btn-outline']);
 
 @connect
-export default class Home extends Component {
+export default
+class Home extends Component {
 
   static fetchData(store) {
     return store.post.find();
   }
 
-  handleCreate = (e) => {
+  handleCreatePost = (e) => {
     e.preventDefault();
     this.context.store.post.create();
   };
@@ -35,10 +36,10 @@ export default class Home extends Component {
           titleTemplate="MySite.com - %s"
           defaultTitle="My Default Title"
           meta={[
-              { name: 'description', content: 'Application description' },
-              { property: 'og:type', content: 'article' },
+            { name: 'description', content: 'Application description' },
+            { property: 'og:type', content: 'article' },
           ]}
-          onChangeClientState={(newState) => console.log(newState)}
+          onChangeClientState={(newState) => console.log('helmet', newState)}
         />
 
         <img width="20" src="/static/img/check.png" role="presentation" />
@@ -48,7 +49,7 @@ export default class Home extends Component {
         <div className="center">
           <button
             type="button" value="done"
-            onClick={this.handleCreate}
+            onClick={this.handleCreatePost}
             className={cx(button)}
           >+ Add New Item</button>
         </div>
@@ -61,7 +62,7 @@ export default class Home extends Component {
         </div>
 
         <hr />
-        <PostList items={post.list} filter={post.filter} />
+        <PostList items={post.list} />
       </div>
     );
   }

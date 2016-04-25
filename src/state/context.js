@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-
 import contextTypes from './contextTypes';
 
 export class ContextProvider extends Component {
 
   static propTypes = {
-    children: React.PropTypes.object,
+    children: React.PropTypes.node,
+    location: React.PropTypes.object,
     context: React.PropTypes.shape(contextTypes),
   };
 

@@ -1,8 +1,4 @@
-import _ from 'lodash';
-import React, { Component } from 'react';
 import matchMediaMock from 'match-media-mock';
-import { toJSON } from 'mobx';
-import jsonStringifySafe from 'json-stringify-safe';
 
 const matchMedia = matchMediaMock.create();
 
@@ -28,46 +24,4 @@ export function setMatchMediaConfig(req = null) {
   if (config) matchMedia.setConfig(config);
 }
 
-export default class MatchMediaProvider extends Component {
-
-  static propTypes = {
-    breakpoints: React.PropTypes.object,
-    children: React.PropTypes.object,
-  };
-
-  constructor(props) {
-    super(props);
-    this.breakpoints = this.props.breakpoints;
-    this.templates = JSON.parse(jsonStringifySafe(toJSON(this.breakpoints, true)));
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.matchBreakpoint();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize = (e) => {
-    e.preventDefault();
-    this.matchBreakpoint();
-  }
-
-  matchBreakpoint = () => {
-    setMatchMediaConfig();
-    _.mapKeys(this.templates, this.updateBreakpoints);
-  }
-
-  updateBreakpoints = (val, key) => {
-    const match = matchMedia(val).matches;
-    this.breakpoints[key] = match;
-  }
-
-  render() {
-    return this.props && this.props.children;
-  }
-}
-
-export { matchMedia, MatchMediaProvider };
+export { matchMedia };

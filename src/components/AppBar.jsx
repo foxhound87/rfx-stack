@@ -11,6 +11,7 @@ import styles from '../styles/app.bar.css';
 const button = cx('btn', 'py2', 'm0');
 const ul = cx('h5', 'list-reset', 'mb0');
 const ulBtn = cx('btn', 'block');
+const menuAccount = cx('absolute', 'right-0', 'nowrap', 'rounded');
 
 // events
 const handleNavToggle = (e) => {
@@ -20,10 +21,25 @@ const handleNavToggle = (e) => {
 
 const handleMenuAccountToggle = (e) => {
   e.preventDefault();
-  dispatch('ui.toggleAppBarMenuAccount');
+  dispatch('ui.appBar.toggleAccountMenu');
 };
 
-const AppBar = ({ open }) => (
+const handleAuthModalSignin = (e) => {
+  e.preventDefault();
+  dispatch('ui.authModal.toggle', 'open', 'signin');
+};
+
+const handleAuthModalSignup = (e) => {
+  e.preventDefault();
+  dispatch('ui.authModal.toggle', 'open', 'signup');
+};
+
+const handleLogout = (e) => {
+  e.preventDefault();
+  dispatch('auth.logout');
+};
+
+const AppBar = ({ open, check, user }) => (
   <div className={cx(styles.bar, 'clearfix')}>
     <div className="left">
       <a onClick={handleNavToggle} className={button}>Toggle Nav</a>
@@ -34,23 +50,23 @@ const AppBar = ({ open }) => (
     <div className={cx('right')}>
       <div className={cx('inline-block')}>
         <div className={cx('relative')}>
-          <a
-            onClick={handleMenuAccountToggle}
-            className={button}
-          >
-            My Account &#9662;
-          </a>
-          <div className=
-            {cx([styles.menuAccount, 'absolute', 'right-0', 'nowrap', 'rounded'], {
-              hide: !open,
-            })}
-          >
-            <ul className={ul}>
-              <li><a className={ulBtn}>Profile</a></li>
-              <li><a className={ulBtn}>Settings</a></li>
-              <li><a className={ulBtn}>Sign Out</a></li>
-            </ul>
-          </div>
+          <If condition={check}>
+            <a onClick={handleMenuAccountToggle} className={button}> {user.email} &#9662;</a>
+            <div className={cx([styles.menuAccount, menuAccount], { hide: !open })}>
+              <ul className={ul}>
+                <li><a className={ulBtn}>Profile</a></li>
+                <li><a className={ulBtn}>Settings</a></li>
+                <li><a className={ulBtn} onClick={handleLogout}>Sign Out</a></li>
+              </ul>
+            </div>
+          <Else />
+            <a onClick={handleAuthModalSignin} className={button}>
+              Login
+            </a>
+            <a onClick={handleAuthModalSignup} className={button}>
+              Register
+            </a>
+          </If>
         </div>
       </div>
     </div>
@@ -61,7 +77,8 @@ const AppBar = ({ open }) => (
 );
 
 AppBar.propTypes = {
-  uiStore: React.PropTypes.object,
+  user: React.PropTypes.object,
+  check: React.PropTypes.bool,
   open: React.PropTypes.bool,
 };
 

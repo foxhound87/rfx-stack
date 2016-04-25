@@ -20,7 +20,7 @@ const AppNav = ({ children, open, docked, onRequestChange }) => (
 );
 
 AppNav.propTypes = {
-  children: React.PropTypes.array,
+  children: React.PropTypes.node,
   open: React.PropTypes.bool,
   docked: React.PropTypes.bool,
   onRequestChange: React.PropTypes.func,
