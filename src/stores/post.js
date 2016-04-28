@@ -12,8 +12,6 @@ export default class PostStore {
 
   @observable filter = 'all';
 
-  @observable found = 0;
-
   @observable list = [];
 
   @observable pagination = {};
