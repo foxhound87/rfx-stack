@@ -12,7 +12,6 @@ export class MatchMediaProvider extends Component {
   };
 
   constructor(props) {
-    console.log('MatchMediaProvider');
     super(props);
 
     this.breakpoints = isObservable(this.props.breakpoints)
