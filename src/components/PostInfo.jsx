@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from '../state/context';
 
-const PostInfo = ({ items }) => (
+const PostInfo = ({ found }) => (
   <div className="gray">
-    <b>{items.length} Items found</b>
+    <b>{found} Items found</b>
   </div>
 );
 
 PostInfo.propTypes = {
-  items: React.PropTypes.object,
+  found: React.PropTypes.number,
 };
 
 export default connect(PostInfo);

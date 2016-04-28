@@ -57,7 +57,9 @@ class Home extends Component {
         <hr />
         <div className="md-flex flex-center">
           <div className="p1 py2"><PostSearch search={post.searchValue} /></div>
-          <div className="flex-auto p1 py2 center"><PostInfo items={post.list} /></div>
+          <div className="flex-auto p1 py2 center">
+            <PostInfo found={post.pagination.total} />
+          </div>
           <div className="p1 py2"><PostFilter filter={post.filter} /></div>
         </div>
 

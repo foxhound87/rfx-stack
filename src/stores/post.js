@@ -12,7 +12,11 @@ export default class PostStore {
 
   @observable filter = 'all';
 
+  @observable found = 0;
+
   @observable list = [];
+
+  @observable pagination = {};
 
   constructor(post) {
     Object.assign(this, post);
@@ -27,8 +31,13 @@ export default class PostStore {
     // service('post').on('removed', this.onRemoved);   // onRemoved = (id, params) => {}
   }
 
-  updateList(list) {
-    this.list = list;
+  updateList(json) {
+    this.updatePagination(json);
+    this.list = json.data;
+  }
+
+  updatePagination(json) {
+    this.pagination = _.omit(json, 'data');
   }
 
   emptyList() {
@@ -38,6 +47,7 @@ export default class PostStore {
   addItem(item) {
     this.list.pop();
     this.list.unshift(item);
+    this.pagination.total++;
   }
 
   create() {
@@ -49,12 +59,20 @@ export default class PostStore {
     _.merge(this.query, query);
     return service('post')
       .find(this.query)
-      .then((json) => this.updateList(json.data));
+      .then((json) => this.updateList(json));
   }
 
-  onCreated = (item) => {
-    this.addItem(item);
-  }
+  /* EVENTS */
+
+  onCreated = (item) => this.addItem(item);
+
+  // onUpdated = (id, data) => {}
+
+  // onPatched = (id, data) => {}
+
+  // onRemoved = (id, params) => {}
+
+  /* ACTIONS */
 
   @action
   search(title = null) {
