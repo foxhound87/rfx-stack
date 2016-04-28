@@ -51,6 +51,12 @@ export default class UIStore {
       ? this.shiftLayout('yes')
       : this.shiftLayout('no')
     );
+
+    // undock the navbar if the modal is open
+    autorun(() => this.authModal.isOpen
+      ? this.toggleAppNav('close')
+      : this.toggleAppNav('open')
+    );
   }
 
   getMui() {

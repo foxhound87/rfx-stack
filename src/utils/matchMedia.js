@@ -4,8 +4,10 @@ const matchMedia = matchMediaMock.create();
 
 let config = null;
 
-export function setMatchMediaConfig(req = null) {
-  if (!global.CLIENT && req) {
+const setMatchMediaConfig = (req = null) => {
+  const isClient = typeof window !== 'undefined';
+
+  if (!isClient && req) {
     config = {
       type: 'screen',
       width: req.params.width,
@@ -13,7 +15,7 @@ export function setMatchMediaConfig(req = null) {
     };
   }
 
-  if (global.CLIENT && !req) {
+  if (isClient && !req) {
     config = {
       type: 'screen',
       width: window.innerWidth,
@@ -22,6 +24,6 @@ export function setMatchMediaConfig(req = null) {
   }
 
   if (config) matchMedia.setConfig(config);
-}
+};
 
-export { matchMedia };
+export { matchMedia, setMatchMediaConfig };

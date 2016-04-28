@@ -8,3 +8,7 @@
   min-width:128px;
   background: #f0f0f0;
 }
+
+.leftShifted {
+  left: 256px;
+}

@@ -89,7 +89,6 @@
     "react-helmet": "^3.0.1",
     "react-modal": "^1.1.2",
     "react-router": "~2.2.4",
-    "react-sticky": "~5.0.0",
     "react-tap-event-plugin": "~1.0.0",
     "react-timeago": "^3.0.0-beta.3",
     "safe-access": "^0.1.0",

@@ -12,6 +12,7 @@ const button = cx('btn', 'py2', 'm0');
 const ul = cx('h5', 'list-reset', 'mb0');
 const ulBtn = cx('btn', 'block');
 const menuAccount = cx('absolute', 'right-0', 'nowrap', 'rounded');
+const appBar = cx('clearfix', 'fixed', 'animated', 'fadeIn', 'top-0', 'right-0');
 
 // events
 const handleNavToggle = (e) => {
@@ -39,8 +40,12 @@ const handleLogout = (e) => {
   dispatch('auth.logout');
 };
 
-const AppBar = ({ open, check, user }) => (
-  <div className={cx(styles.bar, 'clearfix')}>
+const AppBar = ({ open, check, user, ui }) => (
+  <div className={cx(styles.bar, appBar, {
+    [styles.leftShifted]: ui.layoutIsShifted,
+    'left-0': !ui.layoutIsShifted,
+  })}
+  >
     <div className="left">
       <a onClick={handleNavToggle} className={button}>Toggle Nav</a>
       <Link to="/" className={button}>Home</Link>
@@ -77,6 +82,7 @@ const AppBar = ({ open, check, user }) => (
 );
 
 AppBar.propTypes = {
+  ui: React.PropTypes.object,
   user: React.PropTypes.object,
   check: React.PropTypes.bool,
   open: React.PropTypes.bool,

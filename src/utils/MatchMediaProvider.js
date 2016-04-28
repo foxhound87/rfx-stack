@@ -4,7 +4,7 @@ import { matchMedia, setMatchMediaConfig } from './matchMedia';
 import { toJSON, isObservable, observable } from 'mobx';
 import jsonStringifySafe from 'json-stringify-safe';
 
-class MatchMediaProvider extends Component {
+export class MatchMediaProvider extends Component {
 
   static propTypes = {
     children: React.PropTypes.node,
@@ -12,11 +12,12 @@ class MatchMediaProvider extends Component {
   };
 
   constructor(props) {
+    console.log('MatchMediaProvider');
     super(props);
 
     this.breakpoints = isObservable(this.props.breakpoints)
-    ? this.props.breakpoints
-    : observable(this.props.breakpoints);
+      ? this.props.breakpoints
+      : observable(this.props.breakpoints);
 
     this.templates = JSON.parse(jsonStringifySafe(toJSON(this.breakpoints, true)));
   }
@@ -46,8 +47,8 @@ class MatchMediaProvider extends Component {
   };
 
   render() {
-    return this.props && this.props.children;
+    return (
+      <div>{ this.props && this.props.children }</div>
+    );
   }
 }
-
-export { MatchMediaProvider };

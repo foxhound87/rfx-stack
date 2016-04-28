@@ -7,7 +7,6 @@ import isDev from 'isdev';
 import DevTools from 'mobx-react-devtools';
 
 // components
-import { StickyContainer, Sticky } from 'react-sticky';
 import { MatchMediaProvider } from '../utils/MatchMediaProvider';
 import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';
@@ -42,47 +41,46 @@ class AppLayout extends Component {
 
     return (
       <MatchMediaProvider breakpoints={ui.breakpoints}>
-        <StickyContainer className={cx('animated', 'fadeIn')}>
-          { isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null }
-          <AppNav
-            open={ui.appNavIsOpen}
-            docked={ui.appNavIsDocked}
-            onRequestChange={this.handleAppNavRequestChange}
-          >
-            <pre>
-              <ul className={cx('list-reset', 'm2')}>
-                <li><h3>Auth Store</h3></li>
-                <li><b>User</b> {JSON.stringify(auth.user, undefined, 2)}</li>
-                <li><h3>React Router</h3></li>
-                <li><b>Location</b> {JSON.stringify(location, undefined, 2)}</li>
-                <li><b>Params</b> {JSON.stringify(params, undefined, 2)}</li>
-                <li><b>Route Params</b> {JSON.stringify(routeParams, undefined, 2)}</li>
-                <li><b>Route</b> {JSON.stringify(route, undefined, 2)}</li>
-                <li><b>Routes</b> {JSON.stringify(routes, undefined, 2)}</li>
-              </ul>
-            </pre>
-          </AppNav>
-          <div className={cx({ [styles.su]: ui.layoutIsShifted })}>
-            <Sticky className={cx('animated', 'slideInDown')}>
-              <AppBar
-                open={ui.appBar.accountMenuIsOpen}
-                check={auth.check}
-                user={auth.user}
-              />
-            </Sticky>
-            <div className={styles.content}>
-              {this.props.children}
-            </div>
-          </div>
-          <AuthModal
-            open={ui.authModal.isOpen}
-            showSection={ui.authModal.showSection}
-            signinModel={ui.authModal.signinModel}
-            signupModel={ui.authModal.signupModel}
-            signinErrors={ui.authModal.signinErrors}
-            signupErrors={ui.authModal.signupErrors}
+        { isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null }
+        <AppNav
+          open={ui.appNavIsOpen}
+          docked={ui.appNavIsDocked}
+          onRequestChange={this.handleAppNavRequestChange}
+        >
+          <pre>
+            <ul className={cx('list-reset', 'm2')}>
+              <li><h3>Auth Store</h3></li>
+              <li><b>User</b> {JSON.stringify(auth.user, undefined, 2)}</li>
+              <li><h3>UI Store</h3></li>
+              <li><b>User</b> {JSON.stringify(ui, undefined, 2)}</li>
+              <li><h3>React Router</h3></li>
+              <li><b>Location</b> {JSON.stringify(location, undefined, 2)}</li>
+              <li><b>Params</b> {JSON.stringify(params, undefined, 2)}</li>
+              <li><b>Route Params</b> {JSON.stringify(routeParams, undefined, 2)}</li>
+              <li><b>Route</b> {JSON.stringify(route, undefined, 2)}</li>
+              <li><b>Routes</b> {JSON.stringify(routes, undefined, 2)}</li>
+            </ul>
+          </pre>
+        </AppNav>
+        <div className={cx({ [styles.su]: ui.layoutIsShifted })}>
+          <AppBar
+            open={ui.appBar.accountMenuIsOpen}
+            check={auth.check}
+            user={auth.user}
+            ui={ui}
           />
-        </StickyContainer>
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
+        </div>
+        <AuthModal
+          open={ui.authModal.isOpen}
+          showSection={ui.authModal.showSection}
+          signinModel={ui.authModal.signinModel}
+          signupModel={ui.authModal.signupModel}
+          signinErrors={ui.authModal.signinErrors}
+          signupErrors={ui.authModal.signupErrors}
+        />
       </MatchMediaProvider>
     );
   }
