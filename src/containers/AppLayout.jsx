@@ -52,7 +52,7 @@ class AppLayout extends Component {
               <li><h3>Auth Store</h3></li>
               <li><b>User</b> {JSON.stringify(auth.user, undefined, 2)}</li>
               <li><h3>UI Store</h3></li>
-              <li><b>User</b> {JSON.stringify(ui, undefined, 2)}</li>
+              <li><b>UI</b> {JSON.stringify(ui, undefined, 2)}</li>
               <li><h3>React Router</h3></li>
               <li><b>Location</b> {JSON.stringify(location, undefined, 2)}</li>
               <li><b>Params</b> {JSON.stringify(params, undefined, 2)}</li>

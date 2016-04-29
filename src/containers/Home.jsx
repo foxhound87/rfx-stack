@@ -60,7 +60,6 @@ class Home extends Component {
         </div>
         <hr />
 
-        <hr />
         <div className="md-flex flex-center">
           <div className="p1 py2">
             <PostSearch search={post.searchValue} />
