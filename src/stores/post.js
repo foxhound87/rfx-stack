@@ -95,6 +95,7 @@ export default class PostStore {
     this.searchValue = title || '';
     return this.find({
       query: {
+        $skip: 0,
         title: {
           $regex: `.*${this.searchValue}.*`,
           $options: 'i',
