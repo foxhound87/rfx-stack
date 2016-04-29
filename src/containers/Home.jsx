@@ -27,7 +27,6 @@ class Home extends Component {
   };
 
   handlePostPageChange = (page) => {
-    console.log('page::::', page);
     this.context.store.post.page(page);
   };
 
