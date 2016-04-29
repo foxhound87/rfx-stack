@@ -68,6 +68,7 @@ class Home extends Component {
           <div className="flex-auto p1 py2 center">
             <PostInfo
               itemsFound={post.pagination.total}
+              totalPages={post.pagination.pages}
               currentPage={post.pagination.current}
             />
           </div>
