@@ -14,6 +14,13 @@ export default class PostStore {
 
   @observable list = [];
 
+  /*
+    "total": "<total number of records>",
+    "limit": "<max number of items per page>",
+    "skip": "<number of skipped items (offset)>",
+    "current": "<current page number>"
+    "pages": "<total number of pages>"
+  */
   @observable pagination = {};
 
   constructor(post) {
@@ -36,6 +43,9 @@ export default class PostStore {
 
   updatePagination(json) {
     this.pagination = _.omit(json, 'data');
+    const { total, limit, skip } = json;
+    this.pagination.pages = Math.ceil(total / limit);
+    this.pagination.current = Math.ceil((skip - 1) / limit) + 1;
   }
 
   emptyList() {
@@ -73,9 +83,24 @@ export default class PostStore {
   /* ACTIONS */
 
   @action
+  page(page = 1) {
+    const skipPage = this.pagination.limit * (page - 1);
+    const { pages } = this.pagination;
+    if (skipPage < 0 || page > pages) return null;
+    return this.find({ query: { $skip: skipPage } });
+  }
+
+  @action
   search(title = null) {
     this.searchValue = title || '';
-    return this.find({ query: { title: { $regex: `.*${this.searchValue}.*`, $options: 'i' } } });
+    return this.find({
+      query: {
+        title: {
+          $regex: `.*${this.searchValue}.*`,
+          $options: 'i',
+        },
+      },
+    });
   }
 
   @action

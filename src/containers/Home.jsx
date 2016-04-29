@@ -8,6 +8,7 @@ import PostSearch from '../components/PostSearch';
 import PostFilter from '../components/PostFilter';
 import PostInfo from '../components/PostInfo';
 import PostList from '../components/PostList';
+import Pagination from '../components/Pagination';
 
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
@@ -23,6 +24,11 @@ class Home extends Component {
   handleCreatePost = (e) => {
     e.preventDefault();
     this.context.store.post.create();
+  };
+
+  handlePostPageChange = (page) => {
+    console.log('page::::', page);
+    this.context.store.post.page(page);
   };
 
   render() {
@@ -53,14 +59,28 @@ class Home extends Component {
             className={cx(button)}
           >+ Add New Item</button>
         </div>
+        <hr />
 
         <hr />
         <div className="md-flex flex-center">
-          <div className="p1 py2"><PostSearch search={post.searchValue} /></div>
-          <div className="flex-auto p1 py2 center">
-            <PostInfo found={post.pagination.total} />
+          <div className="p1 py2">
+            <PostSearch search={post.searchValue} />
           </div>
-          <div className="p1 py2"><PostFilter filter={post.filter} /></div>
+          <div className="flex-auto p1 py2 center">
+            <PostInfo
+              itemsFound={post.pagination.total}
+              currentPage={post.pagination.current}
+            />
+          </div>
+          <div className="p1 py2">
+            <PostFilter filter={post.filter} />
+          </div>
+          <div className="p1 py2">
+            <Pagination
+              currentPage={post.pagination.current}
+              onPageChange={this.handlePostPageChange}
+            />
+          </div>
         </div>
 
         <hr />
