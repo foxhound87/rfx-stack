@@ -4,11 +4,11 @@ import fs from 'fs';
 
 import { Dir } from '~/config';
 
-// keep node_module paths out of the bundle
-function removeNodeModules() {
+function nodeModules() {
   return fs
     .readdirSync(Dir.modules)
     .concat(['react-dom/server'])
+    .filter((x) => ['.bin'].indexOf(x) === -1)
     .reduce((ext, mod) => {
       ext[mod] = ['commonjs', mod].join(' '); // eslint-disable-line no-param-reassign
       return ext;
@@ -26,7 +26,7 @@ export function load() {
       path: Dir.root,
       filename: 'server.bundle.js',
     },
-    externals: removeNodeModules(),
+    externals: nodeModules(),
     node: {
       __filename: true,
       __dirname: true,
