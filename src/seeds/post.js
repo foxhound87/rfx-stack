@@ -6,7 +6,6 @@ const items = [];
 
 export function factory() {
   return {
-    uuid: faker.random.uuid(),
     title: faker.name.title(),
     completed: faker.random.boolean(),
   };
