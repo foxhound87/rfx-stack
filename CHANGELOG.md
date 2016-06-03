@@ -1,3 +1,7 @@
+# 0.4.0 (alpha.4)
+
+* Enabled MobX strict mode
+
 # 0.3.0 (alpha.3)
 
 * React Stateless Components implementation

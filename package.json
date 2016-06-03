@@ -1,6 +1,6 @@
 {
   "name": "rfx-stack",
-  "version": "0.3.1-alpha.3",
+  "version": "0.4.0-alpha.4",
   "license": "MIT",
   "description": "RFX Stack - Universal App featuring: React + Feathers + MobX",
   "author": "Claudio Savino",
