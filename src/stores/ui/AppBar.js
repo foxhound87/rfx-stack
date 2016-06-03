@@ -1,5 +1,4 @@
-import { observable } from 'mobx';
-import { action } from '~/src/state/actions';
+import { observable, action } from 'mobx';
 
 export default class AppBar {
 

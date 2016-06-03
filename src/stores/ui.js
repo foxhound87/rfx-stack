@@ -1,5 +1,4 @@
-import { observable, autorun } from 'mobx';
-import { action } from '../state/actions';
+import { observable, autorun, action } from 'mobx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -71,11 +70,13 @@ export default class UIStore {
     injectTapEventPlugin();
   }
 
+  @action
   dockAppNav(flag = null) {
     if (flag === 'on') this.appNavIsDocked = true;
     if (flag === 'off') this.appNavIsDocked = false;
   }
 
+  @action
   shiftLayout(flag = null) {
     if (flag === 'yes') this.layoutIsShifted = true;
     if (flag === 'no') this.layoutIsShifted = false;

@@ -1,5 +1,4 @@
-import { observable, computed } from 'mobx';
-import { action } from '../state/actions';
+import { observable, computed, action } from 'mobx';
 import { app, service } from '../app';
 import _ from 'lodash';
 
@@ -7,7 +6,7 @@ export default class AuthStore {
 
   jwt = null;
 
-  @observable user = null;
+  @observable user = {};
 
   constructor(auth) {
     Object.assign(this, auth);
@@ -21,8 +20,9 @@ export default class AuthStore {
     if (token) this.jwtAuth({ token });
   }
 
-  updateUser(user) {
-    this.user = user;
+  @action
+  updateUser(data = null) {
+    this.user = data || {};
   }
 
   jwtAuth({ token }) {
@@ -31,7 +31,6 @@ export default class AuthStore {
       .then((result) => this.updateUser(result.data));
   }
 
-  @action
   @computed
   get check() {
     return !_.isEmpty(this.user);
@@ -46,11 +45,14 @@ export default class AuthStore {
 
   @action
   register({ email, password, username }) {
-    return service('user').create({ email, password, username });
+    return service('user')
+      .create({ email, password, username });
   }
 
   @action
   logout() {
-    app().logout().then(() => this.updateUser({}));
+    app()
+      .logout()
+      .then(() => this.updateUser({}));
   }
 }

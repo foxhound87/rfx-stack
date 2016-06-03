@@ -32,7 +32,7 @@ class AppLayout extends Component {
   };
 
   handleAppNavRequestChange = (open) => {
-    this.context.store.ui.appNavIsOpen = open;
+    this.context.store.ui.toggleAppNav(open);
   };
 
   render() {

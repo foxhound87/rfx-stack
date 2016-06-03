@@ -1,6 +1,5 @@
 import getStore from './store';
 import access from 'safe-access';
-import { actions } from './actions';
 import _ from 'lodash';
 
 function getClassNamespace(str) {
@@ -19,17 +18,13 @@ function getMethodName(str) {
 
 export function dispatch(namespace, ...opt) {
   const store = getStore();
+  const fn = access(store, namespace);
   const className = getClassName(namespace, store);
   const methodName = getMethodName(namespace);
-  const isAction = _.includes(actions[className], methodName);
 
-  if (isAction) {
-    const fn = access(store, namespace);
-    if (typeof fn === 'function') {
-      const args = _.isArray(opt) ? opt : [opt];
-      return access(store, [namespace, '()'].join(''), args);
-    }
-    throw new Error(`The provided action ${methodName} does not exist in ${className}`);
+  if (typeof fn === 'function') {
+    const args = _.isArray(opt) ? opt : [opt];
+    return access(store, [namespace, '()'].join(''), args);
   }
 
   throw new Error(`${methodName} is not an action of ${className}`);

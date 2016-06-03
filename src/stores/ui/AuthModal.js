@@ -1,5 +1,4 @@
-import { observable } from 'mobx';
-import { action } from '~/src/state/actions';
+import { observable, action } from 'mobx';
 import _ from 'lodash';
 
 export default class AuthModal {

@@ -1,7 +1,6 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import { service } from '../app';
 import { factory } from '../seeds/post'; // just for test
-import { action } from '../state/actions';
 import _ from 'lodash';
 
 export default class PostStore {
@@ -30,10 +29,10 @@ export default class PostStore {
   }
 
   initEvents() {
-    service('post').on('created', this.onCreated);   // onCreated = (data, params) => {}
-    // service('post').on('updated', this.onUpdated);   // onUpdated = (id, data) => {}
-    // service('post').on('patched', this.onPatched);   // onPatched = (id, data) => {}
-    // service('post').on('removed', this.onRemoved);   // onRemoved = (id, params) => {}
+    service('post').on('created', action(this.onCreated));  // onCreated = (data, params) => {}
+    // service('post').on('updated', action(this.onUpdated));   // onUpdated = (id, data) => {}
+    // service('post').on('patched', action(this.onPatched));   // onPatched = (id, data) => {}
+    // service('post').on('removed', action(this.onRemoved));   // onRemoved = (id, params) => {}
   }
 
   updateList(json) {
@@ -67,18 +66,18 @@ export default class PostStore {
     _.merge(this.query, query);
     return service('post')
       .find(this.query)
-      .then((json) => this.updateList(json));
+      .then(action((json) => this.updateList(json)));
   }
 
   /* EVENTS */
 
   onCreated = (item) => this.addItem(item);
 
-  // onUpdated = (id, data) => {}
+  // onUpdated = (id, data) => {};
 
-  // onPatched = (id, data) => {}
+  // onPatched = (id, data) => {};
 
-  // onRemoved = (id, params) => {}
+  // onRemoved = (id, params) => {};
 
   /* ACTIONS */
 
