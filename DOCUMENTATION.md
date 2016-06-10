@@ -21,7 +21,6 @@ This structure does not force you to separate the server-side code from the clie
 - **clean:modules** [Delete node_modules and cache]
 
 ## Build
-- **build:all** [Build all the apps]
 - **build:client:web** [Build the browser client-side code of the **web** app in /public/build]
 - **build:server:web** [Build the node server-side code of the **web** app in /run/build]
 - **build:server:api** [Build the node server-side code of the **api** app in /run/build]
