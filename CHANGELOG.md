@@ -1,3 +1,10 @@
+# 0.5.0 (alpha.5)
+
+* Updated to react-hot-loader 3 beta
+* Hot-Reloadable MobX Stores
+* Improved directory structure and scripts
+* Better documentation
+
 # 0.4.0 (alpha.4)
 
 * Enabled MobX strict mode

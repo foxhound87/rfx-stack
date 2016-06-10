@@ -1,6 +1,9 @@
+import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
+
+const Dir = global.DIR;
 
 export function loader() {
   return {
@@ -22,7 +25,12 @@ export function config() {
   return {
     bail: true,
     devtool: 'source-map',
-    output: { publicPath: '/build/' },
+    entry: [path.join(Dir.web, 'client')],
+    output: {
+      path: path.join(Dir.public, 'build'),
+      publicPath: '/build/',
+      filename: 'bundle.js',
+    },
     plugins: [
       new ProgressBarPlugin(),
       new webpack.optimize.DedupePlugin(),

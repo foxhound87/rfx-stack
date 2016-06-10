@@ -1,8 +1,10 @@
 import webpack from 'webpack';
 import path from 'path';
 import fs from 'fs';
+import getenv from 'getenv';
+import env from '~/config/expose';
 
-import { Dir } from '~/config';
+const Dir = global.DIR;
 
 function nodeModules() {
   return fs
@@ -15,16 +17,16 @@ function nodeModules() {
     }, {});
 }
 
-export function load() {
+export function load(entry) {
   return {
     target: 'node',
     entry: [
       'babel-polyfill',
-      path.join(Dir.root, 'server.js'),
+      path.join(Dir.run, entry),
     ],
     output: {
-      path: Dir.root,
-      filename: 'server.bundle.js',
+      path: Dir.nodeBuild,
+      filename: [entry, 'bundle.js'].join('.'),
     },
     externals: nodeModules(),
     node: {
@@ -34,7 +36,8 @@ export function load() {
     plugins: [
       new webpack.ProvidePlugin({ Promise: 'bluebird' }),
       new webpack.DefinePlugin({
-        'global.CLIENT': JSON.stringify(false),
+        'global.CONFIG': JSON.stringify(getenv.multi(env)),
+        'global.TYPE': JSON.stringify('SERVER'),
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },

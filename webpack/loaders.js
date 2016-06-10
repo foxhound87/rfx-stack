@@ -1,4 +1,4 @@
-import { Dir } from '~/config';
+const Dir = global.DIR;
 
 export function getPreLoaders() {
   return {

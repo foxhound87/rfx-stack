@@ -20,6 +20,7 @@ export function loader() {
 
 export function config() {
   return {
+    devtool: 'source-map',
     plugins: [
       new ProgressBarPlugin(),
       new ExtractTextPlugin('style.css', { disable: true }),

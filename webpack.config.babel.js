@@ -1,29 +1,36 @@
+import './run/init';
 import merge from 'webpack-merge';
+import match from './src/utils/match';
 import Globals from './webpack/globals';
 import { getLoaders, getPreLoaders } from './webpack/loaders';
-
-const TARGET = process.env.npm_lifecycle_event;
 
 let Config;
 let Loader = getLoaders();
 const PreLoader = getPreLoaders();
 
-if (TARGET === 'server:dev') {
+if (match.script('web:dev', 'development')) {
   Config = require('./webpack/config.client').load();
   const ConfigClientDev = require('./webpack/config.client.dev');
   Loader = merge(Loader, ConfigClientDev.loader());
   Config = merge(Config, ConfigClientDev.config());
 }
 
-if (TARGET === 'build:client') {
+if (match.script('build:client:web', 'production')) {
   Config = require('./webpack/config.client').load();
   const ConfigClientBuild = require('./webpack/config.client.build');
   Loader = merge(Loader, ConfigClientBuild.loader());
   Config = merge(Config, ConfigClientBuild.config());
 }
 
-if (TARGET === 'build:server') {
-  Config = require('./webpack/config.server').load();
+if (match.script('build:server:web', 'production')) {
+  Config = require('./webpack/config.server').load('start.web');
+  const ConfigServerBuild = require('./webpack/config.server.build');
+  Loader = merge(Loader, ConfigServerBuild.loader());
+  Config = merge(Config, ConfigServerBuild.config());
+}
+
+if (match.script('build:server:api', 'production')) {
+  Config = require('./webpack/config.server').load('start.api');
   const ConfigServerBuild = require('./webpack/config.server.build');
   Loader = merge(Loader, ConfigServerBuild.loader());
   Config = merge(Config, ConfigServerBuild.config());

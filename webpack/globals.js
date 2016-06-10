@@ -1,5 +1,6 @@
 import path from 'path';
-import { Dir } from '~/config';
+
+const Dir = global.DIR;
 
 // css
 import postcssImport from 'postcss-import';

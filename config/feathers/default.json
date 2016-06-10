@@ -1,4 +1,19 @@
 {
+  "server": {
+    "db": {
+      "host": "DB_HOST",
+      "name": "DB_NAME",
+      "port": "DB_PORT"
+    },
+    "web": {
+      "host": "WEB_HOST",
+      "port": "WEB_PORT"
+    },
+    "api": {
+      "host": "API_HOST",
+      "port": "API_PORT"
+    }
+  },
   "auth": {
     "idField": "uuid",
     "userEndpoint": "/user",

@@ -1,24 +1,20 @@
 import webpack from 'webpack';
-import path from 'path';
-import { Dir, ExposeConfigToClient } from '~/config';
+import getenv from 'getenv';
+import env from '~/config/expose';
 
 export function load() {
   return {
     target: 'web',
     entry: [
       'babel-polyfill',
-      path.join(Dir.src, 'client'),
     ],
-    output: {
-      path: path.join(Dir.public, 'build'),
-      filename: 'bundle.js',
-    },
     plugins: [
-      // new webpack.optimize.OccurenceOrderPlugin(), // Webpack 1.0
-      new webpack.optimize.OccurrenceOrderPlugin(),  // Webpack 2.0 fixed this mispelling
+      new webpack.optimize.OccurenceOrderPlugin(), // Webpack 1.0
+      // new webpack.optimize.OccurrenceOrderPlugin(),  // Webpack 2.0 fixed this mispelling
       new webpack.DefinePlugin({
-        'global.CONFIG': JSON.stringify(ExposeConfigToClient),
-        'global.CLIENT': JSON.stringify(true),
+        'global.DIR': JSON.stringify(global.DIR),
+        'global.CONFIG': JSON.stringify(getenv.multi(env)),
+        'global.TYPE': JSON.stringify('CLIENT'),
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },

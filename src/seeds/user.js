@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { service } from '../app';
+import { service } from '~/src/shared/app';
 
 export function factory() {
   return {

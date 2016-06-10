@@ -5,6 +5,7 @@
     "jsx-control-statements",
     "transform-decorators-legacy",
     "transform-class-properties",
-    "transform-decorators"
+    "transform-decorators",
+    "react-hot-loader/babel"
   ]
 }

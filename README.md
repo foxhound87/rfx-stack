@@ -8,14 +8,17 @@
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
 [![npm](https://img.shields.io/badge/npm-3.3.6%2B-blue.svg)]()
 
-## Updates
-See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELOG.md) for all the details.
+## Changelog & Documentation
+See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELOG.md) or the [Documentation](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md) for all the details.
+
+---
 
 ## Main Features
+- Hot-Reloadable MobX Stores
 - Action / Dispatcher for Stateless Components
 - Server Side Rendering
 - Reactive UI & Media Queries
-- React Transform HMR
+- React Hot Loader 3
 - React Stateless Components
 - Isomorphic Fetch/Socket
 - Real Time Ready
@@ -38,34 +41,13 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - [ESLint](https://www.npmjs.com/package/eslint)
 - [Airbnb Code Rules](https://www.npmjs.com/package/eslint-config-airbnb)
 
----
-## Setup
-
-> Run a local MongoDB instance (port 27017) before start the server.
-[Install MongoDB](https://docs.mongodb.org/manual/administration/install-community/)
-
-##### ENV: Development
-
-`npm install`
-
-`npm run server:dev`
-
-`npm run seed:dev`
-
-> Run the seeder in another terminal window while the api server is running.
-
-##### ENV: Production
-
-`npm install`
-
-`npm run build:all`
-
-`npm run server:prod`
-
 ## TODO
 
-- Documentation
 - Reduce Dependencies
+
+## Credits
+
+Thanks to [Eric John Juta](https://github.com/rej156) for his contribution about the **Hot-Reloadable MobX Stores** implementation.
 
 ## Contributing
 
