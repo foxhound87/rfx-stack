@@ -16,7 +16,7 @@ This structure does not force you to separate the server-side code from the clie
 
 ## Main
 
-- **npm run lint** [Code linting / syntax cheking]
+- **lint** [Code linting / syntax cheking]
 - **clean:build** [Delete all the generated bundles]
 - **clean:modules** [Delete node_modules and cache]
 
