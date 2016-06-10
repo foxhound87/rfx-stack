@@ -63,8 +63,11 @@ This structure does not force you to separate the server-side code from the clie
 `npm install`
 
 `npm run build:client:web`
+
 `npm run build:server:web`
+
 `npm run build:server:api`
 
 `npm run api:prod`
+
 `npm run web:prod`
