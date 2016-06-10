@@ -42,7 +42,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - [Airbnb Code Rules](https://www.npmjs.com/package/eslint-config-airbnb)
 
 ## Read More...
-If you want more info about how to do better state management with MobX for your React Router app, take a look at my article [State Management and Hydration with MobX](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6), it also explains how to enable server side rendering functionalities.
+If you want more info about how to do better state management with MobX using the React Context in your React Router app, take a look at my article [State Management and Hydration with MobX](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6), it also explains how to enable server side rendering functionalities.
 
 ## TODO
 
