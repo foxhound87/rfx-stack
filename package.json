@@ -61,6 +61,7 @@
     "feathers-mongoose": "^3.3.7",
     "feathers-rest": "^1.4.2",
     "feathers-socketio": "^1.4.1",
+    "getenv": "^0.6.0",
     "globule": "~1.0.0",
     "imports-loader": "^0.6.5",
     "isdev": "~1.0.1",
