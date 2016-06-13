@@ -1,8 +1,11 @@
-import inject from '~/src/shared/stores';
+import { stores } from '~/src/shared/stores';
 
-let store = null;
+const store = {};
 
 export default function (state) {
-  if (state) store = inject(state);
+  if (!state) return store;
+  for (const [key, StoreClass] of Object.entries(stores)) {
+    store[key] = new StoreClass(state[key]);
+  }
   return store;
 }

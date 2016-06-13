@@ -8,7 +8,7 @@ import { fetchData } from '~/src/utils/fetch';
 import { setMatchMediaConfig } from '~/src/utils/matchMedia';
 import { ContextProvider } from '~/src/shared/state/context';
 import { dehydrate } from '~/src/shared/state/hydrate';
-import initStore from '~/src/shared/stores';
+import initStore from '~/src/shared/state/store';
 import routes from '~/src/shared/routes';
 
 function handleRouter(req, res, props) {
