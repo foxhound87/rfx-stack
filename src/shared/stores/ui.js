@@ -25,7 +25,7 @@ export default class UIStore {
   };
 
   constructor(ui) {
-    Object.assign(this, ui);
+    action(() => Object.assign(this, ui));
 
     // Init nested UI instances
     this.authModal = new AuthModal(ui.authModal);

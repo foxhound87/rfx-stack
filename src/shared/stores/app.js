@@ -1,10 +1,10 @@
-// import { observable } from 'mobx';
+import { action } from 'mobx';
 
 export default class AppStore {
 
   ssrLocation = null;
 
   constructor(app) {
-    Object.assign(this, app);
+    action(() => Object.assign(this, app));
   }
 }

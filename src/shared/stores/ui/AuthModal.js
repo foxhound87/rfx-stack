@@ -23,7 +23,7 @@ export default class AuthModal {
   };
 
   constructor(data) {
-    Object.assign(this, data);
+    action(() => Object.assign(this, data));
   }
 
   @action

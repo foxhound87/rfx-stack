@@ -5,7 +5,7 @@ export default class AppBar {
   @observable accountMenuIsOpen = false;
 
   constructor(data) {
-    Object.assign(this, data);
+    action(() => Object.assign(this, data));
   }
 
   @action

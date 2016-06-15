@@ -9,7 +9,7 @@ export default class AuthStore {
   @observable user = {};
 
   constructor(auth) {
-    Object.assign(this, auth);
+    action(() => Object.assign(this, auth));
 
     // get token from localStorage
     const token = (global.TYPE === 'CLIENT')
