@@ -9,7 +9,7 @@ import App from './App';
 
 const store = rehydrate();
 fetchDataOnLocationMatch(browserHistory, routes, match, store);
-// store.ui.injectTapEv(); // material-ui fix
+store.ui.injectTapEv(); // material-ui fix
 
 function renderApp(AppComponent) {
   render(
