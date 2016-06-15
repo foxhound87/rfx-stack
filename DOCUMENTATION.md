@@ -12,6 +12,13 @@ This structure does not force you to separate the server-side code from the clie
 
 ---
 
+# Requirements
+
+- node@^5.x.x
+- npm@^3.3.x
+
+---
+
 # Scripts
 
 ## Main

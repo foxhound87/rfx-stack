@@ -6,7 +6,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
-[![npm](https://img.shields.io/badge/npm-3.3.6%2B-blue.svg)]()
+[![npm](https://img.shields.io/badge/npm-3.3%2B-blue.svg)]()
 
 ## Changelog & Documentation
 See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELOG.md) or the [Documentation](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md) for all the details.
