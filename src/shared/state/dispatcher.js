@@ -2,27 +2,30 @@ import getStore from './store';
 import access from 'safe-access';
 import _ from 'lodash';
 
-function getClassNamespace(str) {
+function getNSClassNamespace(str) {
   const lastIndex = str.lastIndexOf('.');
   return str.substring(0, lastIndex);
 }
 
-function getClassName(ns, store) {
-  return access(store, getClassNamespace(ns)).constructor.name;
-}
-
-function getMethodName(str) {
+function getNSMethodName(str) {
   const lastIndex = str.lastIndexOf('.');
   return str.substring(lastIndex + 1, str.length);
+}
+
+function getRealClassName(ns, store) {
+  const className = getNSClassNamespace(ns);
+  const _class = access(store, className);
+  if (_.isUndefined(_class)) throw new Error(`The Store ${className} does not exist!`);
+  return _class.constructor.name;
 }
 
 export function dispatch(namespace, ...opt) {
   const store = getStore();
   const fn = access(store, namespace);
-  const className = getClassName(namespace, store);
-  const methodName = getMethodName(namespace);
+  const className = getRealClassName(namespace, store);
+  const methodName = getNSMethodName(namespace);
 
-  if (typeof fn === 'function') {
+  if (_.isFunction(fn)) {
     const args = _.isArray(opt) ? opt : [opt];
     return access(store, [namespace, '()'].join(''), args);
   }
