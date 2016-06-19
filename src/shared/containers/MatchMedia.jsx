@@ -38,6 +38,13 @@ class MatchMedia extends Component {
               <td>Small devices and UP</td>
             </tr>
             <tr>
+              <td>sm</td>
+              <td className={cx('white', { 'bg-lime': bp.sm, 'bg-red': !bp.sm })}>
+                {bp.sm ? 'YES' : 'NO'}
+              </td>
+              <td>Small devices</td>
+            </tr>
+            <tr>
               <td>md</td>
               <td className={cx('white', { 'bg-lime': bp.md, 'bg-red': !bp.md })}>
                 {bp.md ? 'YES' : 'NO'}
