@@ -3,7 +3,7 @@
   "version": "0.5.0-alpha.5",
   "license": "MIT",
   "description": "RFX Stack - Universal App featuring: React + Feathers + MobX",
-  "author": "Claudio Savino",
+  "author": "Claudio Savino <claudio.savino@me.com> (https://twitter.com/foxhound87)",
   "scripts": {
     "lint": "eslint src --ext .jsx,.js",
     "clean:build": "rm -rf ./public/build && rm -rf ./run/build",
