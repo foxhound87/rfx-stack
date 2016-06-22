@@ -3,8 +3,8 @@
   "plugins": [
     "babel-root-import",
     "jsx-control-statements",
-    "transform-decorators-legacy",
     "transform-class-properties",
+    "transform-decorators-legacy",
     "transform-decorators",
     "react-hot-loader/babel"
   ]
