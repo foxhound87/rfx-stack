@@ -52,7 +52,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 `npm install`
 
-> Run each script in differents terminal.
+> Run each script in different terminals.
 
 `npm run api:dev`
 
