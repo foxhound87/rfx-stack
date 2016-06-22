@@ -24,7 +24,7 @@ This structure does not force you to separate the server-side code from the clie
 
 # Scripts
 
-## Util
+## Utils
 
 - **lint** [Code linting / syntax cheking]
 - **clean:build** [Delete all the generated bundles]
