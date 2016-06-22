@@ -66,7 +66,7 @@ export const stores = {
 };
 ```
 
-The mapped stores are called by the **Store Initalizer** located at `/src/shared/state/store.js`. The Store Initializer will automatically **inject** the inital state into the Stores. It is also be used as a getter of the Stores.
+The mapped Stores are called by the **Store Initalizer** located at `/src/shared/state/store.js` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
 
 # Context Provider
 
