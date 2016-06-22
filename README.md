@@ -15,7 +15,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 ## Main Features
 - Hot-Reloadable MobX Stores
-- Action / Dispatcher for Stateless Components
+- Action Dispatcher for Stateless Components
 - Server Side Rendering
 - Reactive UI & Media Queries
 - React Hot Loader 3
@@ -77,7 +77,8 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 ---
 
-## Read More...
+## Read More
+
 If you want more info about how to do better state management with MobX using the React Context in your React Router app, take a look at my article [State Management and Hydration with MobX](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6), it also explains how to enable server side rendering functionalities.
 
 ## TODO

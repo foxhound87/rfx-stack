@@ -12,7 +12,7 @@
 # 0.3.0 (alpha.3)
 
 * React Stateless Components implementation
-* Action/Dispatcher for Stateless React Components
+* Action Dispatcher for Stateless React Components
 * Helmet w/ server side rendering
 * Updated NPM Dependencies
 
