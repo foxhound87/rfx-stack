@@ -146,7 +146,7 @@ You can use it also on the Stateless Components to make it reactive, but you can
 
 The **dispatch()** function is handy to call an **action** when handle component events. It can also be called from another Store too.
 
-Use the dot notation to select a store key (defined on Setup Stores previously) and the name of the method/action:
+Use the dot notation to select a store key (defined in **Setup Stores** previously) and the name of the method/action:
 
 ```
 import { dispatch } from '../state/dispatcher';
