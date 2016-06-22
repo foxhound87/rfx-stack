@@ -48,7 +48,8 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 > Run a local MongoDB instance (port 27017) before start the server.
 [Install MongoDB](https://docs.mongodb.org/manual/administration/install-community/)
 
-##### ENV: Development
+#### ENV: Development
+
 `npm install`
 
 > Run each script in differents terminal.
@@ -61,7 +62,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 `npm run seed:dev`
 
-##### ENV: Production
+#### ENV: Production
 
 `npm install`
 
