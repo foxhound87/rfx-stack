@@ -55,13 +55,13 @@ This structure does not force you to separate the server-side code from the clie
 Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `export const stores` of the `/src/shared/stores.js` file.
 
 ```
-import PostStore from './stores/foo';
+import PostStore from './stores/post';
 
 /**
   Stores
 */
 export const stores = {
-  post: FooStore,
+  post: PostStore,
 };
 ```
 
