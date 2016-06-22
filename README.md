@@ -51,7 +51,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 ##### ENV: Development
 `npm install`
 
-> Run each script in differents terminal windows while the api server is running.
+> Run each script in differents terminal.
 
 `npm run api:dev`
 
@@ -65,11 +65,15 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 `npm install`
 
+> Build
+
 `npm run build:client:web`
 
 `npm run build:server:web`
 
 `npm run build:server:api`
+
+> Run
 
 `npm run api:prod`
 
