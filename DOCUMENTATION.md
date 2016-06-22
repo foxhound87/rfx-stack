@@ -30,7 +30,7 @@ This structure does not force you to separate the server-side code from the clie
 - **clean:build** [Delete all the generated bundles]
 - **clean:modules** [Delete node_modules and cache]
 
-## Builder
+## Builders
 
 - **build:client:web** [Build the browser client-side code of the **web** app in /public/build]
 - **build:server:web** [Build the node server-side code of the **web** app in /run/build]
@@ -144,9 +144,9 @@ You can use it also on the Stateless Components to make it reactive, but you can
 
 # Dispatch / Actions
 
-The **dispatch()** function is handy to access an **action** from a Store when handle events.
+The **dispatch()** function is handy to call an **action** when handle component events. It can also be called from another Store too.
 
-It uses the dot notation to select a store key (defined on Setup Stores previously) and the name of the method/action:
+Use the dot notation to select a store key (defined on Setup Stores previously) and the name of the method/action:
 
 ```
 import { dispatch } from '../state/dispatcher';
