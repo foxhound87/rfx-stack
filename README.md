@@ -41,6 +41,42 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - [ESLint](https://www.npmjs.com/package/eslint)
 - [Airbnb Code Rules](https://www.npmjs.com/package/eslint-config-airbnb)
 
+---
+
+# Quick Setup
+
+> Run a local MongoDB instance (port 27017) before start the server.
+[Install MongoDB](https://docs.mongodb.org/manual/administration/install-community/)
+
+##### ENV: Development
+`npm install`
+
+> Run each script in differents terminal windows while the api server is running.
+
+`npm run api:dev`
+
+`npm run web:dev`
+
+> Run the **seed** app or the **web** app after the **api** app is running.
+
+`npm run seed:dev`
+
+##### ENV: Production
+
+`npm install`
+
+`npm run build:client:web`
+
+`npm run build:server:web`
+
+`npm run build:server:api`
+
+`npm run api:prod`
+
+`npm run web:prod`
+
+---
+
 ## Read More...
 If you want more info about how to do better state management with MobX using the React Context in your React Router app, take a look at my article [State Management and Hydration with MobX](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6), it also explains how to enable server side rendering functionalities.
 

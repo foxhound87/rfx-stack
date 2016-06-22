@@ -1,5 +1,8 @@
 # Introduction
-With the RFX Stack you can build and run different layer of the app independently. You are also free to change some of its parts as you need.
+With the RFX Stack you can build and run different pieces of the app independently.
+
+You are also free to change some of its parts as you need.
+
 For this purpose the code is divided in differents compartments:
 
 - api
@@ -46,34 +49,112 @@ This structure does not force you to separate the server-side code from the clie
 
 ---
 
-# Quick Setup
 
-> Run a local MongoDB instance (port 27017) before start the server.
-[Install MongoDB](https://docs.mongodb.org/manual/administration/install-community/)
+# Setup Stores
 
-##### ENV: Development
-`npm install`
+Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `export const stores` of the `/src/shared/stores.js` file.
 
-> Run each script in differents terminal windows while the api server is running.
+```
+import PostStore from './stores/foo';
 
-`npm run api:dev`
+/**
+  Stores
+*/
+export const stores = {
+  post: FooStore,
+};
+```
 
-`npm run web:dev`
+The mapped stores are called by the **Store Initalizer** located at `/src/shared/state/store.js`. The Store Initializer will automatically **inject** the inital state into the Stores. It is also be used as a getter of the Stores.
 
-> Run the **seed** app or the **web** app after the **api** app is running.
+# Context Provider
 
-`npm run seed:dev`
+The Context Providers the mechanism to access the Stores from a React Container by inject them into the React Context.
 
-##### ENV: Production
+It is a React Component used both on client and server:
 
-`npm install`
+```
+<ContextProvider context={{ store }}>
+  ...
+</ContextProvider>
+```
 
-`npm run build:client:web`
+On the **server**-side: `/src/web/middleware/iso.js`;
 
-`npm run build:server:web`
+On the **client**-side: `/src/web/App.js`;
 
-`npm run build:server:api`
+# Server Side Rendering
 
-`npm run api:prod`
+Define the inital state of the stores in `/src/web/middleware/iso.js` injecting it into the  initStore function (the Store Initalizer)
 
-`npm run web:prod`
+```
+const store = initStore({
+  app: { ssrLocation: req.url },
+  // put here the inital state of other stores...
+});
+```
+
+The inital state can be dynamically updated using **fetchData**:
+
+For fetching specific data on specific pages (rendered both on the server and client), we use a `static fetchData(store, params, query)` inside our react containers in`/src/shared/containers/*`. It passes the stores, and react-router params and query for the current location.
+
+```
+class Home extends Component {
+
+  static fetchData(store) {
+    return store.post.find();
+  }
+
+  ...
+```
+
+**static fetchData(store)** will be automatically called when React Router reaches that component.
+
+
+# Connect / Observer
+
+Use the **@connect** decorator to pass the Stores to the **Containers** through the React Context.
+
+
+in `/src/shared/containers/*`:
+
+```
+import { connect } from '../state/context';
+
+...
+
+@connect
+export default class Home extends Component {
+
+  render() {
+    const items = this.context.store.post.list;
+    return (
+     ...
+    );
+  }
+}
+```
+
+The **@connect** decorator also wraps the component with the MobX **observer** making it reactive.
+
+You can use it also on the Stateless Components to make it reactive, but you cannot access the context from there, you must pass the store as props from a parent instead.
+
+# Dispatch / Actions
+
+The **dispatch()** function is handy to access an **action** from a Store when handle events.
+
+It uses the dot notation to select a store key (defined on Setup Stores previously) and the name of the method/action:
+
+```
+import { dispatch } from '../state/dispatcher';
+
+...
+
+const handleOnSubmitFormRegister = (e) => {
+  e.preventDefault();
+  dispatch('auth.login', { email, password }).then( ... );
+};
+```
+
+Also params can be passed if needed.
+
