@@ -69,7 +69,7 @@ The mapped stores are called by the **Store Initalizer** located at `/src/shared
 
 # Context Provider
 
-The Context Providers implements a mechanism to inject the Stores into the React Context and make them accessible from a React Container.
+The Context Provider implements a mechanism to inject the Stores into the React Context and make them accessible from a React Container.
 
 It is a React Component used both on client and server:
 
