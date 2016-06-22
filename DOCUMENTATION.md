@@ -69,7 +69,7 @@ The mapped stores are called by the **Store Initalizer** located at `/src/shared
 
 # Context Provider
 
-The Context Provider implements a mechanism to inject the Stores into the React Context and make them accessible from a React Container.
+The Context Provider implements a mechanism to inject the Stores into the **React Context** and make them accessible from a React Container.
 
 It is a React Component used both on client and server:
 
@@ -85,9 +85,12 @@ On the **client**-side: `/src/web/App.js`;
 
 # Server Side Rendering
 
-Define the inital state of the stores in `/src/web/middleware/iso.js` injecting it into the  initStore function (the Store Initalizer)
+Define the inital state of the Stores in `/src/web/middleware/iso.js` injecting it into the initStore function (the Store Initalizer).
 
 ```
+import initStore from '~/src/shared/state/store';
+...
+
 const store = initStore({
   app: { ssrLocation: req.url },
   // put here the inital state of other stores...
@@ -120,7 +123,6 @@ in `/src/shared/containers/*`:
 
 ```
 import { connect } from '../state/context';
-
 ...
 
 @connect
@@ -147,7 +149,6 @@ It uses the dot notation to select a store key (defined on Setup Stores previous
 
 ```
 import { dispatch } from '../state/dispatcher';
-
 ...
 
 const handleOnSubmitFormRegister = (e) => {
