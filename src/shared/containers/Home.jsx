@@ -11,6 +11,9 @@ import PostList from '../components/PostList';
 import Pagination from '../components/Pagination';
 import PostCreateModal from '../components/PostCreateModal';
 
+// form
+import postForm from '../forms/post';
+
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
 
@@ -22,9 +25,9 @@ class Home extends Component {
     return store.post.find();
   }
 
-  componentWillMount() {
-    this.context.store.ui.postCreateModal.setupForm();
-  }
+  // componentWillMount() {
+  //   this.context.store.ui.postCreateModal.setupForm();
+  // }
 
   handleAddRandomPost = (e) => {
     e.preventDefault();
@@ -101,7 +104,7 @@ class Home extends Component {
         <PostList items={post.list} />
         <PostCreateModal
           open={ui.postCreateModal.isOpen}
-          form={ui.postCreateModal.form}
+          form={postForm}
         />
       </div>
     );

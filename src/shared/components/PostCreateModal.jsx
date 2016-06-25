@@ -23,11 +23,6 @@ _.assign(styles.content, {
 const handleCloseModal = () =>
   dispatch('ui.postCreateModal.toggle', 'close');
 
-const handleOnSubmit = (e) => {
-  e.preventDefault();
-  dispatch('ui.postCreateModal.savePostOrShowError');
-};
-
 const PostCreateModal = ({ open, form }) => (
   <Modal
     isOpen={open}
@@ -60,7 +55,7 @@ const PostCreateModal = ({ open, form }) => (
               type="submit"
               disabled={!form.valid}
               className="btn btn-primary"
-              onClick={handleOnSubmit}
+              onClick={form.handleOnSubmit}
             >Save</button>
           </div>
           <div

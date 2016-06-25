@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from '../state/context';
-import { dispatch } from '../state/dispatcher';
 import cx from 'classnames';
 
 // styles
@@ -8,12 +7,6 @@ const errorMessage = cx('red', 'm2');
 
 // components
 import TextField from 'material-ui/TextField';
-
-// events
-const handleOnSubmit = (e) => {
-  e.preventDefault();
-  dispatch('ui.authModal.loginOrShowError');
-};
 
 const AuthModal = ({ form }) => (
   <form>
@@ -38,7 +31,7 @@ const AuthModal = ({ form }) => (
         type="submit"
         disabled={!form.valid}
         className="btn btn-primary"
-        onClick={handleOnSubmit}
+        onClick={form.handleOnSubmit}
       >Login</button>
     </div>
     <div

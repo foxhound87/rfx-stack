@@ -13,6 +13,10 @@ import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';
 import AuthModal from '../components/AuthModal';
 
+// forms
+import authLoginForm from '../forms/auth.login';
+import authRegisterForm from '../forms/auth.register';
+
 // global styles
 import '../styles/_.global.css';
 
@@ -85,7 +89,10 @@ class AppLayout extends Component {
         <AuthModal
           open={ui.authModal.isOpen}
           showSection={ui.authModal.showSection}
-          forms={ui.authModal.forms}
+          forms={{
+            login     : authLoginForm,
+            register  : authRegisterForm,
+          }}
         />
       </MatchMediaProvider>
     );
