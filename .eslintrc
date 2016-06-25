@@ -10,6 +10,7 @@
     "For": true
   },
   "rules": {
-    "no-confusing-arrow": 0
+    "no-confusing-arrow": 0,
+    "key-spacing": [0, { "align": "value" }]
   }
 }
