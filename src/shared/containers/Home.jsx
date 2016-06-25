@@ -25,10 +25,6 @@ class Home extends Component {
     return store.post.find();
   }
 
-  // componentWillMount() {
-  //   this.context.store.ui.postCreateModal.setupForm();
-  // }
-
   handleAddRandomPost = (e) => {
     e.preventDefault();
     this.context.store.post.create();
