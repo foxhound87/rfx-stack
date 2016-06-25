@@ -1,3 +1,7 @@
+# 0.6.0 (alpha.6)
+
+* Form management with mobx-ajv-form
+
 # 0.5.0 (alpha.5)
 
 * Updated to react-hot-loader 3 beta

@@ -1,29 +1,25 @@
 import { observable, action } from 'mobx';
-import _ from 'lodash';
+import { dispatch } from '~/src/shared/state/dispatcher';
+import Form from 'mobx-ajv-form';
+
+// form json-schemas
+import loginSchema from '~/src/shared/schemas/auth.login';
+import registerSchema from '~/src/shared/schemas/auth.register';
 
 export default class AuthModal {
 
   @observable isOpen = false;
-
   @observable showSection = 'signin';
 
-  @observable signinErrors = null;
-
-  @observable signupErrors = null;
-
-  @observable signinModel = {
-    email: '',
-    password: '',
-  };
-
-  @observable signupModel = {
-    email: '',
-    password: '',
-    username: '',
+  forms = {
+    login: null,
+    register: null,
   };
 
   constructor(data) {
     action(() => Object.assign(this, data));
+    this.setupLoginForm();
+    this.setupRegisterForm();
   }
 
   @action
@@ -40,30 +36,54 @@ export default class AuthModal {
     if (to === 'signup') this.showSection = 'signup';
   }
 
-  @action
-  updateSigninModel(newValue) {
-    _.merge(this.signinModel, newValue);
+  setupLoginForm() {
+    const fields = {
+      email: {
+        label: 'Email',
+      },
+      password: {
+        label: 'Password',
+      },
+    };
+
+    this.forms.login = new Form(fields, loginSchema);
   }
 
-  @action
-  updateSignupModel(newValue) {
-    _.merge(this.signupModel, newValue);
+  setupRegisterForm() {
+    const fields = {
+      username: {
+        label: 'Username',
+      },
+      email: {
+        label: 'Email',
+      },
+      password: {
+        label: 'Password',
+      },
+    };
+
+    this.forms.register = new Form(fields, registerSchema);
   }
 
-  @action
-  setSigninErrors(data) {
-    this.signinErrors = data;
+  loginOrShowError() {
+    const form = this.forms.login;
+    if (!form.validate()) return;
+
+    dispatch('auth.login', form.values())
+      .then(() => dispatch('ui.authModal.toggle', 'close'))
+      .then(() => dispatch('ui.snackBar.open', 'Login Successful.'))
+      .then(() => form.clear())
+      .catch((err) => form.invalidate(err.message));
   }
 
-  @action
-  setSignupErrors(data) {
-    this.signupErrors = data;
-  }
+  registerOrShowError() {
+    const form = this.forms.register;
+    if (!form.validate()) return;
 
-  @action
-  getCredentials(type = null) {
-    if (type === 'signin') return this.signinModel;
-    if (type === 'signup') return this.signupModel;
-    return null;
+    dispatch('auth.register', form.values())
+      .then(() => dispatch('ui.authModal.toggleSection', 'signin'))
+      .then(() => dispatch('ui.snackBar.open', 'Register Successful.'))
+      .then(() => form.clear())
+      .catch(() => form.invalidate('The user already exist.'));
   }
 }

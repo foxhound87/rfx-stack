@@ -9,6 +9,7 @@ import PostFilter from '../components/PostFilter';
 import PostInfo from '../components/PostInfo';
 import PostList from '../components/PostList';
 import Pagination from '../components/Pagination';
+import PostCreateModal from '../components/PostCreateModal';
 
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
@@ -21,9 +22,19 @@ class Home extends Component {
     return store.post.find();
   }
 
-  handleCreatePost = (e) => {
+  componentWillMount() {
+    this.context.store.ui.postCreateModal.setupForm();
+  }
+
+  handleAddRandomPost = (e) => {
     e.preventDefault();
     this.context.store.post.create();
+  };
+
+  handleCreatePost = (e) => {
+    e.preventDefault();
+    const { ui } = this.context.store;
+    ui.postCreateModal.toggle('open');
   };
 
   handlePostPageChange = (page) => {
@@ -31,7 +42,7 @@ class Home extends Component {
   };
 
   render() {
-    const post = this.context.store.post;
+    const { ui, post } = this.context.store;
 
     return (
       <div>
@@ -53,9 +64,14 @@ class Home extends Component {
         <div className="center">
           <button
             type="button" value="done"
+            onClick={this.handleAddRandomPost}
+            className={cx(button, 'm1')}
+          >+ Add Random Item</button>
+          <button
+            type="button" value="done"
             onClick={this.handleCreatePost}
-            className={cx(button)}
-          >+ Add New Item</button>
+            className={cx(button, 'm1')}
+          >+ Create New Item</button>
         </div>
         <hr />
 
@@ -83,6 +99,10 @@ class Home extends Component {
 
         <hr />
         <PostList items={post.list} />
+        <PostCreateModal
+          open={ui.postCreateModal.isOpen}
+          form={ui.postCreateModal.form}
+        />
       </div>
     );
   }

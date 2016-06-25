@@ -57,9 +57,9 @@ export default class PostStore {
     this.pagination.total++;
   }
 
-  create() {
+  create(data = null) {
     // we use factory() just for test
-    return service('post').create(factory());
+    return service('post').create(data || factory());
   }
 
   find(query = {}) {

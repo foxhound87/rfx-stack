@@ -4,8 +4,10 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // ui classes
-import AuthModal from './ui/AuthModal.js';
 import AppBar from './ui/AppBar.js';
+import SnackBar from './ui/SnackBar.js';
+import AuthModal from './ui/AuthModal.js';
+import PostCreateModal from './ui/PostCreateModal.js';
 
 export default class UIStore {
 
@@ -28,8 +30,10 @@ export default class UIStore {
     action(() => Object.assign(this, ui));
 
     // Init nested UI instances
-    this.authModal = new AuthModal(ui.authModal);
     this.appBar = new AppBar(ui.appBar);
+    this.snackBar = new SnackBar(ui.snackBar);
+    this.authModal = new AuthModal(ui.authModal);
+    this.postCreateModal = new PostCreateModal(ui.postCreateModal);
 
     // open and close the nav automatically
     // when the "xs" breakpoint changes
@@ -73,11 +77,11 @@ export default class UIStore {
     return getMuiTheme(this.mui, mui);
   }
 
-  injectTapEv() {
+  injectTapEventPlugin() {
     if (process.env.NODE_ENV === 'development') {
       return console.warn([
         'The react-tap-event-plugin is enabled only in production, ',
-        'due to an issue with Hot-Reloadable MobX Stores.',
+        'due to a issue with Hot-Reloadable MobX Stores.',
       ].join(''));
     }
     // Material-UI components use react-tap-event-plugin to listen for touch events
