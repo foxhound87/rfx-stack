@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 /**
   Fetch data from components mapping "static fetchData()"
   and injecting store, router params and query.
@@ -5,9 +7,8 @@
  */
 export function fetchData(store, components, params, query) {
   return Promise.all(components
-    .map((component) => component.fetchData
-      ? component.fetchData(store, params, query)
-      : false));
+    .filter(component => _.isFunction(component.fetchData))
+    .map(component => component.fetchData(store, params, query)));
 }
 
 /**
