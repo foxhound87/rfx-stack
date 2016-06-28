@@ -1,5 +1,5 @@
 import Form from 'mobx-ajv-form';
-import schema from '~/src/shared/schemas/auth.login';
+import schema from '~/src/shared/schemas/auth';
 import { dispatch } from '~/src/shared/state/dispatcher';
 
 class AuthForm extends Form {
