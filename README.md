@@ -4,7 +4,7 @@
 ### React + Feathers + MobX
 ---
 
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![GitHub license](https://img.shields.io/github/license/foxhound87/rfx-stack.svg)]()
 [![node](https://img.shields.io/badge/node-5.0%2B-blue.svg)]()
 [![npm](https://img.shields.io/badge/npm-3.3%2B-blue.svg)]()
 
