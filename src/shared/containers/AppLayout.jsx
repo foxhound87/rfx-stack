@@ -14,8 +14,8 @@ import AppNav from '../components/AppNav';
 import AuthModal from '../components/AuthModal';
 
 // forms
-import authLoginForm from '../forms/auth.login';
-import authRegisterForm from '../forms/auth.register';
+import authForm from '../forms/auth';
+import userForm from '../forms/user';
 
 // global styles
 import '../styles/_.global.css';
@@ -90,8 +90,8 @@ class AppLayout extends Component {
           open={ui.authModal.isOpen}
           showSection={ui.authModal.showSection}
           forms={{
-            login     : authLoginForm,
-            register  : authRegisterForm,
+            login     : authForm,
+            register  : userForm,
           }}
         />
       </MatchMediaProvider>

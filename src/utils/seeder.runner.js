@@ -1,6 +1,6 @@
 import { log } from '../utils/logger';
 
-const handlerFile = ['./_handler.', process.env.NODE_ENV].join('');
+const handlerFile = ['../seeds/handlers/', process.env.NODE_ENV].join('');
 
 let handler = require(handlerFile).handle();
 

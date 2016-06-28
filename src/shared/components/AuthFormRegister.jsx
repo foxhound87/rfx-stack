@@ -37,14 +37,14 @@ const AuthModal = ({ form }) => (
     <div className="mt3">
       <button
         type="submit"
-        disabled={!form.valid}
+        disabled={!form.isValid}
         className="btn btn-primary"
         onClick={form.handleOnSubmit}
       >Register</button>
     </div>
     <div
       className={cx(errorMessage, {
-        hide: !form.valid && form.genericErrorMessage,
+        hide: !form.isValid && form.genericErrorMessage,
       })}
     >
       {form.genericErrorMessage}

@@ -17,10 +17,12 @@ class PostForm extends Form {
 
 export default
   new PostForm({
-    title: {
-      value: '',
-    },
-    completed: {
-      value: true,
+    fields: {
+      title: {
+        value: '',
+      },
+      completed: {
+        value: true,
+      },
     },
   });

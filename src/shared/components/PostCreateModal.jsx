@@ -53,14 +53,14 @@ const PostCreateModal = ({ open, form }) => (
           <div className="center">
             <button
               type="submit"
-              disabled={!form.valid}
+              disabled={!form.isValid}
               className="btn btn-primary"
               onClick={form.handleOnSubmit}
             >Save</button>
           </div>
           <div
             className={cx(errorMessage, {
-              hide: !form.valid && form.genericErrorMessage,
+              hide: !form.isValid && form.genericErrorMessage,
             })}
           >
             {form.genericErrorMessage}

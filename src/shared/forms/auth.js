@@ -1,8 +1,8 @@
 import Form from 'mobx-ajv-form';
-import loginSchema from '~/src/shared/schemas/auth.login';
+import schema from '~/src/shared/schemas/auth.login';
 import { dispatch } from '~/src/shared/state/dispatcher';
 
-class AuthLoginForm extends Form {
+class AuthForm extends Form {
 
   handleOnSubmit = (e) => {
     e.preventDefault();
@@ -17,12 +17,14 @@ class AuthLoginForm extends Form {
 }
 
 export default
-  new AuthLoginForm({
-    email: {
-      label: 'Email',
+  new AuthForm({
+    schema,
+    fields: {
+      email: {
+        label: 'Email',
+      },
+      password: {
+        label: 'Password',
+      },
     },
-    password: {
-      label: 'Password',
-    },
-  },
-  loginSchema);
+  });

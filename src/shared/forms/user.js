@@ -1,8 +1,8 @@
 import Form from 'mobx-ajv-form';
-import registerSchema from '~/src/shared/schemas/auth.register';
+import schema from '~/src/shared/schemas/auth.register';
 import { dispatch } from '~/src/shared/state/dispatcher';
 
-class AuthRegisterForm extends Form {
+class UserForm extends Form {
 
   handleOnSubmit = (e) => {
     e.preventDefault();
@@ -17,15 +17,17 @@ class AuthRegisterForm extends Form {
 }
 
 export default
-  new AuthRegisterForm({
-    username: {
-      label: 'Username',
+  new UserForm({
+    schema,
+    fields: {
+      username: {
+        label: 'Username',
+      },
+      email: {
+        label: 'Email',
+      },
+      password: {
+        label: 'Password',
+      },
     },
-    email: {
-      label: 'Email',
-    },
-    password: {
-      label: 'Password',
-    },
-  },
-  registerSchema);
+  });

@@ -78,7 +78,7 @@
     "match-media-mock": "~0.1.0",
     "material-ui": "^0.15.0",
     "mobx": "^2.3.3",
-    "mobx-ajv-form": "^1.2.1",
+    "mobx-ajv-form": "1.3.0",
     "mobx-react": "^3.4.0",
     "mobx-react-devtools": "4.2.0",
     "moment": "~2.12.0",
