@@ -7,7 +7,7 @@ import isDev from 'isdev';
 import DevTools from 'mobx-react-devtools';
 
 // components
-import { MatchMediaProvider } from '~/src/utils/MatchMediaProvider';
+import { MatchMediaProvider } from 'mobx-react-matchmedia';
 import Snackbar from 'material-ui/Snackbar';
 import AppBar from '../components/AppBar';
 import AppNav from '../components/AppNav';

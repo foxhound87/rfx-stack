@@ -83,6 +83,7 @@
     "mobx-ajv-form": "1.3.0",
     "mobx-react": "^3.4.0",
     "mobx-react-devtools": "4.2.0",
+    "mobx-react-matchmedia": "^1.0.1",
     "moment": "~2.12.0",
     "mongoose": "^4.4.20",
     "morgan": "~1.7.0",
