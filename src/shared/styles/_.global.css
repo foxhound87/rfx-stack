@@ -48,6 +48,16 @@ body {
 a {
   color: #2f889a;
   text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:hover,
+a:focus {
+  border-color: rgba(0,0,0,0) !important;
+  box-shadow: none !important;
+  text-decoration: none;
+  outline: 0;
+  color: #39cccc;
 }
 
 img {
