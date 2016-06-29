@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import { service } from '~/src/shared/app';
 import { factory } from '~/src/seeds/factories/post'; // just for test
 import _ from 'lodash';
@@ -20,7 +20,7 @@ export default class PostStore {
     "current": "<current page number>"
     "pages": "<total number of pages>"
   */
-  @observable pagination = {};
+  @observable $pagination = {};
 
   constructor(post) {
     action(() => Object.assign(this, post));
@@ -36,15 +36,17 @@ export default class PostStore {
   }
 
   updateList(json) {
-    this.updatePagination(json);
     this.list = json.data;
+    this.$pagination = _.omit(json, 'data');
   }
 
-  updatePagination(json) {
-    this.pagination = _.omit(json, 'data');
-    const { total, limit, skip } = json;
-    this.pagination.pages = Math.ceil(total / limit);
-    this.pagination.current = Math.ceil((skip - 1) / limit) + 1;
+  @computed
+  get pagination() {
+    const { total, limit, skip } = this.$pagination;
+    return _.extend(this.$pagination, {
+      pages     : Math.ceil(total / limit),
+      current   : Math.ceil((skip - 1) / limit) + 1,
+    });
   }
 
   emptyList() {
@@ -52,9 +54,9 @@ export default class PostStore {
   }
 
   addItem(item) {
-    this.list.pop();
+    if (this.list.length >= this.$pagination.limit) this.list.pop();
     this.list.unshift(item);
-    this.pagination.total++;
+    this.$pagination.total++;
   }
 
   create(data = null) {
@@ -83,8 +85,8 @@ export default class PostStore {
 
   @action
   page(page = 1) {
-    const skipPage = this.pagination.limit * (page - 1);
-    const { pages } = this.pagination;
+    const skipPage = this.$pagination.limit * (page - 1);
+    const { pages } = this.$pagination;
     if (skipPage < 0 || page > pages) return null;
     return this.find({ query: { $skip: skipPage } });
   }
