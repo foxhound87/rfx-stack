@@ -22,6 +22,16 @@ export function getLoaders() {
       test: /\.json$/,
       loader: 'json-loader',
     },
+    url: {
+      // the "?v=" regex fixes fontawesome issue
+      test: /\.((woff2?|svg)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?|svg|jpe?g|png|gif|ico)$/,
+      loader: 'url-loader?limit=10000',
+    },
+    file: {
+      // the "?v=" regex fixes fontawesome issue
+      test: /\.((ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9]))|(ttf|eot)$/,
+      loader: 'file-loader',
+    },
     cssGlobal: {
       test: /\.global\.css$/,
       loader: 'style-loader!css-loader!postcss-loader',

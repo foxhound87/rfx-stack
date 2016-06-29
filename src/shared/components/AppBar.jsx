@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 
 // styles
 import styles from '../styles/app.bar.css';
-const button = cx('btn', 'py2', 'm0');
+const button = cx('btn', 'inline-block', 'py2', 'm0');
 const ul = cx('h5', 'list-reset', 'mb0');
 const ulBtn = cx('btn', 'block');
 const menuAccount = cx('absolute', 'right-0', 'nowrap', 'rounded');
@@ -46,15 +46,22 @@ const AppBar = ({ open, check, user, ui }) => (
     'left-0': !ui.layoutIsShifted,
   })}
   >
-    <div className="left">
-      <a onClick={handleNavToggle} className={button}>Toggle Nav</a>
-      <Link to="/" className={button}>Home</Link>
-      <Link to="/matchmedia" className="btn" className={button}>MatchMedia</Link>
-      <Link to="/test" className="btn" className={button}>Test</Link>
+    <div className="left lg-hide">
+      <a onClick={handleNavToggle} className={button}>
+        <i className="fa fa-bars" />
+      </a>
     </div>
-    <div className={cx('right')}>
-      <div className={cx('inline-block')}>
-        <div className={cx('relative')}>
+    <div className="left lg-show">
+      <a onClick={handleNavToggle} className={button}>
+        <i className="fa fa-bars" />
+      </a>
+      <Link to="/" className={button}>Home</Link>
+      <Link to="/matchmedia" className={button}>MatchMedia</Link>
+      <Link to="/test" className={button}>Test</Link>
+    </div>
+    <div className="right md-show">
+      <div className="inline-block">
+        <div className="relative">
           <If condition={check}>
             <a onClick={handleMenuAccountToggle} className={button}> {user.email} &#9662;</a>
             <div className={cx([styles.menuAccount, menuAccount], { hide: !open })}>

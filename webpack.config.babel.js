@@ -46,6 +46,8 @@ Config = merge(Config, {
     loaders: [
       Loader.jsx,
       Loader.json,
+      Loader.url,
+      Loader.file,
       Loader.cssGlobal,
       Loader.cssModules,
     ],
