@@ -17,7 +17,7 @@
     "build:server:api": "NODE_ENV=production webpack -p",
     "web:dev": "NODE_ENV=development node ./run/start.web.js",
     "web:prod": "NODE_ENV=production node ./run/build/start.web.bundle.js",
-    "api:dev": "NODE_ENV=development node ./run/start.api.js",
+    "api:dev": "NODE_ENV=development nodemon ./run/start.api.js",
     "api:prod": "NODE_ENV=production node ./run/build/start.api.bundle.js",
     "seed:dev": "NODE_ENV=development node ./run/start.seeder.js",
     "seed:prod": "NODE_ENV=production node ./run/start.seeder.js"
@@ -144,6 +144,7 @@
     "eslint-plugin-react": "^4.3.0",
     "extract-text-webpack-plugin": "~1.0.1",
     "jsx-control-statements": "~3.1.2",
+    "nodemon": "1.9.2",
     "npm-install-webpack-plugin": "~3.0.0",
     "progress-bar-webpack-plugin": "1.8.0",
     "react-hot-loader": "^3.0.0-beta.2",
