@@ -56,6 +56,10 @@ class AppLayout extends Component {
           docked={ui.appNavIsDocked}
           onRequestChange={this.handleAppNavRequestChange}
         >
+          <a href="/static/img/check.png" className="block">
+            <img width="15" src="/static/img/check.png" role="presentation" />
+            Check Static Assets
+          </a>
           <pre>
             <ul className={cx('list-reset', 'm2')}>
               <li><h3>Auth Store</h3></li>

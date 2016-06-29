@@ -44,7 +44,7 @@ class Home extends Component {
     const { ui, post } = this.context.store;
 
     return (
-      <div>
+      <div className="mt3">
         <Helmet
           htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
           title="My Title"
@@ -55,11 +55,6 @@ class Home extends Component {
             { property: 'og:type', content: 'article' },
           ]}
         />
-
-        <a href="/static/img/check.png">
-          <img width="20" src="/static/img/check.png" role="presentation" />
-        </a>
-
         <div className="center">
           <button
             type="button" value="done"
