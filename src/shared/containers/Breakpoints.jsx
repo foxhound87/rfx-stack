@@ -25,44 +25,62 @@ class MatchMedia extends Component {
         <table>
           <tbody>
             <tr>
-              <td>xs</td>
+              <td className="h2 pb1">xs</td>
               <td className={cx('bold', { olive: bp.xs, red: !bp.xs })}>
-                {bp.xs ? 'YES' : 'NO'}
+                {bp.xs
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Extra small devices</td>
             </tr>
             <tr>
-              <td>su</td>
+              <td className="h2 pb1">su</td>
               <td className={cx('bold', { olive: bp.su, red: !bp.su })}>
-                {bp.su ? 'YES' : 'NO'}
+                {bp.su
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Small devices and UP</td>
             </tr>
             <tr>
-              <td>sm</td>
+              <td className="h2 pb1">sm</td>
               <td className={cx('bold', { olive: bp.sm, red: !bp.sm })}>
-                {bp.sm ? 'YES' : 'NO'}
+                {bp.sm
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Small devices</td>
             </tr>
             <tr>
-              <td>md</td>
+              <td className="h2 pb1">md</td>
               <td className={cx('bold', { olive: bp.md, red: !bp.md })}>
-                {bp.md ? 'YES' : 'NO'}
+                {bp.md
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Medium devices</td>
             </tr>
             <tr>
-              <td>mu</td>
+              <td className="h2 pb1">mu</td>
               <td className={cx('bold', { olive: bp.mu, red: !bp.mu })}>
-                {bp.mu ? 'YES' : 'NO'}
+                {bp.mu
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Medium devices and UP</td>
             </tr>
             <tr>
-              <td>lg</td>
+              <td className="h2 pb1">lg</td>
               <td className={cx('bold', { olive: bp.lg, red: !bp.lg })}>
-                {bp.lg ? 'YES' : 'NO'}
+                {bp.lg
+                  ? <i className="h1 fa fa-check-circle olive" />
+                  : <i className="h1 fa fa-times-circle red" />
+                }
               </td>
               <td>Large devices and UP</td>
             </tr>
