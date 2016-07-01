@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from '../state/context';
+import { dispatch } from '../state/dispatcher';
 import cx from 'classnames';
 
 // components
@@ -8,14 +9,22 @@ import Drawer from 'material-ui/Drawer';
 // styles
 import styles from '../styles/app.nav.css';
 
-const AppNav = ({ children, open, docked, onRequestChange }) => (
+const handleOnRequestChange = (open) => {
+  dispatch('ui.appNav.toggle', open);
+};
+
+const handleOnClick = () => {
+  dispatch('ui.appNav.toggle', 'close');
+};
+
+const AppNav = ({ children, open, docked }) => (
   <Drawer
-    className={cx(styles.nav)}
+    className={cx(styles.drawer)}
     open={open}
     docked={docked}
-    onRequestChange={onRequestChange}
+    onRequestChange={handleOnRequestChange}
   >
-    {children}
+    <div onClick={handleOnClick}>{children}</div>
   </Drawer>
 );
 

@@ -4,46 +4,24 @@ import { dispatch } from '../state/dispatcher';
 import cx from 'classnames';
 
 // components
-import { Link } from 'react-router';
+import MenuLinksSX from '../components/MenuLinksSX';
+import MenuLinksDX from '../components/MenuLinksDX';
 
 // styles
 import styles from '../styles/app.bar.css';
 const button = cx('btn', 'inline-block', 'py2', 'm0');
-const ul = cx('h5', 'list-reset', 'mb0');
-const ulBtn = cx('btn', 'block');
-const menuAccount = cx('absolute', 'right-0', 'nowrap', 'rounded');
 const appBar = cx('clearfix', 'fixed', 'animated', 'fadeIn', 'top-0', 'right-0');
 
 // events
 const handleNavToggle = (e) => {
   e.preventDefault();
-  dispatch('ui.toggleAppNav');
+  dispatch('ui.appNav.toggle');
 };
 
-const handleMenuAccountToggle = (e) => {
-  e.preventDefault();
-  dispatch('ui.appBar.toggleAccountMenu');
-};
-
-const handleAuthModalSignin = (e) => {
-  e.preventDefault();
-  dispatch('ui.authModal.toggle', 'open', 'signin');
-};
-
-const handleAuthModalSignup = (e) => {
-  e.preventDefault();
-  dispatch('ui.authModal.toggle', 'open', 'signup');
-};
-
-const handleLogout = (e) => {
-  e.preventDefault();
-  dispatch('auth.logout');
-};
-
-const AppBar = ({ open, check, user, ui }) => (
+const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
   <div className={cx(styles.bar, appBar, {
-    [styles.leftShifted]: ui.layoutIsShifted,
-    'left-0': !ui.layoutIsShifted,
+    [styles.leftShifted]: layoutIsShifted,
+    'left-0': !layoutIsShifted,
   })}
   >
     <div className="left lg-hide">
@@ -55,30 +33,16 @@ const AppBar = ({ open, check, user, ui }) => (
       <a onClick={handleNavToggle} className={button}>
         <i className="fa fa-bars" />
       </a>
-      <Link to="/" className={button}>Home</Link>
-      <Link to="/matchmedia" className={button}>MatchMedia</Link>
-      <Link to="/test" className={button}>Test</Link>
+      <MenuLinksSX inline />
     </div>
     <div className="right md-show">
       <div className="inline-block">
         <div className="relative">
-          <If condition={check}>
-            <a onClick={handleMenuAccountToggle} className={button}> {user.email} &#9662;</a>
-            <div className={cx([styles.menuAccount, menuAccount], { hide: !open })}>
-              <ul className={ul}>
-                <li><a className={ulBtn}>Profile</a></li>
-                <li><a className={ulBtn}>Settings</a></li>
-                <li><a className={ulBtn} onClick={handleLogout}>Sign Out</a></li>
-              </ul>
-            </div>
-          <Else />
-            <a onClick={handleAuthModalSignin} className={button}>
-              Login
-            </a>
-            <a onClick={handleAuthModalSignup} className={button}>
-              Register
-            </a>
-          </If>
+          <MenuLinksDX inline
+            user={user}
+            authCheck={authCheck}
+            accountMenuIsOpen={accountMenuIsOpen}
+          />
         </div>
       </div>
     </div>
@@ -89,10 +53,10 @@ const AppBar = ({ open, check, user, ui }) => (
 );
 
 AppBar.propTypes = {
-  ui: React.PropTypes.object,
   user: React.PropTypes.object,
-  check: React.PropTypes.bool,
-  open: React.PropTypes.bool,
+  authCheck: React.PropTypes.bool,
+  layoutIsShifted: React.PropTypes.bool,
+  accountMenuIsOpen: React.PropTypes.bool,
 };
 
 export default connect(AppBar);

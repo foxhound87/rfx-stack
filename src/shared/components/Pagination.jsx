@@ -14,7 +14,7 @@ const Pagination = ({ currentPage, onPageChange }) => (
     segments={{ centerPage: [currentPage] }}
     onSelect={onPageChange}
   >
-    <div className="inline-block clearfix blue">
+    <div className="inline-block clearfix">
       <Paginator.Button page={currentPage - 1} className="inline">
         <button
           type="button"

@@ -1,0 +1,46 @@
+/* home.css / Home.jsx */
+
+.title {
+  color: #6FFFE9;
+  font-weight: 100;
+  letter-spacing: 15px;
+}
+
+.subTitle {
+  color: #5BC0BE;
+  font-weight: normal;
+  font-weight: 200;
+  letter-spacing: 8px;
+}
+
+.xsTitle {
+  margin: 100px auto 15px auto;
+  font-size: 80px;
+}
+
+.xsSubTitle {
+  margin: 0 auto 50px auto;
+  font-size: 15px;
+}
+
+.suTitle {
+  margin: 250px auto 15px auto;
+  font-size: 130px;
+}
+
+.suSubTitle {
+  margin: 0 auto 250px auto;
+  font-size: 25px;
+}
+
+.features {
+  color: #5BC0BE;
+  background: #0B132B;
+  padding: 50px 0;
+  font-size: 20px;
+}
+
+.features i {
+  font-size: 55px;
+}
+

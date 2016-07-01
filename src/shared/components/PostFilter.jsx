@@ -14,7 +14,7 @@ const handleSelect = (e) => {
 };
 
 const PostFilter = ({ filter }) => (
-  <div className="inline-block clearfix blue">
+  <div className="inline-block clearfix">
     <button
       type="button" value="all"
       onClick={handleSelect}

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from '../state/context';
 
 const PostInfo = ({ itemsFound, currentPage, totalPages }) => (
-  <div className="gray">
+  <div>
     <b>{itemsFound} Items found</b> - <b>Page {currentPage} of {totalPages}</b>
   </div>
 );

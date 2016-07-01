@@ -1,10 +1,13 @@
 import { observable, autorun, action } from 'mobx';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import materialOverrideStyles from '../styles/_.material.js';
+import _ from 'lodash';
 
 // ui classes
 import AppBar from './ui/AppBar.js';
+import AppNav from './ui/AppNav.js';
 import SnackBar from './ui/SnackBar.js';
 import AuthModal from './ui/AuthModal.js';
 import PostCreateModal from './ui/PostCreateModal.js';
@@ -13,9 +16,7 @@ export default class UIStore {
 
   mui = {};
 
-  @observable appNavIsOpen = true;
-  @observable appNavIsDocked = false;
-  @observable layoutIsShifted = true;
+  @observable layoutIsShifted = false;
 
   @observable breakpoints = {
     xs: '(max-width: 767px)',
@@ -31,41 +32,42 @@ export default class UIStore {
 
     // Init nested UI instances
     this.appBar = new AppBar(ui.appBar);
+    this.appNav = new AppNav(ui.appNav);
     this.snackBar = new SnackBar(ui.snackBar);
     this.authModal = new AuthModal(ui.authModal);
     this.postCreateModal = new PostCreateModal(ui.postCreateModal);
 
-    // open and close the nav automatically
-    // when the "xs" breakpoint changes
-    autorun(() => this.breakpoints.xs
-      ? this.toggleAppNav('close')
-      : this.toggleAppNav('open')
-    );
-
-    // dock/undock the nav automatically
-    // when the "su" breakpoint changes
-    autorun(() => this.breakpoints.su
-      ? this.dockAppNav('on')
-      : this.dockAppNav('off')
-    );
-
     // shift the layout on "su" breakpoint when appnav is open
-    autorun(() => this.breakpoints.su && this.appNavIsOpen
+    autorun(() => this.breakpoints.su && this.appNav.isOpen
       ? this.shiftLayout('yes')
       : this.shiftLayout('no')
     );
 
     // undock the navbar if the modal is open
     autorun(() => this.authModal.isOpen
-      ? this.toggleAppNav('close')
-      : this.openAppNavOnMuBpAndAuthModalClosing()
+      ? this.appNav.toggle('close')
+      : () => this.breakpoints.mu && this.appNav.toggle('open')
     );
-  }
 
-  openAppNavOnMuBpAndAuthModalClosing() {
-    if (this.breakpoints.mu) {
-      this.toggleAppNav('open');
-    }
+    /**
+      The following autoruns demonstartes how to keep
+      the navbar open from the startup and how to close it
+      automatically when the browser windows is resized
+    */
+
+    // // open and close the nav automatically
+    // // when the "xs" breakpoint changes
+    // autorun(() => this.breakpoints.xs
+    //   ? this.appNav.toggle('close')
+    //   : this.appNav.toggle('open')
+    // );
+
+    // // dock/undock the nav automatically
+    // // when the "su" breakpoint changes
+    // autorun(() => this.breakpoints.su
+    //   ? this.appNav.dock('on')
+    //   : this.appNav.dock('off')
+    // );
   }
 
   getMui() {
@@ -73,8 +75,11 @@ export default class UIStore {
       ? { userAgent: navigator.userAgent }
       : {};
 
-    Object.assign(mui, lightBaseTheme);
-    return getMuiTheme(this.mui, mui);
+    return getMuiTheme(this.mui, _.merge(
+      mui,
+      darkBaseTheme,
+      materialOverrideStyles,
+    ));
   }
 
   injectTapEventPlugin() {
@@ -90,21 +95,8 @@ export default class UIStore {
   }
 
   @action
-  dockAppNav(flag = null) {
-    if (flag === 'on') this.appNavIsDocked = true;
-    if (flag === 'off') this.appNavIsDocked = false;
-  }
-
-  @action
   shiftLayout(flag = null) {
     if (flag === 'yes') this.layoutIsShifted = true;
     if (flag === 'no') this.layoutIsShifted = false;
-  }
-
-  @action
-  toggleAppNav(flag = null) {
-    if (flag === 'open') this.appNavIsOpen = true;
-    if (flag === 'close') this.appNavIsOpen = false;
-    if (!flag) this.appNavIsOpen = !this.appNavIsOpen;
   }
 }

@@ -14,17 +14,27 @@ const PostList = ({ items }) => (
     <ul>
       <If condition={items.length}>
         <For each="item" of={items}>
-          <li key={item.uuid}>
-            <h3>{item.title}</h3>
-            <h4>Completed: {item.completed ? 'YES' : 'NO'}</h4>
-            <p>Created at: <TimeAgo date={item.createdAt} /></p>
-            <p>Updated at: <TimeAgo date={item.updatedAt} /></p>
-            <p>ID: {item.uuid}</p>
-            <hr />
+          <li key={item.uuid} className="bg-white rounded px3 py2 mb2">
+            <div className="md-flex">
+
+              <div className="sm-col-12">
+                <h3> {item.completed
+                  ? <i className="fa fa-check-circle olive" />
+                  : <i className="fa fa-times-circle red" />
+                } {item.title}</h3>
+                <h4 className="gray">ID: {item.uuid}</h4>
+              </div>
+              <div className="sm-col-12 pt2 center">
+                <p><b>Created at</b>: <TimeAgo date={item.createdAt} /></p>
+                <p><b>Updated at:</b> <TimeAgo date={item.updatedAt} /></p>
+              </div>
+
+
+            </div>
           </li>
         </For>
       <Else />
-        <h2>No Content</h2>
+        <h2 className="white center">No Content</h2>
       </If>
     </ul>
   </div>

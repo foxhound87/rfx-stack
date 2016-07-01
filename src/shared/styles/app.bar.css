@@ -1,12 +1,9 @@
 /* app.bar.css / AppBar */
 
 .bar {
-  background: #f0f0f0;
-}
-
-.menuAccount {
-  min-width:128px;
-  background: #f0f0f0;
+  z-index: 999;
+  background: none;
+  color: #5BC0BE;
 }
 
 .leftShifted {

@@ -4,99 +4,93 @@ import { connect } from '../state/context';
 import cx from 'classnames';
 
 // components
-import PostSearch from '../components/PostSearch';
-import PostFilter from '../components/PostFilter';
-import PostInfo from '../components/PostInfo';
-import PostList from '../components/PostList';
-import Pagination from '../components/Pagination';
-import PostCreateModal from '../components/PostCreateModal';
+import { Parallax } from 'react-parallax';
 
-// form
-import postForm from '../forms/post';
-
-// styles
-const button = cx(['btn', 'rounded', 'btn-outline']);
+// module styles
+import styles from '../styles/home.css';
 
 @connect
 export default
 class Home extends Component {
 
-  static fetchData(store) {
-    return store.post.find();
-  }
-
-  handleAddRandomPost = (e) => {
-    e.preventDefault();
-    this.context.store.post.create();
-  };
-
-  handleCreatePost = (e) => {
-    e.preventDefault();
-    const { ui } = this.context.store;
-    ui.postCreateModal.toggle('open');
-  };
-
-  handlePostPageChange = (page) => {
-    this.context.store.post.page(page);
-  };
+  static fetchData() {}
 
   render() {
-    const { ui, post } = this.context.store;
-
+    const bp = this.context.store.ui.breakpoints;
     return (
-      <div className="mt3">
+      <div>
         <Helmet
           htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
           title="My Title"
           titleTemplate="MySite.com - %s"
           defaultTitle="My Default Title"
           meta={[
-            { name: 'description', content: 'Application description' },
+            { name: 'description', content: 'Messages Demo' },
             { property: 'og:type', content: 'article' },
           ]}
         />
         <div className="center">
-          <button
-            type="button" value="done"
-            onClick={this.handleAddRandomPost}
-            className={cx(button, 'm1')}
-          >+ Add Random Item</button>
-          <button
-            type="button" value="done"
-            onClick={this.handleCreatePost}
-            className={cx(button, 'm1')}
-          >+ Create New Item</button>
+          <Parallax bgImage="/static/img/bg.jpg" strength={400}>
+            <h1 className={cx(styles.title, {
+              [styles.xsTitle]: bp.xs,
+              [styles.suTitle]: bp.su,
+            })}
+            >RFX STACK</h1>
+            <h2 className={cx(styles.subTitle, {
+              [styles.xsSubTitle]: bp.xs,
+              [styles.suSubTitle]: bp.su,
+            })}
+            >Universal App featuring: React + Feathers + MobX
+            </h2>
+          </Parallax>
         </div>
-        <hr />
-
-        <div className="md-flex flex-center">
-          <div className="p1 py2">
-            <PostSearch search={post.searchValue} />
+        <div className={styles.features}>
+          <div className="center">
+            <div className="md-flex mx4">
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-eye" />
+                <br /> MobX Reactive State Management
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-bolt" />
+                <br /> Blazing fast Real Time by Feathers
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-arrows-h" />
+                <br /> React HOC for Responsive Media Queries
+              </div>
+            </div>
+            <div className="md-flex mx4">
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-recycle" />
+                <br /> Isomorphic Fetch/Socket
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-cube" />
+                <br /> Microservices Ready
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-diamond" />
+                <br /> Multi Platform Ready
+              </div>
+            </div>
+            <div className="md-flex mx4">
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-fire" />
+                <br /> React Hot Loader 3
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-gears" />
+                <br /> Action Dispatcher for Stateless Components
+              </div>
+              <div className="sm-col-12 p4">
+                <i className="mb3 fa fa-object-ungroup" />
+                <br /> Modular CSS for React
+              </div>
+            </div>
           </div>
-          <div className="flex-auto p1 py2 center">
-            <PostInfo
-              itemsFound={post.pagination.total}
-              totalPages={post.pagination.pages}
-              currentPage={post.pagination.current}
-            />
-          </div>
-          <div className="p1 py2">
-            <PostFilter filter={post.filter} />
-          </div>
-          <div className="p1 py2">
-            <Pagination
-              currentPage={post.pagination.current}
-              onPageChange={this.handlePostPageChange}
-            />
-          </div>
+          {/* <i className="fa fa-github" /> Completely Free and Open Source */}
         </div>
-
-        <hr />
-        <PostList items={post.list} />
-        <PostCreateModal
-          open={ui.postCreateModal.isOpen}
-          form={postForm}
-        />
       </div>
     );
   }

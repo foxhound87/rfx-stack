@@ -36,7 +36,7 @@ const AuthModal = ({ open, showSection, forms }) => (
     style={styles}
   >
     <div className="center m3">
-      <div className="inline-block clearfix blue">
+      <div className="inline-block clearfix">
         <button
           onClick={handleShowSigninSection}
           className={cx(buttonGroup, 'rounded-left', {

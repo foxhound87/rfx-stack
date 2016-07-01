@@ -3,9 +3,10 @@
 */
 export default {
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    backgroundColor: 'rgba(255, 255, 255, 0.75)',
   },
   content: {
+    backgroundColor: '#1C2541',
     border: 0,
     padding: 0,
     maxWidth: '450px',
