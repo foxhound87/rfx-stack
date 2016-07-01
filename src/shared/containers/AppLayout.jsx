@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from '../state/context';
 import cx from 'classnames';
 
@@ -47,6 +48,11 @@ class AppLayout extends Component {
     return (
       <MatchMediaProvider breakpoints={ui.breakpoints}>
         { isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null }
+        <Helmet
+          htmlAttributes={{ lang: 'en' }}
+          titleTemplate="RFX Stack - %s"
+          defaultTitle="Default Title"
+        />
         <AppNav
           open={ui.appNav.isOpen}
           docked={ui.appNav.isDocked}

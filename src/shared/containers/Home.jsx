@@ -19,16 +19,7 @@ class Home extends Component {
     const bp = this.context.store.ui.breakpoints;
     return (
       <div>
-        <Helmet
-          htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
-          title="My Title"
-          titleTemplate="MySite.com - %s"
-          defaultTitle="My Default Title"
-          meta={[
-            { name: 'description', content: 'Messages Demo' },
-            { property: 'og:type', content: 'article' },
-          ]}
-        />
+        <Helmet title="Home" />
         <div className="center">
           <Parallax bgImage="/static/img/bg.jpg" strength={400}>
             <h1 className={cx(styles.title, {

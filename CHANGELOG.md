@@ -1,6 +1,7 @@
 # 0.6.0 (alpha.6)
 
 * Form management with mobx-ajv-form
+* Updated Graphic
 
 # 0.5.0 (alpha.5)
 
