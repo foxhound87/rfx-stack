@@ -14,6 +14,7 @@ const MenuLinksSX = ({ inline }) => (
     <Link className={inline ? btnInline : btnBlock} to="/" >Home</Link>
     <Link className={inline ? btnInline : btnBlock} to="/messages">Messages Demo</Link>
     <Link className={inline ? btnInline : btnBlock} to="/breakpoints">Breakpoints Demo</Link>
+    <Link className={inline ? btnInline : btnBlock} to="/forms">Forms Management</Link>
   </span>
 );
 

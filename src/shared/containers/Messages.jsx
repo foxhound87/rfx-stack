@@ -46,7 +46,7 @@ class DemoList extends Component {
     return (
       <div className="mt4">
         <Helmet title="Message List" />
-        <div className="center">
+        <div className="center py3">
           <button
             type="button" value="done"
             onClick={this.handleAddRandomPost}

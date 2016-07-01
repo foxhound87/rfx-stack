@@ -23,12 +23,12 @@ class MatchMedia extends Component {
           <br />
           <p>
             <a href="https://github.com/foxhound87/mobx-react-matchmedia">
-              <i className="h1 fa fa-github" /> <b>foxhound87/mobx-react-matchmedia</b>
+              <i className="h1 mr1 fa fa-github" /> <b>foxhound87/mobx-react-matchmedia</b>
             </a>
           </p>
           <p>
             <a href="https://www.npmjs.com/package/mobx-react-matchmedia">
-              <i className="h1 fa fa-archive" /> <b>package/mobx-react-matchmedia</b>
+              <i className="h1 mr1 fa fa-archive" /> <b>package/mobx-react-matchmedia</b>
             </a>
           </p>
         </div>
