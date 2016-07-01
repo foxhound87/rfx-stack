@@ -81,6 +81,10 @@ a:focus {
   color: #6FFFE9;
 }
 
+h1, h3, h4 {
+  color: #FFD98E;
+}
+
 img {
   max-width: 100%;
 }
@@ -92,4 +96,14 @@ input, textarea {
 
 input::-ms-clear, textarea::-ms-clear {
   display: none;
+}
+
+.divider {
+  color: #3A506B;
+}
+
+/* COLORS */
+
+._yellow {
+  color: #FFD98E !important;
 }

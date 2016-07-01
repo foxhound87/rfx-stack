@@ -51,12 +51,12 @@ class DemoList extends Component {
             type="button" value="done"
             onClick={this.handleAddRandomPost}
             className={cx(button, 'm1')}
-          >+ Add Random Item</button>
+          ><i className="fa fa-plus-circle" /> Add Random Item</button>
           <button
             type="button" value="done"
             onClick={this.handleCreatePost}
-            className={cx(button, 'm1')}
-          >+ Create New Item</button>
+            className={cx(button, 'm1 _yellow')}
+          ><i className="fa fa-plus-square" /> Create New Item</button>
         </div>
 
         <div className="md-flex flex-center px4 py2">
