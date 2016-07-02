@@ -15,7 +15,7 @@ const appBar = cx('clearfix', 'fixed', 'animated', 'fadeIn', 'top-0', 'right-0')
 // events
 const handleNavToggle = (e) => {
   e.preventDefault();
-  dispatch('ui.appNav.toggle');
+  dispatch('ui.appNav.open');
 };
 
 const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (

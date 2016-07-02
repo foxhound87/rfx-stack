@@ -1,4 +1,5 @@
 import { observable, autorun, action } from 'mobx';
+import { toggle } from '~/src/utils/decorators/toggle';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -12,6 +13,7 @@ import SnackBar from './ui/SnackBar.js';
 import AuthModal from './ui/AuthModal.js';
 import PostCreateModal from './ui/PostCreateModal.js';
 
+@toggle('shiftLayout', 'layoutIsShifted')
 export default class UIStore {
 
   mui = {};
@@ -39,14 +41,14 @@ export default class UIStore {
 
     // shift the layout on "su" breakpoint when appnav is open
     autorun(() => this.breakpoints.su && this.appNav.isOpen
-      ? this.shiftLayout('yes')
-      : this.shiftLayout('no')
+      ? this.shiftLayout(true)
+      : this.shiftLayout(false)
     );
 
     // undock the navbar if the modal is open
     autorun(() => this.authModal.isOpen
-      ? this.appNav.toggle('close')
-      : () => this.breakpoints.mu && this.appNav.toggle('open')
+      ? this.appNav.open(false)
+      : () => this.breakpoints.mu && this.appNav.open(true)
     );
 
     /**
@@ -58,15 +60,15 @@ export default class UIStore {
     // // open and close the nav automatically
     // // when the "xs" breakpoint changes
     // autorun(() => this.breakpoints.xs
-    //   ? this.appNav.toggle('close')
-    //   : this.appNav.toggle('open')
+    //   ? this.appNav.open(false)
+    //   : this.appNav.open(true)
     // );
 
     // // dock/undock the nav automatically
     // // when the "su" breakpoint changes
     // autorun(() => this.breakpoints.su
-    //   ? this.appNav.dock('on')
-    //   : this.appNav.dock('off')
+    //   ? this.appNav.dock(true)
+    //   : this.appNav.dock(false)
     // );
   }
 
@@ -92,11 +94,5 @@ export default class UIStore {
     // Material-UI components use react-tap-event-plugin to listen for touch events
     // This dependency is temporary and will go away once react v1.0
     return injectTapEventPlugin();
-  }
-
-  @action
-  shiftLayout(flag = null) {
-    if (flag === 'yes') this.layoutIsShifted = true;
-    if (flag === 'no') this.layoutIsShifted = false;
   }
 }

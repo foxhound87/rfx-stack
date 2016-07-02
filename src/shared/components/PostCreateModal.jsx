@@ -21,7 +21,7 @@ _.assign(styles.content, {
 
 // events
 const handleCloseModal = () =>
-  dispatch('ui.postCreateModal.toggle', 'close');
+  dispatch('ui.postCreateModal.open', false);
 
 const PostCreateModal = ({ open, form }) => (
   <Modal

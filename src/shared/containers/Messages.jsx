@@ -33,7 +33,7 @@ class DemoList extends Component {
   handleCreatePost = (e) => {
     e.preventDefault();
     const { ui } = this.context.store;
-    ui.postCreateModal.toggle('open');
+    ui.postCreateModal.open(true);
   };
 
   handlePostPageChange = (page) => {

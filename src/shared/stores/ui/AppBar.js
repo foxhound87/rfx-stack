@@ -1,17 +1,12 @@
 import { observable, action } from 'mobx';
+import { toggle } from '~/src/utils/decorators/toggle';
 
+@toggle('toggleAccountMenu', 'accountMenuIsOpen')
 export default class AppBar {
 
   @observable accountMenuIsOpen = false;
 
   constructor(data) {
     action(() => Object.assign(this, data));
-  }
-
-  @action
-  toggleAccountMenu(flag = null) {
-    if (flag === 'open') this.accountMenuIsOpen = true;
-    if (flag === 'close') this.accountMenuIsOpen = false;
-    if (!flag) this.accountMenuIsOpen = !this.accountMenuIsOpen;
   }
 }

@@ -10,11 +10,11 @@ import Drawer from 'material-ui/Drawer';
 import styles from '../styles/app.nav.css';
 
 const handleOnRequestChange = (open) => {
-  dispatch('ui.appNav.toggle', open);
+  dispatch('ui.appNav.open', open);
 };
 
 const handleOnClick = () => {
-  dispatch('ui.appNav.toggle', 'close');
+  dispatch('ui.appNav.open', false);
 };
 
 const AppNav = ({ children, open, docked }) => (

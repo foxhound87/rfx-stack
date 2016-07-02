@@ -8,7 +8,7 @@ class PostForm extends Form {
     if (!this.validate()) return;
 
     dispatch('post.create', this.values())
-      .then(() => dispatch('ui.postCreateModal.toggle', 'close'))
+      .then(() => dispatch('ui.postCreateModal.open', false))
       .then(() => dispatch('ui.snackBar.open', 'Post Created.'))
       .then(() => this.clear())
       .catch((data) => this.invalidate(data.message));
