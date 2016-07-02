@@ -89,9 +89,9 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 `npm run api:dev`
 
-`npm run build:client:web` // only if `global.HOT = 'HOT';` is NOT defined
+`npm run build:client:web` // only if **global.HOT = 'HOT';** is NOT defined
 
-`npm run web:dev` // only if `global.HOT = 'HOT';` is defined
+`npm run web:dev` // only if **global.HOT = 'HOT';** is defined
 
 > in the electron root:
 
