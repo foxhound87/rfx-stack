@@ -25,7 +25,6 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - Real Time Ready
 - Microservices Ready
 - Modular CSS for React
-- Modular CSS for React
 
 ## Main Libs
 
