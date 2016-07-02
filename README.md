@@ -21,8 +21,10 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - React Hot Loader 3
 - React Stateless Components
 - Isomorphic Fetch/Socket
+- Multi Platform Ready
 - Real Time Ready
 - Microservices Ready
+- Modular CSS for React
 - Modular CSS for React
 
 ## Main Libs
@@ -34,6 +36,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - Styling: [PostCSS](https://www.npmjs.com/package/postcss) & [React CSS Modules](https://www.npmjs.com/package/react-css-modules)
 - Live Browser Syncing: [BrowserSync](https://www.npmjs.com/package/browser-sync)
 - Forms Management: [MobX Ajv Form](https://www.npmjs.com/package/mobx-ajv-form)
+- Desktop App: [Electron](http://electron.atom.io/)
 
 ## Bundler & Styleguide
 
@@ -80,6 +83,20 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 `npm run api:prod`
 
 `npm run web:prod`
+
+#### Electron App
+
+> in the project root:
+
+`npm run api:dev`
+
+`npm run build:client:web` // only if `global.HOT = 'HOT';` is NOT defined
+
+`npm run web:dev` // only if `global.HOT = 'HOT';` is defined
+
+> in the electron root:
+
+`npm start`
 
 ---
 

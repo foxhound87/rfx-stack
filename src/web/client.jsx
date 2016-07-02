@@ -1,14 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory, match } from 'react-router';
+import { hashHistory, browserHistory, match } from 'react-router';
 import { AppContainer } from 'react-hot-loader';
 import { fetchDataOnLocationMatch } from '../utils/fetch';
 import { rehydrate, hotRehydrate } from '~/src/shared/state/hydrate';
 import routes from '../shared/routes';
 import App from './App';
 
+
 const store = rehydrate();
-fetchDataOnLocationMatch(browserHistory, routes, match, store);
+const history = global.ELECTRON ? hashHistory : browserHistory;
+fetchDataOnLocationMatch(history, routes, match, store);
 store.ui.injectTapEventPlugin(); // material-ui fix
 
 function renderApp(AppComponent) {
@@ -17,7 +19,7 @@ function renderApp(AppComponent) {
       <AppComponent
         store={hotRehydrate()}
         routes={routes}
-        history={browserHistory}
+        history={history}
       />
     </AppContainer>,
     document.getElementById('root')

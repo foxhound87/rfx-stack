@@ -50,6 +50,32 @@ This structure does not force you to separate the server-side code from the clie
 
 ---
 
+# Electron
+
+Go to `/src/electron` and run `npm install`.
+
+The `electron` app depends directly from the `web` app, so the client side bundles must be availables running the web app in dev mode or building the client-side code for prod mode.
+
+If you want develop with the hot loader enabled you have to make sure that the global `global.HOT = 'HOT';` is defined in `/src/electron/src/globals.js`.
+
+When you want to go in production, just set it to false or comment it.
+
+So, in case you disabled it, you have to build the client-side code.
+
+Then to start the app, run in sequence:
+
+> in the project root:
+
+`npm run api:dev`
+
+`npm run build:client:web` // only if `global.HOT = 'HOT';` is NOT defined
+
+`npm run web:dev` // only if `global.HOT = 'HOT';` is defined
+
+> in the electron root:
+
+`npm start`
+
 
 # Setup Stores
 
@@ -159,4 +185,3 @@ const handleOnSubmitFormRegister = (e) => {
 ```
 
 Also params can be passed if needed.
-

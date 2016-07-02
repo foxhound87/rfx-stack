@@ -1,3 +1,7 @@
+# 0.7.0 (alpha.7)
+
+* Added Electron App
+
 # 0.6.0 (alpha.6)
 
 * Form management with mobx-ajv-form

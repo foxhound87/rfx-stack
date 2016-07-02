@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript">
+      /* eslint-disable */
+      (function() {
+        if (!global.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = '../../public/build/style.css';
+          document.write(link.outerHTML);
+        }
+      }());
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./src/state.js"></script>
+    <script src="./src/globals.js"></script>
+    <script>
+      /* eslint-disable */
+      (function() {
+        const script = document.createElement('script');
+        script.src = (global.HOT)
+          ? 'http://localhost:3000/bundle.js'
+          : '../../public/build/bundle.js';
+        document.write(script.outerHTML);
+      }());
+    </script>
+  </body>
+</html>
