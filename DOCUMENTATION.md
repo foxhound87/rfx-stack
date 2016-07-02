@@ -55,7 +55,7 @@ This structure does not force you to separate the server-side code from the clie
 
 Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `export const stores` of the `/src/shared/stores.js` file.
 
-```
+```javascript
 import PostStore from './stores/post';
 
 /**
@@ -74,7 +74,7 @@ The Context Provider implements a mechanism to inject the Stores into the **Reac
 
 It is a React Component used both on client and server:
 
-```
+```javascript
 <ContextProvider context={{ store }}>
   ...
 </ContextProvider>
@@ -88,7 +88,7 @@ On the **client**-side: `/src/web/App.js`;
 
 Define the inital state of the Stores in `/src/web/middleware/iso.js` injecting it into the initStore function (the Store Initalizer).
 
-```
+```javascript
 import initStore from '~/src/shared/state/store';
 ...
 
@@ -102,7 +102,7 @@ The inital state can be dynamically updated using **fetchData**:
 
 For fetching specific data on specific pages (rendered both on the server and client), we use a `static fetchData(store, params, query)` inside our react containers in`/src/shared/containers/*`. It passes the stores, and react-router params and query for the current location.
 
-```
+```javascript
 class Home extends Component {
 
   static fetchData(store) {
@@ -122,7 +122,7 @@ Use the **@connect** decorator to pass the Stores to the **Containers** through 
 
 in `/src/shared/containers/*`:
 
-```
+```javascript
 import { connect } from '../state/context';
 ...
 
@@ -148,7 +148,7 @@ The **dispatch()** function is handy to call an **action** when handle component
 
 Use the dot notation to select a store key (defined in **Setup Stores** previously) and the name of the method/action:
 
-```
+```javascript
 import { dispatch } from '../state/dispatcher';
 ...
 
