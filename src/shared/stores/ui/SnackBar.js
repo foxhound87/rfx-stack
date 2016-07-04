@@ -6,10 +6,6 @@ export default class SnackBar {
   @observable duration = 3000;
   @observable message = '';
 
-  constructor(data) {
-    action(() => Object.assign(this, data));
-  }
-
   @action
   open(message) {
     this.message = message;

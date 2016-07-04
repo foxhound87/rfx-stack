@@ -1,12 +1,8 @@
-import { observable, action } from 'mobx';
-import { toggle } from '~/src/utils/decorators/toggle';
+import { observable } from 'mobx';
+import { toggle } from '~/src/utils/decorators';
 
 @toggle('open', 'isOpen')
 export default class PostCreateModal {
 
   @observable isOpen = false;
-
-  constructor(data) {
-    action(() => Object.assign(this, data));
-  }
 }

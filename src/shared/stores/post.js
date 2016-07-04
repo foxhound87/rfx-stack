@@ -22,8 +22,7 @@ export default class PostStore {
   */
   @observable $pagination = {};
 
-  constructor(post) {
-    action(() => Object.assign(this, post));
+  init() {
     // run events on client side-only
     if (global.TYPE === 'CLIENT') this.initEvents();
   }

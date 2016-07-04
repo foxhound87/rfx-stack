@@ -54,25 +54,27 @@ const MenuLinksDX = ({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
     <div className={cx(styles.divider, { 'border-top': !inline })} />
     <If condition={authCheck}>
-      <a
-        onClick={inline && handleMenuAccountToggle}
-        className={inline ? btnInline : btnBlock}
-      >
-        {user.email} { inline && <i className="fa fa-caret-down" /> }
-      </a>
-      <If condition={inline}>
-        <div
-          className={cx(
-            [styles.menuAccount, menuAccount],
-            { hide: !accountMenuIsOpen }
-          )}
+      <span>
+        <a
+          onClick={inline && handleMenuAccountToggle}
+          className={inline ? btnInline : btnBlock}
         >
+          {user.email} { inline && <i className="fa fa-caret-down" /> }
+        </a>
+        <If condition={inline}>
+          <div
+            className={cx(
+              [styles.menuAccount, menuAccount],
+              { hide: !accountMenuIsOpen }
+            )}
+          >
+            <UserSubMenu />
+          </div>
+        <Else />
+          <div className={cx(styles.divider, { 'border-top': !inline })} />
           <UserSubMenu />
-        </div>
-      <Else />
-        <div className={cx(styles.divider, { 'border-top': !inline })} />
-        <UserSubMenu />
-      </If>
+        </If>
+      </span>
     <Else />
       <a
         onClick={handleAuthModalSignin}

@@ -5,10 +5,6 @@ export default class AuthModal {
   @observable isOpen = false;
   @observable showSection = 'signin';
 
-  constructor(data) {
-    action(() => Object.assign(this, data));
-  }
-
   @action
   toggle(flag = null, section = null) {
     if (!flag) this.isOpen = !this.isOpen;

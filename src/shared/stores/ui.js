@@ -1,5 +1,5 @@
-import { observable, autorun, action } from 'mobx';
-import { toggle } from '~/src/utils/decorators/toggle';
+import { observable, autorun } from 'mobx';
+import { extend, toggle } from '~/src/utils/decorators';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -13,6 +13,13 @@ import SnackBar from './ui/SnackBar.js';
 import AuthModal from './ui/AuthModal.js';
 import PostCreateModal from './ui/PostCreateModal.js';
 
+@extend({
+  appBar: AppBar,
+  appNav: AppNav,
+  snackBar: SnackBar,
+  authModal: AuthModal,
+  postCreateModal: PostCreateModal,
+})
 @toggle('shiftLayout', 'layoutIsShifted')
 export default class UIStore {
 
@@ -29,16 +36,7 @@ export default class UIStore {
     lg: '(min-width: 1200px)',
   };
 
-  constructor(ui) {
-    action(() => Object.assign(this, ui));
-
-    // Init nested UI instances
-    this.appBar = new AppBar(ui.appBar);
-    this.appNav = new AppNav(ui.appNav);
-    this.snackBar = new SnackBar(ui.snackBar);
-    this.authModal = new AuthModal(ui.authModal);
-    this.postCreateModal = new PostCreateModal(ui.postCreateModal);
-
+  init() {
     // shift the layout on "su" breakpoint when appnav is open
     autorun(() => this.breakpoints.su && this.appNav.isOpen
       ? this.shiftLayout(true)
@@ -54,7 +52,7 @@ export default class UIStore {
     /**
       The following autoruns demonstartes how to keep
       the navbar open from the startup and how to close it
-      automatically when the browser windows is resized
+      automatically when the browser window is resized
     */
 
     // // open and close the nav automatically
