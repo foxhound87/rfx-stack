@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
 // components
@@ -17,9 +17,8 @@ import postForm from '../forms/post';
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
 
-@connect
-export default
-class DemoList extends Component {
+@connect('store')
+export default class DemoList extends Component {
 
   static fetchData(store) {
     return store.post.find();

@@ -1,10 +1,8 @@
 import React from 'react';
-import { connect } from '../state/context';
-import { dispatch } from '../state/dispatcher';
+import { connect, dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 
 // styles
-// import styles from '../styles/post.filter.css';
 const buttonGroup = cx('btn', 'left', 'x-group-item');
 
 const handleSelect = (e) => {

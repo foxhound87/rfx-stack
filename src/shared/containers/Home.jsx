@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
 // components
@@ -9,9 +9,8 @@ import { Parallax } from 'react-parallax';
 // module styles
 import styles from '../styles/home.css';
 
-@connect
-export default
-class Home extends Component {
+@connect('store')
+export default class Home extends Component {
 
   static fetchData() {}
 

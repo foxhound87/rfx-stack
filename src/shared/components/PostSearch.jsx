@@ -1,10 +1,5 @@
 import React from 'react';
-import { dispatch } from '../state/dispatcher';
-import { connect } from '../state/context';
-// import cx from 'classnames';
-
-// styles
-// import styles from '../styles/post.search.css';
+import { dispatch, connect } from '~/src/utils/state';
 
 const handleSearch = (e) => {
   e.preventDefault();

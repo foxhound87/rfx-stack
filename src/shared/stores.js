@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import { store } from '~/src/utils/state';
 import { useStrict } from 'mobx';
 
 import UIStore from './stores/ui';
@@ -16,20 +16,10 @@ useStrict(true);
 /**
   Stores
 */
-export const stores = {
-  ui: UIStore,
-  app: AppStore,
-  auth: AuthStore,
-  post: PostStore,
-};
-
-/**
-  Context Types
- */
-export const contextTypes = {
-  store: PropTypes.object,
-  router: PropTypes.object,
-  location: PropTypes.object,
-  history: PropTypes.object,
-  muiTheme: PropTypes.object,
-};
+export default store
+  .setup({
+    ui: UIStore,
+    app: AppStore,
+    auth: AuthStore,
+    post: PostStore,
+  });

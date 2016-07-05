@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Router } from 'react-router';
-import { ContextProvider } from '../shared/state/context';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import context from '~/src/shared/context';
+
+const ContextProvider = context.getProvider();
 
 export default
 class App extends Component {

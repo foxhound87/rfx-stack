@@ -1,5 +1,5 @@
 import Form from 'mobx-ajv-form';
-import { dispatch } from '~/src/shared/state/dispatcher';
+import { dispatch } from '~/src/utils/state/dispatcher';
 
 class PostForm extends Form {
 

@@ -1,13 +1,13 @@
 import jsonStringifySafe from 'json-stringify-safe';
 import { toJS } from 'mobx';
-import initStore from './store';
+import $store from './store';
 
 /**
  Dehydrate (on server)
 */
-export function dehydrate(store) {
+export function dehydrate() {
   // convert store to json
-  return jsonStringifySafe(toJS(store, true));
+  return jsonStringifySafe(toJS($store.get(), true));
 }
 
 /**
@@ -15,7 +15,7 @@ export function dehydrate(store) {
 */
 export function rehydrate() {
   // inject initial state into stores
-  return initStore(window.__STATE);
+  return $store.set(window.__STATE);
 }
 
 
@@ -24,10 +24,10 @@ export function rehydrate() {
 */
 export function hotRehydrate() {
   if (window.__STORE) {
-    window.__STORE = initStore(JSON.parse(dehydrate(window.__STORE)));
+    window.__STORE = $store.set(JSON.parse(dehydrate(window.__STORE)));
   }
   if (!window.store) {
-    window.__STORE = initStore();
+    window.__STORE = $store.get();
   }
   return window.__STORE;
 }

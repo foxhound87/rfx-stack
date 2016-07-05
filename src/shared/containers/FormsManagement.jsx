@@ -4,8 +4,7 @@ import Helmet from 'react-helmet';
 const clog = 'https://github.com/foxhound87/mobx-ajv-form/blob/master/CHANGELOG.md';
 const doc = 'https://github.com/foxhound87/mobx-ajv-form/blob/master/DOCUMENTATION.md';
 
-export default
-class NotFound extends Component {
+export default class NotFound extends Component {
 
   static fetchData() {}
 

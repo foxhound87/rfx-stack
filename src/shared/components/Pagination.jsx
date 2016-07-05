@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
 // components

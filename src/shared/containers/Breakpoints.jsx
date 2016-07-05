@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
-@connect
-export default
-class MatchMedia extends Component {
+@connect('store')
+export default class MatchMedia extends Component {
 
   static fetchData() {}
 

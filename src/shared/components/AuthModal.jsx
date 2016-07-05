@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from '../state/context';
-import { dispatch } from '../state/dispatcher';
+import { connect, dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 import _ from 'lodash';
 

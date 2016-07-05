@@ -5,16 +5,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
-import { fetchData } from '~/src/utils/fetch';
-import { ContextProvider } from '~/src/shared/state/context';
-import { dehydrate } from '~/src/shared/state/hydrate';
-import initStore from '~/src/shared/state/store';
+import { fetchData, dehydrate } from '~/src/utils/state';
 import routes from '~/src/shared/routes';
+import stores from '~/src/shared/stores';
+import context from '~/src/shared/context';
 
 function handleRouter(req, res, props) {
   console.log('route:', req.url); // eslint-disable-line no-console
+  if (req.url === '/favicon.ico') return;
 
-  const store = initStore({
+  const ContextProvider = context.getProvider();
+
+  const store = stores.inject({
     app: { ssrLocation: req.url },
     ui: { mui: { userAgent: req.headers['user-agent'] } },
   });
@@ -33,7 +35,7 @@ function handleRouter(req, res, props) {
       .render('index', {
         build: isDev ? null : '/build',
         head: Helmet.rewind(),
-        state: dehydrate(store),
+        state: dehydrate(),
         root: html,
       }));
 }

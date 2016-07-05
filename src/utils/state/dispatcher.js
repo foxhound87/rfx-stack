@@ -1,4 +1,4 @@
-import getStore from './store';
+import $store from './store';
 import access from 'safe-access';
 import _ from 'lodash';
 
@@ -20,7 +20,7 @@ function getRealClassName(ns, store) {
 }
 
 export function dispatch(namespace, ...opt) {
-  const store = getStore();
+  const store = $store.get();
   const fn = access(store, namespace);
   const className = getRealClassName(namespace, store);
   const methodName = getNSMethodName(namespace);

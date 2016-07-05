@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
 // dev tools
@@ -26,9 +26,8 @@ import '../styles/_.global.css';
 // module styles
 import styles from '../styles/app.layout.css';
 
-@connect
-export default
-class AppLayout extends Component {
+@connect('store')
+export default class AppLayout extends Component {
 
   static fetchData() {}
 

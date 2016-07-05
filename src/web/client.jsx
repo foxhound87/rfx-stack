@@ -2,14 +2,19 @@ import React from 'react';
 import { render } from 'react-dom';
 import { hashHistory, browserHistory, match } from 'react-router';
 import { AppContainer } from 'react-hot-loader';
-import { fetchDataOnLocationMatch } from '../utils/fetch';
-import { rehydrate, hotRehydrate } from '~/src/shared/state/hydrate';
 import routes from '../shared/routes';
 import App from './App';
 
+import {
+  rehydrate,
+  hotRehydrate,
+  fetchDataOnLocationMatch } from '~/src/utils/state';
+
+import '~/src/shared/stores'; // initialize stores
 
 const store = rehydrate();
 const history = global.ELECTRON ? hashHistory : browserHistory;
+
 fetchDataOnLocationMatch(history, routes, match, store);
 store.ui.injectTapEventPlugin(); // material-ui fix
 
