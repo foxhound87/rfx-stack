@@ -7,18 +7,18 @@ import materialOverrideStyles from '../styles/_.material.js';
 import _ from 'lodash';
 
 // ui classes
-import AppBar from './ui/AppBar.js';
-import AppNav from './ui/AppNav.js';
-import SnackBar from './ui/SnackBar.js';
-import AuthModal from './ui/AuthModal.js';
-import PostCreateModal from './ui/PostCreateModal.js';
+import appBar from './ui/AppBar.js';
+import appNav from './ui/AppNav.js';
+import snackBar from './ui/SnackBar.js';
+import authModal from './ui/AuthModal.js';
+import postCreateModal from './ui/PostCreateModal.js';
 
 @extend({
-  appBar: AppBar,
-  appNav: AppNav,
-  snackBar: SnackBar,
-  authModal: AuthModal,
-  postCreateModal: PostCreateModal,
+  appBar,
+  appNav,
+  snackBar,
+  authModal,
+  postCreateModal,
 })
 @toggle('shiftLayout', 'layoutIsShifted')
 export default class UIStore {
