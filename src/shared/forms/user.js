@@ -1,6 +1,6 @@
 import Form from 'mobx-ajv-form';
 import schema from '~/src/shared/schemas/user';
-import { dispatch } from '~/src/utils/state/dispatcher';
+import { dispatch } from '~/src/utils/state';
 
 class UserForm extends Form {
 

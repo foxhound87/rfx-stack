@@ -51,7 +51,6 @@ class Store {
   @action
   extendWithNestedClass(obj, state, extend = null) {
     if (_.isUndefined(extend) || _.isEmpty(extend)) return;
-    // if (!extend) return;
 
     Object.keys(extend)
       .forEach((subkey) => {
