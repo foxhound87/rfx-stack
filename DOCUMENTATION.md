@@ -3,15 +3,16 @@ With the RFX Stack you can build and run different pieces of the app independent
 
 You are also free to change some of its parts as you need.
 
-For this purpose the code is divided in differents compartments:
+For this purpose the code is divided into differents compartments:
 
 - api
+- electron
 - seeds
-- web
 - shared
 - utils
+- web
 
-This structure does not force you to separate the server-side code from the client-side, as with React and its server side rendering features, these two concepts are more coupled then ever. The **web** directory contains both the server and client code specifically needed for in-browser rendering. The **shared** directory contains code that can be shared, for example, with React Native or Electron in the same project. That's the main goal: provide flexibility and extensibility.
+This structure does not force you to separate the server-side code from the client-side, as with React and its server side rendering features, these two concepts are more coupled than ever. The **web** directory contains both the server and client code specifically needed for in-browser rendering. The **shared** directory contains code that can be shared, for example, with React Native or Electron in the same project. That's the main goal: provide flexibility and extensibility.
 
 ---
 
@@ -79,28 +80,51 @@ Then to start the app, run in sequence:
 
 # Setup Stores
 
-Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `export const stores` of the `/src/shared/stores.js` file.
+Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `store.setup() method` in the `/src/shared/stores.js` file.
 
 ```javascript
-import PostStore from './stores/post';
+import { store } from '~/src/utils/state';
+
+import UIStore from './stores/ui';
 
 /**
   Stores
 */
-export const stores = {
-  post: PostStore,
-};
+export default store
+  .setup({
+    ui: UIStore,
+  });
+
 ```
 
-The mapped Stores are called by the **Store Initalizer** located at `/src/shared/state/store.js` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
+The mapped Stores are called by the **Store Initalizer** located at `/src/utils/state/store.js` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
 
 # Context Provider
 
 The Context Provider implements a mechanism to inject the Stores into the **React Context** and make them accessible from a React Container.
 
-It is a React Component used both on client and server:
+First, in `/src/shared/context.js` define the Context Types we want to pass to the Context Provider:
 
 ```javascript
+import { Context } from '~/src/utils/state';
+import { PropTypes } from 'react';
+
+/**
+  Context Types
+ */
+export default new Context({
+  store: PropTypes.object,
+});
+
+```
+
+Now we can use the Context Provider React Component on both client and server:
+
+```javascript
+import context from '~/src/shared/context';
+
+const ContextProvider = context.getProvider();
+
 <ContextProvider context={{ store }}>
   ...
 </ContextProvider>
@@ -115,10 +139,10 @@ On the **client**-side: `/src/web/App.js`;
 Define the inital state of the Stores in `/src/web/middleware/iso.js` injecting it into the initStore function (the Store Initalizer).
 
 ```javascript
-import initStore from '~/src/shared/state/store';
+import stores from '~/src/shared/stores';
 ...
 
-const store = initStore({
+const store = stores.inject({
   app: { ssrLocation: req.url },
   // put here the inital state of other stores...
 });
@@ -149,7 +173,7 @@ Use the **@connect** decorator to pass the Stores to the **Containers** through 
 in `/src/shared/containers/*`:
 
 ```javascript
-import { connect } from '../state/context';
+import { connect } from '~/src/utils/state';
 ...
 
 @connect
@@ -175,7 +199,8 @@ The **dispatch()** function is handy to call an **action** when handle component
 Use the dot notation to select a store key (defined in **Setup Stores** previously) and the name of the method/action:
 
 ```javascript
-import { dispatch } from '../state/dispatcher';
+import { dispatch } from '~/src/utils/state';
+
 ...
 
 const handleOnSubmitFormRegister = (e) => {
