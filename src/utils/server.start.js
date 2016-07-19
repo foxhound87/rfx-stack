@@ -1,33 +1,48 @@
-import { logServerConfig } from './logger';
+import getenv from 'getenv';
 
-class Start {
+class ServerSetup {
+  init(props) {
+    this.config = props.config;
+    this.namespace = props.namespace;
+    this.logger = props.logger;
+  }
+}
 
-  constructor(app, type = null) {
+class ServerStart {
+
+  constructor(app) {
     this.app = app;
-    this.type = type;
-
     this.fixUA();
   }
 
-  init() {
-    const config = this.getApiConfig() || this.getWebConfig();
+  init(props) {
+    const key = props.namespace || 'api';
+    const configkey = this.configkey || 'server';
+    const logger = props.logger || null;
+    const config = this.getFeathersConfig(configkey) || this.getEnvConfig(key);
 
+    this.start(config, key, logger);
+  }
+
+  start(config, key, logger) {
     this.app
       .listen(
-        this.type === 'API' ? config.api.port : config.web.port,
-        this.type === 'API' ? config.api.host : config.web.host,
+        config[key.toLowerCase()].port,
+        config[key.toLowerCase()].host,
       )
-      .on('listening', () => logServerConfig(this.type));
+      .on('listening', () => logger && logger(key));
   }
 
-  getApiConfig() {
-    return this.app.get('server');
+  getFeathersConfig(configkey) {
+    return this.app.get(configkey);
   }
 
-  getWebConfig() {
+  getEnvConfig(key) {
     return {
-      web: global.CONFIG.web,
-      io: global.CONFIG.io,
+      [key.toLowerCase()]: {
+        host: getenv([key.toUpperCase(), 'HOST'].join('_')),
+        port: getenv([key.toUpperCase(), 'PORT'].join('_')),
+      },
     };
   }
 
@@ -39,10 +54,12 @@ class Start {
   }
 }
 
-export function startApiServer() {
-  new Start(this, 'API').init();
+const serverSetup = new ServerSetup();
+
+export function setupServer($props) {
+  serverSetup.init($props);
 }
 
-export function startWebServer() {
-  new Start(this, 'WEB').init();
+export function startServer() {
+  new ServerStart(this).init(serverSetup);
 }

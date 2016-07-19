@@ -1,5 +1,4 @@
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
-import NpmInstallWebpackPlugin from 'npm-install-webpack-plugin';
 import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
@@ -58,7 +57,6 @@ export function config() {
       }, { reload: false }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
-      new NpmInstallWebpackPlugin({ save: true }),
     ],
   };
 }

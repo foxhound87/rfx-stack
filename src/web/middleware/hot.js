@@ -1,25 +1,21 @@
 // import historyApiFallback from 'connect-history-api-fallback';
-import config from '~/webpack.config.babel';
-import webpack from 'webpack';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpack from 'webpack';
+import isDev from 'isdev';
+import _ from 'lodash';
 
-const bundler = webpack(config);
+export function hotMiddleware({ wpc, wdmc, whmc }) {
+  const bundler = webpack(wpc);
 
-const middleware = [
-  webpackDevMiddleware(bundler, {
-    filename: config.output.filename,
-    publicPath: config.output.publicPath,
-    historyApiFallback: false,
-    hot: true,
-    stats: {
-      colors: true,
-    },
-  }),
-  webpackHotMiddleware(bundler, {
-    log: console.log, // eslint-disable-line no-console
-  }),
-  // historyApiFallback(),
-];
-
-export { middleware as hotMiddleware };
+  return isDev ? [
+    webpackDevMiddleware(bundler, _.merge(wdmc, {
+      filename: wpc.output.filename,
+      publicPath: wpc.output.publicPath,
+    })),
+    webpackHotMiddleware(bundler, _.merge(whmc, {
+      log: console.log, // eslint-disable-line no-console
+    })),
+    // historyApiFallback(),
+  ] : (req, res, next) => next();
+}

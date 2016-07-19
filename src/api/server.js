@@ -6,21 +6,30 @@ import hooks from 'feathers-hooks';
 import rest from 'feathers-rest';
 import socketio from 'feathers-socketio';
 
+const Dir = global.DIR;
+
 import apiBeforeMiddleware from './middleware/api/before';
 import apiAfterMiddleware from './middleware/api/after';
 
 import auth from './auth';
 import adapter from 'feathers-mongoose';
 import { connector } from './connector';
-import { setupServicesAutoload, initServicesAutoload } from './services';
-import { startApiServer as start } from '../utils/server.start';
+import { autoloader } from './autoloader';
 
-const Dir = global.DIR;
+import { setupServices, initServices } from '~/src/utils/services.autoload';
+import { setupServer, startServer } from '~/src/utils/server.start';
+import { logServerConfig } from '~/src/utils/logger';
 
-setupServicesAutoload({
+setupServer({
+  namespace: 'api',
+  logger: logServerConfig,
+});
+
+setupServices({
   dir: __dirname,
   adapter,
   connector,
+  autoloader,
 });
 
 const app = feathers()
@@ -34,6 +43,6 @@ app
   .configure(rest())
   .configure(socketio((io) => io.set('origins', '*:*')))
   .configure(auth)
-  .configure(initServicesAutoload)
+  .configure(initServices)
   .configure(apiAfterMiddleware)
-  .configure(start);
+  .configure(startServer);

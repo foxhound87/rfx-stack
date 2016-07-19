@@ -1,17 +1,36 @@
-import { log } from '../utils/logger';
+/* eslint global-require: 0 */
 
-const handlerFile = ['../seeds/handlers/', process.env.NODE_ENV].join('');
+import { log } from './logger';
+import path from 'path';
 
-let handler = require(handlerFile).handle();
+function logStart() {
+  log.info('--- Seeding... ---------------------------');
+  log.info('------------------------------------------');
+}
 
-if (Array.isArray(handler)) handler = Promise.all(handler);
+function logFinish() {
+  log.info('--- Seed Finish --------------------------');
+  log.info('------------------------------------------');
+  process.exit();
+}
 
-log.info('========================');
-log.info('Seeding...');
-log.info('========================');
+function catchError() {
+  log.info('--- Seed Error ---------------------------');
+  log.info('------------------------------------------');
+  process.exit();
+}
 
-if (!handler) log.error('Seed Error');
+export default ($path) => {
+  const handlerFile = path.resolve($path, process.env.NODE_ENV);
 
-handler
-  .then(() => log.info('Seed Finish'))
-  .then(() => process.exit());
+  let handler = require(handlerFile).handle();
+
+  if (Array.isArray(handler)) handler = Promise.all(handler);
+
+  if (!handler) catchError();
+
+  handler
+    .then(logStart)
+    .then(logFinish)
+    .catch(catchError);
+};

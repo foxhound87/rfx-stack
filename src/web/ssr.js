@@ -3,17 +3,13 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
+import { RouterContext } from 'react-router';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
 import { fetchData, dehydrate } from '~/src/utils/state';
-import routes from '~/src/shared/routes';
 import stores from '~/src/shared/stores';
 import context from '~/src/shared/context';
 
-function handleRouter(req, res, props) {
-  console.log('route:', req.url); // eslint-disable-line no-console
-  if (req.url === '/favicon.ico') return;
-
+export default (req, res, props) => {
   const ContextProvider = context.getProvider();
 
   const store = stores.inject({
@@ -38,26 +34,4 @@ function handleRouter(req, res, props) {
         state: dehydrate(),
         root: html,
       }));
-}
-
-function handleRedirect(res, redirect) {
-  res.redirect(302, redirect.pathname + redirect.search);
-}
-
-function handleNotFound(res) {
-  res.status(404).send('Not Found');
-}
-
-function handleError(res, err) {
-  res.status(500).send(err.message);
-}
-
-export function isoMiddleware(req, res) {
-  match({ routes, location: req.url },
-    (err, redirect, props) => {
-      if (err) handleError(res, err);
-      else if (redirect) handleRedirect(res, redirect);
-      else if (props) handleRouter(req, res, props);
-      else handleNotFound(res);
-    });
-}
+};
