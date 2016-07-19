@@ -130,13 +130,13 @@ const ContextProvider = context.getProvider();
 </ContextProvider>
 ```
 
-On the **server**-side: `/src/web/middleware/iso.js`;
+On the **server**-side: `/src/web/ssr.js`;
 
 On the **client**-side: `/src/web/App.js`;
 
 # Server Side Rendering
 
-Define the inital state of the Stores in `/src/web/middleware/iso.js` injecting it into the initStore function (the Store Initalizer).
+Define the inital state of the Stores in `/src/web/ssr.js` injecting it into the initStore function (the Store Initalizer).
 
 ```javascript
 import stores from '~/src/shared/stores';
