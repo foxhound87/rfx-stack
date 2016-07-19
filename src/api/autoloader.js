@@ -1,3 +1,4 @@
+/* eslint global-require: 0 */
 import { log } from '~/src/utils/logger';
 
 const Dir = global.DIR;

@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 import jsonStringifySafe from 'json-stringify-safe';
 import { toJS } from 'mobx';
 import $store from './store';

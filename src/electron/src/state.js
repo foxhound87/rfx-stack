@@ -1,3 +1,5 @@
+/* eslint no-underscore-dangle: 0 */
+
 /*
   Initial State
 */

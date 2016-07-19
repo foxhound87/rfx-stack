@@ -18,10 +18,11 @@ const handleNavToggle = (e) => {
 };
 
 const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
-  <div className={cx(styles.bar, appBar, {
-    [styles.leftShifted]: layoutIsShifted,
-    'left-0': !layoutIsShifted,
-  })}
+  <div
+    className={cx(styles.bar, appBar, {
+      [styles.leftShifted]: layoutIsShifted,
+      'left-0': !layoutIsShifted,
+    })}
   >
     <div className="left lg-hide">
       <a onClick={handleNavToggle} className={button}>
@@ -37,7 +38,8 @@ const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
     <div className="right md-show">
       <div className="inline-block">
         <div className="relative">
-          <MenuLinksDX inline
+          <MenuLinksDX
+            inline
             user={user}
             authCheck={authCheck}
             accountMenuIsOpen={accountMenuIsOpen}

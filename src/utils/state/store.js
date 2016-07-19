@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 import { action } from 'mobx';
 import _ from 'lodash';
 

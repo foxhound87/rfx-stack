@@ -46,7 +46,7 @@ export default class AppLayout extends Component {
 
     return (
       <MatchMediaProvider breakpoints={ui.breakpoints}>
-        { isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null }
+        {isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null}
         <Helmet
           htmlAttributes={{ lang: 'en' }}
           titleTemplate="RFX Stack - %s"

@@ -21,15 +21,17 @@ export default class Home extends Component {
         <Helmet title="Home" />
         <div className="center">
           <Parallax bgImage="/static/img/bg.jpg" strength={400}>
-            <h1 className={cx(styles.title, {
-              [styles.xsTitle]: bp.xs,
-              [styles.suTitle]: bp.su,
-            })}
+            <h1
+              className={cx(styles.title, {
+                [styles.xsTitle]: bp.xs,
+                [styles.suTitle]: bp.su,
+              })}
             >RFX STACK</h1>
-            <h2 className={cx(styles.subTitle, {
-              [styles.xsSubTitle]: bp.xs,
-              [styles.suSubTitle]: bp.su,
-            })}
+            <h2
+              className={cx(styles.subTitle, {
+                [styles.xsSubTitle]: bp.xs,
+                [styles.suSubTitle]: bp.su,
+              })}
             >Universal App featuring: React + Feathers + MobX
             </h2>
           </Parallax>
@@ -79,7 +81,6 @@ export default class Home extends Component {
               </div>
             </div>
           </div>
-          {/* <i className="fa fa-github" /> Completely Free and Open Source */}
         </div>
       </div>
     );

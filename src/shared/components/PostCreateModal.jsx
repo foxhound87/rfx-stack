@@ -30,41 +30,41 @@ const PostCreateModal = ({ open, form }) => (
   >
     <div className="m3">
       <h3>Create Post</h3>
-        <form>
-          <div className="pb3">
-            <TextField
-              hintText="Title"
-              floatingLabelText="Title"
-              name="title"
-              value={form.fields.title.value}
-              errorText={form.fields.title.errorMessage}
-              onChange={form.syncValue}
-            />
-            <Toggle
-              className="pt3"
-              labelPosition="right"
-              label="Completed"
-              name="completed"
-              defaultToggled={form.fields.completed.value}
-              onToggle={form.syncValue}
-            />
-          </div>
-          <div className="center">
-            <button
-              type="submit"
-              disabled={!form.isValid}
-              className="btn btn-primary"
-              onClick={form.handleOnSubmit}
-            >Save</button>
-          </div>
-          <div
-            className={cx(errorMessage, {
-              hide: !form.isValid && form.genericErrorMessage,
-            })}
-          >
-            {form.genericErrorMessage}
-          </div>
-        </form>
+      <form>
+        <div className="pb3">
+          <TextField
+            hintText="Title"
+            floatingLabelText="Title"
+            name="title"
+            value={form.fields.title.value}
+            errorText={form.fields.title.errorMessage}
+            onChange={form.syncValue}
+          />
+          <Toggle
+            className="pt3"
+            labelPosition="right"
+            label="Completed"
+            name="completed"
+            defaultToggled={form.fields.completed.value}
+            onToggle={form.syncValue}
+          />
+        </div>
+        <div className="center">
+          <button
+            type="submit"
+            disabled={!form.isValid}
+            className="btn btn-primary"
+            onClick={form.handleOnSubmit}
+          >Save</button>
+        </div>
+        <div
+          className={cx(errorMessage, {
+            hide: !form.isValid && form.genericErrorMessage,
+          })}
+        >
+          {form.genericErrorMessage}
+        </div>
+      </form>
     </div>
   </Modal>
 );

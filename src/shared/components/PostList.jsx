@@ -16,7 +16,6 @@ const PostList = ({ items }) => (
         <For each="item" of={items}>
           <li key={item.uuid} className="bg-white rounded px3 py2 mb2">
             <div className="md-flex">
-
               <div className="sm-col-12 pt2">
                 <div className="h3"> {item.completed
                   ? <i className="fa fa-check-circle olive" />
@@ -28,12 +27,10 @@ const PostList = ({ items }) => (
                 <p><b>Created at</b>: <TimeAgo date={item.createdAt} /></p>
                 <p><b>Updated at:</b> <TimeAgo date={item.updatedAt} /></p>
               </div>
-
-
             </div>
           </li>
         </For>
-      <Else />
+        <Else />
         <div className="divider border-top" />
         <h4 className="center">NO ITEMS FOUND</h4>
       </If>

@@ -21,7 +21,7 @@ function catchError() {
 }
 
 export default ($path) => {
-  const handlerFile = path.resolve($path, process.env.NODE_ENV);
+  const handlerFile = path.resolve($path, 'handlers', process.env.NODE_ENV);
 
   let handler = require(handlerFile).handle();
 

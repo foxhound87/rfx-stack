@@ -14,9 +14,9 @@ function getNSMethodName(str) {
 
 function getRealClassName(ns, store) {
   const className = getNSClassNamespace(ns);
-  const _class = access(store, className);
-  if (_.isUndefined(_class)) throw new Error(`The Store ${className} does not exist!`);
-  return _class.constructor.name;
+  const $class = access(store, className);
+  if (_.isUndefined($class)) throw new Error(`The Store ${className} does not exist!`);
+  return $class.constructor.name;
 }
 
 export function dispatch(namespace, ...opt) {

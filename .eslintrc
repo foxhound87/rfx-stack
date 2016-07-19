@@ -11,6 +11,8 @@
   },
   "rules": {
     "no-confusing-arrow": 0,
+    "no-useless-computed-key": 0,
+    "import/no-unresolved": [2, { "ignore": ["\/~*"] }],
     "key-spacing": [0, { "align": "value" }]
   }
 }

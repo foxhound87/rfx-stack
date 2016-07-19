@@ -1,3 +1,4 @@
+/* eslint global-require: 0 */
 import React from 'react';
 import { render } from 'react-dom';
 import { hashHistory, browserHistory, match } from 'react-router';
