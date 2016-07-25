@@ -34,8 +34,8 @@ const PostCreateModal = ({ open, form }) => (
         <div className="pb3">
           <TextField
             hintText="Title"
-            floatingLabelText="Title"
-            name="title"
+            floatingLabelText={form.fields.title.label}
+            name={form.fields.title.name}
             value={form.fields.title.value}
             errorText={form.fields.title.errorMessage}
             onChange={form.syncValue}
@@ -43,8 +43,8 @@ const PostCreateModal = ({ open, form }) => (
           <Toggle
             className="pt3"
             labelPosition="right"
-            label="Completed"
-            name="completed"
+            label={form.fields.completed.label}
+            name={form.fields.completed.name}
             defaultToggled={form.fields.completed.value}
             onToggle={form.syncValue}
           />

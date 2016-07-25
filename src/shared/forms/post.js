@@ -19,9 +19,10 @@ export default
   new PostForm({
     fields: {
       title: {
-        value: '',
+        label: 'Title',
       },
       completed: {
+        label: 'Completed',
         value: true,
       },
     },
