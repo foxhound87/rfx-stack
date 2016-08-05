@@ -1,10 +1,11 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb"],
-  "plugins": [
-    "jsx-a11y"
-  ],
+  "plugins": ["jsx-a11y"],
   "globals": {
+    "navigator": true,
+    "document": true,
+    "window": true,
     "If": true,
     "Else": true,
     "For": true

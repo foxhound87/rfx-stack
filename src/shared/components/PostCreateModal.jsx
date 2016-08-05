@@ -10,6 +10,7 @@ import Toggle from 'material-ui/Toggle';
 
 // styles
 import modalBaseStyle from '../styles/_.modal.js';
+
 const styles = _.cloneDeep(modalBaseStyle);
 const errorMessage = cx('red', 'm1');
 

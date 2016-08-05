@@ -1,3 +1,4 @@
+/* eslint import/prefer-default-export: 0 */
 import serveStatic from 'serve-static';
 
 export function serveStaticMiddleware() {

@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
-// styles
-const errorMessage = cx('red', 'm1');
-
 // components
 import TextField from 'material-ui/TextField';
+
+// styles
+const errorMessage = cx('red', 'm1');
 
 const AuthModal = ({ form }) => (
   <form>

@@ -1,17 +1,17 @@
 /* eslint global-require: 0 */
-import React from 'react';
-import { render } from 'react-dom';
-import { hashHistory, browserHistory, match } from 'react-router';
-import { AppContainer } from 'react-hot-loader';
-import routes from '../shared/routes';
-import App from './App';
+import '~/src/shared/stores'; // initialize stores
 
 import {
   rehydrate,
   hotRehydrate,
   fetchDataOnLocationMatch } from '~/src/utils/state';
 
-import '~/src/shared/stores'; // initialize stores
+import React from 'react';
+import { render } from 'react-dom';
+import { hashHistory, browserHistory, match } from 'react-router';
+import { AppContainer } from 'react-hot-loader';
+import routes from '../shared/routes';
+import App from './App';
 
 const store = rehydrate();
 const history = global.ELECTRON ? hashHistory : browserHistory;

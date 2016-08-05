@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
 import cx from 'classnames';
+import { connect, dispatch } from '~/src/utils/state';
 
 // components
 import MenuLinksSX from '../components/MenuLinksSX';
@@ -8,6 +8,7 @@ import MenuLinksDX from '../components/MenuLinksDX';
 
 // styles
 import styles from '../styles/app.bar.css';
+
 const button = cx('btn', 'inline-block', 'py2', 'm0');
 const appBar = cx('clearfix', 'fixed', 'animated', 'fadeIn', 'top-0', 'right-0');
 
@@ -47,9 +48,8 @@ const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
         </div>
       </div>
     </div>
-    <div className={cx('clearfix', 'sm-hide')}></div>
-    <div className={cx('overflow-hidden', 'px2')}>
-    </div>
+    <div className={cx('clearfix', 'sm-hide')} />
+    <div className={cx('overflow-hidden', 'px2')} />
   </div>
 );
 

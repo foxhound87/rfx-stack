@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }] */
 import isDev from 'isdev';
 import React from 'react';
 import Helmet from 'react-helmet';

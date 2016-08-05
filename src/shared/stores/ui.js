@@ -1,10 +1,10 @@
+import _ from 'lodash';
 import { observable, autorun } from 'mobx';
 import { extend, toggle } from '~/src/utils/decorators';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import materialOverrideStyles from '../styles/_.material.js';
-import _ from 'lodash';
 
 // ui classes
 import appBar from './ui/AppBar.js';
@@ -84,7 +84,7 @@ export default class UIStore {
 
   injectTapEventPlugin() {
     if (process.env.NODE_ENV === 'development') {
-      return console.warn([
+      return console.warn([ // eslint-disable-line no-console
         'The react-tap-event-plugin is enabled only in production, ',
         'due to a issue with Hot-Reloadable MobX Stores.',
       ].join(''));

@@ -59,6 +59,7 @@ class Store {
         const $substate = state[subkey] || {};
         const $subobj = new SubClass($substate);
         const $subextend = $subobj.___extend || null;
+        Object.assign($subobj, $substate);
         Object.assign(obj, { [subkey]: $subobj });
         // recursion for deep nested classes
         this.extendWithNestedClass($subobj, $substate, $subextend);
@@ -69,4 +70,4 @@ class Store {
   }
 }
 
-export default new Store;
+export default new Store();

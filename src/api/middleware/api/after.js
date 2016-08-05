@@ -1,7 +1,7 @@
 import handler from 'feathers-errors/handler';
+import { log } from '~/src/utils/logger';
 import notFound from '../notFound';
 import logger from '../logger';
-import { log } from '~/src/utils/logger';
 
 export default function () {
   log.info('Init API Middleware: After');

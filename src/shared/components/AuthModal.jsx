@@ -10,6 +10,7 @@ import AuthFormRegister from './AuthFormRegister';
 
 // styles
 import modalBaseStyle from '../styles/_.modal.js';
+
 const styles = _.cloneDeep(modalBaseStyle);
 const buttonGroup = cx('btn', 'left', 'x-group-item');
 const authSection = cx('center', 'fit', 'col-8', 'px2', 'mb3', 'mx-auto');

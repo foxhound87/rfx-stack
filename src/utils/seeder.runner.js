@@ -1,7 +1,7 @@
 /* eslint global-require: 0 */
 
-import { log } from './logger';
 import path from 'path';
+import { log } from './logger';
 
 function logStart() {
   log.info('--- Seeding... ---------------------------');

@@ -5,20 +5,20 @@ import configuration from 'feathers-configuration';
 import hooks from 'feathers-hooks';
 import rest from 'feathers-rest';
 import socketio from 'feathers-socketio';
+import adapter from 'feathers-mongoose';
 
-const Dir = global.DIR;
+import { setupServices, initServices } from '~/src/utils/services.autoload';
+import { setupServer, startServer } from '~/src/utils/server.start';
+import { logServerConfig } from '~/src/utils/logger';
 
 import apiBeforeMiddleware from './middleware/api/before';
 import apiAfterMiddleware from './middleware/api/after';
 
 import auth from './auth';
-import adapter from 'feathers-mongoose';
 import { connector } from './connector';
 import { autoloader } from './autoloader';
 
-import { setupServices, initServices } from '~/src/utils/services.autoload';
-import { setupServer, startServer } from '~/src/utils/server.start';
-import { logServerConfig } from '~/src/utils/logger';
+const Dir = global.DIR;
 
 setupServer({
   namespace: 'api',

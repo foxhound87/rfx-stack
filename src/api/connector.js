@@ -1,3 +1,4 @@
+/* eslint import/prefer-default-export: 0 */
 import mongoose from 'mongoose';
 
 export function connector(config) {

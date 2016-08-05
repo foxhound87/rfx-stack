@@ -1,3 +1,4 @@
+/* eslint import/prefer-default-export: 0 */
 import { action } from 'mobx';
 
 export function toggle(...args) {

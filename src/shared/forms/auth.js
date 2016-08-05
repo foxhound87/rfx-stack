@@ -1,9 +1,11 @@
 import Form from 'mobx-ajv-form';
 import schema from '~/src/shared/schemas/auth';
 import { dispatch } from '~/src/utils/state';
+import { action } from 'mobx';
 
 class AuthForm extends Form {
 
+  @action
   handleOnSubmit = (e) => {
     e.preventDefault();
     if (!this.validate()) return;
@@ -19,12 +21,12 @@ class AuthForm extends Form {
 export default
   new AuthForm({
     schema,
-    fields: {
-      email: {
-        label: 'Email',
-      },
-      password: {
-        label: 'Password',
-      },
-    },
+    // fields: {
+    //   email: {
+    //     label: 'Email',
+    //   },
+    //   password: {
+    //     label: 'Password',
+    //   },
+    // },
   });

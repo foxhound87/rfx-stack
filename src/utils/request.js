@@ -14,7 +14,9 @@ class Request {
       const requestParams = (!_.isEmpty(params) && method === 'get')
       ? (['?', this.querystring(params)].join('')) : '';
       const requestURL = this.url(path) + requestParams;
-      return fetch(requestURL, options).then(this.handleResponse);
+
+      return fetch(requestURL, options) // eslint-disable-line no-undef
+        .then(this.handleResponse);
     };
   }
 
@@ -60,7 +62,7 @@ class Request {
   }
 }
 
-const request = new Request;
+const request = new Request();
 
 export default {
   get: request.handle('get'),
