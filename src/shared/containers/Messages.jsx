@@ -20,7 +20,7 @@ const button = cx(['btn', 'rounded', 'btn-outline']);
 @connect('store')
 export default class DemoList extends Component {
 
-  static fetchData(store) {
+  static fetchData({ store }) {
     return store.post.find();
   }
 

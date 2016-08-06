@@ -21,12 +21,12 @@ class AuthForm extends Form {
 export default
   new AuthForm({
     schema,
-    // fields: {
-    //   email: {
-    //     label: 'Email',
-    //   },
-    //   password: {
-    //     label: 'Password',
-    //   },
-    // },
+    fields: {
+      email: {
+        label: 'Email',
+      },
+      password: {
+        label: 'Password',
+      },
+    },
   });

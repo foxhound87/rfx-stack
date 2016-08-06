@@ -11,18 +11,18 @@ const errorMessage = cx('red', 'm2');
 const AuthModal = ({ form }) => (
   <form>
     <TextField
-      hintText="Email"
-      floatingLabelText="Email"
-      name="email"
+      name={form.fields.email.name}
       value={form.fields.email.value}
+      hintText={form.fields.email.label}
+      floatingLabelText={form.fields.email.label}
       errorText={form.fields.email.errorMessage}
       onChange={form.syncValue}
     />
     <TextField
-      hintText="Password"
-      floatingLabelText="Password"
-      name="password"
+      name={form.fields.password.name}
       value={form.fields.password.value}
+      hintText={form.fields.password.label}
+      floatingLabelText={form.fields.password.label}
       errorText={form.fields.password.errorMessage}
       onChange={form.syncValue}
     />

@@ -8,7 +8,7 @@ import _ from 'lodash';
 export function fetchData(store, components, params, query) {
   return Promise.all(components
     .filter(component => _.isFunction(component.fetchData))
-    .map(component => component.fetchData(store, params, query)));
+    .map(component => component.fetchData({ store, params, query })));
 }
 
 /**
