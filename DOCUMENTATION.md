@@ -27,27 +27,36 @@ This structure does not force you to separate the server-side code from the clie
 
 ## Utils
 
-- **lint** [Code linting / syntax cheking]
-- **clean:build** [Delete all the generated bundles]
-- **clean:modules** [Delete node_modules and cache]
+| Command | Description |
+|---|---|
+| **lint** | Code linting & syntax cheking. |
+| **clean:build** | Delete all the generated bundles. |
+| **clean:modules** | Delete `node_modules` and cache |
+
 
 ## Builders
 
-- **build:client:web** [Build the browser client-side code of the **web** app in /public/build]
-- **build:server:web** [Build the node server-side code of the **web** app in /run/build]
-- **build:server:api** [Build the node server-side code of the **api** app in /run/build]
+| Command | Type | Output Dir | Description |
+|---|---|---|---|
+| **build:client:web** | client | `/public/build` | Build the browser client-side code of the **web** app. |
+| **build:server:web** | server | `/run/build` | Build the node server-side code of the **web** app. |
+| **build:server:api** | server | `/run/build` | Build the node server-side code of the **api** app. |
 
 ## Runners
 
 ##### ENV: Development
-- **web:dev** [Run only the **web** app (development)]
-- **api:dev** [Run only the **api** app (development)]
-- **seed:dev** [Run only the **seed** app (development)]
+| Command | Env | Description |
+|---|---|---|
+| **web:dev** | development | Run only the **web** app. |
+| **api:dev** | development | Run only the **api** app. |
+| **seed:dev** | development | Run only the **seed** app. |
 
 ##### ENV: Production
-- **web:prod** [Run only the **web** app (production)]
-- **api:prod** [Run only the **api** app (production)]
-- **seed:prod** [Run only the **seed** app (production)]
+| Command | Env | Description |
+|---|---|---|
+| **web:prod** | production | Run only the **web** app. |
+| **api:prod** | production | Run only the **api** app. |
+| **seed:prod** | production | Run only the **seed** app. |
 
 ---
 
@@ -57,7 +66,7 @@ Go to `/src/electron` and run `npm install`.
 
 The `electron` app depends directly from the `web` app, so the client side bundles must be availables running the web app in dev mode or building the client-side code for prod mode.
 
-If you want develop with the hot loader enabled you have to make sure that the global `global.HOT = 'HOT';` is defined in `/src/electron/src/globals.js`.
+If you want develop with the hot loader enabled you have to make sure that the global `global.HOT` is defined in `/src/electron/src/globals.js`.
 
 When you want to go in production, just set it to false or comment it.
 
@@ -69,9 +78,9 @@ Then to start the app, run in sequence:
 
 `npm run api:dev`
 
-`npm run build:client:web` // only if **global.HOT = 'HOT';** is NOT defined
+`npm run build:client:web` // only if **global.HOT** is NOT defined
 
-`npm run web:dev` // only if **global.HOT = 'HOT';** is defined
+`npm run web:dev` // only if **global.HOT** is defined
 
 > in the electron root:
 

@@ -28,21 +28,22 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 ## Main Libs
 
-- View Layer: [React](https://www.npmjs.com/package/react)
-- Routing: [React Router](https://www.npmjs.com/package/react-router)
-- State Management: [MobX](https://www.npmjs.com/package/mobx)
-- Server, CRUD & Data Transport: [Feathers](https://www.npmjs.com/package/feathers)
-- Styling: [PostCSS](https://www.npmjs.com/package/postcss) & [React CSS Modules](https://www.npmjs.com/package/react-css-modules)
-- Live Browser Syncing: [BrowserSync](https://www.npmjs.com/package/browser-sync)
-- Forms Management: [MobX Ajv Form](https://www.npmjs.com/package/mobx-ajv-form)
-- Desktop App: [Electron](http://electron.atom.io/)
+| Name | Description | | |
+|---|---|---|---|
+| **react** | View Layer | [GitHub &#10140;](https://github.com/facebook/react) | [NPM &#10140;](https://www.npmjs.com/package/react) |
+| **react-router** | Routing  | [GitHub &#10140;](https://github.com/reactjs/react-router) | [NPM &#10140;](https://www.npmjs.com/package/react-router) |
+| **mobx** | State Management | [GitHub &#10140;](https://github.com/mobxjs/mobx) | [NPM &#10140;](https://www.npmjs.com/package/mobx) |
+| **feathers** | Server, CRUD & Data Transport | [GitHub &#10140;](https://github.com/feathersjs/feathers) | [NPM &#10140;](https://www.npmjs.com/package/feathers) |
+| **postcss** | Styling | [GitHub &#10140;](https://github.com/postcss/postcss) | [NPM &#10140;](https://www.npmjs.com/package/postcss) |
+| **react-css-modules** | Styling | [GitHub &#10140;](https://github.com/gajus/react-css-modules) | [NPM &#10140;](https://www.npmjs.com/package/react-css-modules) |
+| **browser-sync** | Live Browser Syncing | [GitHub &#10140;](https://github.com/browsersync/browser-sync) | [NPM &#10140;](https://www.npmjs.com/package/browser-sync) |
+| **mobx-ajv-form** | Forms Management | [GitHub &#10140;](https://github.com/foxhound87/mobx-ajv-form) | [NPM &#10140;](https://www.npmjs.com/package/mobx-ajv-form) |
+| **babel** | Javascript Transpiler | [GitHub &#10140;](https://github.com/babel/babel) | [NPM &#10140;](https://www.npmjs.com/package/babel) |
+| **webpack** | Javascript Bundler | [GitHub &#10140;](https://github.com/webpack/webpack) | [NPM &#10140;](https://www.npmjs.com/package/webpack) |
+| **eslint** | Code Linter | [GitHub &#10140;](https://github.com/eslint/eslint) | [NPM &#10140;](https://www.npmjs.com/package/eslint) |
+| **eslint-config-airbnb** | Code Style Guide & Rules | [GitHub &#10140;](https://github.com/airbnb/javascript) | [NPM &#10140;](https://www.npmjs.com/package/eslint-config-airbnb) |
+| **electron** | Cross platform desktop app | [GitHub &#10140;](https://github.com/electron/electron) | [Website &#10140;](http://electron.atom.io/) | |
 
-## Bundler & Styleguide
-
-- [Babel](https://www.npmjs.com/package/babel)
-- [Webpack](https://www.npmjs.com/package/webpack)
-- [ESLint](https://www.npmjs.com/package/eslint)
-- [Airbnb Code Rules](https://www.npmjs.com/package/eslint-config-airbnb)
 
 ---
 
@@ -85,17 +86,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 #### Electron App
 
-> in the project root:
-
-`npm run api:dev`
-
-`npm run build:client:web` // only if **global.HOT = 'HOT';** is NOT defined
-
-`npm run web:dev` // only if **global.HOT = 'HOT';** is defined
-
-> in the electron root:
-
-`npm start`
+[Click here to see how to setup the electron app](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#electron)
 
 ---
 
