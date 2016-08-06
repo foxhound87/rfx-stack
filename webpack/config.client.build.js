@@ -1,7 +1,7 @@
-import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
+import path from 'path';
 
 const Dir = global.DIR;
 

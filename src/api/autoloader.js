@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
 /* eslint global-require: 0 */
 import { log } from '~/src/utils/logger';
 

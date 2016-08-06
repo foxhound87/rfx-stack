@@ -1,3 +1,4 @@
+/* eslint import/prefer-default-export: 0 */
 import webpack from 'webpack';
 import getenv from 'getenv';
 import env from '~/config/expose';

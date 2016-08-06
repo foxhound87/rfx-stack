@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
 import uuid from 'node-uuid';
 
 function assignUUID(item) {

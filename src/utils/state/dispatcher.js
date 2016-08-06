@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
 import _ from 'lodash';
 import access from 'safe-access';
 import $store from './store';

@@ -1,3 +1,4 @@
+/* eslint import/prefer-default-export: 0 */
 import webpack from 'webpack';
 import path from 'path';
 import fs from 'fs';

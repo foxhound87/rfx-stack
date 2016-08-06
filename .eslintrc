@@ -14,6 +14,7 @@
     "no-confusing-arrow": 0,
     "no-useless-computed-key": 0,
     "import/no-unresolved": [2, { "ignore": ["\/~*"] }],
-    "key-spacing": [0, { "align": "value" }]
+    "key-spacing": [0, { "align": "value" }],
+    "import/prefer-default-export": 0
   }
 }

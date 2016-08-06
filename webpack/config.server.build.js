@@ -17,7 +17,6 @@ export function loader() {
   };
 }
 
-
 export function config() {
   return {
     devtool: 'source-map',

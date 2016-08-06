@@ -1,8 +1,10 @@
-import './run/init';
+/* eslint global-require: 0 */
+/* eslint import/newline-after-import: 0 */
 import merge from 'webpack-merge';
 import match from './src/utils/match';
 import Globals from './webpack/globals';
 import { getLoaders, getPreLoaders } from './webpack/loaders';
+import './run/init';
 
 let Config;
 let Loader = getLoaders();
@@ -54,4 +56,5 @@ Config = merge(Config, {
   },
 });
 
-export default Config;
+const WebpackConfig = Config;
+export default WebpackConfig;

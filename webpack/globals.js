@@ -1,7 +1,5 @@
 import path from 'path';
 
-const Dir = global.DIR;
-
 // css
 import postcssImport from 'postcss-import';
 import postcssExtend from 'postcss-extend';
@@ -10,6 +8,8 @@ import postcssUrl from 'postcss-url';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
 import cssnano from 'cssnano';
+
+const Dir = global.DIR;
 
 export default {
   resolve: {

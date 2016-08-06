@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
 import { match } from 'react-router';
 
 function handleRouter(req, res, props, ssr) {
