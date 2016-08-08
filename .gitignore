@@ -1,6 +1,5 @@
-.DS_Store
-node_modules
-npm-debug.log
-server.bundle.js
 /public/build
 /run/build
+/node_modules
+.DS_Store
+npm-debug.log

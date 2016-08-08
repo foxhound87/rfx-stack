@@ -145,7 +145,7 @@ On the **client**-side: `/src/web/App.js`;
 
 # Server Side Rendering
 
-Define the inital state of the Stores in `/src/web/ssr.js` injecting it into the initStore function (the Store Initalizer).
+Define the inital state of the Stores in `/src/web/ssr.js` injecting it using the `inject` method of the Store Initalizer.
 
 ```javascript
 import stores from '~/src/shared/stores';
@@ -185,7 +185,7 @@ in `/src/shared/containers/*`:
 import { connect } from '~/src/utils/state';
 ...
 
-@connect
+@connect('store')
 export default class Home extends Component {
 
   render() {
