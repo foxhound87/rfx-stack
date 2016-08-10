@@ -1,10 +1,11 @@
 /* eslint global-require: 0 */
+/* eslint import/imports-first: 0 */
 /* eslint import/newline-after-import: 0 */
+import './run/init';
 import merge from 'webpack-merge';
 import match from './src/utils/match';
 import Globals from './webpack/globals';
 import { getLoaders, getPreLoaders } from './webpack/loaders';
-import './run/init';
 
 let Config;
 let Loader = getLoaders();
