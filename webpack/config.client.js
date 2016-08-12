@@ -1,4 +1,3 @@
-/* eslint import/prefer-default-export: 0 */
 import webpack from 'webpack';
 import getenv from 'getenv';
 import env from '~/config/expose';
@@ -8,6 +7,7 @@ export function load() {
     target: 'web',
     entry: [
       'babel-polyfill',
+      'whatwg-fetch',
     ],
     plugins: [
       new webpack.IgnorePlugin(/regenerator|nodent|js\-beautify/, /ajv/),
@@ -23,7 +23,6 @@ export function load() {
       }),
       new webpack.ProvidePlugin({
         Promise: 'bluebird',
-        fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch',
       }),
     ],
   };
