@@ -106,4 +106,4 @@ Thanks to [Eric John Juta](https://github.com/rej156) for his contribution about
 
 If you like this stack, don't forget to star the repo!
 
-If you want to contribute to the development, do not hesitate to contact me.
+If you want to contribute to the development, do not hesitate to fork the repo and send pull requests.

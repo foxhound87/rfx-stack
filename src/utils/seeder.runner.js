@@ -14,9 +14,10 @@ function logFinish() {
   process.exit();
 }
 
-function catchError() {
+function catchError(err) {
   log.info('--- Seed Error ---------------------------');
   log.info('------------------------------------------');
+  console.error(err); // eslint-disable-line
   process.exit();
 }
 

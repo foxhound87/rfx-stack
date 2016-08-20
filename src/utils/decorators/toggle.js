@@ -3,7 +3,7 @@ import { action } from 'mobx';
 export function toggle(...args) {
   const fnName = args[0] || 'active';
   const propKey = args[1] || 'isActive';
-  return (target) => {
+  return action((target) => {
     Object.assign(target.prototype, {
       [propKey]: target.prototype[propKey],
       [fnName]: action((flag = null) => {
@@ -12,5 +12,5 @@ export function toggle(...args) {
         return Object.assign(target.prototype, { [propKey]: !target.prototype[propKey] });
       }),
     });
-  };
+  });
 }
