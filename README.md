@@ -16,7 +16,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 ## Main Features
 - Hot-Reloadable MobX Stores
 - Action Dispatcher for Stateless Components
-- Server Side Rendering
+- Server Side Rendering (SSR)
 - Reactive UI & Media Queries
 - React Hot Loader 3
 - React Stateless Components
@@ -24,7 +24,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - Multi Platform Ready
 - Real Time Ready
 - Microservices Ready
-- Modular CSS for React
+- Functional & Modular CSS
 
 ## Main Libs
 
@@ -37,7 +37,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 | **postcss** | Styling | [GitHub &#10140;](https://github.com/postcss/postcss) | [NPM &#10140;](https://www.npmjs.com/package/postcss) |
 | **react-css-modules** | Styling | [GitHub &#10140;](https://github.com/gajus/react-css-modules) | [NPM &#10140;](https://www.npmjs.com/package/react-css-modules) |
 | **browser-sync** | Live Browser Syncing | [GitHub &#10140;](https://github.com/browsersync/browser-sync) | [NPM &#10140;](https://www.npmjs.com/package/browser-sync) |
-| **mobx-ajv-form** | Forms Management | [GitHub &#10140;](https://github.com/foxhound87/mobx-ajv-form) | [NPM &#10140;](https://www.npmjs.com/package/mobx-ajv-form) |
+| **mobx-react-form** | Forms Management | [GitHub &#10140;](https://github.com/foxhound87/mobx-react-form) | [NPM &#10140;](https://www.npmjs.com/package/mobx-react-form) |
 | **babel** | Javascript Transpiler | [GitHub &#10140;](https://github.com/babel/babel) | [NPM &#10140;](https://www.npmjs.com/package/babel) |
 | **webpack** | Javascript Bundler | [GitHub &#10140;](https://github.com/webpack/webpack) | [NPM &#10140;](https://www.npmjs.com/package/webpack) |
 | **eslint** | Code Linter | [GitHub &#10140;](https://github.com/eslint/eslint) | [NPM &#10140;](https://www.npmjs.com/package/eslint) |
@@ -90,13 +90,13 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 
 ---
 
-## Read More
+## Getting started with RFX Stack
 
-If you want more info about how to do better state management with MobX using the React Context in your React Router app, take a look at my article [State Management and Hydration with MobX](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6), it also explains how to enable server side rendering functionalities.
+- [Ten minute introduction to MobX and React](https://mobxjs.github.io/mobx/getting-started.html)
+- [State Management and Hydration with MobX for SSR](https://medium.com/@foxhound87/state-management-hydration-with-mobx-we-must-react-ep-05-1922a72453c6)
+- [Functional CSS - The Good, The Bad, and Some Protips for React.js Users](https://github.com/chibicode/react-functional-css-protips)
+- [Feathers API service composition with hooks](https://blog.feathersjs.com/api-service-composition-with-hooks-47af13aa6c01)
 
-## TODO
-
-- Reduce Dependencies
 
 ## Credits
 

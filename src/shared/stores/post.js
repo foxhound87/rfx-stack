@@ -60,7 +60,9 @@ export default class PostStore {
 
   create(data = null) {
     // we use factory() just for test
-    return service('post').create(data || factory());
+    return service('post')
+      .create(data || factory())
+      .catch((err) => console.error(err)); // eslint-disable-line no-console
   }
 
   find(query = {}) {

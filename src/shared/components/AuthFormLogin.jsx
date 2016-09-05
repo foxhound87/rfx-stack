@@ -11,20 +11,20 @@ const errorMessage = cx('red', 'm2');
 const AuthModal = ({ form }) => (
   <form>
     <TextField
-      name={form.fields.email.name}
-      value={form.fields.email.value}
-      hintText={form.fields.email.label}
-      floatingLabelText={form.fields.email.label}
-      errorText={form.fields.email.errorMessage}
-      onChange={form.syncValue}
+      name={form.$('email').name}
+      value={form.$('email').value}
+      hintText={form.$('email').label}
+      floatingLabelText={form.$('email').label}
+      errorText={form.$('email').errorMessage}
+      onChange={form.$('email').sync}
     />
     <TextField
-      name={form.fields.password.name}
-      value={form.fields.password.value}
-      hintText={form.fields.password.label}
-      floatingLabelText={form.fields.password.label}
-      errorText={form.fields.password.errorMessage}
-      onChange={form.syncValue}
+      name={form.$('password').name}
+      value={form.$('password').value}
+      hintText={form.$('password').label}
+      floatingLabelText={form.$('password').label}
+      errorText={form.$('password').errorMessage}
+      onChange={form.$('password').sync}
     />
     <div className="mt3">
       <button

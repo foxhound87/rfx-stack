@@ -3,6 +3,9 @@ import Helmet from 'react-helmet';
 import { connect } from '~/src/utils/state';
 import cx from 'classnames';
 
+// styles
+const button = cx(['btn', 'rounded', 'btn-outline']);
+
 @connect('store')
 export default class MatchMedia extends Component {
 
@@ -12,7 +15,7 @@ export default class MatchMedia extends Component {
     const bp = this.context.store.ui.breakpoints;
     return (
       <div>
-        <Helmet title="MatchMedia + MobX" />
+        <Helmet title="MobX React MatchMedia" />
         <div className="mx4">
           <br />
           <br />
@@ -21,13 +24,19 @@ export default class MatchMedia extends Component {
           <p>The breakpoints are customizables in /src/shared/stores/ui.js</p>
           <br />
           <p>
-            <a href="https://github.com/foxhound87/mobx-react-matchmedia">
-              <i className="h1 mr1 fa fa-github" /> <b>foxhound87/mobx-react-matchmedia</b>
+            <a
+              className={cx(button)}
+              href="https://github.com/foxhound87/mobx-react-matchmedia"
+            >
+              <i className="fa fa-github" /> <b>foxhound87/mobx-react-matchmedia</b>
             </a>
           </p>
           <p>
-            <a href="https://www.npmjs.com/package/mobx-react-matchmedia">
-              <i className="h1 mr1 fa fa-archive" /> <b>package/mobx-react-matchmedia</b>
+            <a
+              className={cx(button)}
+              href="https://www.npmjs.com/package/mobx-react-matchmedia"
+            >
+              <i className="fa fa-archive" /> <b>package/mobx-react-matchmedia</b>
             </a>
           </p>
         </div>

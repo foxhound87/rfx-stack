@@ -54,7 +54,7 @@ export default class DemoList extends Component {
           <button
             type="button" value="done"
             onClick={this.handleCreatePost}
-            className={cx(button, 'm1 _yellow')}
+            className={cx(button, 'm1', '_yellow')}
           ><i className="fa fa-plus-square" /> Create New Item</button>
         </div>
 

@@ -35,19 +35,19 @@ const PostCreateModal = ({ open, form }) => (
         <div className="pb3">
           <TextField
             hintText="Title"
-            floatingLabelText={form.fields.title.label}
-            name={form.fields.title.name}
-            value={form.fields.title.value}
-            errorText={form.fields.title.errorMessage}
-            onChange={form.syncValue}
+            floatingLabelText={form.$('title').label}
+            name={form.$('title').name}
+            value={form.$('title').value}
+            errorText={form.$('title').errorMessage}
+            onChange={form.$('title').sync}
           />
           <Toggle
             className="pt3"
             labelPosition="right"
-            label={form.fields.completed.label}
-            name={form.fields.completed.name}
-            defaultToggled={form.fields.completed.value}
-            onToggle={form.syncValue}
+            label={form.$('completed').label}
+            name={form.$('completed').name}
+            defaultToggled={form.$('completed').value}
+            onToggle={form.$('completed').sync}
           />
         </div>
         <div className="center">

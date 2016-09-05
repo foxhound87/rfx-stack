@@ -1,5 +1,5 @@
-import Form from 'mobx-ajv-form';
-import schema from '~/src/shared/schemas/auth';
+import Form from 'mobx-react-form';
+import validatorjs from 'validatorjs';
 import { dispatch } from '~/src/utils/state';
 import { action } from 'mobx';
 
@@ -8,8 +8,13 @@ class AuthForm extends Form {
   @action
   handleOnSubmit = (e) => {
     e.preventDefault();
-    if (!this.validate()) return;
 
+    this.validate()
+      .then((isValid) =>
+        isValid && this.onSuccess());
+  }
+
+  onSuccess() {
     dispatch('auth.login', this.values())
       .then(() => dispatch('ui.authModal.toggle', 'close'))
       .then(() => dispatch('ui.snackBar.open', 'Login Successful.'))
@@ -20,13 +25,17 @@ class AuthForm extends Form {
 
 export default
   new AuthForm({
-    schema,
+    plugins: {
+      dvr: validatorjs,
+    },
     fields: {
       email: {
         label: 'Email',
+        rules: 'required|email|string|between:5,20',
       },
       password: {
         label: 'Password',
+        rules: 'required|between:5,20',
       },
     },
   });

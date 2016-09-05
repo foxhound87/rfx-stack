@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import cx from 'classnames';
 
-const clog = 'https://github.com/foxhound87/mobx-ajv-form/blob/master/CHANGELOG.md';
-const doc = 'https://github.com/foxhound87/mobx-ajv-form/blob/master/DOCUMENTATION.md';
+// styles
+const button = cx(['btn', 'rounded', 'btn-outline']);
+
+// links
+const clog = 'https://github.com/foxhound87/mobx-react-form/blob/master/CHANGELOG.md';
+const doc = 'https://github.com/foxhound87/mobx-react-form/blob/master/DOCUMENTATION.md';
 
 export default class NotFound extends Component {
 
@@ -11,7 +16,7 @@ export default class NotFound extends Component {
   render() {
     return (
       <div>
-        <Helmet title="MatchMedia + MobX" />
+        <Helmet title="MobX Ajv Form" />
         <div className="mx4">
           <br />
           <br />
@@ -22,19 +27,21 @@ export default class NotFound extends Component {
             </a> or the <a href={doc}>Documentation
             </a> for all the details.
           </p>
-          <p className="mt3">
-            <a href="https://github.com/foxhound87/mobx-ajv-form">
-              <i className="h1 mr1 fa fa-github" /> <b>foxhound87/mobx-ajv-form</b>
+          <br />
+          <p>
+            <a
+              className={cx(button)}
+              href="https://github.com/foxhound87/mobx-react-form"
+            >
+              <i className="fa fa-github" /> <b>foxhound87/mobx-react-form</b>
             </a>
           </p>
-          <p className="mt3">
-            <a href="https://www.npmjs.com/package/mobx-ajv-form">
-              <i className="h1 mr1 fa fa-archive" /> <b>package/mobx-ajv-form</b>
-            </a>
-          </p>
-          <p className="mt3">
-            <a href="http://www.webpackbin.com/E1khFEBrZ">
-              <i className="h1 mr1 fa fa-cogs" /> <b>webpackbin.com/E1khFEBrZ</b>
+          <p>
+            <a
+              className={cx(button)}
+              href="https://www.npmjs.com/package/mobx-react-form"
+            >
+              <i className="fa fa-archive" /> <b>package/mobx-react-form</b>
             </a>
           </p>
         </div>
