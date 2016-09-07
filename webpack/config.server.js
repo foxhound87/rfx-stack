@@ -1,24 +1,10 @@
 import webpack from 'webpack';
-import nodeExternalModules from 'webpack-node-externals';
-import path from 'path';
 import getenv from 'getenv';
 import env from '~/config/expose';
 
-const Dir = global.DIR;
-
-export function load(entry) {
+export function load() {
   return {
-    target: 'node',
-    entry: [
-      'babel-polyfill',
-      'whatwg-fetch',
-      path.join(Dir.run, entry),
-    ],
-    output: {
-      path: Dir.nodeBuild,
-      filename: [entry, 'bundle.js'].join('.'),
-    },
-    externals: [nodeExternalModules()],
+    target: 'async-node',
     node: {
       __filename: true,
       __dirname: true,

@@ -1,5 +1,9 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
+import nodeExternalModules from 'webpack-node-externals';
+import path from 'path';
+
+const Dir = global.DIR;
 
 export function loader() {
   return {
@@ -17,9 +21,19 @@ export function loader() {
   };
 }
 
-export function config() {
+export function config(entry) {
   return {
     devtool: 'source-map',
+    entry: [
+      'babel-polyfill',
+      'whatwg-fetch',
+      path.join(Dir.run, entry),
+    ],
+    output: {
+      path: Dir.nodeBuild,
+      filename: [entry, 'bundle.js'].join('.'),
+    },
+    externals: [nodeExternalModules()],
     plugins: [
       new ProgressBarPlugin(),
       new ExtractTextPlugin('style.css', { disable: true }),

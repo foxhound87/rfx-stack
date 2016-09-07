@@ -10,7 +10,6 @@ export function load() {
       'whatwg-fetch',
     ],
     plugins: [
-      new webpack.IgnorePlugin(/regenerator|nodent|js\-beautify/, /ajv/),
       new webpack.optimize.OccurenceOrderPlugin(), // Webpack 1.0
       // new webpack.optimize.OccurrenceOrderPlugin(),  // Webpack 2.0 fixed this mispelling
       new webpack.DefinePlugin({

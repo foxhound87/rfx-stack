@@ -1,11 +1,11 @@
-import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+// import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import webpack from 'webpack';
-import getenv from 'getenv';
+// import getenv from 'getenv';
 import path from 'path';
 
 const Dir = global.DIR;
 
-const webhost = ['http://', getenv('WEB_HOST'), ':', getenv('WEB_PORT')].join('');
+// const webhost = ['http://', getenv('WEB_HOST'), ':', getenv('WEB_PORT')].join('');
 
 export function loader() {
   return {
@@ -50,11 +50,11 @@ export function config() {
       filename: 'bundle.js',
     },
     plugins: [
-      new BrowserSyncPlugin({
-        host: getenv('BROWSERSYNC_HOST'),
-        port: getenv('BROWSERSYNC_PORT'),
-        proxy: webhost,
-      }, { reload: false }),
+      // new BrowserSyncPlugin({
+      //   host: getenv('BROWSERSYNC_HOST'),
+      //   port: getenv('BROWSERSYNC_PORT'),
+      //   proxy: webhost,
+      // }, { reload: false }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
     ],

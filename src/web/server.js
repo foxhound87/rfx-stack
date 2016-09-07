@@ -2,15 +2,12 @@ import feathers from 'feathers';
 import compression from 'compression';
 import ejs from 'ejs';
 
-import { logServerConfig } from '~/src/utils/logger';
-import { setupServer, startServer } from '~/src/utils/server.start';
-
 // routes & ssr
 import routes from '~/src/shared/routes';
 import ssr from '~/src/web/ssr';
 
 // webpack configs
-import wpc from '~/webpack.config.babel';
+import wpc from '~/webpack.config.client.babel';
 import { wdmc, whmc } from '~/config/hot.js';
 
 // middlewares
@@ -19,11 +16,6 @@ import { hotMiddleware } from './middleware/hot';
 import { routingMiddleware } from './middleware/routing';
 
 const Dir = global.DIR;
-
-setupServer({
-  namespace: 'web',
-  logger: logServerConfig,
-});
 
 const app = feathers();
 
@@ -34,5 +26,7 @@ app
   .set('views', Dir.views)
   .configure(serveStaticMiddleware)
   .use(hotMiddleware({ wpc, wdmc, whmc }))
-  .use(routingMiddleware(routes, ssr))
-  .configure(startServer);
+  .use(routingMiddleware(routes, ssr));
+  // .configure(startServer);
+
+export default app;
