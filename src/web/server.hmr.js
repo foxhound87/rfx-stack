@@ -1,5 +1,5 @@
 import feathers from 'feathers';
-import { logServerConfig } from '~/src/utils/logger';
+import { log, logServerConfig } from '~/src/utils/logger';
 import { setupServer, startServer } from '~/src/utils/server.start';
 import app from './server';
 
@@ -9,13 +9,12 @@ setupServer({
 });
 
 if (module.hot) {
-  module.hot.accept('./server', () => {
-    console.log('🔁  HMR Reloading...');
-  });
+  module.hot.accept('./server', () =>
+    log.info('🔁  HMR Reloading...'));
 
-  console.info('✅  Server-side HMR Enabled!');
+  log.info('✅  Server-side HMR Enabled.');
 } else {
-  console.info('❌  Server-side HMR Not Supported.');
+  log.info('❌  Server-side HMR Not Supported.');
 }
 
 export default feathers()

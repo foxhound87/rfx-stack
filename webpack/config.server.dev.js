@@ -17,7 +17,6 @@ export function loader() {
           'transform-decorators-legacy',
           'transform-class-properties',
           'transform-decorators',
-          'react-hot-loader/babel',
         ],
       },
     },
@@ -51,7 +50,13 @@ export function config(entry) {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
       libraryTarget: 'commonjs2',
     },
-    externals: [/^[a-z\-0-9]+$/], // Every non-relative module is external
+    externals: [
+      /^[a-z\-0-9]+$/, { // Every non-relative module is external
+        'socket.io': 'commonjs socket.io',
+        'socket.io-client': 'commonjs socket.io-client',
+        'socket.io-stream': 'commonjs socket.io-stream',
+      },
+    ],
     plugins: [
       new ExtractTextPlugin('style.css', { disable: true }),
       new StartServerPlugin(),
