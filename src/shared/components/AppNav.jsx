@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/no-static-element-interactions: 0 */
 import React from 'react';
 import { connect, dispatch } from '~/src/utils/state';
 import cx from 'classnames';
@@ -31,7 +32,6 @@ AppNav.propTypes = {
   children: React.PropTypes.node,
   open: React.PropTypes.bool,
   docked: React.PropTypes.bool,
-  onRequestChange: React.PropTypes.func,
 };
 
 export default connect(AppNav);

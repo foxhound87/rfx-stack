@@ -34,7 +34,7 @@ class Services {
     log.info('Loading services...');
     globule
       .find(path.join(this.dir, '*'))
-      .map(($service) => this.autoloader($service));
+      .map($service => this.autoloader($service));
     log.info('------------------------------------------');
   }
 }

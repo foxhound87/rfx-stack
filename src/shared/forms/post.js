@@ -8,7 +8,7 @@ class PostForm extends Form {
     e.preventDefault();
 
     this.validate()
-      .then((isValid) =>
+      .then(isValid =>
         isValid && this.onSuccess());
   }
 
@@ -17,7 +17,7 @@ class PostForm extends Form {
       .then(() => dispatch('ui.postCreateModal.open', false))
       .then(() => dispatch('ui.snackBar.open', 'Post Created.'))
       .then(() => this.clear())
-      .catch((data) => this.invalidate(data.message));
+      .catch(data => this.invalidate(data.message));
   }
 }
 

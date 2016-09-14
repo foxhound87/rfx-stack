@@ -55,26 +55,26 @@ export default class PostStore {
   addItem(item) {
     if (this.list.length >= this.$pagination.limit) this.list.pop();
     this.list.unshift(item);
-    this.$pagination.total++;
+    this.$pagination.total += 1;
   }
 
   create(data = null) {
     // we use factory() just for test
     return service('post')
       .create(data || factory())
-      .catch((err) => console.error(err)); // eslint-disable-line no-console
+      .catch(err => console.error(err)); // eslint-disable-line no-console
   }
 
   find(query = {}) {
     _.merge(this.query, query);
     return service('post')
       .find(this.query)
-      .then(action((json) => this.updateList(json)));
+      .then(action(json => this.updateList(json)));
   }
 
   /* EVENTS */
 
-  onCreated = (item) => this.addItem(item);
+  onCreated = item => this.addItem(item);
 
   // onUpdated = (id, data) => {};
 

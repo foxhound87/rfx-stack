@@ -9,7 +9,7 @@ export function setUUID() {
     const data = hook.data;
 
     if (Array.isArray(data)) {
-      data.map((item) => assignUUID(item));
+      data.map(item => assignUUID(item));
       return next();
     }
 

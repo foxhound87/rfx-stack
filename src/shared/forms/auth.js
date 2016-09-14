@@ -10,7 +10,7 @@ class AuthForm extends Form {
     e.preventDefault();
 
     this.validate()
-      .then((isValid) =>
+      .then(isValid =>
         isValid && this.onSuccess());
   }
 
@@ -19,7 +19,7 @@ class AuthForm extends Form {
       .then(() => dispatch('ui.authModal.toggle', 'close'))
       .then(() => dispatch('ui.snackBar.open', 'Login Successful.'))
       .then(() => this.clear())
-      .catch((err) => this.invalidate(err.message));
+      .catch(err => this.invalidate(err.message));
   }
 }
 

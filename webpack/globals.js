@@ -20,7 +20,7 @@ export default {
       react: path.join(Dir.modules, 'react'),
     },
   },
-  postcss: ($webpack) => [
+  postcss: $webpack => [
     postcssImport({ addDependencyTo: $webpack }),
     postcssUrl('inline'),
     postcssExtend,

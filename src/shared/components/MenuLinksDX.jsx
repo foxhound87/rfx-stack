@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/no-static-element-interactions: 0 */
 import React from 'react';
 import { connect, dispatch } from '~/src/utils/state';
 import cx from 'classnames';

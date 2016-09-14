@@ -8,7 +8,7 @@ class UserForm extends Form {
     e.preventDefault();
 
     this.validate()
-      .then((isValid) =>
+      .then(isValid =>
         isValid && this.onSuccess());
   }
 

@@ -1,7 +1,7 @@
 /*
   Project Directories
 */
-export default (path) => ({
+export default path => ({
   config      : path.resolve(__dirname),
   root        : path.resolve(__dirname, '..'),
   src         : path.resolve(__dirname, '..', 'src'),

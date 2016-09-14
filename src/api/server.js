@@ -41,7 +41,7 @@ app
   .configure(apiBeforeMiddleware)
   .configure(hooks())
   .configure(rest())
-  .configure(socketio((io) => io.set('origins', '*:*')))
+  .configure(socketio(io => io.set('origins', '*:*')))
   .configure(auth)
   .configure(initServices)
   .configure(apiAfterMiddleware)

@@ -33,11 +33,11 @@ export default class AppLayout extends Component {
 
   static propTypes = {
     children: React.PropTypes.node,
-    location: React.PropTypes.object,
-    params: React.PropTypes.object,
-    routeParams: React.PropTypes.object,
-    route: React.PropTypes.object,
-    routes: React.PropTypes.array,
+    // location: React.PropTypes.object,
+    // params: React.PropTypes.object,
+    // routeParams: React.PropTypes.object,
+    // route: React.PropTypes.object,
+    // routes: React.PropTypes.array,
   };
 
   render() {

@@ -26,14 +26,14 @@ const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
     })}
   >
     <div className="left lg-hide">
-      <a onClick={handleNavToggle} className={button}>
+      <button onClick={handleNavToggle} className={button}>
         <i className="fa fa-bars" />
-      </a>
+      </button>
     </div>
     <div className="left lg-show">
-      <a onClick={handleNavToggle} className={button}>
+      <button onClick={handleNavToggle} className={button}>
         <i className="fa fa-bars" />
-      </a>
+      </button>
       <MenuLinksSX inline />
     </div>
     <div className="right md-show">

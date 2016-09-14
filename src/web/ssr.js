@@ -27,7 +27,7 @@ export default (req, res, props) => {
         </ContextProvider>
       </MuiThemeProvider>
     ))
-    .then((html) => res
+    .then(html => res
       .status(200)
       .render('index', {
         build: isDev ? null : '/build',

@@ -26,7 +26,7 @@ export default class AuthStore {
   jwtAuth({ token }) {
     return app()
       .authenticate({ type: 'token', token })
-      .then((result) => this.updateUser(result.data));
+      .then(result => this.updateUser(result.data));
       // .catch((err) => console.error(err)); // eslint-disable-line no-console
   }
 
@@ -39,7 +39,7 @@ export default class AuthStore {
   login({ email, password }) {
     return app()
       .authenticate({ type: 'local', email, password })
-      .then((result) => this.updateUser(result.data));
+      .then(result => this.updateUser(result.data));
       // .catch((err) => console.error(err)); // eslint-disable-line no-console
   }
 
