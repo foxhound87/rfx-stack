@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import StartServerPlugin from 'start-server-webpack-plugin';
+import nodeExternalModules from 'webpack-node-externals';
 import path from 'path';
 
 const Dir = global.DIR;
@@ -12,11 +13,10 @@ export function loader() {
         cacheDirectory: true,
         presets: [['es2015', { modules: false }], 'stage-0', 'react'],
         plugins: [
-          'babel-root-import',
-          'jsx-control-statements',
           'transform-decorators-legacy',
           'transform-class-properties',
-          'transform-decorators',
+          'babel-root-import',
+          'jsx-control-statements',
         ],
       },
     },
@@ -50,13 +50,9 @@ export function config(entry) {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
       libraryTarget: 'commonjs2',
     },
-    externals: [
-      /^[a-z\-0-9]+$/, { // Every non-relative module is external
-        'socket.io': 'commonjs socket.io',
-        'socket.io-client': 'commonjs socket.io-client',
-        'socket.io-stream': 'commonjs socket.io-stream',
-      },
-    ],
+    externals: [nodeExternalModules({
+      whitelist: ['webpack/hot/poll?1000'],
+    })],
     plugins: [
       new ExtractTextPlugin('style.css', { disable: true }),
       new StartServerPlugin(),

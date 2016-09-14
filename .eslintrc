@@ -1,7 +1,6 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb"],
-  "plugins": ["jsx-a11y"],
   "globals": {
     "fetch": true,
     "navigator": true,
