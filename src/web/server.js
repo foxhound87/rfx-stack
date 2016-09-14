@@ -8,7 +8,7 @@ import ssr from '~/src/web/ssr';
 
 // webpack configs
 import wpc from '~/webpack.config.client.babel';
-import { wdmc, whmc } from '~/config/hot.js';
+import { wdmc, whmc } from '~/config/hot';
 
 // middlewares
 import { serveStaticMiddleware } from './middleware/serveStatic';

@@ -1,4 +1,3 @@
-require('babel-core/register');
 require('isomorphic-fetch');
 
 const dotenv = require('dotenv');
