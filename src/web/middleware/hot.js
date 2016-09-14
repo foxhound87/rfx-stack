@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: 0 */
 // import historyApiFallback from 'connect-history-api-fallback';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackDevMiddleware from 'webpack-dev-middleware';

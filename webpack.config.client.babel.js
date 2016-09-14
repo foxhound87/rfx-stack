@@ -1,6 +1,7 @@
 /* eslint global-require: 0 */
 /* eslint import/imports-first: 0 */
 /* eslint import/newline-after-import: 0 */
+/* eslint import/no-extraneous-dependencies: 0 */
 import './run/init';
 import merge from 'webpack-merge';
 import Globals from './webpack/globals';
