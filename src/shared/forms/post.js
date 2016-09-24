@@ -4,20 +4,12 @@ import { dispatch } from '~/src/utils/state';
 
 class PostForm extends Form {
 
-  handleOnSubmit = (e) => {
-    e.preventDefault();
-
-    this.validate()
-      .then(isValid =>
-        isValid && this.onSuccess());
-  }
-
-  onSuccess() {
-    dispatch('post.create', this.values())
+  onSuccess(form) {
+    dispatch('post.create', form.values())
       .then(() => dispatch('ui.postCreateModal.open', false))
       .then(() => dispatch('ui.snackBar.open', 'Post Created.'))
-      .then(() => this.clear())
-      .catch(data => this.invalidate(data.message));
+      .then(() => form.clear())
+      .catch(data => form.invalidate(data.message));
   }
 }
 

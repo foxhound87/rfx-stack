@@ -40,7 +40,7 @@ export function config(entry) {
     entry: [
       'babel-polyfill',
       'whatwg-fetch',
-      'webpack/hot/poll?1000',
+      // 'webpack/hot/poll?1000',
       path.join(Dir.run, entry),
     ],
     output: {
@@ -50,9 +50,10 @@ export function config(entry) {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
       libraryTarget: 'commonjs2',
     },
-    externals: [nodeExternalModules({
-      whitelist: ['webpack/hot/poll?1000'],
-    })],
+    externals: [nodeExternalModules()],
+    // externals: [nodeExternalModules({
+    //   whitelist: ['webpack/hot/poll?1000'],
+    // })],
     plugins: [
       new ExtractTextPlugin('style.css', { disable: true }),
       new StartServerPlugin(),

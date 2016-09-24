@@ -34,6 +34,7 @@ export default class PostStore {
     // service('post').on('removed', action(this.onRemoved));   // onRemoved = (id, params) => {}
   }
 
+  @action
   updateList(json) {
     this.list = json.data;
     this.$pagination = _.omit(json, 'data');
@@ -48,6 +49,7 @@ export default class PostStore {
     });
   }
 
+  @action
   emptyList() {
     this.list = [];
   }
@@ -69,7 +71,7 @@ export default class PostStore {
     _.merge(this.query, query);
     return service('post')
       .find(this.query)
-      .then(action(json => this.updateList(json)));
+      .then(json => this.updateList(json));
   }
 
   /* EVENTS */
