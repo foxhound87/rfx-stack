@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import getenv from 'getenv';
 import env from '~/config/expose';
+import getPostCSSConfig from './postcss/postcss.config';
 
 export function load() {
   return {
@@ -16,8 +17,13 @@ export function load() {
       new webpack.DefinePlugin({
         'global.CONFIG': JSON.stringify(getenv.multi(env)),
         'global.TYPE': JSON.stringify('SERVER'),
-        'process.env': {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false,
+        options: {
+          postcss: getPostCSSConfig(webpack, {}),
         },
       }),
     ],
