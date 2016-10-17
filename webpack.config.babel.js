@@ -6,12 +6,10 @@ import './run/init';
 import merge from 'webpack-merge';
 import match from './src/utils/match';
 import Globals from './webpack/globals';
-import { getLoaders, getPreLoaders } from './webpack/loaders';
+import getLoaders from './webpack/loaders';
 
 let Config;
 let Loader = getLoaders();
-const PreLoader = getPreLoaders();
-
 
 if (match.script('web:dev', 'development')) {
   Config = require('./webpack/config.server').load();
@@ -47,8 +45,8 @@ Config = merge(Config, Globals);
 // Loaders
 Config = merge(Config, {
   module: {
-    preLoaders: [PreLoader.eslint],
     loaders: [
+      Loader.eslint,
       Loader.jsx,
       Loader.json,
       Loader.url,

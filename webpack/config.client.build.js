@@ -8,15 +8,20 @@ const Dir = global.DIR;
 export function loader() {
   return {
     cssModules: {
-      loader: ExtractTextPlugin.extract(
-        'style-loader',
-        ['css-loader?modules',
-        'importLoaders=1',
-        'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
-         .join('&')),
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: [
+          'css-loader?modules',
+          'importLoaders=1',
+          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
+        ].join('&'),
+      }),
     },
     cssGlobal: {
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader!postcss-loader',
+      }),
     },
   };
 }
@@ -36,13 +41,14 @@ export function config() {
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
-        dropDebugger: true,
-        dropConsole: true,
-        compressor: {
+        sourceMap: true,
+        compress: {
+          screw_ie8: true,
           warnings: false,
         },
       }),
-      new ExtractTextPlugin('style.css', {
+      new ExtractTextPlugin({
+        filename: 'style.css',
         allChunks: true,
       }),
     ],

@@ -1,18 +1,14 @@
 const Dir = global.DIR;
 
-export function getPreLoaders() {
+export default function getLoaders() {
   return {
     eslint: {
       test: /\.jsx?$/,
+      enforce: 'pre',
       loader: 'eslint-loader',
       exclude: /node_modules/,
       include: Dir.src,
     },
-  };
-}
-
-export function getLoaders() {
-  return {
     jsx: {
       test: /\.jsx?$/,
       loader: 'babel-loader',

@@ -8,15 +8,19 @@ const Dir = global.DIR;
 export function loader() {
   return {
     cssModules: {
-      loader: ExtractTextPlugin.extract(
-        'isomorphic-style-loader',
-        ['css-loader?modules',
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'isomorphic-style-loader',
+        loader: ['css-loader?modules',
         'importLoaders=1',
         'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
-         .join('&')),
+         .join('&'),
+      }),
     },
     cssGlobal: {
-      loader: ExtractTextPlugin.extract('isomorphic-style-loader', 'css-loader!postcss-loader'),
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'isomorphic-style-loader',
+        loader: 'css-loader!postcss-loader',
+      }),
     },
   };
 }
@@ -36,7 +40,10 @@ export function config(entry) {
     externals: [nodeExternalModules()],
     plugins: [
       new ProgressBarPlugin(),
-      new ExtractTextPlugin('style.css', { disable: true }),
+      new ExtractTextPlugin({
+        filename: 'style.css',
+        disable: true,
+      }),
     ],
   };
 }
