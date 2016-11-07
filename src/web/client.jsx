@@ -28,7 +28,7 @@ function renderApp(AppComponent) {
         history={history}
       />
     </AppContainer>,
-    document.getElementById('root')
+    document.getElementById('root'),
   );
 }
 

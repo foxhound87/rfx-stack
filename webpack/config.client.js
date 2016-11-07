@@ -6,11 +6,12 @@ import getPostCSSConfig from './postcss/postcss.config';
 export function load() {
   return {
     target: 'web',
-    entry: [
-      'babel-polyfill',
-      'whatwg-fetch',
-    ],
     plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
+        filename: 'vendor.bundle.js',
+      }),
       new webpack.DefinePlugin({
         'global.DIR': JSON.stringify(global.DIR),
         'global.CONFIG': JSON.stringify(getenv.multi(env)),

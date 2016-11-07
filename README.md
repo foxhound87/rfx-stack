@@ -25,6 +25,7 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 - Real Time Ready
 - Microservices Ready
 - Functional & Modular CSS
+- Webpack 2 w/ code-splitting
 
 ## Main Libs
 
@@ -35,11 +36,10 @@ See the [Changelog](https://github.com/foxhound87/rfx-stack/blob/master/CHANGELO
 | **mobx** | State Management | [GitHub &#10140;](https://github.com/mobxjs/mobx) | [NPM &#10140;](https://www.npmjs.com/package/mobx) |
 | **feathers** | Server, CRUD & Data Transport | [GitHub &#10140;](https://github.com/feathersjs/feathers) | [NPM &#10140;](https://www.npmjs.com/package/feathers) |
 | **postcss** | Styling | [GitHub &#10140;](https://github.com/postcss/postcss) | [NPM &#10140;](https://www.npmjs.com/package/postcss) |
-| **react-css-modules** | Styling | [GitHub &#10140;](https://github.com/gajus/react-css-modules) | [NPM &#10140;](https://www.npmjs.com/package/react-css-modules) |
 | **browser-sync** | Live Browser Syncing | [GitHub &#10140;](https://github.com/browsersync/browser-sync) | [NPM &#10140;](https://www.npmjs.com/package/browser-sync) |
 | **mobx-react-form** | Forms Management | [GitHub &#10140;](https://github.com/foxhound87/mobx-react-form) | [NPM &#10140;](https://www.npmjs.com/package/mobx-react-form) |
 | **babel** | Javascript Transpiler | [GitHub &#10140;](https://github.com/babel/babel) | [NPM &#10140;](https://www.npmjs.com/package/babel) |
-| **webpack** | Javascript Bundler | [GitHub &#10140;](https://github.com/webpack/webpack) | [NPM &#10140;](https://www.npmjs.com/package/webpack) |
+| **webpack 2** | Javascript Bundler | [GitHub &#10140;](https://github.com/webpack/webpack) | [NPM &#10140;](https://www.npmjs.com/package/webpack) |
 | **eslint** | Code Linter | [GitHub &#10140;](https://github.com/eslint/eslint) | [NPM &#10140;](https://www.npmjs.com/package/eslint) |
 | **eslint-config-airbnb** | Code Style Guide & Rules | [GitHub &#10140;](https://github.com/airbnb/javascript) | [NPM &#10140;](https://www.npmjs.com/package/eslint-config-airbnb) |
 | **electron** | Cross platform desktop app | [GitHub &#10140;](https://github.com/electron/electron) | [Website &#10140;](http://electron.atom.io/) | |

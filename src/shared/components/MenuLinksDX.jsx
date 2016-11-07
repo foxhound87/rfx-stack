@@ -51,63 +51,67 @@ const UserSubMenu = () => (
   </ul>
 );
 
-const MenuLinksDX = ({ user, inline, authCheck, accountMenuIsOpen }) => (
+const UserMenu = connect(({ inline, user, accountMenuIsOpen }) => (
+  <span>
+    <a
+      onClick={inline && handleMenuAccountToggle}
+      className={inline ? btnInline : btnBlock}
+    >
+      {user.email} {inline && <i className="fa fa-caret-down" />}
+    </a>
+    {inline ?
+      <div
+        className={cx(
+          [styles.menuAccount, menuAccount],
+          { hide: !accountMenuIsOpen },
+        )}
+      >
+        <UserSubMenu />
+      </div> :
+      <div>
+        <div className={cx(styles.divider, { 'border-top': !inline })} />
+        <UserSubMenu />
+      </div>}
+  </span>
+));
+
+const GuestMenu = connect(({ inline }) => (
+  <span>
+    <a
+      onClick={handleAuthModalSignin}
+      className={cx(styles.baseBtn, {
+        [styles.baseInlineBtn]: inline,
+        [styles.loginBtn]: inline,
+        ['inline-block']: inline,
+        ['block']: !inline,
+      })}
+    >
+      <i className="fa fa-sign-in" /> Login
+    </a>
+    <a
+      onClick={handleAuthModalSignup}
+      className={cx(styles.baseBtn, {
+        [styles.baseInlineBtn]: inline,
+        [styles.registerBtn]: inline,
+        ['inline-block']: inline,
+        ['block']: !inline,
+      })}
+    >
+      Register
+    </a>
+  </span>
+));
+
+export default connect(({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
     <div className={cx(styles.divider, { 'border-top': !inline })} />
-    <If condition={authCheck}>
-      <span>
-        <a
-          onClick={inline && handleMenuAccountToggle}
-          className={inline ? btnInline : btnBlock}
-        >
-          {user.email} {inline && <i className="fa fa-caret-down" />}
-        </a>
-        <If condition={inline}>
-          <div
-            className={cx(
-              [styles.menuAccount, menuAccount],
-              { hide: !accountMenuIsOpen }
-            )}
-          >
-            <UserSubMenu />
-          </div>
-          <Else />
-          <div className={cx(styles.divider, { 'border-top': !inline })} />
-          <UserSubMenu />
-        </If>
-      </span>
-      <Else />
-      <a
-        onClick={handleAuthModalSignin}
-        className={cx(styles.baseBtn, {
-          [styles.baseInlineBtn]: inline,
-          [styles.loginBtn]: inline,
-          ['inline-block']: inline,
-          ['block']: !inline,
-        })}
-      >
-        <i className="fa fa-sign-in" /> Login
-      </a>
-      <a
-        onClick={handleAuthModalSignup}
-        className={cx(styles.baseBtn, {
-          [styles.baseInlineBtn]: inline,
-          [styles.registerBtn]: inline,
-          ['inline-block']: inline,
-          ['block']: !inline,
-        })}
-      >
-        Register
-      </a>
-    </If>
+
+    {authCheck ?
+      <UserMenu
+        inline={inline}
+        accountMenuIsOpen={accountMenuIsOpen}
+        user={user}
+      /> : <GuestMenu inline={inline} />}
+
   </span>
-);
-
-MenuLinksDX.propTypes = {
-  user: React.PropTypes.object,
-  inline: React.PropTypes.bool,
-  authCheck: React.PropTypes.bool,
-  accountMenuIsOpen: React.PropTypes.bool,
-};
-
-export default connect(MenuLinksDX);
+));

@@ -7,6 +7,17 @@ const Dir = global.DIR;
 
 export function loader() {
   return {
+    jsx: {
+      query: {
+        presets: [['es2015', { modules: false }], 'stage-0', 'react'],
+        plugins: [
+          'transform-decorators-legacy',
+          'transform-class-properties',
+          'transform-runtime',
+          'babel-root-import',
+        ],
+      },
+    },
     cssModules: {
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
@@ -30,7 +41,17 @@ export function config() {
   return {
     bail: true,
     devtool: 'source-map',
-    entry: [path.join(Dir.web, 'client')],
+    entry: {
+      app: [
+        'babel-polyfill',
+        'isomorphic-fetch',
+        'whatwg-fetch',
+        path.join(Dir.web, 'client'),
+      ],
+      vendor: [
+        'react', 'react-dom', 'mobx', 'mobx-react', 'bluebird', 'socket.io-client',
+      ],
+    },
     output: {
       path: path.join(Dir.public, 'build'),
       publicPath: '/build/',

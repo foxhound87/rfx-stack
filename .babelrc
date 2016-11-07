@@ -2,9 +2,8 @@
   "presets": ["es2015", "stage-0", "react"],
   "plugins": [
     "transform-decorators-legacy",
+    "transform-runtime",
     "transform-class-properties",
-    "babel-root-import",
-    "jsx-control-statements",
-    "react-hot-loader/babel"
+    "babel-root-import"
   ]
 }

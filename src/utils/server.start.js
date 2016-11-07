@@ -28,7 +28,7 @@ class ServerStart {
     this.app
       .listen(
         config[key.toLowerCase()].port,
-        config[key.toLowerCase()].host
+        config[key.toLowerCase()].host,
       )
       .on('listening', () => logger && logger(key));
   }

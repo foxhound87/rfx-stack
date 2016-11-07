@@ -25,7 +25,7 @@ export default (req, res, props) => {
         <ContextProvider context={{ store }}>
           <RouterContext {...props} />
         </ContextProvider>
-      </MuiThemeProvider>
+      </MuiThemeProvider>,
     ))
     .then(html => res
       .status(200)

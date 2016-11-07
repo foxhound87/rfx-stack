@@ -1,3 +1,4 @@
+/* eslint no-confusing-arrow: 0 */
 import _ from 'lodash';
 import { observable, autorun } from 'mobx';
 import { extend, toggle } from '~/src/utils/decorators';
@@ -40,13 +41,13 @@ export default class UIStore {
     // shift the layout on "su" breakpoint when appnav is open
     autorun(() => this.breakpoints.su && this.appNav.isOpen
       ? this.shiftLayout(true)
-      : this.shiftLayout(false)
+      : this.shiftLayout(false),
     );
 
     // undock the navbar if the modal is open
     autorun(() => this.authModal.isOpen
       ? this.appNav.open(false)
-      : () => this.breakpoints.mu && this.appNav.open(true)
+      : () => this.breakpoints.mu && this.appNav.open(true),
     );
 
     /**

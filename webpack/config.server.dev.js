@@ -13,10 +13,11 @@ export function loader() {
         cacheDirectory: true,
         presets: [['es2015', { modules: false }], 'stage-0', 'react'],
         plugins: [
+          'system-import-transformer',
           'transform-decorators-legacy',
+          'transform-runtime',
           'transform-class-properties',
           'babel-root-import',
-          'jsx-control-statements',
         ],
       },
     },
@@ -24,8 +25,8 @@ export function loader() {
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'isomorphic-style-loader',
         loader: ['css-loader?modules',
-        'importLoaders=1',
-        'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
+          'importLoaders=1',
+          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
          .join('&'),
       }),
     },
@@ -43,6 +44,7 @@ export function config(entry) {
     devtool: 'cheap-module-eval-source-map',
     entry: [
       'babel-polyfill',
+      'isomorphic-fetch',
       'whatwg-fetch',
       // 'webpack/hot/poll?1000',
       path.join(Dir.run, entry),

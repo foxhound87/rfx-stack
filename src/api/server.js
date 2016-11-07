@@ -18,8 +18,6 @@ import auth from './auth';
 import { connector } from './connector';
 import { autoloader } from './autoloader';
 
-const Dir = global.DIR;
-
 setupServer({
   namespace: 'api',
   logger: logServerConfig,
@@ -32,10 +30,8 @@ setupServices({
   autoloader,
 });
 
-const app = feathers()
-  .configure(configuration(Dir.config, 'feathers'));
-
-app
+feathers()
+  .configure(configuration())
   .use(compression())
   .options('*', cors())
   .configure(apiBeforeMiddleware)
