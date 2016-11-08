@@ -31,7 +31,7 @@ const AuthModal = ({ form }) => (
         type="submit"
         disabled={!form.isValid}
         className="btn btn-primary"
-        onClick={form.handleOnSubmit}
+        onClick={form.onSubmit}
       >Login</button>
     </div>
     <div

@@ -55,7 +55,7 @@ const PostCreateModal = ({ open, form }) => (
             type="submit"
             disabled={!form.isValid}
             className="btn btn-primary"
-            onClick={form.handleOnSubmit}
+            onClick={form.onSubmit}
           >Save</button>
         </div>
         <div
