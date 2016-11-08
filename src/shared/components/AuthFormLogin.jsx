@@ -8,11 +8,6 @@ import TextField from 'material-ui/TextField';
 // styles
 const errorMessage = cx('red', 'm2');
 
-const handleUpdate = (e, form) => {
-  e.preventDefault();
-  form.update({ email: 'test' });
-};
-
 const AuthModal = ({ form }) => (
   <form>
     <TextField
