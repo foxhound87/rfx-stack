@@ -48,7 +48,7 @@ export function config() {
         path.join(Dir.web, 'client'),
       ],
       vendor: [
-        'react', 'react-dom',
+        'react', 'react-dom', 'mobx', 'mobx-react', 'bluebird', 'socket.io-client',
       ],
     },
     output: {

@@ -2,8 +2,8 @@
   "presets": ["es2015", "stage-0", "react"],
   "plugins": [
     "transform-decorators-legacy",
-    "transform-runtime",
     "transform-class-properties",
+    "transform-runtime",
     "babel-root-import"
   ]
 }

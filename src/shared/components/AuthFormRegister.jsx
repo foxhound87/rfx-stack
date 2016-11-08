@@ -15,7 +15,7 @@ const AuthModal = ({ form }) => (
       value={form.$('username').value}
       hintText={form.$('username').label}
       floatingLabelText={form.$('username').label}
-      errorText={form.$('username').errorMessage}
+      errorText={form.$('username').error}
       onChange={form.$('username').sync}
     />
     <TextField
@@ -23,15 +23,16 @@ const AuthModal = ({ form }) => (
       value={form.$('email').value}
       hintText={form.$('email').label}
       floatingLabelText={form.$('email').label}
-      errorText={form.$('email').errorMessage}
+      errorText={form.$('email').error}
       onChange={form.$('email').sync}
     />
     <TextField
+      type="password"
       name={form.$('password').name}
       value={form.$('password').value}
       hintText={form.$('password').label}
       floatingLabelText={form.$('password').label}
-      errorText={form.$('password').errorMessage}
+      errorText={form.$('password').error}
       onChange={form.$('password').sync}
     />
     <div className="mt3">

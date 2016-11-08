@@ -8,6 +8,11 @@ import TextField from 'material-ui/TextField';
 // styles
 const errorMessage = cx('red', 'm2');
 
+const handleUpdate = (e, form) => {
+  e.preventDefault();
+  form.update({ email: 'test' });
+};
+
 const AuthModal = ({ form }) => (
   <form>
     <TextField
@@ -15,15 +20,16 @@ const AuthModal = ({ form }) => (
       value={form.$('email').value}
       hintText={form.$('email').label}
       floatingLabelText={form.$('email').label}
-      errorText={form.$('email').errorMessage}
+      errorText={form.$('email').error}
       onChange={form.$('email').sync}
     />
     <TextField
+      type="password"
       name={form.$('password').name}
       value={form.$('password').value}
       hintText={form.$('password').label}
       floatingLabelText={form.$('password').label}
-      errorText={form.$('password').errorMessage}
+      errorText={form.$('password').error}
       onChange={form.$('password').sync}
     />
     <div className="mt3">
