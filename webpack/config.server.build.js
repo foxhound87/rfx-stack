@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import nodeExternalModules from 'webpack-node-externals';
@@ -57,6 +58,17 @@ export function config(entry) {
       new ExtractTextPlugin({
         filename: 'style.css',
         disable: true,
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        comments: false,
+        sourceMap: true,
+        compress: {
+          screw_ie8: true,
+          warnings: false,
+        },
+        mangle: {
+          keep_fnames: true,
+        },
       }),
     ],
   };
