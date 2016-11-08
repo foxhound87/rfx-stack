@@ -66,9 +66,6 @@ export function config(entry) {
           screw_ie8: true,
           warnings: false,
         },
-        mangle: {
-          keep_fnames: true,
-        },
       }),
     ],
   };

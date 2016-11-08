@@ -81,7 +81,7 @@
     "mobx": "2.6.2",
     "mobx-react": "3.5.8",
     "mobx-react-devtools": "4.2.9",
-    "mobx-react-form": "1.13.23",
+    "mobx-react-form": "1.13.24",
     "mobx-react-matchmedia": "1.2.0",
     "moment": "2.15.2",
     "mongoose": "4.6.6",

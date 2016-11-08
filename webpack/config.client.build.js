@@ -67,9 +67,6 @@ export function config() {
           screw_ie8: true,
           warnings: false,
         },
-        mangle: {
-          keep_fnames: true,
-        },
       }),
       new ExtractTextPlugin({
         filename: 'style.css',
