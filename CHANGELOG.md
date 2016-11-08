@@ -1,3 +1,8 @@
+# 0.8.0 (alpha.8)
+
+* Code Splitting
+* Updated Dependencies
+
 # 0.7.0 (alpha.7)
 
 * Added Electron App
