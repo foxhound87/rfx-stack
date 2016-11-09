@@ -3,6 +3,8 @@ import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
 
+import vendor from '~/config/vendor';
+
 const Dir = global.DIR;
 
 const webhost = ['http://', getenv('WEB_HOST'), ':', getenv('WEB_PORT')].join('');
@@ -38,6 +40,7 @@ export function config() {
   return {
     devtool: 'cheap-module-eval-source-map',
     entry: {
+      vendor,
       app: [
         'babel-polyfill',
         'isomorphic-fetch',
@@ -46,9 +49,6 @@ export function config() {
         'webpack-hot-middleware/client',
         // ['webpack-hot-middleware/client', webhost].join('?'),
         path.join(Dir.web, 'client'),
-      ],
-      vendor: [
-        'react', 'react-dom', 'mobx', 'mobx-react', 'bluebird', 'socket.io-client',
       ],
     },
     output: {

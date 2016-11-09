@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-// import { connect } from '~/src/utils/state';
 import { observer } from 'mobx-react';
 import cx from 'classnames';
 

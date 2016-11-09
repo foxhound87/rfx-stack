@@ -3,6 +3,8 @@ import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
 import path from 'path';
 
+import vendor from '~/config/vendor';
+
 const Dir = global.DIR;
 
 export function loader() {
@@ -42,14 +44,12 @@ export function config() {
     bail: true,
     devtool: 'source-map',
     entry: {
+      vendor,
       app: [
         'babel-polyfill',
         'isomorphic-fetch',
         'whatwg-fetch',
         path.join(Dir.web, 'client'),
-      ],
-      vendor: [
-        'react', 'react-dom', 'mobx', 'mobx-react', 'bluebird', 'socket.io-client',
       ],
     },
     output: {

@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import getenv from 'getenv';
 import env from '~/config/expose';
-import getPostCSSConfig from './postcss/postcss.config';
+import postcss from '~/config/postcss';
 
 export function load() {
   return {
@@ -23,7 +23,7 @@ export function load() {
         minimize: true,
         debug: false,
         options: {
-          postcss: getPostCSSConfig(webpack, {}),
+          postcss: postcss(webpack),
         },
       }),
     ],
