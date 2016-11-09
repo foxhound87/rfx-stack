@@ -1,5 +1,6 @@
 import React from 'react';
-import { dispatch, connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 
 const handleSearch = (e) => {
   e.preventDefault();
@@ -12,7 +13,7 @@ const resetSearch = (e) => {
   dispatch('post.search', null);
 };
 
-const PostSearch = ({ search }) => (
+export default observer(({ search }) => (
   <form>
     <input
       className="field rounded-left"
@@ -26,10 +27,4 @@ const PostSearch = ({ search }) => (
       className="btn rounded-right border navy bg-silver"
     ><i className="fa fa-times" /></button>
   </form>
-);
-
-PostSearch.propTypes = {
-  search: React.PropTypes.string,
-};
-
-export default connect(PostSearch);
+));

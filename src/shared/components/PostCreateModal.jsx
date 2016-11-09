@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 import _ from 'lodash';
 
@@ -23,7 +24,7 @@ _.assign(styles.content, {
 const handleCloseModal = () =>
   dispatch('ui.postCreateModal.open', false);
 
-const PostCreateModal = ({ open, form }) => (
+export default observer(({ open, form }) => (
   <Modal
     isOpen={open}
     onRequestClose={handleCloseModal}
@@ -68,11 +69,4 @@ const PostCreateModal = ({ open, form }) => (
       </form>
     </div>
   </Modal>
-);
-
-PostCreateModal.propTypes = {
-  open: React.PropTypes.bool,
-  form: React.PropTypes.object,
-};
-
-export default connect(PostCreateModal);
+));

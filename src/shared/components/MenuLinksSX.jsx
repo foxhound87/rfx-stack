@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // components
@@ -9,17 +9,12 @@ import { Link } from 'react-router';
 const btnBlock = cx('btn', 'block', 'py2', 'm0');
 const btnInline = cx('btn', 'inline-block', 'py2', 'm0');
 
-const MenuLinksSX = ({ inline }) => (
+export default observer(({ inline }) => (
   <span>
     <Link className={inline ? btnInline : btnBlock} to="/" >Home</Link>
     <Link className={inline ? btnInline : btnBlock} to="/messages">Messages Demo</Link>
     <Link className={inline ? btnInline : btnBlock} to="/breakpoints">Breakpoints Demo</Link>
     <Link className={inline ? btnInline : btnBlock} to="/forms">Forms Management</Link>
   </span>
-);
+));
 
-MenuLinksSX.propTypes = {
-  inline: React.PropTypes.bool,
-};
-
-export default connect(MenuLinksSX);

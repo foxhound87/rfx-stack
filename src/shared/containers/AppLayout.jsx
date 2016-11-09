@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '~/src/utils/state';
+// import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+
 import cx from 'classnames';
 
 // dev tools
@@ -26,12 +28,13 @@ import '../styles/_.global.css';
 // module styles
 import styles from '../styles/app.layout.css';
 
-@connect('store')
+@observer(['store'])
 export default class AppLayout extends Component {
 
   static fetchData() {}
 
   static propTypes = {
+    store: React.PropTypes.object,
     children: React.PropTypes.node,
     // location: React.PropTypes.object,
     // params: React.PropTypes.object,
@@ -41,7 +44,7 @@ export default class AppLayout extends Component {
   };
 
   render() {
-    const { ui, auth } = this.context.store;
+    const { ui, auth } = this.props.store;
     // const { location, params, routeParams, route, routes } = this.props;
 
     return (

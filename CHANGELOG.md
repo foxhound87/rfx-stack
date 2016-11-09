@@ -1,6 +1,7 @@
 # 0.8.0 (alpha.8)
 
 * Code Splitting
+* Introduced mobx-react Provide
 * Updated Dependencies
 
 # 0.7.0 (alpha.7)

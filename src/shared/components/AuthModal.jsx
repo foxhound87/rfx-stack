@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 import _ from 'lodash';
 
@@ -29,7 +30,7 @@ const handleShowSigninSection = () =>
 const handleShowSignupSection = () =>
   dispatch('ui.authModal.toggleSection', 'signup');
 
-const AuthModal = ({ open, showSection, forms }) => (
+export default observer(({ open, showSection, forms }) => (
   <Modal
     isOpen={open}
     onRequestClose={handleCloseModal}
@@ -64,12 +65,4 @@ const AuthModal = ({ open, showSection, forms }) => (
       <AuthFormRegister form={forms.register} />
     </div>
   </Modal>
-);
-
-AuthModal.propTypes = {
-  open: React.PropTypes.bool,
-  forms: React.PropTypes.object,
-  showSection: React.PropTypes.string,
-};
-
-export default connect(AuthModal);
+));

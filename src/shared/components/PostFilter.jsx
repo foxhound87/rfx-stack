@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 
 // styles
@@ -11,7 +12,7 @@ const handleSelect = (e) => {
   dispatch('post.filterBy', val);
 };
 
-const PostFilter = ({ filter }) => (
+export default observer(({ filter }) => (
   <div className="inline-block clearfix">
     <button
       type="button" value="all"
@@ -38,10 +39,4 @@ const PostFilter = ({ filter }) => (
       })}
     >Done</button>
   </div>
-);
-
-PostFilter.propTypes = {
-  filter: React.PropTypes.string,
-};
-
-export default connect(PostFilter);
+));

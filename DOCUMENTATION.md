@@ -8,7 +8,6 @@
   - [Runners](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#runners)
 - [Electron](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#electron)
 - [Setup Stores](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#setup-stores)
-- [Context Provider](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#context-provider)
 - [Server Side Rendering](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#server-side-rendering)
 - [Connect / Observer](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#connect--observer)
 - [Dispatch / Actions](https://github.com/foxhound87/rfx-stack/blob/master/DOCUMENTATION.md#dispatch--actions)
@@ -124,35 +123,14 @@ export default store
 
 The mapped Stores are called by the **Store Initalizer** located at `/src/utils/state/store.js` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
 
-# Context Provider
-
-The Context Provider implements a mechanism to inject the Stores into the **React Context** and make them accessible from a React Container.
-
-First, in `/src/shared/context.js` define the Context Types we want to pass to the Context Provider:
+Now we can use the `mobx-react` **Provide** Component on both client and server:
 
 ```javascript
-import { Context } from '~/src/utils/state';
-import { PropTypes } from 'react';
+import { Provider } from 'mobx-react';
 
-/**
-  Context Types
- */
-export default new Context({
-  store: PropTypes.object,
-});
-
-```
-
-Now we can use the Context Provider React Component on both client and server:
-
-```javascript
-import context from '~/src/shared/context';
-
-const ContextProvider = context.getProvider();
-
-<ContextProvider context={{ store }}>
+<Provider store={store}>
   ...
-</ContextProvider>
+</Provider>
 ```
 
 On the **server**-side: `/src/web/ssr.js`;
@@ -192,20 +170,24 @@ class Home extends Component {
 
 # Connect / Observer
 
-Use the **@connect** decorator to pass the Stores to the **Containers** through the React Context.
+Use the `mobx-react` **@observer** decorator to pass the `stores` props to the **Containers**.
 
 
 in `/src/shared/containers/*`:
 
 ```javascript
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 ...
 
-@connect('store')
+@observer(['store'])
 export default class Home extends Component {
 
+  static propTypes = {
+    store: React.PropTypes.object,
+  };
+
   render() {
-    const items = this.context.store.post.list;
+    const items = this.props.store.post.list;
     return (
      ...
     );
@@ -215,7 +197,7 @@ export default class Home extends Component {
 
 The **@connect** decorator also wraps the component with the MobX **observer** making it reactive.
 
-You can use it also on the Stateless Components to make it reactive, but you cannot access the context from there, you must pass the store as props from a parent instead.
+You can use it also on the Stateless Components to make it reactive, but you cannot access the provided stores from there, you must pass the store as props from a parent component (a container) instead.
 
 # Dispatch / Actions
 

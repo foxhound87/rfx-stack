@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '~/src/utils/state';
+// import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // components
@@ -17,30 +18,34 @@ import postForm from '../forms/post';
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
 
-@connect('store')
+@observer(['store'])
 export default class DemoList extends Component {
 
   static fetchData({ store }) {
     return store.post.find();
   }
 
+  static propTypes = {
+    store: React.PropTypes.object,
+  };
+
   handleAddRandomPost = (e) => {
     e.preventDefault();
-    this.context.store.post.create();
+    this.props.store.post.create();
   };
 
   handleCreatePost = (e) => {
     e.preventDefault();
-    const { ui } = this.context.store;
+    const { ui } = this.props.store;
     ui.postCreateModal.open(true);
   };
 
   handlePostPageChange = (page) => {
-    this.context.store.post.page(page);
+    this.props.store.post.page(page);
   };
 
   render() {
-    const { ui, post } = this.context.store;
+    const { ui, post } = this.props.store;
 
     return (
       <div className="mt4">

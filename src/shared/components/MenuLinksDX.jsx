@@ -1,6 +1,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 
 // styles
@@ -51,7 +52,7 @@ const UserSubMenu = () => (
   </ul>
 );
 
-const UserMenu = connect(({ inline, user, accountMenuIsOpen }) => (
+const UserMenu = observer(({ inline, user, accountMenuIsOpen }) => (
   <span>
     <a
       onClick={inline && handleMenuAccountToggle}
@@ -75,7 +76,7 @@ const UserMenu = connect(({ inline, user, accountMenuIsOpen }) => (
   </span>
 ));
 
-const GuestMenu = connect(({ inline }) => (
+const GuestMenu = observer(({ inline }) => (
   <span>
     <a
       onClick={handleAuthModalSignin}
@@ -102,7 +103,7 @@ const GuestMenu = connect(({ inline }) => (
   </span>
 ));
 
-export default connect(({ user, inline, authCheck, accountMenuIsOpen }) => (
+export default observer(({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
     <div className={cx(styles.divider, { 'border-top': !inline })} />
 

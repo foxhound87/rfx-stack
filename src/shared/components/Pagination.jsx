@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // components
@@ -8,7 +8,7 @@ import Paginator from 'react-pagify';
 // styles
 const buttonGroup = cx('btn', 'left', 'x-group-item', 'btn-outline');
 
-const Pagination = ({ currentPage, onPageChange }) => (
+export default observer(({ currentPage, onPageChange }) => (
   <Paginator.Context
     className="pagify-pagination"
     segments={{ centerPage: [currentPage] }}
@@ -29,11 +29,4 @@ const Pagination = ({ currentPage, onPageChange }) => (
       </Paginator.Button>
     </div>
   </Paginator.Context>
-);
-
-Pagination.propTypes = {
-  currentPage: React.PropTypes.number,
-  onPageChange: React.PropTypes.func,
-};
-
-export default connect(Pagination);
+));

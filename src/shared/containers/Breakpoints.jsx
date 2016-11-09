@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '~/src/utils/state';
+// import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // styles
 const button = cx(['btn', 'rounded', 'btn-outline']);
 
-@connect('store')
+@observer(['store'])
 export default class MatchMedia extends Component {
 
   static fetchData() {}
 
+  static propTypes = {
+    store: React.PropTypes.object,
+  };
+
   render() {
-    const bp = this.context.store.ui.breakpoints;
+    const bp = this.props.store.ui.breakpoints;
     return (
       <div>
         <Helmet title="MobX React MatchMedia" />

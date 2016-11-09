@@ -1,6 +1,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 import React from 'react';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
 
 // components
@@ -17,7 +18,7 @@ const handleOnClick = () => {
   dispatch('ui.appNav.open', false);
 };
 
-const AppNav = ({ children, open, docked }) => (
+export default observer(({ children, open, docked }) => (
   <Drawer
     className={cx(styles.drawer)}
     open={open}
@@ -26,12 +27,4 @@ const AppNav = ({ children, open, docked }) => (
   >
     <div onClick={handleOnClick}>{children}</div>
   </Drawer>
-);
-
-AppNav.propTypes = {
-  children: React.PropTypes.node,
-  open: React.PropTypes.bool,
-  docked: React.PropTypes.bool,
-};
-
-export default connect(AppNav);
+));

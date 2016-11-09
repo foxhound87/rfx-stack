@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // components
@@ -8,7 +8,7 @@ import TextField from 'material-ui/TextField';
 // styles
 const errorMessage = cx('red', 'm1');
 
-const AuthModal = ({ form }) => (
+export default observer(({ form }) => (
   <form>
     <TextField
       name={form.$('username').name}
@@ -51,10 +51,4 @@ const AuthModal = ({ form }) => (
       {form.genericErrorMessage}
     </div>
   </form>
-);
-
-AuthModal.propTypes = {
-  form: React.PropTypes.object,
-};
-
-export default connect(AuthModal);
+));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { connect } from '~/src/utils/state';
+// import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 import cx from 'classnames';
 
 // components
@@ -9,13 +10,17 @@ import { Parallax } from 'react-parallax';
 // module styles
 import styles from '../styles/home.css';
 
-@connect('store')
+@observer(['store'])
 export default class Home extends Component {
 
   static fetchData() {}
 
+  static propTypes = {
+    store: React.PropTypes.object,
+  };
+
   render() {
-    const bp = this.context.store.ui.breakpoints;
+    const bp = this.props.store.ui.breakpoints;
     return (
       <div>
         <Helmet title="Home" />

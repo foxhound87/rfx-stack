@@ -1,16 +1,8 @@
 import React from 'react';
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 
-const PostInfo = ({ itemsFound, currentPage, totalPages }) => (
+export default observer(({ itemsFound, currentPage, totalPages }) => (
   <div>
     <b>{itemsFound} Items found</b> - <b>Page {currentPage} of {totalPages}</b>
   </div>
-);
-
-PostInfo.propTypes = {
-  itemsFound: React.PropTypes.number,
-  totalPages: React.PropTypes.number,
-  currentPage: React.PropTypes.number,
-};
-
-export default connect(PostInfo);
+));

@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { connect, dispatch } from '~/src/utils/state';
+import { observer } from 'mobx-react';
+import { dispatch } from '~/src/utils/state';
 
 // components
 import MenuLinksSX from '../components/MenuLinksSX';
@@ -18,7 +19,7 @@ const handleNavToggle = (e) => {
   dispatch('ui.appNav.open');
 };
 
-const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
+export default observer(({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
   <div
     className={cx(styles.bar, appBar, {
       [styles.leftShifted]: layoutIsShifted,
@@ -51,13 +52,4 @@ const AppBar = ({ authCheck, user, accountMenuIsOpen, layoutIsShifted }) => (
     <div className={cx('clearfix', 'sm-hide')} />
     <div className={cx('overflow-hidden', 'px2')} />
   </div>
-);
-
-AppBar.propTypes = {
-  user: React.PropTypes.object,
-  authCheck: React.PropTypes.bool,
-  layoutIsShifted: React.PropTypes.bool,
-  accountMenuIsOpen: React.PropTypes.bool,
-};
-
-export default connect(AppBar);
+));

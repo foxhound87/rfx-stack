@@ -5,14 +5,12 @@ import Helmet from 'react-helmet';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { renderToString } from 'react-dom/server';
 import { RouterContext } from 'react-router';
+import { Provider } from 'mobx-react';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
 import { fetchData, dehydrate } from '~/src/utils/state';
 import stores from '~/src/shared/stores';
-import context from '~/src/shared/context';
 
 export default (req, res, props) => {
-  const ContextProvider = context.getProvider();
-
   const store = stores.inject({
     app: { ssrLocation: req.url },
     ui: { mui: { userAgent: req.headers['user-agent'] } },
@@ -22,9 +20,9 @@ export default (req, res, props) => {
     .then(() => setMatchMediaConfig(req))
     .then(() => renderToString(
       <MuiThemeProvider muiTheme={store.ui.getMui()}>
-        <ContextProvider context={{ store }}>
+        <Provider store={store}>
           <RouterContext {...props} />
-        </ContextProvider>
+        </Provider>
       </MuiThemeProvider>,
     ))
     .then(html => res

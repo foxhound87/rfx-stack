@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from '~/src/utils/state';
+import { observer } from 'mobx-react';
 
 // components
 import TimeAgo from 'react-timeago';
@@ -14,7 +14,7 @@ const ItemsNotFound = () => (
   </div>
 );
 
-const ItemsList = connect(({ items }) => (
+const ItemsList = observer(({ items }) => (
   <ul>
     {items.map(item =>
       <li key={item.uuid} className="bg-white rounded px3 py2 mb2">
@@ -35,7 +35,7 @@ const ItemsList = connect(({ items }) => (
   </ul>
 ));
 
-export default connect(({ items }) => (
+export default observer(({ items }) => (
   <div className={styles.postList}>
     {items.length
       ? <ItemsList items={items} />
