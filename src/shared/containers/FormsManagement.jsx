@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import cx from 'classnames';
 
-// styles
-const button = cx(['btn', 'rounded', 'btn-outline']);
+import $ from '~/src/shared/styles/_.mixins';
 
 // links
 const clog = 'https://github.com/foxhound87/mobx-react-form/blob/master/CHANGELOG.md';
@@ -15,34 +13,33 @@ export default class NotFound extends Component {
 
   render() {
     return (
-      <div>
-        <Helmet title="MobX Ajv Form" />
-        <div className="mx4">
+      <div className="pv5">
+        <Helmet title="MobX React Form" />
+        <div className="ph4">
           <br />
           <br />
-          <h1>MobX Ajv Form</h1>
-          <h4>Easly manage Forms with MobX and automatic validation with AJV json-schema rules.</h4>
+          <h1>MobX React Form</h1>
+          <h4>Automagically manage React forms state and automatic validation with MobX.</h4>
           <p>
-            See the <a href={clog}>Changelog
-            </a> or the <a href={doc}>Documentation
-            </a> for all the details.
+            See the <a href={clog}>Changelog</a>
+            or the <a href={doc}>Documentation</a> for all the details.
           </p>
           <br />
           <p>
-            <a
-              className={cx(button)}
+            <button
+              className={$.buttonPill}
               href="https://github.com/foxhound87/mobx-react-form"
             >
               <i className="fa fa-github" /> <b>foxhound87/mobx-react-form</b>
-            </a>
+            </button>
           </p>
           <p>
-            <a
-              className={cx(button)}
+            <button
+              className={$.buttonPill}
               href="https://www.npmjs.com/package/mobx-react-form"
             >
               <i className="fa fa-archive" /> <b>package/mobx-react-form</b>
-            </a>
+            </button>
           </p>
         </div>
       </div>

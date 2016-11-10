@@ -1,8 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from '~/src/utils/state';
-import cx from 'classnames';
 import _ from 'lodash';
+import cx from 'classnames';
+import $ from '~/src/shared/styles/_.mixins';
 
 // components
 import Modal from 'react-modal';
@@ -13,8 +14,6 @@ import AuthFormRegister from './AuthFormRegister';
 import modalBaseStyle from '../styles/_.modal.js';
 
 const styles = _.cloneDeep(modalBaseStyle);
-const buttonGroup = cx('btn', 'left', 'x-group-item');
-const authSection = cx('center', 'fit', 'col-8', 'px2', 'mb3', 'mx-auto');
 
 _.assign(styles.content, {
   maxWidth: '450px',
@@ -36,33 +35,31 @@ export default observer(({ open, showSection, forms }) => (
     onRequestClose={handleCloseModal}
     style={styles}
   >
-    <div className="center m3">
-      <div className="inline-block clearfix">
+    <div className="flex items-center justify-center flex-column pv4 tc">
+      <div className="cf dib pv3">
         <button
           onClick={handleShowSigninSection}
-          className={cx(buttonGroup, 'rounded-left', {
-            'btn-primary': showSection === 'signin',
-            'btn-outline': showSection !== 'signin',
+          className={cx($.buttonGroupLeft, {
+            _bg1: showSection === 'signin',
           })}
         >Login</button>
         <button
           onClick={handleShowSignupSection}
-          className={cx(buttonGroup, 'rounded-right', {
-            'btn-primary': showSection === 'signup',
-            'btn-outline': showSection !== 'signup',
+          className={cx($.buttonGroupRight, {
+            _bg1: showSection === 'signup',
           })}
         >Register</button>
       </div>
-    </div>
 
-    <div className={cx(authSection, { hide: showSection !== 'signin' })}>
-      <h3>Login</h3>
-      <AuthFormLogin form={forms.login} />
-    </div>
+      <div className={cx({ dn: showSection !== 'signin' })}>
+        <h3>Login</h3>
+        <AuthFormLogin form={forms.login} />
+      </div>
 
-    <div className={cx(authSection, { hide: showSection !== 'signup' })}>
-      <h3>Register</h3>
-      <AuthFormRegister form={forms.register} />
+      <div className={cx({ dn: showSection !== 'signup' })}>
+        <h3>Register</h3>
+        <AuthFormRegister form={forms.register} />
+      </div>
     </div>
   </Modal>
 ));

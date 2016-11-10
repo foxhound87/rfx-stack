@@ -1,49 +1,14 @@
 @import 'font-awesome';
 @import 'animate.css';
 @import 'normalize.css';
-@import 'flex-object';
-@import 'basscss';
-@import 'basscss-flexbox';
-@import 'basscss-base-reset';
-@import 'basscss-base-forms';
-@import 'basscss-base-tables';
-@import 'basscss-base-typography';
-@import 'basscss-color-forms';
-@import 'basscss-btn';
-@import 'basscss-btn-outline';
-@import 'basscss-btn-primary';
-@import 'basscss-type-scale';
-@import 'basscss-utility-layout';
-@import 'basscss-align';
-@import 'basscss-positions';
-@import 'basscss-responsive-states';
-@import 'basscss-grid';
-@import 'basscss-border';
-@import 'basscss-colors';
-@import 'basscss-background-colors';
-@import 'basscss-hide';
-@import 'basscss-padding';
-@import 'basscss-margin';
-@import 'basscss-ui-utility-groups';
-
+@import "tachyons";
+@import "./_.custom.css";
 
 /* basscss override */
 
 :root {
   --button-color: #1C2541;
   --button-background-color: #5BC0BE;
-
-  .btn.btn-outline {
-    transition: all 0.2s;
-  }
-
-  .btn-outline {
-    color: #5BC0BE;
-  }
-
-  .btn.btn-outline:hover {
-    background-color: #0B132B;
-  }
 }
 
 /* :global */
@@ -61,8 +26,6 @@ html * {
 
 body {
   color: #5BC0BE;
-  font-weight: 200;
-  font-size: 100%;
   background-color: #1C2541;
 }
 
@@ -78,8 +41,11 @@ a:focus {
   border-color: rgba(0,0,0,0) !important;
   box-shadow: none !important;
   text-decoration: none;
-  outline: 0;
   color: #6FFFE9;
+}
+
+a, button {
+  outline: 0;
 }
 
 h1, h3, h4 {
@@ -97,14 +63,4 @@ input, textarea {
 
 input::-ms-clear, textarea::-ms-clear {
   display: none;
-}
-
-.divider {
-  color: #3A506B;
-}
-
-/* COLORS */
-
-._yellow {
-  color: #FFD98E !important;
 }

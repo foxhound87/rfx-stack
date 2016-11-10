@@ -1,0 +1,46 @@
+.divider {
+  color: #3A506B;
+}
+
+.loginBtn {
+  border: 1px solid #5BC0BE;
+  color: #5BC0BE;
+}
+
+.registerBtn {
+  border: 1px solid #FFD98E;
+  background: #FFD98E;
+  color: #1C2541;
+}
+
+.loginBtn:hover,
+.registerBtn:hover {
+  background: #6FFFE9;
+  color: #1C2541;
+}
+
+.menuAccount ul {
+  /* min-width:128px; */
+  color: #1C2541;
+  background: #5BC0BE;
+}
+
+.menuAccount ul li a {
+  color: #1C2541;
+}
+
+.menuAccount ul li a:hover {
+  background: #6FFFE9;
+}
+
+.menuAccount ul li:first-child,
+.menuAccount ul li:first-child a {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.menuAccount ul li:last-child,
+.menuAccount ul li:last-child a {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

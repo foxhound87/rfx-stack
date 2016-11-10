@@ -2,9 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
-
-// styles
-const buttonGroup = cx('btn', 'left', 'x-group-item');
+import $ from '~/src/shared/styles/_.mixins';
 
 const handleSelect = (e) => {
   e.preventDefault();
@@ -17,25 +15,22 @@ export default observer(({ filter }) => (
     <button
       type="button" value="all"
       onClick={handleSelect}
-      className={cx(buttonGroup, 'rounded-left', {
-        'btn-outline': filter !== 'all',
-        'btn-primary': filter === 'all',
+      className={cx($.buttonGroupLeft, {
+        _bg1: filter === 'all',
       })}
     >All</button>
     <button
       type="button" value="todo"
       onClick={handleSelect}
-      className={cx(buttonGroup, 'not-rounded', {
-        'btn-outline': filter !== 'todo',
-        'btn-primary': filter === 'todo',
+      className={cx($.buttonGroupCenter, {
+        _bg1: filter === 'todo',
       })}
     >To Do</button>
     <button
       type="button" value="done"
       onClick={handleSelect}
-      className={cx(buttonGroup, 'rounded-right', {
-        'btn-outline': filter !== 'done',
-        'btn-primary': filter === 'done',
+      className={cx($.buttonGroupRight, {
+        _bg1: filter === 'done',
       })}
     >Done</button>
   </div>

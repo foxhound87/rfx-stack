@@ -2,6 +2,7 @@
 
 * Code Splitting
 * Introduced mobx-react Provide
+* Introduced tachyons
 * Updated Dependencies
 
 # 0.7.0 (alpha.7)

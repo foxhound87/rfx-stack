@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { observer } from 'mobx-react';
-
 import cx from 'classnames';
 
 // dev tools
@@ -21,11 +20,9 @@ import MenuLinksDX from '../components/MenuLinksDX';
 import authForm from '../forms/auth';
 import userForm from '../forms/user';
 
-// global styles
+// styles
 import '../styles/_.global.css';
-
-// module styles
-import styles from '../styles/app.layout.css';
+import styles from '../styles/AppLayout.css';
 
 @observer(['store'])
 export default class AppLayout extends Component {
@@ -33,8 +30,8 @@ export default class AppLayout extends Component {
   static fetchData() {}
 
   static propTypes = {
-    store: React.PropTypes.object,
     children: React.PropTypes.node,
+    store: React.PropTypes.object,
     // location: React.PropTypes.object,
     // params: React.PropTypes.object,
     // routeParams: React.PropTypes.object,

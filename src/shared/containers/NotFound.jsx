@@ -7,7 +7,7 @@ export default class NotFound extends Component {
 
   render() {
     return (
-      <div>
+      <div className="pa5">
         <Helmet title="Not Found" />
         <h1>Not Found</h1>
       </div>

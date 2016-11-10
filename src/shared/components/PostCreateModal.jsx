@@ -1,19 +1,17 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from '~/src/utils/state';
-import cx from 'classnames';
-import _ from 'lodash';
-
-// components
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
-
-// styles
+import _ from 'lodash';
+import cx from 'classnames';
+import $ from '~/src/shared/styles/_.mixins';
 import modalBaseStyle from '../styles/_.modal.js';
 
 const styles = _.cloneDeep(modalBaseStyle);
 const errorMessage = cx('red', 'm1');
+const button = cx($.buttonPill, '_c1', '_b1', 'b');
 
 _.assign(styles.content, {
   maxWidth: '450px',
@@ -39,7 +37,7 @@ export default observer(({ open, form }) => (
             floatingLabelText={form.$('title').label}
             name={form.$('title').name}
             value={form.$('title').value}
-            errorText={form.$('title').errorMessage}
+            errorText={form.$('title').error}
             onChange={form.$('title').sync}
           />
           <Toggle
@@ -51,11 +49,10 @@ export default observer(({ open, form }) => (
             onToggle={form.$('completed').sync}
           />
         </div>
-        <div className="center">
+        <div className="tc">
           <button
             type="submit"
-            disabled={!form.isValid}
-            className="btn btn-primary"
+            className={button}
             onClick={form.onSubmit}
           >Save</button>
         </div>

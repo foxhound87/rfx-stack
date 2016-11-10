@@ -6,15 +6,17 @@ import cx from 'classnames';
 import { Link } from 'react-router';
 
 // stules
-const btnBlock = cx('btn', 'block', 'py2', 'm0');
-const btnInline = cx('btn', 'inline-block', 'py2', 'm0');
+const a = cx('db', 'ph3', 'pv3');
+const listBlock = cx('list', 'pl0', 'ml0');
+const listInline = cx('list', 'pa0', 'mv0');
+const liBlock = cx('db');
+const liInline = cx('dib');
 
 export default observer(({ inline }) => (
-  <span>
-    <Link className={inline ? btnInline : btnBlock} to="/" >Home</Link>
-    <Link className={inline ? btnInline : btnBlock} to="/messages">Messages Demo</Link>
-    <Link className={inline ? btnInline : btnBlock} to="/breakpoints">Breakpoints Demo</Link>
-    <Link className={inline ? btnInline : btnBlock} to="/forms">Forms Management</Link>
-  </span>
+  <ul className={inline ? listInline : listBlock}>
+    <li className={inline ? liInline : liBlock}><Link className={a} to="/" >Home</Link></li>
+    <li className={inline ? liInline : liBlock}><Link className={a} to="/messages">Messages Demo</Link></li>
+    <li className={inline ? liInline : liBlock}><Link className={a} to="/breakpoints">Breakpoints Demo</Link></li>
+    <li className={inline ? liInline : liBlock}><Link className={a} to="/forms">Forms Management</Link></li>
+  </ul>
 ));
-

@@ -9,7 +9,10 @@ class AuthForm extends Form {
       .then(() => dispatch('ui.authModal.toggle', 'close'))
       .then(() => dispatch('ui.snackBar.open', 'Login Successful.'))
       .then(() => form.clear())
-      .catch(err => form.invalidate(err.message));
+      .catch((err) => {
+        form.invalidate(err.message);
+        dispatch('ui.snackBar.open', err.message);
+      });
   }
 }
 

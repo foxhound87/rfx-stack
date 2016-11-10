@@ -5,31 +5,31 @@ import { observer } from 'mobx-react';
 import TimeAgo from 'react-timeago';
 
 // styles
-import styles from '../styles/post.list.css';
+import styles from '../styles/PostList.css';
 
 const ItemsNotFound = () => (
   <div>
     <div className="divider border-top" />
-    <h4 className="center">NO ITEMS FOUND</h4>
+    <h4 className="tc">NO ITEMS FOUND</h4>
   </div>
 );
 
 const ItemsList = observer(({ items }) => (
   <ul>
     {items.map(item =>
-      <li key={item.uuid} className="bg-white rounded px3 py2 mb2">
-        <div className="md-flex">
-          <div className="sm-col-12 pt2">
-            <div className="h3"> {item.completed
-              ? <i className="fa fa-check-circle olive" />
+      <li key={item.uuid} className="cf bg-white-90 br2 pv3 ph4 mb3">
+        <div className="fl w-100 w-60-ns tc tl-ns">
+          <div className="f4 pt3">
+            {item.completed
+              ? <i className="fa fa-check-circle green" />
               : <i className="fa fa-times-circle red" />
-            } {item.title}</div>
-            <h5 className="gray">ID: {item.uuid}</h5>
+            } {item.title}
           </div>
-          <div className="sm-col-12 pt2 center">
-            <p><b>Created at</b>: <TimeAgo date={item.createdAt} /></p>
-            <p><b>Updated at:</b> <TimeAgo date={item.updatedAt} /></p>
-          </div>
+          <div className="f5 pt3 gray">ID: {item.uuid}</div>
+        </div>
+        <div className="fl w-100 w-40-ns tc tl-ns">
+          <p><b>Created at</b>: <TimeAgo date={item.createdAt} /></p>
+          <p><b>Updated at:</b> <TimeAgo date={item.updatedAt} /></p>
         </div>
       </li>)}
   </ul>

@@ -1,16 +1,11 @@
-/* home.css / Home.jsx */
-
 .title {
   color: #6FFFE9;
   font-weight: 100;
-  letter-spacing: 15px;
 }
 
 .subTitle {
   color: #5BC0BE;
-  font-weight: normal;
   font-weight: 200;
-  letter-spacing: 8px;
 }
 
 .xsTitle {

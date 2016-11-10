@@ -1,0 +1,73 @@
+
+.divider {
+  color: #3A506B;
+}
+
+/* TEXT COLORS */
+
+._c1 {
+  color: #5BC0BE;
+}
+
+._c2 {
+  color: #6FFFE9;
+}
+
+._c3 {
+  color: #FFD98E;
+}
+
+._c4 {
+  color: #1C2541;
+}
+
+/* BORDER COLORS */
+
+._b1 {
+  border-color: #5BC0BE;
+}
+
+._b2 {
+  border-color: #6FFFE9;
+}
+
+._b3 {
+  border-color: #FFD98E;
+}
+
+/* BACKGROUND COLORS */
+
+._bg1 {
+  background-color: #5BC0BE;
+  color: #1C2541;
+}
+
+._bg2 {
+  background-color: #6FFFE9;
+  color: #1C2541;
+}
+
+._bg3 {
+  background-color: #FFD98E;
+  color: #1C2541;
+}
+
+/* HOVER COLORS */
+
+._c1:hover {
+  color: #6FFFE9;
+}
+
+._c2:hover {
+  color: #6FFFE9;
+}
+
+._b1:hover {
+  border-color: #6FFFE9;
+}
+
+._b2:hover {
+  border-color: #6FFFE9;
+}
+
+

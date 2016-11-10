@@ -1,12 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import cx from 'classnames';
-
-// components
 import TextField from 'material-ui/TextField';
+import $ from '~/src/shared/styles/_.mixins';
 
-// styles
 const errorMessage = cx('red', 'm1');
+const button = cx($.buttonPill, '_c1', '_b1', 'b');
 
 export default observer(({ form }) => (
   <form>
@@ -35,17 +34,16 @@ export default observer(({ form }) => (
       errorText={form.$('password').error}
       onChange={form.$('password').sync}
     />
-    <div className="mt3">
+    <div className="pt4">
       <button
         type="submit"
-        disabled={!form.isValid}
-        className="btn btn-primary"
+        className={button}
         onClick={form.onSubmit}
       >Register</button>
     </div>
     <div
       className={cx(errorMessage, {
-        hide: !form.isValid && form.genericErrorMessage,
+        dn: form.hasError && form.genericErrorMessage,
       })}
     >
       {form.genericErrorMessage}

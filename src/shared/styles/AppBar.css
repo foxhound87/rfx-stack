@@ -1,5 +1,3 @@
-/* app.bar.css / AppBar */
-
 .bar {
   z-index: 999;
   background: none;
@@ -8,4 +6,8 @@
 
 .leftShifted {
   left: 256px;
+}
+
+.openNavBtn:hover {
+  color: #6FFFE9;
 }

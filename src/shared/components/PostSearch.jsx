@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from '~/src/utils/state';
+import $ from '~/src/shared/styles/_.mixins';
 
 const handleSearch = (e) => {
   e.preventDefault();
@@ -14,9 +15,9 @@ const resetSearch = (e) => {
 };
 
 export default observer(({ search }) => (
-  <form>
+  <form className="cf">
     <input
-      className="field rounded-left"
+      className={$.inputSearch}
       type="text"
       placeholder="Search..."
       value={search}
@@ -24,7 +25,7 @@ export default observer(({ search }) => (
     />
     <button
       onClick={resetSearch}
-      className="btn rounded-right border navy bg-silver"
+      className={$.buttonPillSearch}
     ><i className="fa fa-times" /></button>
   </form>
 ));

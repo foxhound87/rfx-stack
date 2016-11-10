@@ -1,12 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import cx from 'classnames';
-
-// components
 import Paginator from 'react-pagify';
-
-// styles
-const buttonGroup = cx('btn', 'left', 'x-group-item', 'btn-outline');
+import $ from '~/src/shared/styles/_.mixins';
 
 export default observer(({ currentPage, onPageChange }) => (
   <Paginator.Context
@@ -15,16 +10,16 @@ export default observer(({ currentPage, onPageChange }) => (
     onSelect={onPageChange}
   >
     <div className="inline-block clearfix">
-      <Paginator.Button page={currentPage - 1} className="inline">
+      <Paginator.Button page={currentPage - 1} className="dib">
         <button
           type="button"
-          className={cx(buttonGroup, 'rounded-left')}
+          className={$.buttonGroupLeft}
         > &lt; </button>
       </Paginator.Button>
-      <Paginator.Button page={currentPage + 1} className="inline">
+      <Paginator.Button page={currentPage + 1} className="dib">
         <button
           type="button"
-          className={cx(buttonGroup, 'rounded-right')}
+          className={$.buttonGroupRight}
         > &gt; </button>
       </Paginator.Button>
     </div>

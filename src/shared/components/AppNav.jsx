@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Drawer from 'material-ui/Drawer';
 
 // styles
-import styles from '../styles/app.nav.css';
+import styles from '../styles/AppNav.css';
 
 const handleOnRequestChange = (open) => {
   dispatch('ui.appNav.open', open);

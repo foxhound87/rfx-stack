@@ -9,7 +9,10 @@ class UserForm extends Form {
       .then(() => dispatch('ui.authModal.toggleSection', 'signin'))
       .then(() => dispatch('ui.snackBar.open', 'Register Successful.'))
       .then(() => form.clear())
-      .catch(() => form.invalidate('The user already exist.'));
+      .catch((err) => {
+        form.invalidate(err.message);
+        dispatch('ui.snackBar.open', err.message);
+      });
   }
 }
 

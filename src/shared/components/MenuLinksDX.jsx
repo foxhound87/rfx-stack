@@ -3,14 +3,17 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from '~/src/utils/state';
 import cx from 'classnames';
+import $ from '~/src/shared/styles/_.mixins';
+import styles from '../styles/MenuLinkDX.css';
 
-// styles
-import styles from '../styles/menu.link.dx.css';
-
-const ul = cx('list-reset', 'mb0');
-const menuAccount = cx('absolute', 'right-0', 'nowrap', 'rounded');
-const btnBlock = cx('btn', 'block', 'py2', 'm0');
-const btnInline = cx('btn', 'inline-block', 'py2', 'm0');
+const list = cx('list', 'br2', 'tl', 'pa0');
+const inlineList = cx('mt1', 'mr3', 'dark-blue');
+const blockList = cx();
+const menuAccount = cx('absolute', 'right-0');
+const btnBlock = cx('db', 'ph3', 'pv3');
+const btnInline = cx('dib', 'ph3', 'pv3');
+const baseBtn = cx('pointer');
+const inlineBtn = cx($.buttonGeneric, 'mh2', 'mv1', 'mb2');
 
 const handleMenuAccountToggle = (e) => {
   e.preventDefault();
@@ -32,47 +35,57 @@ const handleLogout = (e) => {
   dispatch('auth.logout');
 };
 
-const UserSubMenu = () => (
-  <ul className={ul}>
+const UserSubMenu = observer(({ inline }) => (
+  <ul className={cx(list, inline ? inlineList : blockList)}>
     <li>
-      <a className="btn block" key="1">
+      <a className={cx(baseBtn, btnBlock)} key="profile">
         <i className="fa fa-user" /> Profile
       </a>
     </li>
     <li>
-      <a className="btn block" key="2">
+      <a className={cx(baseBtn, btnBlock)} key="settings">
         <i className="fa fa-sliders" /> Settings
       </a>
     </li>
     <li>
-      <a className="btn block" key="3" onClick={handleLogout}>
+      <a className={cx(baseBtn, btnBlock)} key="signout" onClick={handleLogout}>
         <i className="fa fa-sign-out" /> Sign Out
       </a>
     </li>
   </ul>
-);
+));
+
+const BlockSubMenu = observer(({ inline }) => (
+  <div>
+    <div className={cx('bt', styles.divider)} />
+    <UserSubMenu inline={inline} />
+  </div>
+));
+
+const InlineSubMenu = observer(({ inline, accountMenuIsOpen }) => (
+  <div
+    className={cx(
+      [styles.menuAccount, menuAccount],
+      { dn: !accountMenuIsOpen },
+    )}
+  >
+    <UserSubMenu inline={inline} />
+  </div>
+));
 
 const UserMenu = observer(({ inline, user, accountMenuIsOpen }) => (
-  <span>
+  <span className="relative">
     <a
       onClick={inline && handleMenuAccountToggle}
-      className={inline ? btnInline : btnBlock}
+      className={cx(baseBtn, inline ? btnInline : btnBlock)}
     >
       {user.email} {inline && <i className="fa fa-caret-down" />}
     </a>
     {inline ?
-      <div
-        className={cx(
-          [styles.menuAccount, menuAccount],
-          { hide: !accountMenuIsOpen },
-        )}
-      >
-        <UserSubMenu />
-      </div> :
-      <div>
-        <div className={cx(styles.divider, { 'border-top': !inline })} />
-        <UserSubMenu />
-      </div>}
+      <InlineSubMenu
+        inline={inline}
+        accountMenuIsOpen={accountMenuIsOpen}
+      /> : <BlockSubMenu inline={inline} />}
   </span>
 ));
 
@@ -80,22 +93,22 @@ const GuestMenu = observer(({ inline }) => (
   <span>
     <a
       onClick={handleAuthModalSignin}
-      className={cx(styles.baseBtn, {
-        [styles.baseInlineBtn]: inline,
+      className={cx(baseBtn, {
+        [inlineBtn]: inline,
         [styles.loginBtn]: inline,
-        ['inline-block']: inline,
-        ['block']: !inline,
+        ['dib']: inline,
+        ['db']: !inline,
       })}
     >
       <i className="fa fa-sign-in" /> Login
     </a>
     <a
       onClick={handleAuthModalSignup}
-      className={cx(styles.baseBtn, {
-        [styles.baseInlineBtn]: inline,
+      className={cx(baseBtn, {
+        [inlineBtn]: inline,
         [styles.registerBtn]: inline,
-        ['inline-block']: inline,
-        ['block']: !inline,
+        ['dib']: inline,
+        ['db']: !inline,
       })}
     >
       Register
@@ -105,7 +118,7 @@ const GuestMenu = observer(({ inline }) => (
 
 export default observer(({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
-    <div className={cx(styles.divider, { 'border-top': !inline })} />
+    <div className={cx(styles.divider, { bt: !inline })} />
 
     {authCheck ?
       <UserMenu
