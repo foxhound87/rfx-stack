@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import PostSearch from '../components/PostSearch';
 import PostFilter from '../components/PostFilter';
 import PostInfo from '../components/PostInfo';

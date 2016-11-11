@@ -107,7 +107,7 @@ Then to start the app, run in sequence:
 Create your stores files as Classes with `export default class` in `/src/shared/stores/*` and then assigns them a key in the `store.setup() method` in the `/src/shared/stores.js` file.
 
 ```javascript
-import { store } from '~/src/utils/state';
+import { store } from 'rfx-core';
 
 import UIStore from './stores/ui';
 
@@ -121,7 +121,7 @@ export default store
 
 ```
 
-The mapped Stores are called by the **Store Initalizer** located at `/src/utils/state/store.js` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
+The mapped Stores are called by the **Store Initalizer** of the `rfx-core` that will automatically inject the **inital state** in themselves. It is also be used as a getter of the Stores.
 
 Now we can use the `mobx-react` **Provide** Component on both client and server:
 
@@ -206,7 +206,7 @@ The **dispatch()** function is handy to call an **action** when handle component
 Use the dot notation to select a store key (defined in **Setup Stores** previously) and the name of the method/action:
 
 ```javascript
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 
 ...
 

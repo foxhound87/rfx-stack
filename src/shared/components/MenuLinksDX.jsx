@@ -1,7 +1,7 @@
 /* eslint jsx-a11y/no-static-element-interactions: 0 */
 import React from 'react';
 import { observer } from 'mobx-react';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import cx from 'classnames';
 import $ from '~/src/shared/styles/_.mixins';
 import styles from '../styles/MenuLinkDX.css';

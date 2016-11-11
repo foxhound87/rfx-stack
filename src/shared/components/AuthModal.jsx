@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import _ from 'lodash';
 import cx from 'classnames';
 import $ from '~/src/shared/styles/_.mixins';

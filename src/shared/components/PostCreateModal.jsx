@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';

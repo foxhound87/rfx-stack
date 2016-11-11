@@ -1,7 +1,7 @@
 /* eslint no-confusing-arrow: 0 */
 import _ from 'lodash';
 import { observable, autorun } from 'mobx';
-import { extend, toggle } from '~/src/utils/decorators';
+import { extend, toggle } from 'rfx-core';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';

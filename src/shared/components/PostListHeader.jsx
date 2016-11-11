@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import cx from 'classnames';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import $ from '~/src/shared/styles/_.mixins';
 
 const handleAddRandomPost = (e) => {

@@ -1,6 +1,6 @@
 import Form from 'mobx-react-form';
 import validatorjs from 'validatorjs';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 
 class PostForm extends Form {
 

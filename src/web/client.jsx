@@ -4,7 +4,7 @@ import '~/src/shared/stores'; // initialize stores
 import {
   rehydrate,
   hotRehydrate,
-  fetchDataOnLocationMatch } from '~/src/utils/state';
+  fetchDataOnLocationMatch } from 'rfx-core';
 
 import React from 'react';
 import { render } from 'react-dom';

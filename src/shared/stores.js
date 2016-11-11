@@ -1,4 +1,4 @@
-import { store } from '~/src/utils/state';
+import { store } from 'rfx-core';
 import { useStrict } from 'mobx';
 
 import UIStore from './stores/ui';

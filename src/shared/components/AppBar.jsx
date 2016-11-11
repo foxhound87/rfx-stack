@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { observer } from 'mobx-react';
-import { dispatch } from '~/src/utils/state';
+import { dispatch } from 'rfx-core';
 import MenuLinksSX from '../components/MenuLinksSX';
 import MenuLinksDX from '../components/MenuLinksDX';
 import styles from '../styles/AppBar.css';

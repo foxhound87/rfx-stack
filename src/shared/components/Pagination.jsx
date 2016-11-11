@@ -14,13 +14,13 @@ export default observer(({ currentPage, onPageChange }) => (
         <button
           type="button"
           className={$.buttonGroupLeft}
-        > &lt; </button>
+        > <i className="fa fa-chevron-left" /> </button>
       </Paginator.Button>
       <Paginator.Button page={currentPage + 1} className="dib">
         <button
           type="button"
           className={$.buttonGroupRight}
-        > &gt; </button>
+        > <i className="fa fa-chevron-right" /> </button>
       </Paginator.Button>
     </div>
   </Paginator.Context>

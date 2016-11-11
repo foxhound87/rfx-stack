@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { RouterContext } from 'react-router';
 import { Provider } from 'mobx-react';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
-import { fetchData, dehydrate } from '~/src/utils/state';
+import { fetchData, dehydrate } from 'rfx-core';
 import stores from '~/src/shared/stores';
 
 export default (req, res, props) => {

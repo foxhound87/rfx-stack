@@ -3,8 +3,8 @@
 /* eslint import/newline-after-import: 0 */
 /* eslint import/no-extraneous-dependencies: 0 */
 import './run/global';
+import { match } from 'rfx-core';
 import merge from 'webpack-merge';
-import match from './src/utils/match';
 import Globals from './webpack/globals';
 import getLoaders from './webpack/loaders';
 
