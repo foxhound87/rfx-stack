@@ -16,7 +16,7 @@ export default (req, res, props) => {
     ui: { mui: { userAgent: req.headers['user-agent'] } },
   });
 
-  fetchData(store, props.components, props.params, props.location.query)
+  fetchData(store, props)
     .then(() => setMatchMediaConfig(req))
     .then(() => renderToString(
       <MuiThemeProvider muiTheme={store.ui.getMui()}>
