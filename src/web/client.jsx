@@ -19,21 +19,21 @@ const history = global.ELECTRON ? hashHistory : browserHistory;
 fetchDataOnLocationMatch(history, routes, match, store);
 store.ui.injectTapEventPlugin(); // material-ui fix
 
-function renderApp(AppComponent, routerProps) {
-  render(
-    <AppContainer>
-      <AppComponent
-        store={hotRehydrate()}
-        routerProps={routerProps}
-      />
-    </AppContainer>,
-    document.getElementById('root'),
-  );
+function renderApp(AppComponent) {
+  match({ history, routes },
+    (error, redirect, routerProps) =>
+      render(
+        <AppContainer>
+          <AppComponent
+            store={hotRehydrate()}
+            routerProps={routerProps}
+          />
+        </AppContainer>,
+        document.getElementById('root'),
+      ));
 }
 
-match({ history, routes },
-  (error, redirect, routerProps) =>
-    renderApp(App, routerProps));
+renderApp(App);
 
 if (module.hot) {
   module.hot.accept(() =>
