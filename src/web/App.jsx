@@ -7,8 +7,7 @@ export default class App extends Component {
 
   static propTypes = {
     store: React.PropTypes.object,
-    routes: React.PropTypes.object,
-    history: React.PropTypes.object,
+    routerProps: React.PropTypes.object,
   };
 
   static fetchData() {}
@@ -17,7 +16,7 @@ export default class App extends Component {
     return (
       <MuiThemeProvider muiTheme={this.props.store.ui.getMui()}>
         <Provider store={this.props.store}>
-          <Router routes={this.props.routes} history={this.props.history} />
+          <Router {...this.props.routerProps} />
         </Provider>
       </MuiThemeProvider>
     );
