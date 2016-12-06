@@ -7,7 +7,7 @@ import $ from '~/src/shared/styles/_.mixins';
 const clog = 'https://github.com/foxhound87/mobx-react-form/blob/master/CHANGELOG.md';
 const doc = 'https://github.com/foxhound87/mobx-react-form/blob/master/DOCUMENTATION.md';
 
-export default class NotFound extends Component {
+export default class FormsManagement extends Component {
 
   static fetchData() {}
 
