@@ -1,17 +1,15 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
+
 import _ from 'lodash';
 import cx from 'classnames';
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
+import modalBaseStyle from '@/shared/styles/_.modal.js';
 
-// components
 import Modal from 'react-modal';
 import AuthFormLogin from './AuthFormLogin';
 import AuthFormRegister from './AuthFormRegister';
-
-// styles
-import modalBaseStyle from '../styles/_.modal.js';
 
 const styles = _.cloneDeep(modalBaseStyle);
 

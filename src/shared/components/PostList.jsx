@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import TimeAgo from 'react-timeago';
 
 // styles
-import styles from '../styles/PostList.css';
+import styles from '@/shared/styles/PostList.css';
 
 const ItemsNotFound = () => (
   <div>

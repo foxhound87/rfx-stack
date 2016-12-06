@@ -3,8 +3,8 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
 import cx from 'classnames';
-import $ from '~/src/shared/styles/_.mixins';
-import styles from '../styles/MenuLinkDX.css';
+import $ from '@/shared/styles/_.mixins';
+import styles from '@/shared/styles/MenuLinkDX.css';
 
 const list = cx('list', 'br2', 'tl', 'pa0');
 const inlineList = cx('mt1', 'mr3', 'dark-blue');

@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
 import cx from 'classnames';
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
 
 const handleSelect = (e) => {
   e.preventDefault();

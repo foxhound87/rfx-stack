@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import faker from 'faker';
-import { service } from '~/src/shared/app';
+import { service } from '@/shared/app';
 
 const items = [];
 

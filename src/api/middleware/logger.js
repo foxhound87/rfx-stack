@@ -1,4 +1,4 @@
-import { log } from '~/src/utils/logger';
+import { log } from '@/utils/logger';
 
 export default function (app) {
   // Add a logger to our app object for convenience

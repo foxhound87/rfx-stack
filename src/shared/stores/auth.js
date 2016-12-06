@@ -1,5 +1,5 @@
 import { observable, computed, action } from 'mobx';
-import { app, service } from '~/src/shared/app';
+import { app, service } from '@/shared/app';
 import _ from 'lodash';
 
 export default class AuthStore {

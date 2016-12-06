@@ -1,10 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
-import PostSearch from '../components/PostSearch';
-import PostFilter from '../components/PostFilter';
-import PostInfo from '../components/PostInfo';
-import Pagination from '../components/Pagination';
+
+import PostSearch from './PostSearch';
+import PostFilter from './PostFilter';
+import PostInfo from './PostInfo';
+import Pagination from './Pagination';
 
 const handlePostPageChange = (page) => {
   dispatch('post.page', page);

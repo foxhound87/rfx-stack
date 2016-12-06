@@ -3,10 +3,10 @@ import Helmet from 'react-helmet';
 import { inject, observer } from 'mobx-react';
 
 // components
-import PostListHeader from '../components/PostListHeader';
-import PostListBar from '../components/PostListBar';
-import PostList from '../components/PostList';
-import PostCreateModal from '../components/PostCreateModal';
+import PostListHeader from '@/shared/components/PostListHeader';
+import PostListBar from '@/shared/components/PostListBar';
+import PostList from '@/shared/components/PostList';
+import PostCreateModal from '@/shared/components/PostCreateModal';
 
 // form
 import postForm from '../forms/post';

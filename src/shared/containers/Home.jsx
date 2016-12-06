@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { inject, observer } from 'mobx-react';
 import cx from 'classnames';
 import { Parallax } from 'react-parallax';
-import styles from '../styles/Home.css';
+import styles from '@/shared/styles/Home.css';
 
 @inject('store') @observer
 export default class Home extends Component {

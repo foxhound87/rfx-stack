@@ -7,9 +7,9 @@ import rest from 'feathers-rest';
 import socketio from 'feathers-socketio';
 import adapter from 'feathers-mongoose';
 
-import { setupServices, initServices } from '~/src/utils/services.autoload';
-import { setupServer, startServer } from '~/src/utils/server.start';
-import { logServerConfig } from '~/src/utils/logger';
+import { setupServices, initServices } from '@/utils/services.autoload';
+import { setupServer, startServer } from '@/utils/server.start';
+import { logServerConfig } from '@/utils/logger';
 
 import apiBeforeMiddleware from './middleware/api/before';
 import apiAfterMiddleware from './middleware/api/after';

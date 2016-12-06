@@ -4,6 +4,12 @@
     "transform-decorators-legacy",
     "transform-class-properties",
     "transform-runtime",
-    "babel-root-import"
+    ["babel-root-import", [{
+      "rootPathPrefix": "~",
+      "rootPathSuffix": "."
+    }, {
+      "rootPathPrefix": "@",
+      "rootPathSuffix": "src"
+    }]]
   ]
 }

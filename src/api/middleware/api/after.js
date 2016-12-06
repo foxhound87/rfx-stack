@@ -1,5 +1,5 @@
 import handler from 'feathers-errors/handler';
-import { log } from '~/src/utils/logger';
+import { log } from '@/utils/logger';
 import notFound from '../notFound';
 import logger from '../logger';
 

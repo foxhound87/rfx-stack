@@ -1,5 +1,5 @@
 /* eslint global-require: 0 */
-import { log } from '~/src/utils/logger';
+import { log } from '@/utils/logger';
 
 const Dir = global.DIR;
 

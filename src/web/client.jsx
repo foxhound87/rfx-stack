@@ -1,5 +1,5 @@
 /* eslint global-require: 0 */
-import '~/src/shared/stores'; // initialize stores
+import '@/shared/stores'; // initialize stores
 
 import {
   rehydrate,
@@ -10,7 +10,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { hashHistory, browserHistory, match } from 'react-router';
 import { AppContainer } from 'react-hot-loader';
-import routes from '../shared/routes';
+import routes from '@/shared/routes';
 import App from './App';
 
 const store = rehydrate();

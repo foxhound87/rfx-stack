@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { log } from '~/src/utils/logger';
+import { log } from '@/utils/logger';
 
 export default function () {
   log.info('Init API Middleware: Before');

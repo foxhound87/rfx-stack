@@ -1,6 +1,6 @@
 import { observable, action, computed } from 'mobx';
-import { service } from '~/src/shared/app';
-import { factory } from '~/src/seeds/factories/post'; // just for test
+import { service } from '@/shared/app';
+import { factory } from '@/seeds/factories/post'; // just for test
 import _ from 'lodash';
 
 export default class PostStore {

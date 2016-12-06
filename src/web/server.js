@@ -2,12 +2,12 @@ import feathers from 'feathers';
 import compression from 'compression';
 import ejs from 'ejs';
 
-import { logServerConfig } from '~/src/utils/logger';
-import { setupServer, startServer } from '~/src/utils/server.start';
+import { logServerConfig } from '@/utils/logger';
+import { setupServer, startServer } from '@/utils/server.start';
 
 // routes & ssr
-import routes from '~/src/shared/routes';
-import ssr from '~/src/web/ssr';
+import routes from '@/shared/routes';
+import ssr from '@/web/ssr';
 
 // webpack configs
 import wpc from '~/webpack.config.client.babel';

@@ -1,5 +1,5 @@
 // import { hooks as auth } from 'feathers-authentication';
-import { setUUID } from '~/src/api/hooks/setUUID';
+import { setUUID } from '@/api/hooks/setUUID';
 
 /**
   Hook: before

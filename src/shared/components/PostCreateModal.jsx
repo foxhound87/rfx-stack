@@ -1,13 +1,15 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
+
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
+
 import _ from 'lodash';
 import cx from 'classnames';
-import $ from '~/src/shared/styles/_.mixins';
-import modalBaseStyle from '../styles/_.modal.js';
+import $ from '@/shared/styles/_.mixins';
+import modalBaseStyle from '@/shared/styles/_.modal.js';
 
 const styles = _.cloneDeep(modalBaseStyle);
 const errorMessage = cx('red', 'm1');

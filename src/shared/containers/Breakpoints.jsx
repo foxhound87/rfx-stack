@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { inject, observer } from 'mobx-react';
 import cx from 'classnames';
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
 
 // styles
 const button = cx($.buttonPill, '_c1', '_b1');

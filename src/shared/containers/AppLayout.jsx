@@ -10,19 +10,19 @@ import DevTools from 'mobx-react-devtools';
 // components
 import { MatchMediaProvider } from 'mobx-react-matchmedia';
 import Snackbar from 'material-ui/Snackbar';
-import AppBar from '../components/AppBar';
-import AppNav from '../components/AppNav';
-import AuthModal from '../components/AuthModal';
-import MenuLinksSX from '../components/MenuLinksSX';
-import MenuLinksDX from '../components/MenuLinksDX';
+import AppBar from '@/shared/components/AppBar';
+import AppNav from '@/shared/components/AppNav';
+import AuthModal from '@/shared/components/AuthModal';
+import MenuLinksSX from '@/shared/components/MenuLinksSX';
+import MenuLinksDX from '@/shared/components/MenuLinksDX';
 
 // forms
-import authForm from '../forms/auth';
-import userForm from '../forms/user';
+import authForm from '@/shared/forms/auth';
+import userForm from '@/shared/forms/user';
 
 // styles
-import '../styles/_.global.css';
-import styles from '../styles/AppLayout.css';
+import '@/shared/styles/_.global.css';
+import styles from '@/shared/styles/AppLayout.css';
 
 @inject('store') @observer
 export default class AppLayout extends Component {

@@ -2,9 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
-import MenuLinksSX from '../components/MenuLinksSX';
-import MenuLinksDX from '../components/MenuLinksDX';
-import styles from '../styles/AppBar.css';
+
+import styles from '@/shared/styles/AppBar.css';
+import MenuLinksSX from './MenuLinksSX';
+import MenuLinksDX from './MenuLinksDX';
 
 const openNavBtn = cx('link', 'bn', 'ph3', 'pv3', 'fl', 'bg-transparent', 'pointer', '_c1');
 const appBar = cx('animated', 'fadeIn', 'fixed', 'w-100', 'db', 'dt-l', 'bg-black-30');

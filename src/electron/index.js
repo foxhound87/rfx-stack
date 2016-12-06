@@ -1,5 +1,6 @@
 /* eslint global-require: 0 */
-const electron = require('electron'); // eslint-disable-line import/no-extraneous-dependencies
+/* eslint import/no-extraneous-dependencies: 0 */
+const electron = require('electron');
 
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.

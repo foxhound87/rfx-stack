@@ -4,11 +4,11 @@ import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
 import cx from 'classnames';
 
+// styles
+import styles from '@/shared/styles/AppNav.css';
+
 // components
 import Drawer from 'material-ui/Drawer';
-
-// styles
-import styles from '../styles/AppNav.css';
 
 const handleOnRequestChange = (open) => {
   dispatch('ui.appNav.open', open);

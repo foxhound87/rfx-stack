@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import cx from 'classnames';
 import TextField from 'material-ui/TextField';
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
 
 const errorMessage = cx('red', 'm2');
 const button = cx($.buttonPill, '_c1', '_b1', 'b');

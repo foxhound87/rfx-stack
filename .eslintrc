@@ -5,15 +5,15 @@
     "fetch": true,
     "navigator": true,
     "document": true,
-    "window": true,
+    "window": true
   },
   "rules": {
     "react/forbid-prop-types": 0,
     "import/extensions": 0,
     "import/prefer-default-export": 0,
-    "import/no-unresolved": [2, { "ignore": ["^~/"] }],
+    "import/no-unresolved": [2, { "ignore": ["^[~]", "^[@]"] }],
     "class-methods-use-this": 0,
     "no-useless-computed-key": 0,
-    "key-spacing": [0, { "align": "value" }],
+    "key-spacing": [0, { "align": "value" }]
   }
 }

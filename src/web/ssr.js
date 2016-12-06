@@ -8,7 +8,7 @@ import { RouterContext } from 'react-router';
 import { Provider } from 'mobx-react';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
 import { fetchData, dehydrate } from 'rfx-core';
-import stores from '~/src/shared/stores';
+import stores from '@/shared/stores';
 
 export default (req, res, props) => {
   const store = stores.inject({

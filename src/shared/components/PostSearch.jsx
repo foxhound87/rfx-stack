@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
 
 const handleSearch = (e) => {
   e.preventDefault();

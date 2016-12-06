@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import $ from '~/src/shared/styles/_.mixins';
+import $ from '@/shared/styles/_.mixins';
 
 // links
 const clog = 'https://github.com/foxhound87/mobx-react-form/blob/master/CHANGELOG.md';
