@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import cx from 'classnames';
 import { Parallax } from 'react-parallax';
 import styles from '../styles/Home.css';
 
-@observer(['store'])
+@inject('store') @observer
 export default class Home extends Component {
 
   static fetchData() {}

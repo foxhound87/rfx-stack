@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 
 // components
 import PostListHeader from '../components/PostListHeader';
@@ -11,7 +11,7 @@ import PostCreateModal from '../components/PostCreateModal';
 // form
 import postForm from '../forms/post';
 
-@observer(['store'])
+@inject('store') @observer
 export default class DemoList extends Component {
 
   static fetchData({ store }) {

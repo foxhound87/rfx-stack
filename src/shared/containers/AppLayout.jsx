@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import cx from 'classnames';
 
 // dev tools
@@ -24,7 +24,7 @@ import userForm from '../forms/user';
 import '../styles/_.global.css';
 import styles from '../styles/AppLayout.css';
 
-@observer(['store'])
+@inject('store') @observer
 export default class AppLayout extends Component {
 
   static fetchData() {}

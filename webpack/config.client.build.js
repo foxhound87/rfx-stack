@@ -59,7 +59,6 @@ export function config() {
     },
     plugins: [
       new ProgressBarPlugin(),
-      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         comments: false,
         sourceMap: true,

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import cx from 'classnames';
 import $ from '~/src/shared/styles/_.mixins';
 
 // styles
 const button = cx($.buttonPill, '_c1', '_b1');
 
-@observer(['store'])
+@inject('store') @observer
 export default class MatchMedia extends Component {
 
   static fetchData() {}
