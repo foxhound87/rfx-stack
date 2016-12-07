@@ -5,7 +5,7 @@ import { extend, toggle } from 'rfx-core';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import materialOverrideStyles from '../styles/_.material.js';
+import materialOverrideStyles from '@/shared/styles/_.material.js';
 
 // ui classes
 import appBar from './ui/AppBar.js';

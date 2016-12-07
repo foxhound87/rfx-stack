@@ -9,7 +9,7 @@ import PostList from '@/shared/components/PostList';
 import PostCreateModal from '@/shared/components/PostCreateModal';
 
 // form
-import postForm from '../forms/post';
+import postForm from '@/shared/forms/post';
 
 @inject('store') @observer
 export default class DemoList extends Component {
