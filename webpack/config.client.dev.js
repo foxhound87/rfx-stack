@@ -1,9 +1,11 @@
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
 
 import vendor from '~/config/vendor';
+import { logServerConfig } from '@/utils/logger';
 
 const Dir = global.DIR;
 
@@ -57,6 +59,12 @@ export function config() {
       filename: 'bundle.js',
     },
     plugins: [
+      new FriendlyErrorsWebpackPlugin({
+        clearConsole: true,
+        compilationSuccessInfo: {
+          messages: logServerConfig('web'),
+        },
+      }),
       new BrowserSyncPlugin({
         host: getenv('BROWSERSYNC_HOST'),
         port: getenv('BROWSERSYNC_PORT'),

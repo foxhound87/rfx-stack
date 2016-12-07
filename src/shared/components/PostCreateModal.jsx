@@ -26,6 +26,7 @@ const handleCloseModal = () =>
 
 export default observer(({ open, form }) => (
   <Modal
+    contentLabel="Create Post Modal"
     isOpen={open}
     onRequestClose={handleCloseModal}
     style={styles}

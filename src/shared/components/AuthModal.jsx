@@ -29,6 +29,7 @@ const handleShowSignupSection = () =>
 
 export default observer(({ open, showSection, forms }) => (
   <Modal
+    contentLabel="Auth Modal"
     isOpen={open}
     onRequestClose={handleCloseModal}
     style={styles}

@@ -11,7 +11,7 @@ function logInit() {
 }
 
 function logServerAPI(url) {
-  log.info('------------------------------------------');
+  logInit();
   log.info('API Listening at:', url);
   log.info('Environment:', getenv('NODE_ENV'));
   log.info('------------------------------------------');
@@ -22,12 +22,13 @@ function logServerAPI(url) {
 }
 
 function logServerWEB(url) {
-  log.info('WEB Listening at:', url);
-  log.info('Environment:', getenv('NODE_ENV'));
-  log.info('------------------------------------------');
-  log.info('IO Host:', getenv('IO_HOST'));
-  log.info('IO Port:', getenv('IO_PORT'));
-  log.info('------------------------------------------');
+  return [
+    'RFX STACK',
+    `WEB Listening at: ${url}`,
+    `Environment: ${getenv('NODE_ENV')}`,
+    `IO Host: ${getenv('IO_HOST')}`,
+    `IO Port: ${getenv('IO_PORT')}`,
+  ];
 }
 
 function logServerConfig($key = null) {
@@ -38,8 +39,9 @@ function logServerConfig($key = null) {
 
   const url = ['http://', host, ':', port].join('');
 
-  if (key === 'API') logServerAPI(url);
-  if (key === 'WEB') logServerWEB(url);
+  if (key === 'API') return logServerAPI(url);
+  if (key === 'WEB') return logServerWEB(url);
+  return [];
 }
 
 export { log, logInit, logServerConfig };

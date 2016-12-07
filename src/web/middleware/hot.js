@@ -16,7 +16,7 @@ export function hotMiddleware({ wpc, wdmc, whmc }) {
     })),
 
     webpackHotMiddleware(bundler, _.merge(whmc, {
-      log: console.log, // eslint-disable-line no-console
+      log: () => {},
     })),
 
   ] : (req, res, next) => next();

@@ -3,10 +3,8 @@
 */
 export const wdmc = ({
   historyApiFallback: false,
+  quiet: true,
   hot: true,
-  stats: {
-    colors: true,
-  },
 });
 
 /*
