@@ -1,9 +1,5 @@
 import cx from 'classnames';
 
-const menuLink = cx(
-
-);
-
 const buttonBase = cx('f6', 'ba', 'ph3', 'pv2', 'mb2', 'dib', 'pointer');
 
 const buttonGeneric = cx(buttonBase, 'br2');
@@ -30,7 +26,6 @@ const inputSearch = cx(
 );
 
 export default {
-  menuLink,
   buttonBase,
   buttonGeneric,
   buttonPill,
