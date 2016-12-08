@@ -7,11 +7,6 @@ export function load() {
   return {
     target: 'web',
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: Infinity,
-        filename: 'vendor.bundle.js',
-      }),
       new webpack.DefinePlugin({
         'global.DIR': JSON.stringify(global.DIR),
         'global.CONFIG': JSON.stringify(getenv.multi(env)),

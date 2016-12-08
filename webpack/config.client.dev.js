@@ -4,7 +4,6 @@ import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
 
-import vendor from '~/config/vendor';
 import { logServerConfig } from '@/utils/logger';
 
 const Dir = global.DIR;
@@ -42,7 +41,6 @@ export function config() {
   return {
     devtool: 'cheap-module-eval-source-map',
     entry: {
-      vendor,
       app: [
         'babel-polyfill',
         'isomorphic-fetch',

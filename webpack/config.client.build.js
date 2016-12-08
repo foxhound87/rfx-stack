@@ -39,7 +39,7 @@ export function loader() {
   };
 }
 
-export function config() {
+export function config(entry) {
   return {
     bail: true,
     devtool: 'source-map',
@@ -55,7 +55,7 @@ export function config() {
     output: {
       path: path.join(Dir.public, 'build'),
       publicPath: '/build/',
-      filename: 'bundle.js',
+      filename: [entry, 'app', 'bundle', 'js'].join('.'),
     },
     plugins: [
       new ProgressBarPlugin(),
@@ -66,6 +66,11 @@ export function config() {
           screw_ie8: true,
           warnings: false,
         },
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
+        filename: [entry, 'vendor', 'bundle', 'js'].join('.'),
       }),
       new ExtractTextPlugin({
         filename: 'style.css',

@@ -22,7 +22,7 @@ if (match.script('build:client:web', 'production')) {
   Config = require('./webpack/config.client').load();
   const ConfigClientBuild = require('./webpack/config.client.build');
   Loader = merge(Loader, ConfigClientBuild.loader());
-  Config = merge(Config, ConfigClientBuild.config());
+  Config = merge(Config, ConfigClientBuild.config('web'));
 }
 
 if (match.script('build:server:web', 'production')) {
