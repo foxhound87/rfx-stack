@@ -50,13 +50,12 @@ export function config(entry) {
     ],
     output: {
       path: Dir.nodeBuild,
-      filename: [entry, 'bundle.js'].join('.'),
+      filename: [entry, 'bundle', 'js'].join('.'),
     },
     externals: [nodeExternalModules()],
     plugins: [
       new ProgressBarPlugin(),
       new ExtractTextPlugin({
-        filename: 'style.css',
         disable: true,
       }),
       new webpack.optimize.UglifyJsPlugin({

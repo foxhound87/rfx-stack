@@ -51,7 +51,7 @@ export function config(entry) {
     ],
     output: {
       path: Dir.nodeBuild,
-      filename: [entry, 'dev.bundle.js'].join('.'),
+      filename: [entry, 'dev', 'bundle', 'js'].join('.'),
       chunkFilename: '[id].[hash:5]-[chunkhash:7].js',
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
       libraryTarget: 'commonjs2',
@@ -62,7 +62,6 @@ export function config(entry) {
     // })],
     plugins: [
       new ExtractTextPlugin({
-        filename: 'style.css',
         disable: true,
       }),
       new StartServerPlugin(),

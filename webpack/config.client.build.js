@@ -73,7 +73,7 @@ export function config(entry) {
         filename: [entry, 'vendor', 'bundle', 'js'].join('.'),
       }),
       new ExtractTextPlugin({
-        filename: 'style.css',
+        filename: [entry, 'style', 'css'].join('.'),
         allChunks: true,
       }),
     ],
