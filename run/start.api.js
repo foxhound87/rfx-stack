@@ -1,3 +1,3 @@
 require('babel-register');
-require('./init');
+require('./global');
 require('../src/api/server');

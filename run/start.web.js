@@ -1,4 +1,4 @@
-require('./init');
+require('./global');
 
 // neded for css import on node
 require('css-modules-require-hook')({

@@ -1,5 +1,5 @@
 require('babel-register');
-require('./init');
+require('./global');
 
 const getenv = require('getenv');
 const env = require('../config/expose');
