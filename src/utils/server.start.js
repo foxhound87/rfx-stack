@@ -20,7 +20,6 @@ class ServerStart {
     const configkey = this.configkey || 'server';
     const logger = props.logger || null;
     const config = this.getFeathersConfig(configkey) || this.getEnvConfig(key);
-
     this.start(config, key, logger);
   }
 

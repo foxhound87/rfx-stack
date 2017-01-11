@@ -4,14 +4,18 @@ import getenv from 'getenv';
 // set log as cli mode
 log.cli();
 
-function logInit() {
+export const webhost = key => ['http://',
+  getenv([key.toUpperCase(), 'HOST'].join('_')), ':',
+  getenv([key.toUpperCase(), 'PORT'].join('_')),
+].join('');
+
+const logInit = () => {
   log.info('------------------------------------------');
   log.info('--------------- RFX STACK ----------------');
   log.info('------------------------------------------');
-}
+};
 
-function logServerAPI(url) {
-  logInit();
+const logServerAPI = (url) => {
   log.info('API Listening at:', url);
   log.info('Environment:', getenv('NODE_ENV'));
   log.info('------------------------------------------');
@@ -19,29 +23,31 @@ function logServerAPI(url) {
   log.info('Database Name:', getenv('DB_NAME'));
   log.info('Database Port:', getenv('DB_PORT'));
   log.info('------------------------------------------');
-}
+};
 
-function logServerWEB(url) {
-  return [
-    'RFX STACK',
-    `WEB Listening at: ${url}`,
-    `Environment: ${getenv('NODE_ENV')}`,
-    `IO Host: ${getenv('IO_HOST')}`,
-    `IO Port: ${getenv('IO_PORT')}`,
-  ];
-}
+const logServerWEB = (url) => {
+  log.info('API Listening at:', url);
+  log.info('Environment:', getenv('NODE_ENV'));
+  log.info('------------------------------------------');
+  log.info('IO Host:', getenv('IO_HOST'));
+  log.info('IO Port:', getenv('IO_PORT'));
+  log.info('------------------------------------------');
+};
 
-function logServerConfig($key = null) {
-  const key = $key.toUpperCase();
+export const logServerConfigWebpack = url => ([
+  'RFX STACK',
+  `WEB Listening at: ${webhost(url)}`,
+  `Environment: ${getenv('NODE_ENV')}`,
+  `IO Host: ${getenv('IO_HOST')}`,
+  `IO Port: ${getenv('IO_PORT')}`,
+]);
 
-  const port = getenv([key, 'PORT'].join('_'));
-  const host = getenv([key, 'HOST'].join('_'));
+export const logServerConfig = (key = null) => {
+  logInit();
+  const url = webhost(key);
+  return (key.toUpperCase() === 'API')
+    ? logServerAPI(url)
+    : logServerWEB(url);
+};
 
-  const url = ['http://', host, ':', port].join('');
-
-  if (key === 'API') return logServerAPI(url);
-  if (key === 'WEB') return logServerWEB(url);
-  return [];
-}
-
-export { log, logInit, logServerConfig };
+export { log };

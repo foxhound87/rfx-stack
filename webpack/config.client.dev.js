@@ -4,14 +4,9 @@ import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
 
-import { logServerConfig } from '@/utils/logger';
+import { logServerConfigWebpack, webhost } from '@/utils/logger';
 
 const Dir = global.DIR;
-
-const webhost = key => ['http://',
-  getenv([key.toUpperCase(), 'HOST'].join('_')), ':',
-  getenv([key.toUpperCase(), 'PORT'].join('_')),
-].join('');
 
 export function loader() {
   return {
@@ -63,7 +58,7 @@ export function config(entry) {
       new FriendlyErrorsWebpackPlugin({
         clearConsole: true,
         compilationSuccessInfo: {
-          messages: logServerConfig(entry),
+          messages: logServerConfigWebpack(entry),
         },
       }),
       new BrowserSyncPlugin({
