@@ -1,4 +1,4 @@
-// import { hooks as auth } from 'feathers-authentication';
+import { hooks as auth } from 'feathers-authentication';
 import { setUUID } from '@/api/hooks/setUUID';
 
 /**
@@ -7,7 +7,7 @@ import { setUUID } from '@/api/hooks/setUUID';
 */
 export default {
   all: [
-    // auth.verifyToken(),
+    auth.authenticate(['jwt', 'local']),
   ],
   find: [],
   get: [],

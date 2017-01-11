@@ -16,7 +16,6 @@ export default observer(({ inline }) => (
   <ul className={inline ? listInline : listBlock}>
     <li className={inline ? liInline : liBlock}><Link className={a} to="/" >Home</Link></li>
     <li className={inline ? liInline : liBlock}><Link className={a} to="/messages">Messages Demo</Link></li>
-    <li className={inline ? liInline : liBlock}><Link className={a} to="/breakpoints">Breakpoints Demo</Link></li>
-    <li className={inline ? liInline : liBlock}><Link className={a} to="/forms">Forms Management</Link></li>
+    <li className={inline ? liInline : liBlock}><Link className={a} to="/packages">Packages</Link></li>
   </ul>
 ));

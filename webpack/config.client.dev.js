@@ -8,7 +8,10 @@ import { logServerConfig } from '@/utils/logger';
 
 const Dir = global.DIR;
 
-const webhost = ['http://', getenv('WEB_HOST'), ':', getenv('WEB_PORT')].join('');
+const webhost = key => ['http://',
+  getenv([key.toUpperCase(), 'HOST'].join('_')), ':',
+  getenv([key.toUpperCase(), 'PORT'].join('_')),
+].join('');
 
 export function loader() {
   return {
@@ -37,7 +40,7 @@ export function loader() {
   };
 }
 
-export function config() {
+export function config(entry) {
   return {
     devtool: 'cheap-module-eval-source-map',
     entry: {
@@ -48,7 +51,7 @@ export function config() {
         'react-hot-loader/patch',
         'webpack-hot-middleware/client',
         // ['webpack-hot-middleware/client', webhost].join('?'),
-        path.join(Dir.web, 'client'),
+        path.join(Dir.src, entry, 'client'),
       ],
     },
     output: {
@@ -60,13 +63,13 @@ export function config() {
       new FriendlyErrorsWebpackPlugin({
         clearConsole: true,
         compilationSuccessInfo: {
-          messages: logServerConfig('web'),
+          messages: logServerConfig(entry),
         },
       }),
       new BrowserSyncPlugin({
         host: getenv('BROWSERSYNC_HOST'),
         port: getenv('BROWSERSYNC_PORT'),
-        proxy: webhost,
+        proxy: webhost(entry),
       }, { reload: false }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),

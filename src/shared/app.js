@@ -1,8 +1,8 @@
 import feathers from 'feathers/client';
-import feathersHooks from 'feathers-hooks';
-import feathersSocketClient from 'feathers-socketio/client';
-import feathersAuth from 'feathers-authentication/client';
-import socketIOClient from 'socket.io-client';
+import hooks from 'feathers-hooks';
+import auth from 'feathers-authentication-client';
+import socket from 'feathers-socketio/client';
+import io from 'socket.io-client';
 
 let instance = false;
 const config = global.CONFIG;
@@ -13,12 +13,9 @@ export function app() {
   if (instance) return instance;
 
   instance = feathers()
-    .configure(feathersHooks())
-    .configure(feathersSocketClient(socketIOClient(uri)))
-    .configure(feathersAuth({ storage,
-      tokenKey: 'token',
-      cookie: 'token',
-    }));
+    .configure(socket(io(uri)))
+    .configure(hooks())
+    .configure(auth({ storage }));
 
   return instance;
 }

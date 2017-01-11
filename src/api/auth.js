@@ -1,4 +1,5 @@
-import authentication from 'feathers-authentication';
+import auth from 'feathers-authentication';
+import { setupJWTPayload } from '@/api/hooks/setupJWTPayload';
 
 // import { Strategy as FacebookStrategy } from 'passport-facebook';
 // import FacebookTokenStrategy from 'passport-facebook-token';
@@ -16,5 +17,14 @@ export default function () {
   // config.github.tokenStrategy = GithubTokenStrategy;
 
   app.set('auth', config);
-  app.configure(authentication(config));
+  app.configure(auth(config));
+
+  app.service('authentication').hooks({
+    before: {
+      create: [
+        auth.hooks.authenticate(['jwt', 'local']),
+        setupJWTPayload(app),
+      ],
+    },
+  });
 }

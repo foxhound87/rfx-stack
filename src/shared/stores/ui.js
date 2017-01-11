@@ -3,22 +3,22 @@ import _ from 'lodash';
 import { observable, autorun } from 'mobx';
 import { extend, toggle } from 'rfx-core';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import materialBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import materialOverrideStyles from '@/shared/styles/_.material.js';
 
 // ui classes
-import appBar from './ui/AppBar.js';
-import appNav from './ui/AppNav.js';
-import snackBar from './ui/SnackBar.js';
-import authModal from './ui/AuthModal.js';
-import postCreateModal from './ui/PostCreateModal.js';
+import auth from './ui/Auth';
+import appBar from './ui/AppBar';
+import appNav from './ui/AppNav';
+import snackBar from './ui/SnackBar';
+import postCreateModal from './ui/PostCreateModal';
 
 @extend({
+  auth,
   appBar,
   appNav,
   snackBar,
-  authModal,
   postCreateModal,
 })
 @toggle('shiftLayout', 'layoutIsShifted')
@@ -45,7 +45,7 @@ export default class UIStore {
     );
 
     // undock the navbar if the modal is open
-    autorun(() => this.authModal.isOpen
+    autorun(() => this.auth.modalIsOpen
       ? this.appNav.open(false)
       : () => this.breakpoints.mu && this.appNav.open(true),
     );
@@ -60,14 +60,14 @@ export default class UIStore {
     // // when the "xs" breakpoint changes
     // autorun(() => this.breakpoints.xs
     //   ? this.appNav.open(false)
-    //   : this.appNav.open(true)
+    //   : this.appNav.open(true),
     // );
 
     // // dock/undock the nav automatically
     // // when the "su" breakpoint changes
     // autorun(() => this.breakpoints.su
     //   ? this.appNav.dock(true)
-    //   : this.appNav.dock(false)
+    //   : this.appNav.dock(false),
     // );
   }
 
@@ -78,7 +78,7 @@ export default class UIStore {
 
     return getMuiTheme(this.mui, _.merge(
       mui,
-      darkBaseTheme,
+      materialBaseTheme,
       materialOverrideStyles,
     ));
   }

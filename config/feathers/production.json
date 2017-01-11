@@ -1,10 +1,5 @@
 {
   "auth": {
-    "idField": "uuid",
-    "userEndpoint": "/user",
-    "token": {
-      "secret": "JNoSF4uRkGB1zhccVkpX3ulB/1KErbj/tuhCTY0dkpVNyYTU8bJiNC4ErCUK4sDSe/YMjuC0kqtlYnWuK8tHsQ=="
-    },
-    "local": {}
+    "secret": "JNoSF4uRkGB1zhccVkpX3ulB/1KErbj/tuhCTY0dkpVNyYTU8bJiNC4ErCUK4sDSe/YMjuC0kqtlYnWuK8tHsQ=="
   }
 }

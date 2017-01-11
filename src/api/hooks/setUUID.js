@@ -1,4 +1,4 @@
-import uuid from 'node-uuid';
+import uuid from 'uuid';
 
 function assignUUID(item) {
   item.uuid = uuid.v4(); // eslint-disable-line no-param-reassign

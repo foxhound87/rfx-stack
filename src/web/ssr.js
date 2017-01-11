@@ -9,28 +9,33 @@ import { Provider } from 'mobx-react';
 import { setMatchMediaConfig } from 'mobx-react-matchmedia';
 import { fetchData, dehydrate } from 'rfx-core';
 import stores from '@/shared/stores';
+import bootstrap from './bootstrap';
 
 export default (req, res, props) => {
+  const cookieName = 'ssrToken';
+
   const store = stores.inject({
     app: { ssrLocation: req.url },
+    auth: { jwt: req.cookies[cookieName], cookieName },
     ui: { mui: { userAgent: req.headers['user-agent'] } },
   });
 
-  fetchData(store, props)
-    .then(() => setMatchMediaConfig(req))
-    .then(() => renderToString(
-      <MuiThemeProvider muiTheme={store.ui.getMui()}>
-        <Provider store={store}>
-          <RouterContext {...props} />
-        </Provider>
-      </MuiThemeProvider>,
-    ))
-    .then(html => res
-      .status(200)
-      .render('index', {
-        build: isDev ? null : '/build',
-        head: Helmet.rewind(),
-        state: dehydrate(),
-        root: html,
-      }));
+  Promise.all(bootstrap(store))
+    .then(() => fetchData(store, props)
+      .then(() => setMatchMediaConfig(req))
+      .then(() => renderToString(
+        <MuiThemeProvider muiTheme={store.ui.getMui()}>
+          <Provider store={store}>
+            <RouterContext {...props} />
+          </Provider>
+        </MuiThemeProvider>,
+      ))
+      .then(html => res
+        .status(200)
+        .render('index', {
+          build: isDev ? null : '/build',
+          head: Helmet.rewind(),
+          state: dehydrate(),
+          root: html,
+        })));
 };

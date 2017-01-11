@@ -13,7 +13,7 @@ let Loader = getLoaders();
 Config = require('./webpack/config.client').load();
 const ConfigClientDev = require('./webpack/config.client.dev');
 Loader = merge(Loader, ConfigClientDev.loader());
-Config = merge(Config, ConfigClientDev.config());
+Config = merge(Config, ConfigClientDev.config('web'));
 
 // Globals
 Config = merge(Config, Globals);

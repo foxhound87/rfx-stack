@@ -1,12 +1,12 @@
-import Form from 'mobx-react-form';
-import validatorjs from 'validatorjs';
 import { dispatch } from 'rfx-core';
+import validatorjs from 'validatorjs';
+import Form from './_.extend';
 
 class UserForm extends Form {
 
   onSuccess(form) {
     dispatch('auth.register', form.values())
-      .then(() => dispatch('ui.authModal.toggleSection', 'signin'))
+      .then(() => dispatch('ui.auth.toggleSection', 'signin'))
       .then(() => dispatch('ui.snackBar.open', 'Register Successful.'))
       .then(() => form.clear())
       .catch((err) => {

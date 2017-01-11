@@ -7,13 +7,13 @@ import $ from '@/shared/styles/_.mixins';
 import styles from '@/shared/styles/MenuLinkDX.css';
 
 const list = cx('list', 'br2', 'tl', 'pa0');
-const inlineList = cx('mt1', 'mr3', 'dark-blue');
+const inlineList = cx('mt1', 'mr3');
 const blockList = cx();
 const menuAccount = cx('absolute', 'right-0');
-const btnBlock = cx('db', 'ph3', 'pv3');
+const btnBlock = cx('db', 'ph3', 'pv3', 'tc');
 const btnInline = cx('dib', 'ph3', 'pv3');
 const baseBtn = cx('pointer');
-const inlineBtn = cx($.buttonGeneric, 'mh2', 'mv1', 'mb2');
+const authInlineBtn = cx($.buttonGeneric, 'mh2', 'mv1', 'mb2');
 
 const handleMenuAccountToggle = (e) => {
   e.preventDefault();
@@ -22,18 +22,28 @@ const handleMenuAccountToggle = (e) => {
 
 const handleAuthModalSignin = (e) => {
   e.preventDefault();
-  dispatch('ui.authModal.toggle', 'open', 'signin');
+  dispatch('ui.auth.toggleModal', 'open', 'signin');
 };
 
 const handleAuthModalSignup = (e) => {
   e.preventDefault();
-  dispatch('ui.authModal.toggle', 'open', 'signup');
+  dispatch('ui.auth.toggleModal', 'open', 'signup');
 };
 
 const handleLogout = (e) => {
   e.preventDefault();
   dispatch('auth.logout');
 };
+
+const Avatar = observer(() => (
+  <div className="tc pa4">
+    <img
+      src=""
+      alt=""
+      className="br-100 pa1 ba b--black-10 h3 w3"
+    />
+  </div>
+));
 
 const UserSubMenu = observer(({ inline }) => (
   <ul className={cx(list, inline ? inlineList : blockList)}>
@@ -90,11 +100,11 @@ const UserMenu = observer(({ inline, user, accountMenuIsOpen }) => (
 ));
 
 const GuestMenu = observer(({ inline }) => (
-  <span>
+  <span className="dn di-l">
     <a
       onClick={handleAuthModalSignin}
       className={cx(baseBtn, {
-        [inlineBtn]: inline,
+        [authInlineBtn]: inline,
         [styles.loginBtn]: inline,
         ['dib']: inline,
         ['db']: !inline,
@@ -105,7 +115,7 @@ const GuestMenu = observer(({ inline }) => (
     <a
       onClick={handleAuthModalSignup}
       className={cx(baseBtn, {
-        [inlineBtn]: inline,
+        [authInlineBtn]: inline,
         [styles.registerBtn]: inline,
         ['dib']: inline,
         ['db']: !inline,
@@ -118,7 +128,7 @@ const GuestMenu = observer(({ inline }) => (
 
 export default observer(({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
-    <div className={cx(styles.divider, { bt: !inline })} />
+    {(authCheck && !inline) && <Avatar />}
 
     {authCheck ?
       <UserMenu
@@ -127,5 +137,6 @@ export default observer(({ user, inline, authCheck, accountMenuIsOpen }) => (
         user={user}
       /> : <GuestMenu inline={inline} />}
 
+    <div className={cx(styles.divider, { bt: !inline })} />
   </span>
 ));

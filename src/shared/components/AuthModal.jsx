@@ -3,13 +3,10 @@ import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
 
 import _ from 'lodash';
-import cx from 'classnames';
-import $ from '@/shared/styles/_.mixins';
 import modalBaseStyle from '@/shared/styles/_.modal.js';
 
 import Modal from 'react-modal';
-import AuthFormLogin from './AuthFormLogin';
-import AuthFormRegister from './AuthFormRegister';
+import AuthForm from './AuthForm';
 
 const styles = _.cloneDeep(modalBaseStyle);
 
@@ -19,13 +16,7 @@ _.assign(styles.content, {
 });
 
 const handleCloseModal = () =>
-  dispatch('ui.authModal.toggle', 'close');
-
-const handleShowSigninSection = () =>
-  dispatch('ui.authModal.toggleSection', 'signin');
-
-const handleShowSignupSection = () =>
-  dispatch('ui.authModal.toggleSection', 'signup');
+  dispatch('ui.auth.toggleModal', 'close');
 
 export default observer(({ open, showSection, forms }) => (
   <Modal
@@ -34,31 +25,9 @@ export default observer(({ open, showSection, forms }) => (
     onRequestClose={handleCloseModal}
     style={styles}
   >
-    <div className="flex items-center justify-center flex-column pv4 tc">
-      <div className="cf dib pv3">
-        <button
-          onClick={handleShowSigninSection}
-          className={cx($.buttonGroupLeft, {
-            _bg1: showSection === 'signin',
-          })}
-        >Login</button>
-        <button
-          onClick={handleShowSignupSection}
-          className={cx($.buttonGroupRight, {
-            _bg1: showSection === 'signup',
-          })}
-        >Register</button>
-      </div>
-
-      <div className={cx({ dn: showSection !== 'signin' })}>
-        <h3>Login</h3>
-        <AuthFormLogin form={forms.login} />
-      </div>
-
-      <div className={cx({ dn: showSection !== 'signup' })}>
-        <h3>Register</h3>
-        <AuthFormRegister form={forms.register} />
-      </div>
-    </div>
+    <AuthForm
+      showSection={showSection}
+      forms={forms}
+    />
   </Modal>
 ));

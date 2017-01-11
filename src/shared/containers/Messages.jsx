@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { inject, observer } from 'mobx-react';
+import { authorize } from '@/utils/authorize.hoc';
 
 // components
 import PostListHeader from '@/shared/components/PostListHeader';
@@ -11,8 +12,8 @@ import PostCreateModal from '@/shared/components/PostCreateModal';
 // form
 import postForm from '@/shared/forms/post';
 
-@inject('store') @observer
-export default class DemoList extends Component {
+@inject('store') @authorize @observer
+export default class Messages extends Component {
 
   static fetchData({ store }) {
     return store.post.find();

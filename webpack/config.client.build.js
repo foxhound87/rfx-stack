@@ -49,7 +49,7 @@ export function config(entry) {
         'babel-polyfill',
         'isomorphic-fetch',
         'whatwg-fetch',
-        path.join(Dir.web, 'client'),
+        path.join(Dir.src, entry, 'client'),
       ],
     },
     output: {

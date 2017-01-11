@@ -8,7 +8,8 @@ export default {
   all: [
     hooks.remove('__v', 'password'),
   ],
-  find: [],
+  find: [
+  ],
   get: [],
   create: [],
   update: [],
