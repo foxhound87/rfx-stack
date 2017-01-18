@@ -1,5 +1,5 @@
+import { action } from 'mobx';
 import { dispatch } from 'rfx-core';
-import validatorjs from 'validatorjs';
 import Form from './_.extend';
 
 class AuthForm extends Form {
@@ -12,26 +12,22 @@ class AuthForm extends Form {
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
-      });
-  }
-
-  onError() {
-    dispatch('ui.snackBar.open', 'Incomplete Data');
+      })
+      .then(action(() => (form.$loading = false))); // eslint-disable-line
   }
 }
 
 export default
   new AuthForm({
-    plugins: {
-      dvr: validatorjs,
-    },
     fields: {
       email: {
         label: 'Email',
+        placeholder: 'Insert Email',
         rules: 'required|email|string|between:5,20',
       },
       password: {
         label: 'Password',
+        placeholder: 'Insert Password',
         rules: 'required|between:5,20',
       },
     },

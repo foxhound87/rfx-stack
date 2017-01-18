@@ -17,7 +17,7 @@ const ItemsNotFound = () => (
 const ItemsList = observer(({ items }) => (
   <ul>
     {items.map(item =>
-      <li key={item.uuid} className="cf bg-white-90 br2 pv3 ph4 mb3">
+      <li key={item.uuid} className="cf bg-white br2 pv3 ph4 mb3">
         <div className="fl w-100 w-60-ns tc tl-ns">
           <div className="f4 pt3">
             {item.completed

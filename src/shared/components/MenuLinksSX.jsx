@@ -6,7 +6,7 @@ import cx from 'classnames';
 import { Link } from 'react-router';
 
 // stules
-const a = cx('db', 'ph3', 'pv3');
+const a = cx('db', 'ph3', 'pv3', 'fw4');
 const listBlock = cx('list', 'pl0', 'ml0');
 const listInline = cx('list', 'pa0', 'mv0');
 const liBlock = cx('db');

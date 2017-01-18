@@ -6,6 +6,7 @@ import cx from 'classnames';
 // dev tools
 import isDev from 'isdev';
 import DevTools from 'mobx-react-devtools';
+import MobxReactFormDevTools from 'mobx-react-form-devtools';
 
 // components
 import { MatchMediaProvider } from 'mobx-react-matchmedia';
@@ -24,6 +25,16 @@ import userForm from '@/shared/forms/user';
 import '@/shared/styles/_.global.css';
 import styles from '@/shared/styles/AppLayout.css';
 
+if (isDev) {
+  MobxReactFormDevTools.register({
+    authForm,
+    userForm,
+  });
+
+  MobxReactFormDevTools.select('authForm');
+  MobxReactFormDevTools.open(false);
+}
+
 @inject('store') @observer
 export default class AppLayout extends Component {
 
@@ -39,8 +50,9 @@ export default class AppLayout extends Component {
 
     return (
       <MatchMediaProvider breakpoints={ui.breakpoints}>
-        <div className="helvetica">
-          {isDev ? <DevTools position={{ bottom: 0, right: '20px' }} /> : null}
+        <div className="helvetica fw2">
+          {isDev && <DevTools position={{ bottom: 0, right: '50px' }} />}
+          {isDev && <MobxReactFormDevTools.UI />}
           <Helmet
             htmlAttributes={{ lang: 'en' }}
             titleTemplate="RFX Stack - %s"

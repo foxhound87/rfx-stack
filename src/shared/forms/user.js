@@ -1,5 +1,4 @@
 import { dispatch } from 'rfx-core';
-import validatorjs from 'validatorjs';
 import Form from './_.extend';
 
 class UserForm extends Form {
@@ -12,27 +11,34 @@ class UserForm extends Form {
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
-      });
+      })
+      .then(action(() => (form.$loading = false))); // eslint-disable-line
   }
 }
 
 export default
   new UserForm({
-    plugins: {
-      dvr: validatorjs,
-    },
     fields: {
       username: {
         label: 'Username',
         rules: 'required|string|between:5,20',
+        placeholder: 'Insert Username',
       },
       email: {
         label: 'Email',
         rules: 'required|email|string|between:5,20',
+        placeholder: 'Insert Email',
       },
       password: {
         label: 'Password',
         rules: 'required|string|between:5,20',
+        placeholder: 'Insert Password',
+        related: ['passwordConfirm'],
+      },
+      passwordConfirm: {
+        label: 'Confirm Password',
+        rules: 'required|string|between:5,20|same:password',
+        placeholder: 'Insert Confirmation Password',
       },
     },
   });

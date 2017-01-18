@@ -12,7 +12,7 @@ const blockList = cx();
 const menuAccount = cx('absolute', 'right-0');
 const btnBlock = cx('db', 'ph3', 'pv3', 'tc');
 const btnInline = cx('dib', 'ph3', 'pv3');
-const baseBtn = cx('pointer');
+const baseBtn = cx('pointer', 'fw4');
 const authInlineBtn = cx($.buttonGeneric, 'mh2', 'mv1', 'mb2');
 
 const handleMenuAccountToggle = (e) => {
@@ -100,7 +100,7 @@ const UserMenu = observer(({ inline, user, accountMenuIsOpen }) => (
 ));
 
 const GuestMenu = observer(({ inline }) => (
-  <span className="dn di-l">
+  <span className={cx({ 'dn di-l': inline })}>
     <a
       onClick={handleAuthModalSignin}
       className={cx(baseBtn, {
