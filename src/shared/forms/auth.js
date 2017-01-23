@@ -23,7 +23,7 @@ export default
       email: {
         label: 'Email',
         placeholder: 'Insert Email',
-        rules: 'required|email|string|between:5,20',
+        rules: 'required|email|string|between:5,50',
       },
       password: {
         label: 'Password',
