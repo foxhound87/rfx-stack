@@ -9,6 +9,7 @@ export default observer(({ form }) => (
     <TextField type="text" field={form.$('username')} />
     <TextField type="text" field={form.$('email')} />
     <TextField type="password" field={form.$('password')} />
+    <TextField type="password" field={form.$('passwordConfirm')} />
     <FormControls
       form={form}
       controls={{ onSubmit: true }}
