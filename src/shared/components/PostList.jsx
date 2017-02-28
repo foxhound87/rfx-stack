@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 // components
+import { Link } from 'react-router';
 import TimeAgo from 'react-timeago';
 
 // styles
@@ -25,7 +26,9 @@ const ItemsList = observer(({ items }) => (
               : <i className="fa fa-times-circle red" />
             } {item.title}
           </div>
-          <div className="f5 pt3 gray">ID: {item.uuid}</div>
+          <div className="f5 pt3 gray">
+            ID: <Link to={`/messages/${item.uuid}`}>{item.uuid}</Link>
+          </div>
         </div>
         <div className="fl w-100 w-40-ns tc tl-ns">
           <p><b>Created at</b>: <TimeAgo date={item.createdAt} /></p>
