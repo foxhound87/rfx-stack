@@ -1,14 +1,12 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import { observer } from 'mobx-react';
-// import { dispatch } from 'rfx-core';
-import cx from 'classnames';
+import { dispatch } from 'rfx-core';
 import $ from '@/shared/styles/_.mixins';
 
-const handleEditPost = post => (e) => {
+const handleEditPost = (e) => {
   e.preventDefault();
-  // dispatch('post.edit', post.uuid);
-  alert(`TODO: Implement Editing of Post\n ${post.uuid}`); // eslint-disable-line
+  dispatch('ui.postCreateModal.open', true);
 };
 
 export default observer(({ post }) => (
@@ -20,7 +18,7 @@ export default observer(({ post }) => (
         type="button"
         value="done"
         onClick={() => browserHistory.push('/messages')}
-        className={cx($.buttonPill, '')}
+        className={$.buttonPill}
       >
         <i className="fa fa-chevron-left" /> Messages
       </button>
@@ -30,8 +28,8 @@ export default observer(({ post }) => (
       <button
         type="button"
         value="done"
-        onClick={handleEditPost(post)}
-        className={cx($.buttonPill, '')}
+        onClick={handleEditPost}
+        className={$.buttonPill}
       >
         <i className="fa fa-edit" /> Edit
       </button>

@@ -1,7 +1,10 @@
+import _ from 'lodash';
 import { extendObservable, observable, action, computed } from 'mobx';
+
 import { service } from '@/shared/app';
 import { factory } from '@/seeds/factories/post'; // just for test
-import _ from 'lodash';
+
+import postForm, { init as initPostForm } from '@/shared/forms/post';
 
 export default class PostStore {
 
@@ -23,6 +26,8 @@ export default class PostStore {
 
   @observable selected = _.clone(PostStore.post);
 
+  @observable editForm = postForm;
+
   /*
     "total": "<total number of records>",
     "limit": "<max number of items per page>",
@@ -39,8 +44,8 @@ export default class PostStore {
 
   initEvents() {
     service('post').on('created', action(this.onCreated));  // onCreated = (data, params) => {}
-    // service('post').on('updated', action(this.onUpdated));   // onUpdated = (id, data) => {}
-    // service('post').on('patched', action(this.onPatched));   // onPatched = (id, data) => {}
+    service('post').on('updated', action(this.onUpdated));   // onUpdated = (data) => {}
+    service('post').on('patched', action(this.onPatched));   // onPatched = (data) => {}
     // service('post').on('removed', action(this.onRemoved));   // onRemoved = (id, params) => {}
   }
 
@@ -51,7 +56,9 @@ export default class PostStore {
       return this.clearSelected();
     }
 
-    console.log('Setting Selected Company: %o', json); //eslint-disable-line
+    this.editForm = initPostForm(json);
+
+    console.log('Setting Selected Post: %o', json); //eslint-disable-line
     extendObservable(this.selected, json);
 
     return this.selected;
@@ -61,6 +68,8 @@ export default class PostStore {
   clearSelected() {
     extendObservable(this.selected, PostStore.post);
     console.assert(!this.selected.uuid, 'Selected Object UUID must be null'); // eslint-disable-line
+
+    this.editForm = postForm;
 
     return this.selected;
   }
@@ -98,6 +107,12 @@ export default class PostStore {
       .catch(err => console.error(err)); // eslint-disable-line no-console
   }
 
+  update(data = {}, id = data.uuid) {
+    return service('post')
+      .patch(id, data)
+      .catch(err => console.error(err)); // eslint-disable-line no-console
+  }
+
   get(id) {
     if (_.isEmpty(id)) {
       return Promise.reject('Must Specify Message ID');
@@ -124,9 +139,21 @@ export default class PostStore {
 
   onCreated = item => this.addItem(item);
 
-  // onUpdated = (id, data) => {};
+  @action
+  onUpdated = (data) => {
+    console.log('Received Post Update: %O', data); // eslint-disable-line
 
-  // onPatched = (id, data) => {};
+    const existing = _.find(this.list, { uuid: data.uuid });
+    if (existing) {
+      _.extend(existing, data);
+    }
+
+    if (this.selected.uuid === data.uuid) {
+      _.extend(this.selected, data);
+    }
+  };
+
+  onPatched = this.onUpdated;
 
   // onRemoved = (id, params) => {};
 

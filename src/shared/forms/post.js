@@ -1,12 +1,14 @@
 import { dispatch } from 'rfx-core';
+import { action } from 'mobx';
 import Form from './_.extend';
 
-class PostForm extends Form {
-
+export class PostForm extends Form {
   onSuccess(form) {
-    dispatch('post.create', form.values())
+    const storeAction = form.values().uuid ? 'post.update' : 'post.create';
+
+    dispatch(storeAction, form.values())
       .then(() => dispatch('ui.postCreateModal.open', false))
-      .then(() => dispatch('ui.snackBar.open', 'Post Created.'))
+      .then(() => dispatch('ui.snackBar.open', 'Post Saved.'))
       .then(() => form.clear())
       .then(() => form.clear())
       .catch((err) => {
@@ -17,17 +19,24 @@ class PostForm extends Form {
   }
 }
 
-export default
-  new PostForm({
-    fields: {
-      title: {
-        label: 'Title',
-        rules: 'required|string|between:5,50',
-      },
-      completed: {
-        label: 'Completed',
-        value: true,
-        rules: 'boolean',
-      },
-    },
-  });
+export const fields = {
+  title: {
+    label: 'Title',
+    rules: 'required|string|between:5,50',
+  },
+  completed: {
+    label: 'Completed',
+    value: true,
+    rules: 'boolean',
+  },
+  uuid: {
+    rules: 'string',
+    value: null,
+  },
+};
+
+export function init(values = {}) {
+  return new PostForm({ fields, values });
+}
+
+export default new PostForm({ fields });

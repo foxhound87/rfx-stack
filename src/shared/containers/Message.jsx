@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import Helmet from 'react-helmet';
 import PostDetailsHeader from '@/shared/components/PostDetailsHeader';
 import PostDetails from '@/shared/components/PostDetails';
+import PostCreateModal from '@/shared/components/PostCreateModal';
 import { authorize } from '@/utils/authorize.hoc';
 
 @inject('store') @authorize @observer
@@ -25,7 +26,7 @@ export default class Message extends Component {
   }
 
   render() {
-    const { post } = this.props.store;
+    const { ui, post } = this.props.store;
 
     return (
       <div className="pt5 ph4">
@@ -34,6 +35,10 @@ export default class Message extends Component {
         <div className="pv4 _c4">
           <PostDetails item={post.selected} />
         </div>
+        <PostCreateModal
+          open={ui.postCreateModal.isOpen}
+          form={post.editForm}
+        />
       </div>
     );
   }
