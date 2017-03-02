@@ -10,7 +10,6 @@ export class PostForm extends Form {
       .then(() => dispatch('ui.postCreateModal.open', false))
       .then(() => dispatch('ui.snackBar.open', 'Post Saved.'))
       .then(() => form.clear())
-      .then(() => form.clear())
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
