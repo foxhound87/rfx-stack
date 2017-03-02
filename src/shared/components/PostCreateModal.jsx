@@ -31,42 +31,44 @@ export default observer(({ open, form }) => (
     onRequestClose={handleCloseModal}
     style={styles}
   >
-    <div className="m3">
-      <h3>Create Post</h3>
-      <form>
-        <div className="pb3">
-          <TextField
-            hintText="Title"
-            floatingLabelText={form.$('title').label}
-            name={form.$('title').name}
-            value={form.$('title').value}
-            errorText={form.$('title').error}
-            onChange={form.$('title').sync}
-          />
-          <Toggle
-            className="pt3"
-            labelPosition="right"
-            label={form.$('completed').label}
-            name={form.$('completed').name}
-            defaultToggled={form.$('completed').value}
-            onToggle={form.$('completed').sync}
-          />
-        </div>
-        <div className="tc">
-          <button
-            type="submit"
-            className={button}
-            onClick={form.onSubmit}
-          >Save</button>
-        </div>
-        <div
-          className={cx(errorMessage, {
-            hide: !form.isValid && form.genericErrorMessage,
-          })}
-        >
-          {form.genericErrorMessage}
-        </div>
-      </form>
-    </div>
+    {!(form && form.$) ? null : (
+      <div className="ma3">
+        <h3>{form.$('uuid').value ? 'Edit' : 'Create'} Post</h3>
+        <form>
+          <div className="pb3">
+            <TextField
+              hintText="Title"
+              floatingLabelText={form.$('title').label}
+              name={form.$('title').name}
+              value={form.$('title').value}
+              errorText={form.$('title').error}
+              onChange={form.$('title').sync}
+            />
+            <Toggle
+              className="pt3"
+              labelPosition="right"
+              label={form.$('completed').label}
+              name={form.$('completed').name}
+              defaultToggled={form.$('completed').value}
+              onToggle={form.$('completed').onChange}
+            />
+          </div>
+          <div className="tc">
+            <button
+              type="submit"
+              className={button}
+              onClick={form.onSubmit}
+            >Save</button>
+          </div>
+          <div
+            className={cx(errorMessage, {
+              hide: !form.isValid && form.genericErrorMessage,
+            })}
+          >
+            {form.genericErrorMessage}
+          </div>
+        </form>
+      </div>
+    )}
   </Modal>
 ));

@@ -17,7 +17,12 @@ export default (
     <IndexRoute getComponent={(loc, cb) => $import(loc, cb, 'Home')} />
 
     <Route path="auth" getComponent={(loc, cb) => $import(loc, cb, 'Auth')} />
-    <Route path="messages" getComponent={(loc, cb) => $import(loc, cb, 'Messages')} />
+
+    <Route path="messages">
+      <IndexRoute getComponent={(loc, cb) => $import(loc, cb, 'Messages')} />
+      <Route path="(:messageId)" getComponent={(loc, cb) => $import(loc, cb, 'Message')} />
+    </Route>
+
     <Route path="packages" getComponent={(loc, cb) => $import(loc, cb, 'Packages')} />
 
     <Route path="*" component={NotFound} status={404} />
