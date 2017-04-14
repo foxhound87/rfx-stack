@@ -1,20 +1,18 @@
 import { dispatch } from 'rfx-core';
-import { action } from 'mobx';
 import Form from './_.extend';
 
 export class PostForm extends Form {
   onSuccess(form) {
     const storeAction = form.values().uuid ? 'post.update' : 'post.create';
 
-    dispatch(storeAction, form.values())
+    return dispatch(storeAction, form.values())
       .then(() => dispatch('ui.postCreateModal.open', false))
       .then(() => dispatch('ui.snackBar.open', 'Post Saved.'))
       .then(() => form.clear())
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
-      })
-      .then(action(() => (form.$loading = false))); // eslint-disable-line
+      });
   }
 }
 

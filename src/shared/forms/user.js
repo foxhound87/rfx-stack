@@ -4,15 +4,14 @@ import Form from './_.extend';
 class UserForm extends Form {
 
   onSuccess(form) {
-    dispatch('auth.register', form.values())
+    return dispatch('auth.register', form.values())
       .then(() => dispatch('ui.auth.toggleSection', 'signin'))
       .then(() => dispatch('ui.snackBar.open', 'Register Successful.'))
       .then(() => form.clear())
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
-      })
-      .then(action(() => (form.$loading = false))); // eslint-disable-line
+      });
   }
 }
 

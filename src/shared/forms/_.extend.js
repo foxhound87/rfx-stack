@@ -1,7 +1,5 @@
 import MobxReactForm from 'mobx-react-form';
 import validatorjs from 'validatorjs';
-import { observable, action, computed } from 'mobx';
-import { dispatch } from 'rfx-core';
 import bindings from './_.bindings';
 
 /**
@@ -17,8 +15,6 @@ import bindings from './_.bindings';
 
 export default class Form extends MobxReactForm {
 
-  @observable $loading = false;
-
   plugins() {
     return {
       dvr: validatorjs,
@@ -29,22 +25,8 @@ export default class Form extends MobxReactForm {
     return bindings;
   }
 
-  @computed get loading() {
-    return this.$loading;
-  }
-
   onInit() {
-    this.forEach(field =>
+    this.each(field =>
       field.set('bindings', 'MaterialTextField'));
   }
-
-  onError(form) {
-    action(() => (form.$loading = false))(); // eslint-disable-line
-    dispatch('ui.snackBar.open', 'Incomplete Data');
-  }
-
-  handleSubmit = (e) => {
-    action(() => (this.$loading = true))();
-    this.onSubmit(e);
-  };
 }

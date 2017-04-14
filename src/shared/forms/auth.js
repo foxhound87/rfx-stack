@@ -1,19 +1,17 @@
-import { action } from 'mobx';
 import { dispatch } from 'rfx-core';
 import Form from './_.extend';
 
 class AuthForm extends Form {
 
   onSuccess(form) {
-    dispatch('auth.login', form.values())
+    return dispatch('auth.login', form.values())
       .then(() => dispatch('ui.auth.toggleModal', 'close'))
       .then(() => dispatch('ui.snackBar.open', 'Login Successful.'))
       .then(() => form.clear())
       .catch((err) => {
         form.invalidate(err.message);
         dispatch('ui.snackBar.open', err.message);
-      })
-      .then(action(() => (form.$loading = false))); // eslint-disable-line
+      });
   }
 }
 

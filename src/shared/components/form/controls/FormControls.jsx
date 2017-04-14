@@ -13,12 +13,12 @@ export default observer(({ form, controls = null, labels = null }) => (
 
       {(!controls || controls.onSubmit) &&
         <button
-          onClick={form.handleSubmit}
-          disabled={form.loading}
+          onClick={form.onSubmit}
+          disabled={form.submitting}
           className={button}
           type="submit"
         >
-          {(form.loading || form.validating)
+          {(form.submitting || form.validating)
             ? <b><i className="fa fa-spinner fa-spin" /></b>
             : <b><i className="fa fa-dot-circle-o" /> {labels.submit || 'Submit'} </b>}
         </button>}
