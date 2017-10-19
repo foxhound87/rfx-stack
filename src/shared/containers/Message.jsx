@@ -8,7 +8,9 @@ import PostDetails from '@/shared/components/PostDetails';
 import PostCreateModal from '@/shared/components/PostCreateModal';
 import { authorize } from '@/utils/authorize.hoc';
 
-@inject('store') @authorize @observer
+@inject('store')
+@authorize
+@observer
 export default class Message extends Component {
   static postForm;
 

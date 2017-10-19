@@ -8,9 +8,9 @@ import AuthForm from '@/shared/components/AuthForm';
 import authForm from '@/shared/forms/auth';
 import userForm from '@/shared/forms/user';
 
-@inject('store') @observer
+@inject('store')
+@observer
 export default class Auth extends Component {
-
   static fetchData() {}
 
   static propTypes = {
@@ -28,8 +28,8 @@ export default class Auth extends Component {
         <AuthForm
           showSection={ui.auth.showSection}
           forms={{
-            login     : authForm,
-            register  : userForm,
+            login: authForm,
+            register: userForm,
           }}
         />
       </div>

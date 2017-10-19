@@ -5,9 +5,9 @@ import cx from 'classnames';
 import { Parallax } from 'react-parallax';
 import styles from '@/shared/styles/Home.css';
 
-@inject('store') @observer
+@inject('store')
+@observer
 export default class Home extends Component {
-
   static fetchData() {}
 
   static propTypes = {
@@ -22,21 +22,20 @@ export default class Home extends Component {
         <div className="tc">
           <Parallax bgImage="/static/img/bg.jpg" strength={400}>
             <h1
-              className={cx(
-                'tracked',
-                styles.title, {
-                  [styles.xsTitle]: bp.xs,
-                  [styles.suTitle]: bp.su,
-                })}
-            >RFX STACK</h1>
+              className={cx('tracked', styles.title, {
+                [styles.xsTitle]: bp.xs,
+                [styles.suTitle]: bp.su,
+              })}
+            >
+              RFX STACK
+            </h1>
             <h2
-              className={cx(
-                'tracked-mega',
-                styles.subTitle, {
-                  [styles.xsSubTitle]: bp.xs,
-                  [styles.suSubTitle]: bp.su,
-                })}
-            >Universal App featuring: React + Feathers + MobX
+              className={cx('tracked-mega', styles.subTitle, {
+                [styles.xsSubTitle]: bp.xs,
+                [styles.suSubTitle]: bp.su,
+              })}
+            >
+              Universal App featuring: React + Feathers + MobX
             </h2>
           </Parallax>
         </div>

@@ -7,7 +7,7 @@ import PostFilter from './PostFilter';
 import PostInfo from './PostInfo';
 import Pagination from './Pagination';
 
-const handlePostPageChange = (page) => {
+const handlePostPageChange = page => {
   dispatch('post.page', page);
 };
 
@@ -34,4 +34,3 @@ export default observer(({ post }) => (
     </div>
   </div>
 ));
-

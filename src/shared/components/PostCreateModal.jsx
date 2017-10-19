@@ -21,8 +21,7 @@ _.assign(styles.content, {
 });
 
 // events
-const handleCloseModal = () =>
-  dispatch('ui.postCreateModal.open', false);
+const handleCloseModal = () => dispatch('ui.postCreateModal.open', false);
 
 export default observer(({ open, form }) => (
   <Modal
@@ -54,11 +53,9 @@ export default observer(({ open, form }) => (
             />
           </div>
           <div className="tc">
-            <button
-              type="submit"
-              className={button}
-              onClick={form.onSubmit}
-            >Save</button>
+            <button type="submit" className={button} onClick={form.onSubmit}>
+              Save
+            </button>
           </div>
           <div
             className={cx(errorMessage, {

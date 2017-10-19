@@ -22,13 +22,17 @@ export default observer(({ showSection, forms }) => (
         className={cx($.buttonGroupLeft, {
           _bg1: showSection === 'signin',
         })}
-      >Login</button>
+      >
+        Login
+      </button>
       <button
         onClick={handleShowSignupSection}
         className={cx($.buttonGroupRight, {
           _bg1: showSection === 'signup',
         })}
-      >Register</button>
+      >
+        Register
+      </button>
     </div>
 
     <div className={cx({ dn: showSection !== 'signin' })}>

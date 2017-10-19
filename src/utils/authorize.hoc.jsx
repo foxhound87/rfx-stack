@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { observer } from "mobx-react";
+import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 
 /**
   Require Auth HOC
@@ -10,7 +10,7 @@ export const authorize = ComposedComponent =>
       static propTypes = {
         store: React.PropTypes.object,
         router: React.PropTypes.object,
-        location: React.PropTypes.object
+        location: React.PropTypes.object,
       };
 
       static fetchData(data) {
@@ -22,18 +22,20 @@ export const authorize = ComposedComponent =>
       }
 
       componentWillMount() {
-        if (global.TYPE === "CLIENT") {
+        if (global.TYPE === 'CLIENT') {
           const { store, location, router } = this.props;
           if (!store.auth.check) {
             const currentPath = location.pathname;
             store.auth.redirect = currentPath;
-            router.push("/auth");
+            router.push('/auth');
           }
         }
       }
 
       render() {
-        return this.props.store.auth.check && <ComposedComponent {...this.props} />;
+        return (
+          this.props.store.auth.check && <ComposedComponent {...this.props} />
+        );
       }
-    }
+    },
   );
