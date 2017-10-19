@@ -6,14 +6,10 @@ import { setUUID } from '@/api/hooks/setUUID';
   Service: post
 */
 export default {
-  all: [
-    auth.authenticate(['jwt', 'local']),
-  ],
+  all: [auth.authenticate(['jwt', 'local'])],
   find: [],
   get: [],
-  create: [
-    setUUID(),
-  ],
+  create: [setUUID()],
   update: [],
   patch: [],
   remove: [],

@@ -3,9 +3,11 @@ import decodeJWT from 'jwt-decode';
 const payloadIsValid = payload =>
   payload && payload.exp * 1000 > new Date().getTime();
 
-export const verifyJWT = (token) => {
+export const verifyJWT = token => {
   if (typeof token !== 'string') {
-    return Promise.reject(new Error('Token provided to verifyJWT is missing or not a string'));
+    return Promise.reject(
+      new Error('Token provided to verifyJWT is missing or not a string'),
+    );
   }
 
   try {

@@ -8,16 +8,22 @@ import _ from 'lodash';
 export function hotMiddleware({ wpc, wdmc, whmc }) {
   const bundler = webpack(wpc);
 
-  return isDev ? [
+  return isDev
+    ? [
+        webpackDevMiddleware(
+          bundler,
+          _.merge(wdmc, {
+            filename: wpc.output.filename,
+            publicPath: wpc.output.publicPath,
+          }),
+        ),
 
-    webpackDevMiddleware(bundler, _.merge(wdmc, {
-      filename: wpc.output.filename,
-      publicPath: wpc.output.publicPath,
-    })),
-
-    webpackHotMiddleware(bundler, _.merge(whmc, {
-      log: () => {},
-    })),
-
-  ] : (req, res, next) => next();
+        webpackHotMiddleware(
+          bundler,
+          _.merge(whmc, {
+            log: () => {},
+          }),
+        ),
+      ]
+    : (req, res, next) => next();
 }

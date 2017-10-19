@@ -15,7 +15,6 @@ class ServicesSetup {
   Feathers Services Autoload
 */
 class Services {
-
   constructor(app) {
     this.app = app;
   }

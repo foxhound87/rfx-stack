@@ -7,7 +7,6 @@ import { factory } from '@/seeds/factories/post'; // just for test
 import postForm, { init as initPostForm } from '@/shared/forms/post';
 
 export default class PostStore {
-
   static post = {
     uuid: null,
     title: null,
@@ -43,12 +42,11 @@ export default class PostStore {
   }
 
   initEvents() {
-    service('post').on('created', action(this.onCreated));  // onCreated = (data, params) => {}
-    service('post').on('updated', action(this.onUpdated));   // onUpdated = (data) => {}
-    service('post').on('patched', action(this.onPatched));   // onPatched = (data) => {}
+    service('post').on('created', action(this.onCreated)); // onCreated = (data, params) => {}
+    service('post').on('updated', action(this.onUpdated)); // onUpdated = (data) => {}
+    service('post').on('patched', action(this.onPatched)); // onPatched = (data) => {}
     // service('post').on('removed', action(this.onRemoved));   // onRemoved = (id, params) => {}
   }
-
 
   @action
   setSelected(json = {}) {
@@ -84,8 +82,8 @@ export default class PostStore {
   get pagination() {
     const { total, limit, skip } = this.$pagination;
     return _.extend(this.$pagination, {
-      pages     : Math.ceil(total / limit),
-      current   : Math.ceil((skip - 1) / limit) + 1,
+      pages: Math.ceil(total / limit),
+      current: Math.ceil((skip - 1) / limit) + 1,
     });
   }
 
@@ -140,7 +138,7 @@ export default class PostStore {
   onCreated = item => this.addItem(item);
 
   @action
-  onUpdated = (data) => {
+  onUpdated = data => {
     console.log('Received Post Update: %O', data); // eslint-disable-line
 
     const existing = _.find(this.list, { uuid: data.uuid });
@@ -187,10 +185,17 @@ export default class PostStore {
     let completed;
 
     switch (this.filter) {
-      case 'all': this.query.query.completed = undefined; break;
-      case 'todo': completed = false; break;
-      case 'done': completed = true; break;
-      default: completed = 'all';
+      case 'all':
+        this.query.query.completed = undefined;
+        break;
+      case 'todo':
+        completed = false;
+        break;
+      case 'done':
+        completed = true;
+        break;
+      default:
+        completed = 'all';
     }
 
     if (filter === 'all') return this.find();

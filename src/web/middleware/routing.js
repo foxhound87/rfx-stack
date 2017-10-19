@@ -19,12 +19,11 @@ function handleError(res, err) {
 
 export function routingMiddleware(routes, ssr) {
   return (req, res) => {
-    match({ routes, location: req.url },
-      (err, redirect, props) => {
-        if (err) handleError(res, err);
-        else if (redirect) handleRedirect(res, redirect);
-        else if (props) handleRouter(req, res, props, ssr);
-        else handleNotFound(res);
-      });
+    match({ routes, location: req.url }, (err, redirect, props) => {
+      if (err) handleError(res, err);
+      else if (redirect) handleRedirect(res, redirect);
+      else if (props) handleRouter(req, res, props, ssr);
+      else handleNotFound(res);
+    });
   };
 }

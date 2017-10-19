@@ -8,6 +8,7 @@ const PostSchema = new Schema(
   },
   {
     timestamps: true, // Will automatically create and update updatedAt and createdAt Fields
-  });
+  },
+);
 
 export default mongoose.model('post', PostSchema);

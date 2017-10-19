@@ -23,12 +23,12 @@ import postCreateModal from './ui/PostCreateModal';
 })
 @toggle('shiftLayout', 'layoutIsShifted')
 export default class UIStore {
-
   mui = {};
 
   @observable layoutIsShifted = false;
 
-  @observable breakpoints = {
+  @observable
+  breakpoints = {
     xs: '(max-width: 767px)',
     su: '(min-width: 768px)',
     sm: '(min-width: 768px) and (max-width: 991px)',
@@ -39,15 +39,19 @@ export default class UIStore {
 
   init() {
     // shift the layout on "su" breakpoint when appnav is open
-    autorun(() => this.breakpoints.su && this.appNav.isOpen
-      ? this.shiftLayout(true)
-      : this.shiftLayout(false),
+    autorun(
+      () =>
+        this.breakpoints.su && this.appNav.isOpen
+          ? this.shiftLayout(true)
+          : this.shiftLayout(false),
     );
 
     // undock the navbar if the modal is open
-    autorun(() => this.auth.modalIsOpen
-      ? this.appNav.open(false)
-      : () => this.breakpoints.mu && this.appNav.open(true),
+    autorun(
+      () =>
+        this.auth.modalIsOpen
+          ? this.appNav.open(false)
+          : () => this.breakpoints.mu && this.appNav.open(true),
     );
 
     /**
@@ -72,23 +76,24 @@ export default class UIStore {
   }
 
   getMui() {
-    const mui = (global.TYPE === 'CLIENT')
-      ? { userAgent: navigator.userAgent }
-      : {};
+    const mui =
+      global.TYPE === 'CLIENT' ? { userAgent: navigator.userAgent } : {};
 
-    return getMuiTheme(this.mui, _.merge(
-      mui,
-      materialBaseTheme,
-      materialOverrideStyles,
-    ));
+    return getMuiTheme(
+      this.mui,
+      _.merge(mui, materialBaseTheme, materialOverrideStyles),
+    );
   }
 
   injectTapEventPlugin() {
     if (process.env.NODE_ENV === 'development') {
-      return console.warn([ // eslint-disable-line no-console
-        'The react-tap-event-plugin is enabled only in production, ',
-        'due to a issue with Hot-Reloadable MobX Stores.',
-      ].join(''));
+      return console.warn(
+        [
+          // eslint-disable-line no-console
+          'The react-tap-event-plugin is enabled only in production, ',
+          'due to a issue with Hot-Reloadable MobX Stores.',
+        ].join(''),
+      );
     }
     // Material-UI components use react-tap-event-plugin to listen for touch events
     // This dependency is temporary and will go away once react v1.0

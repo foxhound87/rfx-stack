@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 
 let instance = false;
 const config = global.CONFIG;
-const storage = (global.TYPE === 'CLIENT') ? window.localStorage : null;
+const storage = global.TYPE === 'CLIENT' ? window.localStorage : null;
 const uri = ['http://', config.io.host, ':', config.io.port].join('');
 
 export function app() {

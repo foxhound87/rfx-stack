@@ -5,11 +5,8 @@ import hooks from 'feathers-hooks';
   Service: user
 */
 export default {
-  all: [
-    hooks.remove('__v', 'password'),
-  ],
-  find: [
-  ],
+  all: [hooks.remove('__v', 'password')],
+  find: [],
   get: [],
   create: [],
   update: [],

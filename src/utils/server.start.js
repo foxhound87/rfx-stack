@@ -9,7 +9,6 @@ class ServerSetup {
 }
 
 class ServerStart {
-
   constructor(app) {
     this.app = app;
     this.fixUA();
@@ -25,10 +24,7 @@ class ServerStart {
 
   start(config, key, logger) {
     this.app
-      .listen(
-        config[key.toLowerCase()].port,
-        config[key.toLowerCase()].host,
-      )
+      .listen(config[key.toLowerCase()].port, config[key.toLowerCase()].host)
       .on('listening', () => logger && logger(key));
   }
 

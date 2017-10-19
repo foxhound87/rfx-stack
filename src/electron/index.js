@@ -2,8 +2,8 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 const electron = require('electron');
 
-const app = electron.app;  // Module to control application life.
-const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const app = electron.app; // Module to control application life.
+const BrowserWindow = electron.BrowserWindow; // Module to create native browser window.
 let mainWindow = null;
 
 app.on('window-all-closed', () => {
