@@ -3,7 +3,8 @@
   "version": "0.8.0-alpha.8",
   "license": "MIT",
   "description": "RFX Stack - Universal App featuring: React + Feathers + MobX",
-  "author": "Claudio Savino <claudio.savino@me.com> (https://twitter.com/foxhound87)",
+  "author":
+    "Claudio Savino <claudio.savino@me.com> (https://twitter.com/foxhound87)",
   "repository": {
     "type": "git",
     "url": "git://github.com/foxhound87/rfx-stack.git"
@@ -15,10 +16,18 @@
     "build:client:web": "cross-env NODE_ENV=production webpack",
     "build:server:web": "cross-env NODE_ENV=production webpack",
     "build:server:api": "cross-env NODE_ENV=production webpack",
-    "web:dev": "cross-env NODE_ENV=development webpack --watch ./run/start.web.js",
-    "web:prod": "cross-env NODE_ENV=production node ./run/build/start.web.bundle.js",
+    "web:dev":
+      "cross-env NODE_ENV=development webpack --watch ./run/start.web.js",
+    "web:prod":
+      "cross-env NODE_ENV=production node ./run/build/start.web.bundle.js",
     "api:dev": "cross-env NODE_ENV=development nodemon ./run/start.api.js",
-    "api:prod": "cross-env NODE_ENV=production node ./run/build/start.api.bundle.js",
+    "api:debug":
+      "cross-env NODE_ENV=development nodemon --inspect ./run/start.api.js",
+    "api:debug-brk":
+      "cross-env NODE_ENV=development nodemon --inspect --inspect-brk ./run/start.api.js",
+
+    "api:prod":
+      "cross-env NODE_ENV=production node ./run/build/start.api.bundle.js",
     "seed:dev": "cross-env NODE_ENV=development node ./run/start.seeder.js",
     "seed:prod": "cross-env NODE_ENV=production node ./run/start.seeder.js"
   },
