@@ -25,10 +25,11 @@ export function loader() {
     cssModules: {
       loaders: [
         'style-loader',
-        ['css-loader?modules',
+        [
+          'css-loader?modules',
           'importLoaders=1',
-          'localIdentName=[name]__[local]___[hash:base64:5]']
-        .join('&'),
+          'localIdentName=[name]__[local]___[hash:base64:5]',
+        ].join('&'),
         'postcss-loader',
       ],
     },
