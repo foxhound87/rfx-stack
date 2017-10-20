@@ -62,13 +62,16 @@ export function config(entry) {
           messages: logServerConfigWebpack(entry),
         },
       }),
-      new BrowserSyncPlugin({
-        host: getenv('BROWSERSYNC_HOST'),
-        port: getenv('BROWSERSYNC_PORT'),
-        proxy: webhost(entry),
-      }, { reload: false }),
+      new BrowserSyncPlugin(
+        {
+          host: getenv('BROWSERSYNC_HOST'),
+          port: getenv('BROWSERSYNC_PORT'),
+          proxy: webhost(entry),
+        },
+        { reload: false },
+      ),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
     ],
   };
 }
