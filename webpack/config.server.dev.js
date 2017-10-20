@@ -23,17 +23,18 @@ export function loader() {
     },
     cssModules: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: ['css-loader?modules',
+        fallback: 'isomorphic-style-loader',
+        use: [
+          'css-loader?modules',
           'importLoaders=1',
-          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
-         .join('&'),
+          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
+        ].join('&'),
       }),
     },
     cssGlobal: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: 'css-loader!postcss-loader',
+        fallback: 'isomorphic-style-loader',
+        use: 'css-loader!postcss-loader',
       }),
     },
   };
@@ -67,7 +68,7 @@ export function config(entry) {
       new StartServerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
     ],
   };
 }

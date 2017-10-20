@@ -22,8 +22,8 @@ export function loader() {
     },
     cssModules: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: [
+        fallback: 'style-loader',
+        use: [
           'css-loader?modules',
           'importLoaders=1',
           'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
@@ -32,8 +32,8 @@ export function loader() {
     },
     cssGlobal: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader!postcss-loader',
+        fallback: 'style-loader',
+        use: 'css-loader!postcss-loader',
       }),
     },
   };
