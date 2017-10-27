@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import getenv from 'getenv';
 import env from '~/config/expose';
-import postcss from '~/config/postcss';
 
 export function load() {
   return {
@@ -15,13 +14,6 @@ export function load() {
       }),
       new webpack.ProvidePlugin({
         Promise: 'bluebird',
-      }),
-      new webpack.LoaderOptionsPlugin({
-        minimize: false,
-        debug: true,
-        options: {
-          postcss: postcss(webpack),
-        },
       }),
     ],
   };

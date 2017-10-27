@@ -25,13 +25,16 @@ export function loader() {
       loader: ExtractTextPlugin.extract({
         fallback: 'isomorphic-style-loader',
         use: [
-          [
-            'css-loader?modules',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ].join('&'),
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__bld__[local]___[hash:base64:5]',
+            },
+          },
           'postcss-loader',
-        ].join('!'),
+        ],
       }),
     },
     cssGlobal: {

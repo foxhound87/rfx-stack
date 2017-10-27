@@ -1,4 +1,4 @@
-/* eslint no-confusing-arrow: 0 */
+/* eslint-disable no-confusing-arrow */
 import _ from 'lodash';
 import { observable, autorun } from 'mobx';
 import { extend, toggle } from 'rfx-core';
@@ -87,6 +87,7 @@ export default class UIStore {
 
   injectTapEventPlugin() {
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       return console.warn(
         [
           // eslint-disable-line no-console

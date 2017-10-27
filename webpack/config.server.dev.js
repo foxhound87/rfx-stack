@@ -23,15 +23,25 @@ export function loader() {
     },
     cssModules: {
       loader: ExtractTextPlugin.extract({
-        fallback: 'isomorphic-style-loader',
-        use: [
-          [
-            'css-loader?modules',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ].join('&'),
-          'postcss-loader',
-        ].join('!'),
+        fallbackLoader: { loader: 'isomorphic-style-loader' },
+        loader: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__dev__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: path.join(Dir.config, 'postcss.config.js'),
+              },
+            },
+          },
+        ],
       }),
     },
     cssGlobal: {
