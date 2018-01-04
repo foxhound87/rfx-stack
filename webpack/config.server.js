@@ -10,9 +10,6 @@ export function load() {
       __dirname: true,
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        Promise: 'bluebird',
-      }),
       new webpack.DefinePlugin({
         'global.CONFIG': JSON.stringify(getenv.multi(env)),
         'global.TYPE': JSON.stringify('SERVER'),

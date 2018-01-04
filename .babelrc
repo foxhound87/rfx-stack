@@ -3,6 +3,7 @@
   "plugins": [
     "transform-decorators-legacy",
     "transform-class-properties",
+    "transform-promise-to-bluebird",
     "transform-runtime",
     ["babel-root-import", [{
       "rootPathPrefix": "~",
