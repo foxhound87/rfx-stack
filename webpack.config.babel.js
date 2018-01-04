@@ -1,7 +1,5 @@
-/* eslint global-require: 0 */
-/* eslint import/first: 0 */
-/* eslint import/newline-after-import: 0 */
-/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint-disable global-require */
+/* eslint-disable import/first */
 import './run/global';
 import { match } from 'rfx-core';
 import merge from 'webpack-merge';
@@ -11,7 +9,14 @@ import getLoaders from './webpack/loaders';
 let Config;
 let Loader = getLoaders();
 
-if (match.script('web:dev', 'development')) {
+if (match.script('web:client', 'development')) {
+  Config = require('./webpack/config.client').load();
+  const ConfigClientDev = require('./webpack/config.client.dev');
+  Loader = merge(Loader, ConfigClientDev.loader());
+  Config = merge(Config, ConfigClientDev.config('web'));
+}
+
+if (match.script('web:server', 'development')) {
   Config = require('./webpack/config.server').load();
   const ConfigServerDev = require('./webpack/config.server.dev');
   Loader = merge(Loader, ConfigServerDev.loader());
@@ -48,7 +53,6 @@ Config = merge(Config, {
     loaders: [
       Loader.eslint,
       Loader.jsx,
-      Loader.json,
       Loader.url,
       Loader.file,
       Loader.cssGlobal,

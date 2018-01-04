@@ -12,9 +12,6 @@ export function load() {
         'global.TYPE': JSON.stringify('CLIENT'),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
-      new webpack.ProvidePlugin({
-        Promise: 'bluebird',
-      }),
     ],
   };
 }

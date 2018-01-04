@@ -1,5 +1,3 @@
-const Dir = global.DIR;
-
 export default function getLoaders() {
   return {
     eslint: {
@@ -7,16 +5,11 @@ export default function getLoaders() {
       enforce: 'pre',
       loader: 'eslint-loader',
       exclude: /node_modules/,
-      include: Dir.src,
     },
     jsx: {
       test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /(node_modules)/,
-    },
-    json: {
-      test: /\.json$/,
-      loader: 'json-loader',
     },
     url: {
       // the "?v=" regex fixes fontawesome issue
@@ -30,7 +23,7 @@ export default function getLoaders() {
     },
     cssGlobal: {
       test: /\.global\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader',
+      /* loader: based on target script */
     },
     cssModules: {
       test: /^((?!\.global).)*\.css$/,

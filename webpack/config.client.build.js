@@ -1,9 +1,9 @@
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import webpack from 'webpack';
 import path from 'path';
 
-import vendor from '~/config/vendor';
+import postcss from '~/config/postcss';
 
 const Dir = global.DIR;
 
@@ -24,19 +24,31 @@ export function loader() {
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: [
-          [
-            'css-loader?modules',
-            'importLoaders=1',
-            'localIdentName=[name]__[local]___[hash:base64:5]',
-          ].join('&'),
-          'postcss-loader',
-        ].join('!'),
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
     cssGlobal: {
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: 'css-loader!postcss-loader',
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
   };
@@ -45,9 +57,7 @@ export function loader() {
 export function config(entry) {
   return {
     bail: true,
-    devtool: 'source-map',
     entry: {
-      vendor,
       app: [
         'babel-polyfill',
         'isomorphic-fetch',
@@ -56,28 +66,25 @@ export function config(entry) {
       ],
     },
     output: {
-      path: path.join(Dir.public, 'build'),
+      path: Dir.staticBuild,
       publicPath: '/build/',
-      filename: [entry, 'app', 'bundle', 'js'].join('.'),
+      filename: `${entry}.[name].bundle.js`,
+      chunkFilename: '[name].[hash:5].bundle.js',
+    },
+    module: {
+      noParse: /mapbox-gl\.js$/,
     },
     plugins: [
-      new ProgressBarPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        comments: false,
-        sourceMap: true,
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-        },
+      new CleanWebpackPlugin(Dir.staticBuild, {
+        root: Dir.root,
+      }),
+      new ExtractTextPlugin({
+        filename: `${entry}.style.css`,
+        allChunks: true,
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        minChunks: Infinity,
-        filename: [entry, 'vendor', 'bundle', 'js'].join('.'),
-      }),
-      new ExtractTextPlugin({
-        filename: [entry, 'style', 'css'].join('.'),
-        allChunks: true,
+        minChunks: ({ context }) => context && context.includes('node_modules'),
       }),
     ],
   };

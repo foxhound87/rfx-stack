@@ -1,7 +1,7 @@
-/* eslint global-require: 0 */
-/* eslint import/first: 0 */
-/* eslint import/newline-after-import: 0 */
-/* eslint import/no-extraneous-dependencies: 0 */
+/* eslint-disable global-require */
+/* eslint-disable import/first */
+/* eslint-disable import/newline-after-import */
+/* eslint-disable import/no-extraneous-dependencies */
 import './run/global';
 import merge from 'webpack-merge';
 import Globals from './webpack/globals';
@@ -24,7 +24,6 @@ Config = merge(Config, {
     loaders: [
       Loader.eslint,
       Loader.jsx,
-      Loader.json,
       Loader.url,
       Loader.file,
       Loader.cssGlobal,

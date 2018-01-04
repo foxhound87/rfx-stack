@@ -2,3 +2,4 @@
 /run/build
 /node_modules
 *.json
+/web/views/index.ejs

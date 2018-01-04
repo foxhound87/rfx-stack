@@ -7,6 +7,11 @@
     <%-head.title%>
     <%-head.meta%>
     <%-head.link%>
+    <link rel="icon" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css@6.0.0/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.1/css/tachyons.min.css">
     <% if (build) { %>
       <link href="<%-build%>/web.style.css" rel="stylesheet" type="text/css">
     <% } %>
@@ -17,8 +22,9 @@
   <body>
     <div id="root"><%-root%></div>
     <% if (build) { %>
-      <script src="<%-build%>/web.vendor.bundle.js"></script>
-      <script src="<%-build%>/web.app.bundle.js"></script>
+      <% var hash = Math.random().toString(16).substr(10); %>
+      <script src="<%-build%>/web.vendor.bundle.js?v=<%-hash%>"></script>
+      <script src="<%-build%>/web.app.bundle.js?v=<%-hash%>"></script>
     <% } else { %>
       <script src="/bundle.js"></script>
     <% } %>
