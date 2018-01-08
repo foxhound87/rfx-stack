@@ -16,10 +16,9 @@ useStrict(true);
 /**
   Stores
 */
-export default store
-  .setup({
-    ui: UIStore,
-    app: AppStore,
-    auth: AuthStore,
-    post: PostStore,
-  });
+export default store.setup({
+  ui: UIStore,
+  app: AppStore,
+  auth: AuthStore,
+  post: PostStore,
+});

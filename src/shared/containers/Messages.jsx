@@ -12,9 +12,10 @@ import PostCreateModal from '@/shared/components/PostCreateModal';
 // form
 import postForm from '@/shared/forms/post';
 
-@inject('store') @authorize @observer
+@inject('store')
+@authorize
+@observer
 export default class Messages extends Component {
-
   static fetchData({ store }) {
     return store.post.find();
   }
@@ -34,10 +35,7 @@ export default class Messages extends Component {
         <div className="pa4 _c4">
           <PostList items={post.list} />
         </div>
-        <PostCreateModal
-          open={ui.postCreateModal.isOpen}
-          form={postForm}
-        />
+        <PostCreateModal open={ui.postCreateModal.isOpen} form={postForm} />
       </div>
     );
   }

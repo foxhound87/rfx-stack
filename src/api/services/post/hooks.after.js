@@ -5,9 +5,7 @@ import hooks from 'feathers-hooks';
   Service: post
 */
 export default {
-  all: [
-    hooks.remove('__v', '_id'),
-  ],
+  all: [hooks.remove('__v', '_id')],
   find: [],
   get: [],
   create: [],

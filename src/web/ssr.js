@@ -20,22 +20,27 @@ export default (req, res, props) => {
     ui: { mui: { userAgent: req.headers['user-agent'] } },
   });
 
-  Promise.all(bootstrap(store))
-    .then(() => fetchData(store, props)
+  console.log('jwtCookie: ', req.cookies[cookieName]); // eslint-disable-line no-console
+
+  Promise.all(bootstrap(store)).then(() =>
+    fetchData(store, props)
       .then(() => setMatchMediaConfig(req))
-      .then(() => renderToString(
-        <MuiThemeProvider muiTheme={store.ui.getMui()}>
-          <Provider store={store}>
-            <RouterContext {...props} />
-          </Provider>
-        </MuiThemeProvider>,
-      ))
-      .then(html => res
-        .status(200)
-        .render('index', {
+      .then(() =>
+        renderToString(
+          <MuiThemeProvider muiTheme={store.ui.getMui()}>
+            <Provider store={store}>
+              <RouterContext {...props} />
+            </Provider>
+          </MuiThemeProvider>,
+        ),
+      )
+      .then(html =>
+        res.status(200).render('index', {
           build: isDev ? null : '/build',
           head: Helmet.rewind(),
           state: dehydrate(),
           root: html,
-        })));
+        }),
+      ),
+  );
 };

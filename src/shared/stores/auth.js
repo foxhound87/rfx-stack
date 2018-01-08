@@ -6,7 +6,6 @@ import cookie from 'js-cookie';
 import _ from 'lodash';
 
 export default class AuthStore {
-
   cookieName = 'ssrToken';
 
   redirect = '/';
@@ -53,7 +52,8 @@ export default class AuthStore {
   /**
     Check Auth (if user is logged)
   */
-  @computed get check() {
+  @computed
+  get check() {
     return !_.isEmpty(this.user);
   }
 
@@ -93,8 +93,7 @@ export default class AuthStore {
 
   @action
   register({ email, password, username }) {
-    return service('user')
-      .create({ email, password, username });
+    return service('user').create({ email, password, username });
   }
 
   setCookie({ token, payload }) {
@@ -110,7 +109,7 @@ export default class AuthStore {
 
   @action
   logout() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       app().logout();
       this.unsetCookie();
       this.updateUser({});
@@ -119,8 +118,7 @@ export default class AuthStore {
   }
 
   loadAuthPageOnLogout() {
-    reaction(() => this.check,
-      check => !check && browserHistory.push('/auth'));
+    reaction(() => this.check, check => !check && browserHistory.push('/auth'));
   }
 
   redirectAfterLogin() {

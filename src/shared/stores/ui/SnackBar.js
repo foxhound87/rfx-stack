@@ -1,7 +1,6 @@
 import { observable, action } from 'mobx';
 
 export default class SnackBar {
-
   @observable isOpen = false;
   @observable duration = 3000;
   @observable message = '';

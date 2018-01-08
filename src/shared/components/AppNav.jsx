@@ -10,7 +10,7 @@ import styles from '@/shared/styles/AppNav.css';
 // components
 import Drawer from 'material-ui/Drawer';
 
-const handleOnRequestChange = (open) => {
+const handleOnRequestChange = open => {
   dispatch('ui.appNav.open', open);
 };
 

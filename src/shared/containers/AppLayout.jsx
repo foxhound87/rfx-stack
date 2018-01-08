@@ -35,10 +35,10 @@ if (isDev) {
   MobxReactFormDevTools.open(false);
 }
 
-@inject('store') @observer
+@inject('store')
+@observer
 export default class AppLayout extends Component {
-
-  static fetchData() { }
+  static fetchData() {}
 
   static propTypes = {
     children: React.PropTypes.node,
@@ -78,9 +78,7 @@ export default class AppLayout extends Component {
               authCheck={auth.check}
               user={auth.user}
             />
-            <div className={styles.content}>
-              {this.props.children}
-            </div>
+            <div className={styles.content}>{this.props.children}</div>
           </div>
           <Snackbar
             open={ui.snackBar.isOpen}
@@ -92,8 +90,8 @@ export default class AppLayout extends Component {
             open={ui.auth.modalIsOpen}
             showSection={ui.auth.showSection}
             forms={{
-              login     : authForm,
-              register  : userForm,
+              login: authForm,
+              register: userForm,
             }}
           />
         </div>

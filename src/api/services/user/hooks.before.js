@@ -17,10 +17,7 @@ export default {
     auth.authenticate(['jwt', 'local']),
     perms.checkPermissions({ service: 'user' }),
   ],
-  create: [
-    setUUID(),
-    local.hashPassword(),
-  ],
+  create: [setUUID(), local.hashPassword()],
   update: [
     auth.authenticate(['jwt', 'local']),
     perms.checkPermissions({ service: 'user' }),

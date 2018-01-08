@@ -15,33 +15,29 @@ const btnInline = cx('dib', 'ph3', 'pv3');
 const baseBtn = cx('pointer', 'fw4');
 const authInlineBtn = cx($.buttonGeneric, 'mh2', 'mv1', 'mb2');
 
-const handleMenuAccountToggle = (e) => {
+const handleMenuAccountToggle = e => {
   e.preventDefault();
   dispatch('ui.appBar.toggleAccountMenu');
 };
 
-const handleAuthModalSignin = (e) => {
+const handleAuthModalSignin = e => {
   e.preventDefault();
   dispatch('ui.auth.toggleModal', 'open', 'signin');
 };
 
-const handleAuthModalSignup = (e) => {
+const handleAuthModalSignup = e => {
   e.preventDefault();
   dispatch('ui.auth.toggleModal', 'open', 'signup');
 };
 
-const handleLogout = (e) => {
+const handleLogout = e => {
   e.preventDefault();
   dispatch('auth.logout');
 };
 
 const Avatar = observer(() => (
   <div className="tc pa4">
-    <img
-      src=""
-      alt=""
-      className="br-100 pa1 ba b--black-10 h3 w3"
-    />
+    <img src="" alt="" className="br-100 pa1 ba b--black-10 h3 w3" />
   </div>
 ));
 
@@ -74,10 +70,9 @@ const BlockSubMenu = observer(({ inline }) => (
 
 const InlineSubMenu = observer(({ inline, accountMenuIsOpen }) => (
   <div
-    className={cx(
-      [styles.menuAccount, menuAccount],
-      { dn: !accountMenuIsOpen },
-    )}
+    className={cx([styles.menuAccount, menuAccount], {
+      dn: !accountMenuIsOpen,
+    })}
   >
     <UserSubMenu inline={inline} />
   </div>
@@ -91,11 +86,11 @@ const UserMenu = observer(({ inline, user, accountMenuIsOpen }) => (
     >
       {user.email} {inline && <i className="fa fa-caret-down" />}
     </a>
-    {inline ?
-      <InlineSubMenu
-        inline={inline}
-        accountMenuIsOpen={accountMenuIsOpen}
-      /> : <BlockSubMenu inline={inline} />}
+    {inline ? (
+      <InlineSubMenu inline={inline} accountMenuIsOpen={accountMenuIsOpen} />
+    ) : (
+      <BlockSubMenu inline={inline} />
+    )}
   </span>
 ));
 
@@ -128,14 +123,17 @@ const GuestMenu = observer(({ inline }) => (
 
 export default observer(({ user, inline, authCheck, accountMenuIsOpen }) => (
   <span>
-    {(authCheck && !inline) && <Avatar />}
+    {authCheck && !inline && <Avatar />}
 
-    {authCheck ?
+    {authCheck ? (
       <UserMenu
         inline={inline}
         accountMenuIsOpen={accountMenuIsOpen}
         user={user}
-      /> : <GuestMenu inline={inline} />}
+      />
+    ) : (
+      <GuestMenu inline={inline} />
+    )}
 
     <div className={cx(styles.divider, { bt: !inline })} />
   </span>

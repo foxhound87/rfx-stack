@@ -1,7 +1,7 @@
 /*
   Expose Env to Client Side
 */
-export default ({
+export default {
   web: {
     host: 'WEB_HOST',
     port: 'WEB_PORT',
@@ -14,4 +14,4 @@ export default ({
     host: 'IO_HOST',
     port: 'IO_PORT',
   },
-});
+};

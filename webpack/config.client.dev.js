@@ -1,8 +1,12 @@
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 import webpack from 'webpack';
 import getenv from 'getenv';
 import path from 'path';
+
+import postcss from '~/config/postcss';
 
 import { logServerConfigWebpack, webhost } from '@/utils/logger';
 
@@ -25,11 +29,28 @@ export function loader() {
     cssModules: {
       loaders: [
         'style-loader',
-        ['css-loader?modules',
-          'importLoaders=1',
-          'localIdentName=[name]__[local]___[hash:base64:5]']
-        .join('&'),
-        'postcss-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            importLoaders: 1,
+            localIdentName: '[name]__[local]___[hash:base64:5]',
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: postcss,
+        },
+      ],
+    },
+    cssGlobal: {
+      loaders: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: postcss,
+        },
       ],
     },
   };
@@ -37,15 +58,19 @@ export function loader() {
 
 export function config(entry) {
   return {
-    devtool: 'cheap-module-eval-source-map',
+    devServer: {
+      host: getenv('WEB_HOST'),
+      port: getenv('WEB_PORT'),
+      contentBase: Dir.public,
+      historyApiFallback: true,
+      hot: true,
+    },
     entry: {
       app: [
         'babel-polyfill',
         'isomorphic-fetch',
         'whatwg-fetch',
         'react-hot-loader/patch',
-        'webpack-hot-middleware/client',
-        // ['webpack-hot-middleware/client', webhost].join('?'),
         path.join(Dir.src, entry, 'client'),
       ],
     },
@@ -53,6 +78,7 @@ export function config(entry) {
       path: '/',
       publicPath: '/',
       filename: 'bundle.js',
+      chunkFilename: '[name].bundle.js',
     },
     plugins: [
       new FriendlyErrorsWebpackPlugin({
@@ -61,13 +87,19 @@ export function config(entry) {
           messages: logServerConfigWebpack(entry),
         },
       }),
-      new BrowserSyncPlugin({
-        host: getenv('BROWSERSYNC_HOST'),
-        port: getenv('BROWSERSYNC_PORT'),
-        proxy: webhost(entry),
-      }, { reload: false }),
+      new HtmlWebpackPlugin({
+        template: './src/web/views/client.dev.html',
+      }),
+      new BrowserSyncPlugin(
+        {
+          host: getenv('BROWSERSYNC_HOST'),
+          port: getenv('BROWSERSYNC_PORT'),
+          proxy: webhost(entry),
+        },
+        { reload: false },
+      ),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
     ],
   };
 }

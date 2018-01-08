@@ -22,7 +22,7 @@ function catchError(err) {
   process.exit();
 }
 
-export default ($path) => {
+export default $path => {
   const handlerFile = path.resolve($path, 'handlers', process.env.NODE_ENV);
 
   let handler = require(handlerFile).handle();

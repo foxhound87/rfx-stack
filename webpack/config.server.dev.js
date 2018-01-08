@@ -4,6 +4,8 @@ import StartServerPlugin from 'start-server-webpack-plugin';
 import nodeExternalModules from 'webpack-node-externals';
 import path from 'path';
 
+import postcss from '~/config/postcss';
+
 const Dir = global.DIR;
 
 export function loader() {
@@ -23,17 +25,33 @@ export function loader() {
     },
     cssModules: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: ['css-loader?modules',
-          'importLoaders=1',
-          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
-         .join('&'),
+        fallback: 'isomorphic-style-loader',
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
     cssGlobal: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: 'css-loader!postcss-loader',
+        fallback: 'isomorphic-style-loader',
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
   };
@@ -41,7 +59,6 @@ export function loader() {
 
 export function config(entry) {
   return {
-    devtool: 'cheap-module-eval-source-map',
     entry: [
       'babel-polyfill',
       'isomorphic-fetch',
@@ -50,11 +67,8 @@ export function config(entry) {
       path.join(Dir.run, entry),
     ],
     output: {
-      path: Dir.nodeBuild,
-      filename: [entry, 'dev', 'bundle', 'js'].join('.'),
-      chunkFilename: '[id].[hash:5]-[chunkhash:7].js',
-      devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-      libraryTarget: 'commonjs2',
+      filename: `${entry}.bundle.js`,
+      chunkFilename: '[name].bundle.js',
     },
     externals: [nodeExternalModules()],
     // externals: [nodeExternalModules({
@@ -64,10 +78,9 @@ export function config(entry) {
       new ExtractTextPlugin({
         disable: true,
       }),
-      new StartServerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new StartServerPlugin(),
     ],
   };
 }

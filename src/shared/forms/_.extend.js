@@ -14,7 +14,6 @@ import bindings from './_.bindings';
 */
 
 export default class Form extends MobxReactForm {
-
   plugins() {
     return {
       dvr: validatorjs,
@@ -26,7 +25,6 @@ export default class Form extends MobxReactForm {
   }
 
   onInit() {
-    this.each(field =>
-      field.set('bindings', 'MaterialTextField'));
+    this.each(field => field.set('bindings', 'MaterialTextField'));
   }
 }

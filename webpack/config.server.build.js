@@ -1,8 +1,9 @@
-import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import nodeExternalModules from 'webpack-node-externals';
 import path from 'path';
+
+import postcss from '~/config/postcss';
 
 const Dir = global.DIR;
 
@@ -23,17 +24,33 @@ export function loader() {
     },
     cssModules: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: ['css-loader?modules',
-          'importLoaders=1',
-          'localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader']
-         .join('&'),
+        fallback: 'isomorphic-style-loader',
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
     cssGlobal: {
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'isomorphic-style-loader',
-        loader: 'css-loader!postcss-loader',
+        fallback: 'isomorphic-style-loader',
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: postcss,
+          },
+        ],
       }),
     },
   };
@@ -41,7 +58,6 @@ export function loader() {
 
 export function config(entry) {
   return {
-    devtool: 'source-map',
     entry: [
       'babel-polyfill',
       'isomorphic-fetch',
@@ -50,21 +66,14 @@ export function config(entry) {
     ],
     output: {
       path: Dir.nodeBuild,
-      filename: [entry, 'bundle', 'js'].join('.'),
+      filename: `${entry}.bundle.js`,
+      chunkFilename: '[name].bundle.js',
     },
     externals: [nodeExternalModules()],
     plugins: [
       new ProgressBarPlugin(),
       new ExtractTextPlugin({
         disable: true,
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        comments: false,
-        sourceMap: true,
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-        },
       }),
     ],
   };

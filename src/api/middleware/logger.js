@@ -1,6 +1,6 @@
 import { log } from '@/utils/logger';
 
-export default function (app) {
+export default function(app) {
   // Add a logger to our app object for convenience
   app.logger = log; // eslint-disable-line no-param-reassign
 

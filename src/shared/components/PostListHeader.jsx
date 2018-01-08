@@ -4,12 +4,12 @@ import cx from 'classnames';
 import { dispatch } from 'rfx-core';
 import $ from '@/shared/styles/_.mixins';
 
-const handleAddRandomPost = (e) => {
+const handleAddRandomPost = e => {
   e.preventDefault();
   dispatch('post.create');
 };
 
-const handleCreatePost = (e) => {
+const handleCreatePost = e => {
   e.preventDefault();
   dispatch('ui.postCreateModal.open', true);
 };

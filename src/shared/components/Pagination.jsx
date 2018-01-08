@@ -11,16 +11,16 @@ export default observer(({ currentPage, onPageChange }) => (
   >
     <div className="inline-block clearfix">
       <Paginator.Button page={currentPage - 1} className="dib">
-        <button
-          type="button"
-          className={$.buttonGroupLeft}
-        > <i className="fa fa-chevron-left" /> </button>
+        <button type="button" className={$.buttonGroupLeft}>
+          {' '}
+          <i className="fa fa-chevron-left" />{' '}
+        </button>
       </Paginator.Button>
       <Paginator.Button page={currentPage + 1} className="dib">
-        <button
-          type="button"
-          className={$.buttonGroupRight}
-        > <i className="fa fa-chevron-right" /> </button>
+        <button type="button" className={$.buttonGroupRight}>
+          {' '}
+          <i className="fa fa-chevron-right" />{' '}
+        </button>
       </Paginator.Button>
     </div>
   </Paginator.Context>

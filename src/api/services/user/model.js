@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-export default mongoose.model('user',
+export default mongoose.model(
+  'user',
   new Schema({
     uuid: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
@@ -10,4 +11,5 @@ export default mongoose.model('user',
     password: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
-  }));
+  }),
+);

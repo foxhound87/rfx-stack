@@ -15,8 +15,7 @@ _.assign(styles.content, {
   maxHeight: '500px',
 });
 
-const handleCloseModal = () =>
-  dispatch('ui.auth.toggleModal', 'close');
+const handleCloseModal = () => dispatch('ui.auth.toggleModal', 'close');
 
 export default observer(({ open, showSection, forms }) => (
   <Modal
@@ -25,9 +24,6 @@ export default observer(({ open, showSection, forms }) => (
     onRequestClose={handleCloseModal}
     style={styles}
   >
-    <AuthForm
-      showSection={showSection}
-      forms={forms}
-    />
+    <AuthForm showSection={showSection} forms={forms} />
   </Modal>
 ));

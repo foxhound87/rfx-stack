@@ -6,7 +6,7 @@ import { setupJWTPayload } from '@/api/hooks/setupJWTPayload';
 // import { Strategy as GithubStrategy } from 'passport-github';
 // import GithubTokenStrategy from 'passport-github-token';
 
-export default function () {
+export default function() {
   const app = this;
 
   const config = app.get('auth');
@@ -21,10 +21,7 @@ export default function () {
 
   app.service('authentication').hooks({
     before: {
-      create: [
-        auth.hooks.authenticate(['jwt', 'local']),
-        setupJWTPayload(app),
-      ],
+      create: [auth.hooks.authenticate(['jwt', 'local']), setupJWTPayload(app)],
     },
   });
 }

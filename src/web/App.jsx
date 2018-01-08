@@ -4,7 +4,6 @@ import { Provider } from 'mobx-react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class App extends Component {
-
   static propTypes = {
     store: React.PropTypes.object,
     routerProps: React.PropTypes.object,

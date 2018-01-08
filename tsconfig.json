@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "lib": ["es2015"],
+    "typeRoots": ["typings"],
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules", "run"]
+}

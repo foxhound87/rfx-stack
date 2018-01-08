@@ -4,7 +4,7 @@ import { dispatch } from 'rfx-core';
 import cx from 'classnames';
 import $ from '@/shared/styles/_.mixins';
 
-const handleSelect = (e) => {
+const handleSelect = e => {
   e.preventDefault();
   const val = e.target.value;
   dispatch('post.filterBy', val);
@@ -13,25 +13,34 @@ const handleSelect = (e) => {
 export default observer(({ filter }) => (
   <div className="inline-block clearfix">
     <button
-      type="button" value="all"
+      type="button"
+      value="all"
       onClick={handleSelect}
       className={cx($.buttonGroupLeft, {
         _bg1: filter === 'all',
       })}
-    >All</button>
+    >
+      All
+    </button>
     <button
-      type="button" value="todo"
+      type="button"
+      value="todo"
       onClick={handleSelect}
       className={cx($.buttonGroupCenter, {
         _bg1: filter === 'todo',
       })}
-    >To Do</button>
+    >
+      To Do
+    </button>
     <button
-      type="button" value="done"
+      type="button"
+      value="done"
       onClick={handleSelect}
       className={cx($.buttonGroupRight, {
         _bg1: filter === 'done',
       })}
-    >Done</button>
+    >
+      Done
+    </button>
   </div>
 ));

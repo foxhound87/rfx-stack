@@ -4,7 +4,6 @@
 */
 
 export default {
-
   MaterialTextField: {
     id: 'id',
     name: 'name',
@@ -18,5 +17,4 @@ export default {
     onFocus: 'onFocus',
     onBlur: 'onBlur',
   },
-
 };

@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { dispatch } from 'rfx-core';
 import $ from '@/shared/styles/_.mixins';
 
-const handleEditPost = (e) => {
+const handleEditPost = e => {
   e.preventDefault();
   dispatch('ui.postCreateModal.open', true);
 };

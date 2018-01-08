@@ -1,0 +1,35 @@
+{
+  // Use IntelliSense to learn about possible Node.js debug attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node2",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceRoot}/run/start.web.js",
+      "cwd": "${workspaceRoot}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${file}",
+      "cwd": "${workspaceRoot}"
+    },
+    {
+      "type": "node",
+      "protocol": "inspector",
+      "request": "attach",
+      "restart": true,
+      "name": "Attach To Inspector",
+      "port": 9229,
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**/*.js",
+        "<node_internals>/**/*.js"
+      ],
+      "smartStep": true
+    }
+  ]
+}

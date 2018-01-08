@@ -62,7 +62,8 @@ This structure does not force you to separate the server-side code from the clie
 ##### ENV: Development
 | Command | Env | Description |
 |---|---|---|
-| **web:dev** | development | Run only the **web** app. |
+| **web:client** | development | client side rendering | Run only the **web** app. |
+| **web:server** | development | server side rendering | Run only the **web** app. |
 | **api:dev** | development | Run only the **api** app. |
 | **seed:dev** | development | Run only the **seed** app. |
 
@@ -95,7 +96,9 @@ Then to start the app, run in sequence:
 
 `npm run build:client:web` // only if **global.HOT** is NOT defined
 
-`npm run web:dev` // only if **global.HOT** is defined
+`npm run web:client` // only if **global.HOT** is defined
+
+`npm run web:server` // only if **global.HOT** is defined
 
 > in the electron root:
 
